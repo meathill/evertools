@@ -18,7 +18,11 @@ export function SiteHeader({ content, locale }: SiteHeaderProps) {
   return (
     <header className="sticky top-0 z-40 border-b border-border/80 bg-background/88 backdrop-blur">
       <div className="mx-auto flex max-w-6xl items-center justify-between gap-4 px-4 py-3 sm:px-6">
-        <Link className="flex min-w-0 items-center gap-3" href="/" locale={locale}>
+        <Link
+          className="flex min-w-0 items-center gap-3"
+          href="/"
+          locale={locale}
+        >
           <div className="flex size-10 shrink-0 items-center justify-center rounded-2xl bg-primary text-primary-foreground shadow-xs">
             <span className="font-heading font-semibold text-sm">MT</span>
           </div>
@@ -59,7 +63,9 @@ export function SiteHeader({ content, locale }: SiteHeaderProps) {
                   href={getLocalizedPathname(nextLocale, "/")}
                   key={value}
                 >
-                  {nextLocale === locale ? `[${info.switcherLabel}]` : info.switcherLabel}
+                  {nextLocale === locale
+                    ? `[${info.switcherLabel}]`
+                    : info.switcherLabel}
                 </Link>
               );
             })}

@@ -1,11 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import {
-  ArrowRightIcon,
-  CloudUploadIcon,
-  SearchIcon,
-  ShieldCheckIcon,
-} from "lucide-react";
+import { ArrowRightIcon, CloudUploadIcon, ShieldCheckIcon } from "lucide-react";
 import { StructuredData } from "@/components/structured-data";
 import { ToolCard } from "@/components/tool-card";
 import { Badge } from "@/components/ui/badge";
@@ -106,7 +101,10 @@ export default async function HomePage({
               <Button
                 render={
                   <Link
-                    href={getLocalizedPathname(locale, "/tools/image-converter")}
+                    href={getLocalizedPathname(
+                      locale,
+                      "/tools/image-converter",
+                    )}
                   />
                 }
                 size="lg"
@@ -130,7 +128,7 @@ export default async function HomePage({
             <CardPanel className="grid gap-4 sm:grid-cols-3 lg:grid-cols-1">
               <FeatureStat
                 description={content.home.strategy.indexedPagesDescription}
-                icon={<SearchIcon className="size-4.5" />}
+                icon={<ArrowRightIcon className="size-4.5" />}
                 title={content.home.strategy.indexedPagesTitle}
               />
               <FeatureStat

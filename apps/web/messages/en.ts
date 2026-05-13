@@ -4,7 +4,7 @@ export const enMessages: LocaleContent = {
   metadata: {
     defaultTitle: "Online Tools",
     siteDescription:
-      "Meathill Tools offers online utilities that run directly in your browser. The first live tool converts image formats and sizes with local processing and no uploads.",
+      "Meathill Tools offers online tools that run directly in your browser. You can currently convert image formats and resize images with local processing and no uploads.",
     siteTitle: "Meathill Tools",
   },
   header: {
@@ -18,18 +18,18 @@ export const enMessages: LocaleContent = {
   },
   footer: {
     description:
-      "This is an online toolbox for everyday productivity tasks. The first tool handles image format and size conversion, and more instant-use utilities will be added over time.",
+      "Online tools for quick everyday tasks. Right now you can convert image formats and resize images directly in the browser.",
     toolsTitle: "Available tools",
   },
   toolCard: {
-    firstBatch: "Launch batch",
+    firstBatch: "Popular",
     footerHint: "Best for quick single-image edits",
     openTool: "Open tool",
   },
   home: {
     metadata: {
       description:
-        "Meathill Tools provides browser-based online tools. The current release focuses on image format and size conversion with local processing, fast usage and indexable landing pages.",
+        "Meathill Tools offers online tools you can use right away in the browser. Start with image format conversion, resizing and direct download.",
       keywords: [
         "online tools",
         "browser tools",
@@ -44,46 +44,43 @@ export const enMessages: LocaleContent = {
     },
     hero: {
       badges: {
-        scalable: "Expandable",
-        seo: "SEO-friendly",
-        stack: "Next.js + Cloudflare",
+        scalable: "Local processing",
+        seo: "No upload",
+        stack: "Fast export",
       },
       description:
-        "Meathill Tools collects practical online utilities. The first release is an image format and size converter built for speed, direct use and local processing instead of a heavy SaaS workflow.",
-      primaryCta: "Use image converter",
+        "Start with image format conversion and resizing. Choose an image, adjust format and dimensions in the browser, then preview and download the result.",
+      primaryCta: "Start converting images",
       secondaryCta: "Browse tools",
-      title:
-        "A tools site that search engines can find and people can use right away.",
+      title: "Online tools you can open and use right away.",
     },
     strategy: {
-      description:
-        "The goal is not to pile up widgets, but to build searchable pages that solve frequent tasks directly.",
+      description: "Built for quick image tasks with as few steps as possible.",
       indexedPagesDescription:
-        "Each tool page includes clear explanations, steps and FAQ so it is not just a thin upload box.",
-      indexedPagesTitle: "Indexable pages",
+        "Choose an image, set format and size, then generate the result on one page.",
+      indexedPagesTitle: "Start immediately",
       lightweightExpansionDescription:
-        "The site runs on Cloudflare Workers and will keep adding more focused tool pages with their own SEO entries.",
-      lightweightExpansionTitle: "Lightweight expansion",
+        "Preview the output and download it right away.",
+      lightweightExpansionTitle: "Easy export",
       localProcessingDescription:
-        "The first tool processes images entirely in the browser, which is faster and better for privacy.",
+        "Images are processed entirely in the browser, which is faster and better for privacy.",
       localProcessingTitle: "Local processing",
-      title: "Current site strategy",
+      title: "Why use it",
     },
     tools: {
-      description:
-        "Every tool gets its own page, title and description so users can land on the exact solution from search instead of drilling through a generic homepage.",
+      description: "Tools currently available for direct use.",
       title: "Available tools",
     },
     info: {
       expansionMatrixDescription:
-        "The site will gradually grow into a clear set of tool entry points that can each capture organic search traffic.",
-      expansionMatrixTitle: "Expand page by page",
+        "Check the result before saving it to your device.",
+      expansionMatrixTitle: "Preview and download",
       highFrequencyDescription:
-        "The first batch focuses on frequent tasks such as image handling, text processing, encoding conversion and developer utilities.",
-      highFrequencyTitle: "Start with frequent tasks",
+        "Convert between PNG, JPG/JPEG and WebP, and resize when needed.",
+      highFrequencyTitle: "Common formats",
       substantialPagesDescription:
-        "Each tool page explains supported formats, steps, limits and privacy boundaries so search engines can understand the topic.",
-      substantialPagesTitle: "Real pages, not shells",
+        "No sign-up or install, just open the page and process your image.",
+      substantialPagesTitle: "Quick workflow",
     },
   },
   imageConverter: {
@@ -111,12 +108,12 @@ export const enMessages: LocaleContent = {
     },
     scenarios: {
       description:
-        "It is designed for common web image tasks, not for complex editor workflows.",
+        "If you just need a quick format change, resize or export, this tool keeps it simple.",
       privacy:
         "You care about privacy and do not want to upload files to a third-party service.",
       ratio:
         "You want to keep aspect ratio without calculating width and height manually.",
-      title: "What this version is good for",
+      title: "Good for tasks like these",
       transform:
         "You want to turn PNG into JPG or WebP, or shrink a large image to a web-friendly size.",
     },
@@ -127,12 +124,12 @@ export const enMessages: LocaleContent = {
       faq: [
         {
           answer:
-            "No. This first version processes images entirely in your browser and never sends files to the server.",
+            "No. Image processing happens entirely in your browser and files are never sent to the server.",
           question: "Will my image be uploaded?",
         },
         {
           answer:
-            "The current release supports single-image conversion and resizing for PNG, JPG/JPEG and WebP.",
+            "It currently supports single-image conversion and resizing for PNG, JPG/JPEG and WebP.",
           question: "Which image formats are supported?",
         },
         {
@@ -166,27 +163,25 @@ export const enMessages: LocaleContent = {
         "Convert image formats, resize dimensions and tune quality entirely in the browser.",
     },
     content: {
-      faqDescription:
-        "A few questions people often care about before using the tool.",
+      faqDescription: "A few common questions before you start.",
       faqTitle: "FAQ",
       privacyDescription:
-        "These boundaries are worth stating clearly before you use the tool.",
+        "A few limitations and notes worth knowing before you use the tool.",
       privacyItems: [
         "Images are never uploaded. All conversion happens in your browser.",
         "JPEG does not support transparency, so transparent areas will be filled with white.",
-        "This first version does not handle HEIC, animated GIF, SVG export or batch conversion yet.",
+        "HEIC, animated GIF, SVG export and batch conversion are not supported yet.",
       ],
-      privacyTitle: "Privacy and limitations",
-      stepsDescription:
-        "The usage flow is written out so search users can quickly judge whether this page fits their task.",
+      privacyTitle: "Notes and limitations",
+      stepsDescription: "Follow these steps to convert your image.",
       stepsTitle: "How to use it",
       supportDescription:
-        "The first version focuses on common web image tasks, so it currently supports PNG, JPG/JPEG and WebP for both input and output.",
-      supportTitle: "Current support",
+        "PNG, JPG/JPEG and WebP are supported for both input and output.",
+      supportTitle: "Supported formats",
     },
     client: {
       badges: {
-        firstVersion: "First release",
+        firstVersion: "Single image",
         localProcessing: "Browser-side processing",
         stale: "Settings changed",
         stalePreview: "Regenerate needed",
@@ -196,7 +191,7 @@ export const enMessages: LocaleContent = {
         chooseImage: "Choose image",
         clear: "Clear",
         description:
-          "Drag an image into the area below or click the button to choose one. This first release handles a single image only and never uploads it.",
+          "Drag an image into the area below or click the button to choose one. It currently handles one image at a time and never uploads it.",
         emptyDescription:
           "Supports PNG, JPG/JPEG and WebP. You can resize the image, switch output format and adjust quality.",
         emptyTitle: "Drop an image to begin",

@@ -46,9 +46,9 @@ describe("image converter helpers", () => {
         heightInput: "320",
         isAspectLocked: false,
         originalHeight: 800,
-      originalWidth: 1600,
-      widthInput: "abc",
-    }),
+        originalWidth: 1600,
+        widthInput: "abc",
+      }),
     ).toThrow(IMAGE_CONVERTER_ERROR_CODES.INVALID_DIMENSIONS);
   });
 

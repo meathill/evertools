@@ -18,11 +18,11 @@ export const jaMessages: LocaleContent = {
   },
   footer: {
     description:
-      "日常の作業効率を高めるためのオンラインツール集です。現在の最初のツールは画像形式とサイズの変換で、今後もインストール不要ですぐ使える小さなツールを追加していきます。",
+      "ブラウザですぐ使えるオンラインツールです。現在は画像形式とサイズの変換を利用できます。",
     toolsTitle: "公開中のツール",
   },
   toolCard: {
-    firstBatch: "初期公開",
+    firstBatch: "おすすめ",
     footerHint: "単一画像の素早い処理向け",
     openTool: "ツールを開く",
   },
@@ -44,29 +44,29 @@ export const jaMessages: LocaleContent = {
     },
     hero: {
       badges: {
-        scalable: "拡張継続",
-        seo: "SEO 対応",
-        stack: "Next.js + Cloudflare",
+        scalable: "ローカル処理",
+        seo: "アップロード不要",
+        stack: "すぐ書き出し",
       },
       description:
-        "Meathill Tools は日常で使うオンラインツールを集めたサイトです。最初に公開したのは画像形式とサイズの変換で、重い SaaS フローではなく、速く、直接使えて、ローカルで完結することを重視しています。",
+        "画像をアップロードせずに、形式変換、リサイズ、書き出しまでをブラウザ内で完結できます。",
       primaryCta: "画像変換を使う",
       secondaryCta: "公開中のツールを見る",
-      title: "検索にも見つかりやすく、開いてすぐ使えるツールサイト。",
+      title: "開いてすぐ使えるオンライン画像変換。",
     },
     strategy: {
       description:
-        "ツールを並べるだけではなく、検索されやすく、よくある課題をその場で解決できるページを優先して作ります。",
+        "よくある画像変換作業を、できるだけ少ない手順で終えられるようにしています。",
       indexedPagesDescription:
-        "各ツールページには説明、手順、FAQ を用意し、アップロード欄だけの薄いページにはしません。",
-      indexedPagesTitle: "インデックスされやすいページ",
+        "画像を選び、形式やサイズを決めて、そのまま結果を生成できます。",
+      indexedPagesTitle: "すぐ使える",
       lightweightExpansionDescription:
-        "Cloudflare Workers 上で動作し、今後も独立した SEO 入口を持つ小さなツールページを増やしていきます。",
-      lightweightExpansionTitle: "軽量に拡張",
+        "結果をプレビューしてから保存できるので、ちょっとした変換にも向いています。",
+      lightweightExpansionTitle: "確認して保存",
       localProcessingDescription:
-        "最初のツールは画像を完全にブラウザ内で処理し、速度とプライバシーを両立します。",
+        "画像処理はすべてブラウザ内で完結し、元画像はアップロードされません。",
       localProcessingTitle: "ローカル処理",
-      title: "現在のサイト方針",
+      title: "使いやすいポイント",
     },
     tools: {
       description:
@@ -75,14 +75,14 @@ export const jaMessages: LocaleContent = {
     },
     info: {
       expansionMatrixDescription:
-        "サイトは今後、複数の明確なツール入口を持つ構成へと段階的に広がり、それぞれが自然検索流入を受けられるようにします。",
-      expansionMatrixTitle: "入口を段階的に拡張",
+        "PNG、JPG/JPEG、WebP の変換とリサイズに対応しています。",
+      expansionMatrixTitle: "よく使う形式に対応",
       highFrequencyDescription:
-        "初期のツールは画像処理、テキスト処理、エンコード変換、開発補助など、頻度の高い作業を優先します。",
-      highFrequencyTitle: "高頻度な課題から着手",
+        "縦横比を固定すれば、片方を変えるだけでもう片方が自動で調整されます。",
+      highFrequencyTitle: "サイズ変更が簡単",
       substantialPagesDescription:
-        "ツールページでは対応形式、使い方、制限、プライバシー境界を明示し、検索エンジンがテーマを理解しやすくします。",
-      substantialPagesTitle: "中身のあるページ",
+        "変換後はその場でプレビューしてダウンロードできます。",
+      substantialPagesTitle: "仕上がりを確認できる",
     },
   },
   imageConverter: {
@@ -110,11 +110,11 @@ export const jaMessages: LocaleContent = {
     },
     scenarios: {
       description:
-        "複雑なエディターではなく、一般的な Web 向け画像作業を素早く処理するためのツールです。",
+        "複雑な画像編集ではなく、形式変換やリサイズを手早く済ませたい場面に向いています。",
       privacy:
         "プライバシーを重視し、第三者サービスに画像をアップロードしたくない場合。",
       ratio: "縦横比を固定したまま、手計算せずにサイズを変更したい場合。",
-      title: "このツールが向いている場面",
+      title: "こんなときに便利",
       transform:
         "PNG を JPG / WebP に変換したり、大きな画像を Web 向けサイズに縮小したい場合。",
     },
@@ -125,7 +125,7 @@ export const jaMessages: LocaleContent = {
       faq: [
         {
           answer:
-            "いいえ。初版では画像は完全にブラウザ内で処理され、サーバーに送信されません。",
+            "いいえ。画像はブラウザ内で処理され、サーバーには送信されません。",
           question: "画像はサーバーにアップロードされますか？",
         },
         {
@@ -165,23 +165,21 @@ export const jaMessages: LocaleContent = {
     content: {
       faqDescription: "使う前によく気になるポイントをまとめています。",
       faqTitle: "よくある質問",
-      privacyDescription: "使い始める前に、境界条件をはっきりさせておきます。",
+      privacyDescription: "使い始める前に知っておきたい点です。",
       privacyItems: [
         "画像はサーバーにアップロードされず、変換はすべてブラウザ内で行われます。",
         "JPEG は透明背景に対応していないため、透明部分は白で補完されます。",
-        "初版では HEIC、アニメーション GIF、SVG 書き出し、複数画像の一括変換には未対応です。",
+        "HEIC、アニメーション GIF、SVG 書き出し、複数画像の一括変換には未対応です。",
       ],
-      privacyTitle: "プライバシーと制限",
-      stepsDescription:
-        "検索から来たユーザーでも、このページが目的に合うかすぐ判断できるよう、使い方を明記しています。",
+      privacyTitle: "利用上の注意",
+      stepsDescription: "次の手順で変換できます。",
       stepsTitle: "使い方",
-      supportDescription:
-        "初版は一般的な Web 画像用途に絞っているため、現在の入出力形式は PNG、JPG/JPEG、WebP のみです。",
-      supportTitle: "現在の対応範囲",
+      supportDescription: "現在の入出力形式は PNG、JPG/JPEG、WebP です。",
+      supportTitle: "対応形式",
     },
     client: {
       badges: {
-        firstVersion: "初版機能",
+        firstVersion: "単一画像",
         localProcessing: "ブラウザ内処理",
         stale: "設定が変更されました",
         stalePreview: "再生成が必要",
@@ -191,7 +189,7 @@ export const jaMessages: LocaleContent = {
         chooseImage: "画像を選択",
         clear: "クリア",
         description:
-          "下のエリアに画像をドラッグするか、ボタンから画像を 1 枚選択してください。初版は単一画像のみ対応し、サーバーへはアップロードしません。",
+          "下のエリアに画像をドラッグするか、ボタンから画像を 1 枚選択してください。現在は単一画像のみ対応し、サーバーへはアップロードしません。",
         emptyDescription:
           "PNG、JPG/JPEG、WebP に対応しています。リサイズ、出力形式の切り替え、品質調整が行えます。",
         emptyTitle: "画像をドロップして開始",
