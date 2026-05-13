@@ -2,26 +2,23 @@
 
 ## 目标
 
-- 完成首版工具站初始化并准备首个 git 提交
-- 将站点改造成基于 `next-intl` 的多语言版本
-- 覆盖中文、英文、日文、泰文、越南文、西班牙文、葡萄牙文
-- 补齐多语言 SEO：`hreflang`、多语言 `metadata`、`sitemap`
+- 为 `tools.meathill.com` 接入 Google Analytics `G-1S0T1HF97B`
+- 为站点接入 Google Adsense `pub-9946806099979342`
+- 保持 `Next.js + OpenNext + Cloudflare` 构建与现有多语言站点可用
 
 ## Todo
 
-- [x] 创建 `AGENTS.md` 并建立 `CLAUDE.md`、`GEMINI.md` 软链
-- [x] 初始化 monorepo 根配置
-- [x] 创建 `apps/web` 并接入 Cloudflare OpenNext
-- [x] 接入 `CossUI`、`zustand`、基础站点布局
-- [x] 实现首个图片格式与尺寸转换工具
-- [x] 补充首版 SEO：metadata、robots、sitemap、结构化数据
-- [x] 补充测试并确认首版构建可用
-- [ ] 接入 `next-intl` 基础设施与 locale 路由
-- [ ] 提取首页、导航、页脚、工具页与工具面板文案
-- [ ] 补齐多语言 SEO 与 locale-aware metadata
-- [ ] 增加语言切换入口
-- [ ] 重新运行 format、typecheck、test、build
+- [x] 完成工具站初始化与首个图片转换工具
+- [x] 完成 `next-intl` 多语言改造与多语言 SEO
+- [x] 将站内用户可见文案调整为终端用户视角
+- [x] 安装 `@next/third-parties`
+- [x] 在根布局接入 Google Analytics
+- [x] 在根布局接入 Adsense 脚本
+- [x] 添加 `ads.txt`
+- [x] 重新运行 `format`、`typecheck`、`test`、`build`
+- [x] 运行 `opennextjs-cloudflare build` 验证 Cloudflare 产物
 
 ## 备注
 
-- git 远端 `origin` 已配置，但当前环境缺少 `user.name` / `user.email`，暂时无法直接创建首个提交
+- `@next/third-parties/google` 可直接接入 GA
+- Adsense 暂无对应组件，使用官方脚本接入更稳
