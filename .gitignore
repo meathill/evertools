@@ -1,0 +1,13 @@
+.DS_Store
+.next
+.open-next
+.turbo
+.wrangler
+coverage
+dist
+node_modules
+wrangler-temp
+cloudflare-env.d.ts
+.dev.vars*
+pnpm-debug.log*
+*.tsbuildinfo

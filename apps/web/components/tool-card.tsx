@@ -1,0 +1,70 @@
+import Link from "next/link";
+import { ArrowRightIcon } from "lucide-react";
+import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
+import {
+  Card,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardPanel,
+  CardTitle,
+} from "@/components/ui/card";
+import type { AppLocale } from "@/i18n/routing";
+import type { ToolDefinition } from "@/lib/content";
+import { getLocalizedPathname } from "@/lib/site";
+import type { LocaleContent } from "@/messages/types";
+
+type ToolCardProps = {
+  content: LocaleContent["toolCard"];
+  locale: AppLocale;
+  tool: ToolDefinition;
+};
+
+export function ToolCard({ content, locale, tool }: ToolCardProps) {
+  return (
+    <Card className="h-full overflow-hidden">
+      <CardHeader className="gap-3 border-b border-border/60 bg-muted/40">
+        <div className="flex items-center justify-between gap-3">
+          <Badge variant="outline">{tool.category}</Badge>
+          <span className="text-muted-foreground text-xs">
+            {content.firstBatch}
+          </span>
+        </div>
+        <div className="space-y-2">
+          <CardTitle>{tool.name}</CardTitle>
+          <CardDescription className="leading-6">
+            {tool.summary}
+          </CardDescription>
+        </div>
+      </CardHeader>
+
+      <CardPanel className="space-y-4">
+        <p className="text-muted-foreground text-sm leading-6">
+          {tool.description}
+        </p>
+        <ul className="space-y-2 text-sm text-muted-foreground">
+          {tool.features.slice(0, 3).map((feature) => (
+            <li className="flex gap-2" key={feature}>
+              <span className="mt-1 size-1.5 shrink-0 rounded-full bg-primary/70" />
+              <span>{feature}</span>
+            </li>
+          ))}
+        </ul>
+      </CardPanel>
+
+      <CardFooter className="justify-between border-t border-border/60 bg-muted/20">
+        <span className="text-muted-foreground text-xs">
+          {content.footerHint}
+        </span>
+        <Button
+          render={<Link href={getLocalizedPathname(locale, tool.href)} />}
+          size="sm"
+        >
+          {content.openTool}
+          <ArrowRightIcon />
+        </Button>
+      </CardFooter>
+    </Card>
+  );
+}
