@@ -13,6 +13,7 @@ export const viMessages: LocaleContent = {
     nav: {
       home: "Trang chu",
       imageConverter: "Chuyen doi anh",
+      pdfTextEditor: "Sua van ban PDF",
     },
     tagline: "Cong cu truc tuyen thuc dung",
   },
@@ -256,6 +257,195 @@ export const viMessages: LocaleContent = {
       webp: {
         description: "Nen tot hon, phu hop cho anh web",
         label: "WebP",
+      },
+    },
+  },
+  pdfTextEditor: {
+    metadata: {
+      description:
+        "Sua van ban co san trong PDF truc tuyen. Moi xu ly chay trong trinh duyet, tep khong duoc tai len va ban co the tai ket qua ngay.",
+      keywords: [
+        "sua PDF online",
+        "sua van ban PDF",
+        "edit pdf online",
+        "pdf text editor",
+        "online pdf editor",
+        "PDF trinh duyet",
+      ],
+      title: "Cong cu sua van ban PDF truc tuyen",
+    },
+    hero: {
+      badges: {
+        beta: "Beta",
+        category: "Cong cu tai lieu",
+        localProcessing: "Xu ly trong trinh duyet",
+      },
+      description:
+        "Tai len PDF, nhan vao van ban tren trang de sua, sau do tai ket qua. Moi thu chay trong trinh duyet, tep khong roi khoi may cua ban.",
+      title: "Sua van ban san co trong PDF tren trinh duyet",
+    },
+    scenarios: {
+      description:
+        "Phu hop de sua nhanh van ban co san trong PDF nhu ten, ngay thang, dia chi.",
+      edit: "Ban muon sua mot luong van ban nho ma khong can mua phan mem desktop dat tien.",
+      fontReuse:
+        "Ban muon giu giao dien PDF goc cang nhieu cang tot va han che thay doi font sau khi sua.",
+      privacy:
+        "PDF cua ban chua thong tin nhay cam, ban khong muon tai len dich vu ben thu ba.",
+      title: "Phu hop voi tinh huong sau",
+    },
+    tool: {
+      category: "Cong cu tai lieu",
+      description:
+        "Sua van ban co san trong PDF truc tuyen. Moi xu ly nam trong trinh duyet, khong tai tep len, va ban tai ket qua ngay sau khi sua.",
+      faq: [
+        {
+          answer:
+            "Khong. PDF duoc phan tich, sua va xuat hoan toan trong trinh duyet cua ban. Khong gi duoc gui den may chu.",
+          question: "PDF cua toi co bi tai len khong?",
+        },
+        {
+          answer:
+            "Cong cu uu tien dung font da nhung trong PDF. Neu ky tu moi khong co trong font goc, no se tu dong chuyen sang Noto Sans SC va ban cung co the tai font TTF/OTF cua minh.",
+          question: "Font co bi loi sau khi sua khong?",
+        },
+        {
+          answer:
+            "Chua. PDF dang quet khong co lop van ban, cong cu phat hien va yeu cau ban dung mot PDF van ban that.",
+          question: "Co the sua PDF dang quet (anh) khong?",
+        },
+        {
+          answer:
+            "Chua. V1 chi ho tro thay van ban co san. Them hop van ban moi, sua anh hoac tach trang se den trong phien ban sau.",
+          question: "Co the them hop van ban moi vao PDF khong?",
+        },
+      ],
+      features: [
+        "Phat hien khoi van ban co san cung vi tri, kich co va font",
+        "Nhan vao bat ky khoi van ban nao de sua tai cho",
+        "Uu tien font da nhung; tu dong dung Noto Sans SC cho CJK",
+        "Cho phep tai font TTF/OTF cua rieng ban lam du phong",
+        "Chay hoan toan trong trinh duyet, khong tai tep len",
+      ],
+      keywords: [
+        "sua PDF online",
+        "sua van ban PDF",
+        "edit pdf online",
+        "pdf text editor",
+        "online pdf editor",
+        "PDF trinh duyet",
+      ],
+      name: "Cong cu sua van ban PDF truc tuyen",
+      steps: [
+        "Tai len mot PDF co lop van ban that.",
+        "Nhan vao van ban trong xem truoc de vao che do sua.",
+        "Neu phat hien CJK, doi font du phong Noto Sans SC nap xong.",
+        "Kiem tra thay doi va tai PDF da sua.",
+      ],
+      summary:
+        "Thay van ban trong PDF tren trinh duyet va co gang giu giao dien font goc.",
+    },
+    content: {
+      faqDescription: "Mot vai cau hoi thuong gap truoc khi bat dau.",
+      faqTitle: "Cau hoi thuong gap",
+      limitsDescription: "V1 chua bao gom cac tinh huong sau.",
+      limitsItems: [
+        "PDF dang quet (anh) khong co lop van ban se duoc phat hien va bo qua.",
+        "Them hop van ban moi, sua anh, sap xep lai hoac xoa trang se den trong phien ban sau.",
+        "PDF co mat khau chua duoc mo khoa.",
+        "Van ban mau hien xuat sang den; chon mau thu cong dang trong ke hoach.",
+      ],
+      limitsTitle: "Han che da biet",
+      stepsDescription: "Lam theo cac buoc sau de sua PDF cua ban.",
+      stepsTitle: "Cach dung",
+      supportDescription:
+        "Cong cu phat hien lop van ban co the sua va cho ban sua tai cho.",
+      supportTitle: "Cong cu lam duoc gi",
+    },
+    client: {
+      badges: {
+        beta: "Beta",
+        localProcessing: "Xu ly trong trinh duyet",
+        scannedDetected: "Phat hien PDF dang quet",
+        supportedFormats: "Ho tro PDF",
+      },
+      upload: {
+        choosePdf: "Chon PDF",
+        clear: "Xoa",
+        description:
+          "Keo PDF vao khu vuc duoi day hoac nhan nut de chon tep. Tep khong roi khoi trinh duyet.",
+        emptyDescription:
+          "Ho tro PDF co lop van ban that. Hay thu voi tep nho truoc.",
+        emptyTitle: "Tha PDF de bat dau sua",
+        maxSizeHint: "Kich thuoc tep toi da {size}.",
+        pageCountLabel: "{count} trang",
+        reselect: "Chon lai",
+        title: "Tai len PDF",
+      },
+      scanned: {
+        description:
+          "PDF nay khong co lop van ban (co the la anh quet). Hay OCR truoc hoac dung PDF van ban that.",
+        title: "Chua ho tro PDF dang quet",
+      },
+      viewer: {
+        nextPage: "Trang sau",
+        pageOf: "Trang {current} / {total}",
+        prevPage: "Trang truoc",
+        zoomIn: "Phong to",
+        zoomOut: "Thu nho",
+      },
+      editor: {
+        activeBlockTitle: "Khoi van ban dang sua",
+        clickToEditHint:
+          "Nhan vao van ban trong trang de sua. Nhan Esc hoac Enter de thoat.",
+        description: "Nen vang the hien khoi van ban da sua.",
+        editedCount: "{count} khoi da sua",
+        escToExit: "Nhan Esc hoac nhan vao cho trong de thoat che do sua.",
+        overflowWarning:
+          "Van ban vuot khoi vung goc. Font se tu dong thu nho khi xuat.",
+        resetBlock: "Bo thay doi nay",
+        title: "Sua van ban",
+      },
+      fonts: {
+        acceptedFontTypes: "Ho tro tep font TTF / OTF.",
+        cjkFailed:
+          "Khong tai duoc Noto Sans SC. Kiem tra mang hoac tai len font.",
+        cjkIdle: "Chua tai font du phong",
+        cjkLoading: "Dang tai Noto Sans SC",
+        cjkReady: "Noto Sans SC da san sang",
+        description:
+          "Uu tien font da nhung trong PDF, tu dong tai Noto Sans SC cho CJK, du phong bang font ban tai len khi thieu ky tu.",
+        removeUserFont: "Xoa",
+        title: "Chien luoc font",
+        uploadFontButton: "Tai font len",
+        userFontLoaded: "Da tai font: {name}",
+      },
+      export: {
+        button: "Tai PDF",
+        buttonEdited: "Tai PDF da sua",
+        cleanHint: "Chua co thay doi. Tai xuong se tra ve tep goc.",
+        description: "Khi moi thu da on, nhan nut de tai PDF da sua ve.",
+        editedHint: "Se xuat PDF voi {count} thay doi.",
+        exporting: "Dang xuat",
+        missingGlyphChars: "Ky tu thieu: {chars}",
+        title: "Tai xuong",
+      },
+      errors: {
+        cjkFontLoadFailed:
+          "Khong tai duoc Noto Sans SC. Kiem tra mang hoac tai len font.",
+        encryptedNotSupported: "Chua ho tro PDF co mat khau.",
+        exportFailed: "Xuat that bai. Hay thu lai sau.",
+        fileTooLarge: "Tep qua lon. Toi da {size}.",
+        fontEmbedFailed: "Khong nhung duoc font. Da dung font du phong.",
+        fontMissingGlyph:
+          "Mot so thay doi co ky tu font goc khong ho tro. Da dung font du phong hoac giu nguyen.",
+        loadFailed: "Khong phan tich duoc PDF. Hay kiem tra tep co loi khong.",
+        loadFailedDetail: "Khong phan tich duoc PDF: {detail}",
+        scannedNotSupported: "Chua ho tro PDF dang quet.",
+        unsupportedFont: "Tep font khong hop le. Chi ho tro TTF hoac OTF.",
+        unsupportedFormat: "Khong ho tro loai tep nay. Hay tai len PDF.",
+        workerFailed:
+          "PDF Worker khong khoi dong duoc. Hay tai lai trang va thu lai.",
       },
     },
   },

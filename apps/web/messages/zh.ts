@@ -11,6 +11,7 @@ export const zhMessages = {
     nav: {
       home: "首页",
       imageConverter: "图片转换",
+      pdfTextEditor: "PDF 文本编辑",
     },
     tagline: "在线常用工具集合",
   },
@@ -238,6 +239,184 @@ export const zhMessages = {
       webp: {
         description: "压缩率更高，适合网页图片",
         label: "WebP",
+      },
+    },
+  },
+  pdfTextEditor: {
+    metadata: {
+      description:
+        "在线编辑 PDF 中已有的文字。整个过程在浏览器本地完成，不会把文件上传到服务器，编辑完直接下载。",
+      keywords: [
+        "PDF 编辑",
+        "PDF 文本编辑",
+        "在线 PDF 修改",
+        "edit pdf online",
+        "pdf text editor",
+        "本地处理 PDF",
+      ],
+      title: "在线 PDF 文本编辑",
+    },
+    hero: {
+      badges: {
+        beta: "首测版本",
+        category: "文档工具",
+        localProcessing: "浏览器本地处理",
+      },
+      description:
+        "上传 PDF，点击页面上已有的文字进行修改，再下载结果。编辑过程完全在浏览器中进行，文件不会离开你的设备。",
+      title: "在线编辑 PDF 已有的文字",
+    },
+    scenarios: {
+      description: "适合替换 PDF 中的人名、日期、地址等已有文字。",
+      edit: "想修改 PDF 上的少量文字，又不想买昂贵的桌面软件。",
+      fontReuse: "希望尽可能保留原 PDF 的字体外观，编辑后视觉变化最小。",
+      privacy: "PDF 涉及合同、简历等敏感信息，不愿意上传到第三方服务器。",
+      title: "适合这些情况",
+    },
+    tool: {
+      category: "文档工具",
+      description:
+        "在线编辑 PDF 中已有的文字。整个过程在浏览器本地完成，不会把文件上传到服务器，编辑完直接下载。",
+      faq: [
+        {
+          answer:
+            "不会。PDF 全程在你的浏览器中解析、编辑和导出，不会发送到任何服务器。",
+          question: "我的 PDF 会上传到服务器吗？",
+        },
+        {
+          answer:
+            "我们会优先尝试复用 PDF 内嵌的字体。如果你输入的字符不在原字体中，会自动加载思源黑体作为兜底，或允许你上传 TTF/OTF 字体。",
+          question: "编辑后字体会不会乱？",
+        },
+        {
+          answer:
+            "暂不支持。扫描版 PDF 没有可编辑的文字层，工具检测到后会提示你换一份原生文本 PDF。",
+          question: "扫描版（图片型）PDF 可以编辑吗？",
+        },
+        {
+          answer:
+            "暂不支持。V1 仅支持替换已有文字，添加新文本框、修改图片、拆分页面等功能会逐步加入。",
+          question: "可以在 PDF 上新增文字框吗？",
+        },
+      ],
+      features: [
+        "解析 PDF 已有文字的位置、字号和字体",
+        "点击文字即可在原位置进行编辑",
+        "尽量复用 PDF 内嵌字体，自动回退思源黑体",
+        "支持上传自己的字体作为补充",
+        "全程浏览器本地处理，文件不出本机",
+      ],
+      keywords: [
+        "PDF 编辑",
+        "PDF 文本编辑",
+        "在线 PDF 修改",
+        "edit pdf online",
+        "pdf text editor",
+        "本地处理 PDF",
+      ],
+      name: "在线 PDF 文本编辑",
+      steps: [
+        "上传一份带有文字层的 PDF。",
+        "在预览中点击需要修改的文字，进入编辑模式。",
+        "如果检测到中文，等待加载思源黑体作为兜底字体。",
+        "确认所有修改，点击下载即可保存编辑后的 PDF。",
+      ],
+      summary: "在浏览器本地完成 PDF 文本替换，并尽量保留原字体外观。",
+    },
+    content: {
+      faqDescription: "开始前常见的几个问题。",
+      faqTitle: "常见问题",
+      limitsDescription: "V1 版本暂不覆盖以下场景。",
+      limitsItems: [
+        "扫描版（图片型）PDF：没有文字层，工具会提示并跳过。",
+        "新增文本框、修改图片、调整页面顺序、删除页面：会在后续版本逐步加入。",
+        "加密保护的 PDF：暂不支持密码解锁。",
+        "彩色文字：导出时统一使用黑色，可以手动选择颜色后再下载（计划中）。",
+      ],
+      limitsTitle: "已知限制",
+      stepsDescription: "按下面的步骤即可完成编辑。",
+      stepsTitle: "使用方法",
+      supportDescription: "工具会自动识别可编辑的文字层并进行原地编辑。",
+      supportTitle: "工具能力",
+    },
+    client: {
+      badges: {
+        beta: "首测版本",
+        localProcessing: "浏览器本地处理",
+        scannedDetected: "检测到扫描版",
+        supportedFormats: "支持 PDF",
+      },
+      upload: {
+        choosePdf: "选择 PDF",
+        clear: "清空",
+        description:
+          "拖拽 PDF 到下方区域，或点击按钮选择文件。整个过程不会离开浏览器。",
+        emptyDescription: "支持带有文字层的 PDF。建议先用小文件测试。",
+        emptyTitle: "拖入 PDF 开始编辑",
+        maxSizeHint: "单个文件不超过 {size}。",
+        pageCountLabel: "共 {count} 页",
+        reselect: "重新选择",
+        title: "上传 PDF",
+      },
+      scanned: {
+        description:
+          "这份 PDF 没有可编辑的文字层（可能是扫描件或纯图片）。请先用其他工具做 OCR，或换一份原生文本 PDF。",
+        title: "暂不支持扫描版 PDF",
+      },
+      viewer: {
+        nextPage: "下一页",
+        pageOf: "第 {current} / {total} 页",
+        prevPage: "上一页",
+        zoomIn: "放大",
+        zoomOut: "缩小",
+      },
+      editor: {
+        activeBlockTitle: "当前文本块",
+        clickToEditHint: "点击页面中的文字即可修改；按 Esc 或 Enter 退出编辑。",
+        description: "黄色背景表示已修改的文本块。",
+        editedCount: "已修改 {count} 处",
+        escToExit: "按 Esc 或点击空白处退出编辑。",
+        overflowWarning: "文字超出原区域，导出时会自动缩字号。",
+        resetBlock: "撤销当前修改",
+        title: "编辑文本",
+      },
+      fonts: {
+        acceptedFontTypes: "支持 TTF、OTF 字体文件。",
+        cjkFailed: "思源黑体下载失败，请检查网络或上传字体。",
+        cjkIdle: "未加载兜底字体",
+        cjkLoading: "正在加载思源黑体",
+        cjkReady: "思源黑体已就绪",
+        description:
+          "优先使用 PDF 内嵌字体；含中文时自动加载思源黑体；缺字符时回退到你上传的字体。",
+        removeUserFont: "移除",
+        title: "字体策略",
+        uploadFontButton: "上传字体",
+        userFontLoaded: "已加载字体：{name}",
+      },
+      export: {
+        button: "下载 PDF",
+        buttonEdited: "下载修改后的 PDF",
+        cleanHint: "还未做修改，点击下载会导出原文件。",
+        description: "确认无误后，点击按钮即可下载本地编辑后的 PDF。",
+        editedHint: "将导出包含 {count} 处修改的版本。",
+        exporting: "正在导出",
+        missingGlyphChars: "缺字符：{chars}",
+        title: "下载",
+      },
+      errors: {
+        cjkFontLoadFailed: "思源黑体下载失败，请检查网络或上传一份字体。",
+        encryptedNotSupported: "暂不支持有密码保护的 PDF。",
+        exportFailed: "导出失败，请稍后重试。",
+        fileTooLarge: "文件过大，最大支持 {size}。",
+        fontEmbedFailed: "字体嵌入失败，已使用兜底字体重绘。",
+        fontMissingGlyph:
+          "部分修改包含原字体不支持的字符，已用兜底字体或保留原文。",
+        loadFailed: "PDF 解析失败，请确认文件未损坏。",
+        loadFailedDetail: "PDF 解析失败：{detail}",
+        scannedNotSupported: "暂不支持扫描版 PDF。",
+        unsupportedFont: "字体文件无效，仅支持 TTF / OTF。",
+        unsupportedFormat: "暂不支持该文件类型，请上传 PDF。",
+        workerFailed: "PDF Worker 启动失败，请刷新页面再试。",
       },
     },
   },

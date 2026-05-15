@@ -24,6 +24,7 @@ import { getLocalizedPathname, localeMetadata } from "@/lib/site";
 const navItems = [
   { href: "/", key: "home" },
   { href: "/tools/image-converter", key: "imageConverter" },
+  { href: "/tools/pdf-text-editor", key: "pdfTextEditor" },
 ] as const;
 
 type ThemeMode = "light" | "dark" | "system";

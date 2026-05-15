@@ -13,6 +13,7 @@ export const jaMessages: LocaleContent = {
     nav: {
       home: "ホーム",
       imageConverter: "画像変換",
+      pdfTextEditor: "PDF テキスト編集",
     },
     tagline: "日常向けオンラインツール",
   },
@@ -254,6 +255,200 @@ export const jaMessages: LocaleContent = {
       webp: {
         description: "圧縮率が高く、Web 画像向け",
         label: "WebP",
+      },
+    },
+  },
+  pdfTextEditor: {
+    metadata: {
+      description:
+        "PDF 内の既存テキストをオンラインで編集できます。すべての処理はブラウザ内で行われ、ファイルはアップロードされず、編集後すぐにダウンロードできます。",
+      keywords: [
+        "PDF 編集",
+        "PDF テキスト編集",
+        "オンライン PDF",
+        "edit pdf online",
+        "pdf text editor",
+        "ローカル PDF 編集",
+      ],
+      title: "オンライン PDF テキストエディタ",
+    },
+    hero: {
+      badges: {
+        beta: "ベータ版",
+        category: "ドキュメントツール",
+        localProcessing: "ブラウザでローカル処理",
+      },
+      description:
+        "PDF をアップロードし、ページ上のテキストをクリックして編集し、結果をダウンロードできます。処理はブラウザ内で完結し、ファイルが外部に送信されることはありません。",
+      title: "ブラウザで PDF の既存テキストを編集",
+    },
+    scenarios: {
+      description:
+        "PDF 内の氏名・日付・住所など既存テキストの軽微な修正に適しています。",
+      edit: "高価なデスクトップ PDF エディタを買わずに、少量のテキストを直したい場合。",
+      fontReuse:
+        "元の PDF の見た目をできるだけ保ち、編集後のフォント変化を最小限にしたい場合。",
+      privacy:
+        "契約書や履歴書など機密性の高い PDF を、第三者サーバーへアップロードしたくない場合。",
+      title: "こんな場面に",
+    },
+    tool: {
+      category: "ドキュメントツール",
+      description:
+        "PDF の既存テキストをオンラインで編集します。処理はブラウザ内で完結し、ファイルをアップロードせずに編集結果をダウンロードできます。",
+      faq: [
+        {
+          answer:
+            "いいえ。PDF はブラウザ内で解析・編集・書き出しまで行い、サーバーには送信されません。",
+          question: "PDF はアップロードされますか？",
+        },
+        {
+          answer:
+            "可能な限り PDF に埋め込まれたフォントを再利用します。新しい文字が元のフォントに含まれていない場合は、Noto Sans SC に自動でフォールバックし、ユーザー側で TTF/OTF フォントをアップロードすることもできます。",
+          question: "編集後にフォントは崩れますか？",
+        },
+        {
+          answer:
+            "現時点では未対応です。スキャン PDF にはテキストレイヤがないため、検出時に通知して別のテキスト PDF を選ぶよう案内します。",
+          question: "スキャン（画像）PDF も編集できますか？",
+        },
+        {
+          answer:
+            "現時点では未対応です。V1 は既存テキストの置き換えのみをサポートし、新しいテキストボックス追加・画像編集・ページ分割などは今後の対応予定です。",
+          question: "新しいテキストボックスを追加できますか？",
+        },
+      ],
+      features: [
+        "PDF 内テキストの位置・サイズ・フォントを解析",
+        "クリックで元の位置のままテキストを編集",
+        "埋め込みフォントを優先利用し、必要に応じて Noto Sans SC にフォールバック",
+        "TTF/OTF フォントのアップロードに対応",
+        "すべての処理はブラウザ内で完結",
+      ],
+      keywords: [
+        "PDF 編集",
+        "PDF テキスト編集",
+        "オンライン PDF",
+        "edit pdf online",
+        "pdf text editor",
+        "ローカル PDF 編集",
+      ],
+      name: "オンライン PDF テキストエディタ",
+      steps: [
+        "テキストレイヤがある PDF をアップロードします。",
+        "プレビューで編集したいテキストをクリックします。",
+        "CJK が含まれる場合は Noto Sans SC の読み込みを待ちます。",
+        "内容を確認したら編集済み PDF をダウンロードします。",
+      ],
+      summary:
+        "PDF テキストをブラウザ内で置き換え、元のフォントの見た目をできる限り保ちます。",
+    },
+    content: {
+      faqDescription: "始める前によくある質問。",
+      faqTitle: "よくある質問",
+      limitsDescription: "V1 では以下のシナリオには対応していません。",
+      limitsItems: [
+        "スキャン（画像）PDF：テキストレイヤがないため検出して案内します。",
+        "新規テキストボックス追加・画像編集・ページ並び替え／削除は今後対応予定です。",
+        "パスワード保護された PDF：現時点では解除できません。",
+        "カラーテキスト：書き出し時は黒色で出力されます（色選択は計画中）。",
+      ],
+      limitsTitle: "既知の制限",
+      stepsDescription: "下記の手順で編集できます。",
+      stepsTitle: "使い方",
+      supportDescription:
+        "編集可能なテキストレイヤを自動で検出し、その場で編集できます。",
+      supportTitle: "できること",
+    },
+    client: {
+      badges: {
+        beta: "ベータ版",
+        localProcessing: "ブラウザでローカル処理",
+        scannedDetected: "スキャン PDF を検出",
+        supportedFormats: "PDF 対応",
+      },
+      upload: {
+        choosePdf: "PDF を選ぶ",
+        clear: "クリア",
+        description:
+          "下の領域に PDF をドラッグするか、ボタンから選択してください。処理はブラウザ内で完結します。",
+        emptyDescription:
+          "テキストレイヤを持つ PDF に対応しています。まずは小さなファイルでお試しください。",
+        emptyTitle: "PDF をドロップして編集開始",
+        maxSizeHint: "1 ファイルあたり最大 {size} まで。",
+        pageCountLabel: "全 {count} ページ",
+        reselect: "選び直す",
+        title: "PDF をアップロード",
+      },
+      scanned: {
+        description:
+          "この PDF にはテキストレイヤがありません（スキャンや画像 PDF の可能性）。OCR を行うか、テキストベースの PDF を使用してください。",
+        title: "スキャン PDF は未対応",
+      },
+      viewer: {
+        nextPage: "次のページ",
+        pageOf: "{current} / {total} ページ",
+        prevPage: "前のページ",
+        zoomIn: "拡大",
+        zoomOut: "縮小",
+      },
+      editor: {
+        activeBlockTitle: "編集中のブロック",
+        clickToEditHint:
+          "テキストをクリックすると編集できます。Esc または Enter で終了します。",
+        description: "黄色背景は編集済みブロックを示します。",
+        editedCount: "{count} 件編集済み",
+        escToExit: "Esc または空白をクリックして編集を終了。",
+        overflowWarning:
+          "テキストが元の領域を超えています。書き出し時に自動で縮小します。",
+        resetBlock: "この変更を取り消す",
+        title: "テキストを編集",
+      },
+      fonts: {
+        acceptedFontTypes: "TTF / OTF フォントに対応。",
+        cjkFailed:
+          "Noto Sans SC の読み込みに失敗しました。回線を確認するか、フォントをアップロードしてください。",
+        cjkIdle: "フォールバックフォントは未読込",
+        cjkLoading: "Noto Sans SC を読み込み中",
+        cjkReady: "Noto Sans SC の準備完了",
+        description:
+          "PDF 埋め込みフォントを優先し、CJK 時は Noto Sans SC を自動取得、不足時はアップロードしたフォントへフォールバックします。",
+        removeUserFont: "削除",
+        title: "フォント戦略",
+        uploadFontButton: "フォントをアップロード",
+        userFontLoaded: "フォント読込済: {name}",
+      },
+      export: {
+        button: "PDF をダウンロード",
+        buttonEdited: "編集後の PDF をダウンロード",
+        cleanHint: "まだ編集していません。元の PDF がダウンロードされます。",
+        description:
+          "問題なければボタンをクリックして編集後の PDF を取得します。",
+        editedHint: "{count} 件の変更を反映して書き出します。",
+        exporting: "書き出し中",
+        missingGlyphChars: "不足文字: {chars}",
+        title: "ダウンロード",
+      },
+      errors: {
+        cjkFontLoadFailed:
+          "Noto Sans SC の取得に失敗しました。回線確認またはフォントをアップロードしてください。",
+        encryptedNotSupported: "パスワード保護された PDF は未対応です。",
+        exportFailed: "書き出しに失敗しました。後でもう一度お試しください。",
+        fileTooLarge: "ファイルが大きすぎます（最大 {size}）。",
+        fontEmbedFailed:
+          "フォント埋め込みに失敗したため、フォールバックを使用しました。",
+        fontMissingGlyph:
+          "一部の編集に元フォントが含まない文字が含まれていたため、フォールバックを使用または変更を見送りました。",
+        loadFailed:
+          "PDF の解析に失敗しました。ファイルが破損していないか確認してください。",
+        loadFailedDetail: "PDF の解析に失敗: {detail}",
+        scannedNotSupported: "スキャン PDF は未対応です。",
+        unsupportedFont:
+          "不正なフォントファイルです。TTF / OTF のみ対応します。",
+        unsupportedFormat:
+          "このファイル形式は未対応です。PDF をアップロードしてください。",
+        workerFailed:
+          "PDF Worker の起動に失敗しました。ページを再読込してください。",
       },
     },
   },

@@ -13,6 +13,7 @@ export const esMessages: LocaleContent = {
     nav: {
       home: "Inicio",
       imageConverter: "Convertidor de imágenes",
+      pdfTextEditor: "Editor de texto PDF",
     },
     tagline: "Herramientas prácticas en línea",
   },
@@ -259,6 +260,200 @@ export const esMessages: LocaleContent = {
       webp: {
         description: "Mayor compresión, ideal para imágenes web",
         label: "WebP",
+      },
+    },
+  },
+  pdfTextEditor: {
+    metadata: {
+      description:
+        "Edita el texto existente de un PDF en línea. Todo el proceso ocurre en tu navegador, el archivo no se sube y puedes descargar el resultado al instante.",
+      keywords: [
+        "editar PDF online",
+        "editor de texto PDF",
+        "modificar texto PDF",
+        "editor PDF en navegador",
+        "edit pdf online",
+        "pdf text editor",
+      ],
+      title: "Editor de texto PDF en línea",
+    },
+    hero: {
+      badges: {
+        beta: "Beta",
+        category: "Herramienta de documentos",
+        localProcessing: "Procesamiento en el navegador",
+      },
+      description:
+        "Sube un PDF, haz clic en el texto de la página para editarlo y descarga el resultado. Todo ocurre en tu navegador, el archivo nunca sale de tu dispositivo.",
+      title: "Edita el texto existente de un PDF en tu navegador",
+    },
+    scenarios: {
+      description:
+        "Ideal para arreglar nombres, fechas, direcciones u otro texto ya presente en el PDF.",
+      edit: "Quieres cambiar un poco de texto sin comprar un editor PDF de escritorio.",
+      fontReuse:
+        "Quieres conservar la apariencia original del PDF y minimizar los cambios de fuente.",
+      privacy:
+        "Tu PDF contiene información sensible que no quieres subir a un servicio de terceros.",
+      title: "Casos en los que encaja",
+    },
+    tool: {
+      category: "Herramienta de documentos",
+      description:
+        "Edita el texto existente de un PDF en línea. Todo se procesa en el navegador, sin subir el archivo, y puedes descargar el resultado tras editar.",
+      faq: [
+        {
+          answer:
+            "No. El PDF se analiza, edita y exporta totalmente en tu navegador. Nada se envía al servidor.",
+          question: "¿Se sube mi PDF al servidor?",
+        },
+        {
+          answer:
+            "Reutilizamos la fuente embebida del PDF siempre que sea posible. Si los nuevos caracteres no están en la fuente original, se usa Noto Sans SC como respaldo y también puedes subir tu propia fuente TTF/OTF.",
+          question: "¿Se rompen las fuentes al editar?",
+        },
+        {
+          answer:
+            "Todavía no. Los PDF escaneados no tienen capa de texto editable, la herramienta los detecta y te pide un PDF con texto real.",
+          question: "¿Se pueden editar PDF escaneados (imagen)?",
+        },
+        {
+          answer:
+            "Todavía no. La V1 sólo permite reemplazar texto existente. Añadir cuadros de texto, editar imágenes y dividir páginas llegará en versiones posteriores.",
+          question: "¿Puedo añadir nuevos cuadros de texto al PDF?",
+        },
+      ],
+      features: [
+        "Detecta el texto existente con posición, tamaño y fuente",
+        "Haz clic en cualquier bloque de texto para editarlo en su sitio",
+        "Reutiliza fuentes embebidas y recurre a Noto Sans SC para CJK",
+        "Permite subir tu propia fuente TTF/OTF como respaldo",
+        "Funciona enteramente en el navegador sin subir el archivo",
+      ],
+      keywords: [
+        "editar PDF online",
+        "editor de texto PDF",
+        "modificar texto PDF",
+        "editor PDF en navegador",
+        "edit pdf online",
+        "pdf text editor",
+      ],
+      name: "Editor de texto PDF en línea",
+      steps: [
+        "Sube un PDF con capa de texto real.",
+        "Haz clic en cualquier texto de la vista previa para entrar en edición.",
+        "Si se detecta CJK, espera a que se cargue la fuente de respaldo Noto Sans SC.",
+        "Revisa los cambios y descarga el PDF editado.",
+      ],
+      summary:
+        "Reemplaza texto dentro de un PDF en el navegador conservando la apariencia de la fuente original.",
+    },
+    content: {
+      faqDescription: "Preguntas habituales antes de empezar.",
+      faqTitle: "Preguntas frecuentes",
+      limitsDescription: "La V1 deja deliberadamente fuera lo siguiente.",
+      limitsItems: [
+        "PDF escaneados (imagen) sin capa de texto: se detectan y se omiten.",
+        "Añadir cuadros de texto, editar imágenes o reordenar/eliminar páginas llegará en versiones futuras.",
+        "Los PDF protegidos con contraseña aún no pueden desbloquearse.",
+        "El texto en color se exporta en negro por ahora; el selector manual de color está planificado.",
+      ],
+      limitsTitle: "Limitaciones conocidas",
+      stepsDescription: "Sigue estos pasos para editar tu PDF.",
+      stepsTitle: "Cómo usarla",
+      supportDescription:
+        "La herramienta detecta la capa de texto editable y permite modificarla en su sitio.",
+      supportTitle: "Qué hace la herramienta",
+    },
+    client: {
+      badges: {
+        beta: "Beta",
+        localProcessing: "Procesamiento en el navegador",
+        scannedDetected: "PDF escaneado detectado",
+        supportedFormats: "Compatible con PDF",
+      },
+      upload: {
+        choosePdf: "Elegir PDF",
+        clear: "Limpiar",
+        description:
+          "Arrastra un PDF al área inferior o pulsa el botón para elegir uno. El archivo nunca sale de tu navegador.",
+        emptyDescription:
+          "Compatible con PDF con capa de texto real. Empieza con un archivo pequeño.",
+        emptyTitle: "Suelta un PDF para empezar a editar",
+        maxSizeHint: "Tamaño máximo {size}.",
+        pageCountLabel: "{count} páginas",
+        reselect: "Elegir otro",
+        title: "Subir PDF",
+      },
+      scanned: {
+        description:
+          "Este PDF no tiene capa de texto editable (probablemente es un escaneo o una imagen). Hazle OCR primero o usa un PDF con texto real.",
+        title: "Los PDF escaneados no se admiten todavía",
+      },
+      viewer: {
+        nextPage: "Página siguiente",
+        pageOf: "Página {current} / {total}",
+        prevPage: "Página anterior",
+        zoomIn: "Acercar",
+        zoomOut: "Alejar",
+      },
+      editor: {
+        activeBlockTitle: "Bloque de texto activo",
+        clickToEditHint:
+          "Haz clic en el texto para editarlo. Pulsa Esc o Enter para salir.",
+        description: "Los bloques editados se marcan en amarillo.",
+        editedCount: "{count} bloques editados",
+        escToExit: "Pulsa Esc o haz clic fuera para salir del modo edición.",
+        overflowWarning:
+          "El texto excede el área original. El tamaño de fuente se reducirá al exportar.",
+        resetBlock: "Descartar esta edición",
+        title: "Editar texto",
+      },
+      fonts: {
+        acceptedFontTypes: "Se admiten archivos de fuente TTF u OTF.",
+        cjkFailed:
+          "No se pudo cargar Noto Sans SC. Revisa tu conexión o sube una fuente.",
+        cjkIdle: "Aún no se ha cargado la fuente de respaldo",
+        cjkLoading: "Cargando Noto Sans SC",
+        cjkReady: "Noto Sans SC lista",
+        description:
+          "Preferimos la fuente embebida; cargamos Noto Sans SC para CJK; recurrimos a tu fuente subida cuando faltan caracteres.",
+        removeUserFont: "Eliminar",
+        title: "Estrategia de fuentes",
+        uploadFontButton: "Subir fuente",
+        userFontLoaded: "Fuente cargada: {name}",
+      },
+      export: {
+        button: "Descargar PDF",
+        buttonEdited: "Descargar PDF editado",
+        cleanHint:
+          "Aún no hay cambios. La descarga devolverá el archivo original.",
+        description:
+          "Cuando todo esté bien, pulsa el botón para descargar el PDF editado.",
+        editedHint: "Se exportará el PDF con {count} cambios.",
+        exporting: "Exportando",
+        missingGlyphChars: "Caracteres faltantes: {chars}",
+        title: "Descargar",
+      },
+      errors: {
+        cjkFontLoadFailed:
+          "No se pudo descargar Noto Sans SC. Revisa tu red o sube una fuente.",
+        encryptedNotSupported: "Los PDF con contraseña aún no son compatibles.",
+        exportFailed: "Falló la exportación. Inténtalo más tarde.",
+        fileTooLarge: "El archivo es demasiado grande. Máximo {size}.",
+        fontEmbedFailed:
+          "No se pudo incrustar la fuente. Se usó la fuente de respaldo.",
+        fontMissingGlyph:
+          "Algunas ediciones contenían caracteres que la fuente original no admite. Se usó la fuente de respaldo o se omitió el cambio.",
+        loadFailed:
+          "No se pudo analizar el PDF. Verifica que el archivo no esté dañado.",
+        loadFailedDetail: "No se pudo analizar el PDF: {detail}",
+        scannedNotSupported: "Los PDF escaneados aún no son compatibles.",
+        unsupportedFont: "El archivo de fuente no es válido. Sólo TTF u OTF.",
+        unsupportedFormat:
+          "Este tipo de archivo no es compatible. Sube un PDF.",
+        workerFailed:
+          "No se pudo iniciar el PDF Worker. Recarga la página e inténtalo de nuevo.",
       },
     },
   },

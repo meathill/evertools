@@ -20,6 +20,9 @@
 # production
 /build
 
+# Copied at dev/build time from node_modules/pdfjs-dist/build/
+/public/pdf/pdf.worker.min.mjs
+
 # misc
 .DS_Store
 *.pem
