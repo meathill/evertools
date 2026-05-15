@@ -1,5 +1,5 @@
 import { GoogleAnalytics } from "@next/third-parties/google";
-import { Geist_Mono, Inter } from "next/font/google";
+import { Fraunces, JetBrains_Mono, Nunito } from "next/font/google";
 import Script from "next/script";
 import "./globals.css";
 import { cn } from "@/lib/utils";
@@ -7,19 +7,22 @@ import { cn } from "@/lib/utils";
 const ADSENSE_CLIENT_ID = "ca-pub-9946806099979342";
 const GOOGLE_ANALYTICS_ID = "G-1S0T1HF97B";
 
-const fontHeading = Inter({
+const fontDisplay = Fraunces({
   subsets: ["latin"],
-  variable: "--font-heading",
+  variable: "--font-display",
+  weight: ["500", "600", "700", "800"],
 });
 
-const fontSans = Inter({
+const fontSans = Nunito({
   subsets: ["latin"],
   variable: "--font-sans",
+  weight: ["400", "500", "600", "700", "800"],
 });
 
-const fontMono = Geist_Mono({
+const fontMono = JetBrains_Mono({
   subsets: ["latin"],
   variable: "--font-mono",
+  weight: ["400", "500", "600"],
 });
 
 export default function RootLayout({
@@ -40,8 +43,8 @@ export default function RootLayout({
       <body
         className={cn(
           "relative min-h-full bg-background text-foreground",
+          fontDisplay.variable,
           fontSans.variable,
-          fontHeading.variable,
           fontMono.variable,
         )}
       >

@@ -41,6 +41,10 @@ export const buttonVariants = cva(
         link: "border-transparent text-foreground underline-offset-4 hover:underline data-pressed:underline *:data-[slot=button-loading-indicator]:text-foreground",
         outline:
           "border-input bg-popover not-dark:bg-clip-padding text-foreground shadow-xs/5 not-disabled:not-active:not-data-pressed:before:shadow-[0_1px_--theme(--color-black/4%)] hover:bg-accent/50 data-pressed:bg-accent/50 *:data-[slot=button-loading-indicator]:text-foreground dark:bg-input/32 dark:data-pressed:bg-input/64 dark:hover:bg-input/64 dark:not-disabled:before:shadow-[0_-1px_--theme(--color-white/2%)] dark:not-disabled:not-active:not-data-pressed:before:shadow-[0_-1px_--theme(--color-white/6%)] [:disabled,:active,[data-pressed]]:shadow-none",
+        press:
+          "border-ink bg-yellow text-ink font-bold shadow-press-yellow hover:-translate-y-0.5 hover:shadow-press-yellow-lg active:translate-y-0.5 active:shadow-none *:data-[slot=button-loading-indicator]:text-ink",
+        "press-ink":
+          "border-ink bg-cream text-ink font-bold shadow-press-ink hover:-translate-y-0.5 hover:shadow-press-ink-lg active:translate-y-0.5 active:shadow-none *:data-[slot=button-loading-indicator]:text-ink",
         secondary:
           "border-transparent bg-secondary text-secondary-foreground hover:bg-secondary/90 data-pressed:bg-secondary/90 *:data-[slot=button-loading-indicator]:text-secondary-foreground [:active,[data-pressed]]:bg-secondary/80",
       },

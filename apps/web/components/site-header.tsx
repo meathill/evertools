@@ -16,23 +16,23 @@ type SiteHeaderProps = {
 
 export function SiteHeader({ content, locale }: SiteHeaderProps) {
   return (
-    <header className="sticky top-0 z-40 border-b border-border/80 bg-background/88 backdrop-blur">
+    <header className="sticky top-0 z-40 border-b border-rule bg-cream/88 backdrop-blur">
       <div className="mx-auto flex max-w-6xl items-center justify-between gap-4 px-4 py-3 sm:px-6">
         <Link
           className="flex min-w-0 items-center gap-3"
           href="/"
           locale={locale}
         >
-          <div className="flex size-10 shrink-0 items-center justify-center rounded-2xl bg-primary text-primary-foreground shadow-xs">
-            <span className="font-heading font-semibold text-sm">MT</span>
+          <div className="flex size-10 shrink-0 items-center justify-center rounded-lg bg-yellow text-ink shadow-press-yellow">
+            <span className="font-mono font-bold text-xs">MT</span>
           </div>
           <div className="min-w-0">
-            <div className="truncate font-heading font-semibold text-sm text-foreground">
+            <div className="truncate font-display font-bold text-base text-ink">
               Meathill Tools
             </div>
-            <div className="flex items-center gap-2 text-muted-foreground text-xs">
+            <div className="flex items-center gap-2 text-mute text-xs">
               <span className="truncate">{content.tagline}</span>
-              <Badge size="sm" variant="info">
+              <Badge size="sm" variant="yellow">
                 {content.localProcessing}
               </Badge>
             </div>
@@ -43,7 +43,7 @@ export function SiteHeader({ content, locale }: SiteHeaderProps) {
           <nav className="flex items-center gap-1 overflow-x-auto">
             {navItems.map((item) => (
               <Link
-                className="whitespace-nowrap text-muted-foreground"
+                className="whitespace-nowrap rounded-sm px-2 py-1 text-ink-soft transition-colors hover:bg-fluff hover:text-ink"
                 href={item.href}
                 key={item.href}
                 locale={locale}
@@ -59,7 +59,7 @@ export function SiteHeader({ content, locale }: SiteHeaderProps) {
 
               return (
                 <Link
-                  className="whitespace-nowrap text-muted-foreground"
+                  className="whitespace-nowrap rounded-sm px-2 py-1 text-mono text-xs text-mute transition-colors hover:bg-fluff hover:text-ink"
                   href={getLocalizedPathname(nextLocale, "/")}
                   key={value}
                 >

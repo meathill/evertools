@@ -74,14 +74,13 @@ export default async function HomePage({
     <>
       <StructuredData data={homeStructuredData} />
 
-      <section className="relative overflow-hidden border-b border-border/70">
-        <div className="absolute inset-x-0 top-0 h-80 bg-[radial-gradient(circle_at_top_left,rgba(17,24,39,0.14),transparent_40%),radial-gradient(circle_at_right,rgba(59,130,246,0.16),transparent_36%)]" />
+      <section className="relative overflow-hidden border-b border-rule">
+        <div className="absolute inset-0 bg-sun" />
+        <div className="absolute inset-0 bg-grid opacity-50" />
         <div className="relative mx-auto grid max-w-6xl gap-10 px-4 py-16 sm:px-6 lg:grid-cols-[minmax(0,1.1fr)_minmax(320px,0.9fr)] lg:py-24">
           <div className="space-y-6">
             <div className="flex flex-wrap gap-2">
-              <Badge variant="secondary">
-                {content.home.hero.badges.stack}
-              </Badge>
+              <Badge variant="yellow">{content.home.hero.badges.stack}</Badge>
               <Badge variant="info">{content.home.hero.badges.seo}</Badge>
               <Badge variant="success">
                 {content.home.hero.badges.scalable}
@@ -89,10 +88,10 @@ export default async function HomePage({
             </div>
 
             <div className="space-y-4">
-              <h1 className="max-w-3xl font-heading font-semibold text-4xl tracking-tight text-foreground leading-tight sm:text-5xl">
+              <h1 className="max-w-3xl font-display font-bold text-4xl tracking-tight text-ink leading-tight sm:text-5xl">
                 {content.home.hero.title}
               </h1>
-              <p className="max-w-2xl text-base text-muted-foreground leading-7 sm:text-lg">
+              <p className="max-w-2xl text-base text-ink-soft leading-relaxed sm:text-lg">
                 {content.home.hero.description}
               </p>
             </div>
@@ -108,18 +107,23 @@ export default async function HomePage({
                   />
                 }
                 size="lg"
+                variant="press"
               >
                 {content.home.hero.primaryCta}
                 <ArrowRightIcon />
               </Button>
-              <Button render={<a href="#tools" />} size="lg" variant="outline">
+              <Button
+                render={<a href="#tools" />}
+                size="lg"
+                variant="press-ink"
+              >
                 {content.home.hero.secondaryCta}
               </Button>
             </div>
           </div>
 
-          <Card className="overflow-hidden">
-            <CardHeader className="border-b border-border/60 bg-muted/35">
+          <Card className="overflow-hidden border-2 border-ink shadow-press-ink">
+            <CardHeader className="border-b border-rule bg-paper-deep/50">
               <CardTitle>{content.home.strategy.title}</CardTitle>
               <CardDescription>
                 {content.home.strategy.description}
@@ -150,10 +154,10 @@ export default async function HomePage({
 
       <section className="mx-auto max-w-6xl px-4 py-16 sm:px-6" id="tools">
         <div className="mb-8 space-y-3">
-          <h2 className="font-heading font-semibold text-3xl text-foreground">
+          <h2 className="font-display font-bold text-3xl text-ink">
             {content.home.tools.title}
           </h2>
-          <p className="max-w-2xl text-muted-foreground leading-7">
+          <p className="max-w-2xl text-ink-soft leading-relaxed">
             {content.home.tools.description}
           </p>
         </div>
@@ -170,7 +174,7 @@ export default async function HomePage({
         </div>
       </section>
 
-      <section className="border-t border-border/70 bg-muted/20">
+      <section className="border-t border-rule bg-fluff/30">
         <div className="mx-auto grid max-w-6xl gap-8 px-4 py-16 sm:px-6 lg:grid-cols-3">
           <InfoBlock
             description={content.home.info.substantialPagesDescription}
@@ -198,13 +202,13 @@ type FeatureStatProps = {
 
 function FeatureStat({ description, icon, title }: FeatureStatProps) {
   return (
-    <div className="rounded-2xl border border-border/60 bg-background/80 p-4">
-      <div className="mb-3 flex size-10 items-center justify-center rounded-xl bg-primary/10 text-primary">
+    <div className="rounded-lg border border-rule-strong bg-cream p-4 transition-transform hover:-translate-y-0.5">
+      <div className="mb-3 flex size-10 items-center justify-center rounded-md bg-yellow text-ink shadow-press-yellow">
         {icon}
       </div>
       <div className="space-y-1.5">
-        <div className="font-medium text-foreground">{title}</div>
-        <p className="text-muted-foreground text-sm leading-6">{description}</p>
+        <div className="font-bold text-ink">{title}</div>
+        <p className="text-ink-soft text-sm leading-relaxed">{description}</p>
       </div>
     </div>
   );
@@ -218,10 +222,8 @@ type InfoBlockProps = {
 function InfoBlock({ description, title }: InfoBlockProps) {
   return (
     <div className="space-y-2">
-      <h3 className="font-heading font-semibold text-lg text-foreground">
-        {title}
-      </h3>
-      <p className="text-muted-foreground leading-7">{description}</p>
+      <h3 className="font-display font-bold text-lg text-ink">{title}</h3>
+      <p className="text-ink-soft leading-relaxed">{description}</p>
     </div>
   );
 }

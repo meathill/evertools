@@ -120,11 +120,13 @@ export default async function ImageConverterPage({
     <>
       <StructuredData data={structuredData} />
 
-      <section className="border-b border-border/70 bg-[radial-gradient(circle_at_top_left,rgba(59,130,246,0.12),transparent_30%),radial-gradient(circle_at_right,rgba(17,24,39,0.12),transparent_35%)]">
-        <div className="mx-auto grid max-w-6xl gap-8 px-4 py-14 sm:px-6 lg:grid-cols-[minmax(0,1.2fr)_minmax(280px,0.8fr)] lg:py-18">
+      <section className="border-b border-rule">
+        <div className="absolute inset-0 bg-sun" />
+        <div className="absolute inset-0 bg-grid opacity-50" />
+        <div className="relative mx-auto grid max-w-6xl gap-8 px-4 py-14 sm:px-6 lg:grid-cols-[minmax(0,1.2fr)_minmax(280px,0.8fr)] lg:py-18">
           <div className="space-y-5">
             <div className="flex flex-wrap gap-2">
-              <Badge variant="secondary">
+              <Badge variant="yellow">
                 {content.imageConverter.hero.badges.category}
               </Badge>
               <Badge variant="info">
@@ -136,33 +138,33 @@ export default async function ImageConverterPage({
             </div>
 
             <div className="space-y-4">
-              <h1 className="max-w-3xl font-heading font-semibold text-4xl tracking-tight text-foreground leading-tight sm:text-5xl">
+              <h1 className="max-w-3xl font-display font-bold text-4xl tracking-tight text-ink leading-tight sm:text-5xl">
                 {content.imageConverter.hero.title}
               </h1>
-              <p className="max-w-3xl text-base text-muted-foreground leading-7 sm:text-lg">
+              <p className="max-w-3xl text-base text-ink-soft leading-relaxed sm:text-lg">
                 {content.imageConverter.hero.description}
               </p>
             </div>
           </div>
 
-          <Card>
-            <CardHeader className="border-b border-border/60 bg-muted/35">
+          <Card className="border-2 border-ink shadow-press-ink">
+            <CardHeader className="border-b border-rule bg-paper-deep/50">
               <CardTitle>{content.imageConverter.scenarios.title}</CardTitle>
               <CardDescription>
                 {content.imageConverter.scenarios.description}
               </CardDescription>
             </CardHeader>
-            <CardPanel className="space-y-4 text-sm text-muted-foreground leading-6">
+            <CardPanel className="space-y-4 text-sm text-ink-soft leading-relaxed">
               <div className="flex gap-3">
-                <ShieldCheckIcon className="mt-0.5 size-4.5 shrink-0 text-primary" />
+                <ShieldCheckIcon className="mt-0.5 size-4.5 shrink-0 text-yellow-deep" />
                 <p>{content.imageConverter.scenarios.privacy}</p>
               </div>
               <div className="flex gap-3">
-                <SparklesIcon className="mt-0.5 size-4.5 shrink-0 text-primary" />
+                <SparklesIcon className="mt-0.5 size-4.5 shrink-0 text-yellow-deep" />
                 <p>{content.imageConverter.scenarios.transform}</p>
               </div>
               <div className="flex gap-3">
-                <LockIcon className="mt-0.5 size-4.5 shrink-0 text-primary" />
+                <LockIcon className="mt-0.5 size-4.5 shrink-0 text-yellow-deep" />
                 <p>{content.imageConverter.scenarios.ratio}</p>
               </div>
             </CardPanel>
@@ -174,7 +176,7 @@ export default async function ImageConverterPage({
         <ImageConverterClient content={content.imageConverter} />
       </section>
 
-      <section className="border-t border-border/70 bg-muted/20">
+      <section className="border-t border-rule bg-fluff/30">
         <div className="mx-auto grid max-w-6xl gap-6 px-4 py-16 sm:px-6 lg:grid-cols-[minmax(0,1fr)_minmax(0,0.9fr)]">
           <div className="space-y-6">
             <ContentCard
@@ -200,7 +202,7 @@ export default async function ImageConverterPage({
                   {content.imageConverter.content.privacyDescription}
                 </CardDescription>
               </CardHeader>
-              <CardPanel className="space-y-3 text-muted-foreground text-sm leading-6">
+              <CardPanel className="space-y-3 text-ink-soft text-sm leading-relaxed">
                 {content.imageConverter.content.privacyItems.map((item) => (
                   <p key={item}>{item}</p>
                 ))}
@@ -217,10 +219,10 @@ export default async function ImageConverterPage({
               <CardPanel className="space-y-4">
                 {tool.faq.map((item) => (
                   <div className="space-y-1" key={item.question}>
-                    <h3 className="font-medium text-foreground text-sm">
+                    <h3 className="font-bold text-ink text-sm">
                       {item.question}
                     </h3>
-                    <p className="text-muted-foreground text-sm leading-6">
+                    <p className="text-ink-soft text-sm leading-relaxed">
                       {item.answer}
                     </p>
                   </div>
@@ -256,10 +258,10 @@ function ContentCard({
         <CardDescription>{description}</CardDescription>
       </CardHeader>
       <CardPanel>
-        <ListTag className="space-y-3 text-muted-foreground text-sm leading-6">
+        <ListTag className="space-y-3 text-ink-soft text-sm leading-relaxed">
           {items.map((item, index) => (
             <li className="flex gap-3" key={item}>
-              <span className="mt-0.5 flex size-5 shrink-0 items-center justify-center rounded-full bg-primary/10 font-medium text-primary text-xs">
+              <span className="mt-0.5 flex size-5 shrink-0 items-center justify-center rounded-md bg-yellow text-ink font-mono text-xs font-bold shadow-press-yellow">
                 {ordered ? index + 1 : "•"}
               </span>
               <span>{item}</span>
