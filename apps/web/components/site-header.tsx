@@ -22,7 +22,6 @@ import type { LocaleContent } from "@/messages/types";
 import { getLocalizedPathname, localeMetadata } from "@/lib/site";
 
 const navItems = [
-  { href: "/", key: "home" },
   { href: "/tools/image-converter", key: "imageConverter" },
   { href: "/tools/pdf-text-editor", key: "pdfTextEditor" },
 ] as const;
@@ -122,16 +121,22 @@ export function SiteHeader({ content, locale }: SiteHeaderProps) {
           <div className="flex items-center gap-2">
             <Select onValueChange={handleLocaleChange} value={locale}>
               <SelectTrigger
-                className="h-8 min-w-0 gap-1.5 border-rule-strong bg-cream text-mono text-xs text-mute dark:border-paper-deep dark:bg-paper dark:text-cream"
+                className="h-8 min-w-[120px] gap-1.5 border-rule-strong bg-cream text-mono text-xs text-mute dark:border-paper-deep dark:bg-paper dark:text-cream"
                 size="sm"
               >
                 <GlobeIcon className="size-3.5" />
-                <SelectValue />
+                <SelectValue>
+                  {(value) =>
+                    value
+                      ? localeMetadata[value as AppLocale].nativeLabel
+                      : ""
+                  }
+                </SelectValue>
               </SelectTrigger>
               <SelectPopup>
                 {Object.entries(localeMetadata).map(([value, info]) => (
                   <SelectItem key={value} value={value}>
-                    {info.switcherLabel}
+                    {info.nativeLabel}
                   </SelectItem>
                 ))}
               </SelectPopup>
@@ -142,23 +147,37 @@ export function SiteHeader({ content, locale }: SiteHeaderProps) {
               onValueChange={handleThemeChange}
             >
               <SelectTrigger
-                className="h-8 min-w-0 gap-1.5 border-rule-strong bg-cream text-mono text-xs text-mute dark:border-paper-deep dark:bg-paper dark:text-cream"
+                className="h-8 min-w-[100px] gap-1.5 border-rule-strong bg-cream text-mono text-xs text-mute dark:border-paper-deep dark:bg-paper dark:text-cream"
                 size="sm"
               >
                 <SunIcon className="size-3.5 dark:hidden" />
                 <MoonIcon className="hidden size-3.5 dark:block" />
-                <SelectValue />
+                <SelectValue>
+                  {(value) =>
+                    value
+                      ? content.theme[value as ThemeMode]
+                      : ""
+                  }
+                </SelectValue>
               </SelectTrigger>
               <SelectPopup>
                 <SelectItem value="light">
-                  <SunIcon className="size-3.5" />明
+                  <div className="flex items-center gap-2">
+                    <SunIcon className="size-3.5" />
+                    <span>{content.theme.light}</span>
+                  </div>
                 </SelectItem>
                 <SelectItem value="dark">
-                  <MoonIcon className="size-3.5" />暗
+                  <div className="flex items-center gap-2">
+                    <MoonIcon className="size-3.5" />
+                    <span>{content.theme.dark}</span>
+                  </div>
                 </SelectItem>
                 <SelectItem value="system">
-                  <MonitorIcon className="size-3.5" />
-                  系统
+                  <div className="flex items-center gap-2">
+                    <MonitorIcon className="size-3.5" />
+                    <span>{content.theme.system}</span>
+                  </div>
                 </SelectItem>
               </SelectPopup>
             </Select>

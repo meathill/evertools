@@ -16,6 +16,11 @@ export const esMessages: LocaleContent = {
       pdfTextEditor: "Editor de texto PDF",
     },
     tagline: "Herramientas prácticas en línea",
+    theme: {
+      dark: "Oscuro",
+      light: "Claro",
+      system: "Sistema",
+    },
   },
   footer: {
     description:

@@ -16,6 +16,11 @@ export const enMessages: LocaleContent = {
       pdfTextEditor: "PDF Text Editor",
     },
     tagline: "Practical online tools",
+    theme: {
+      dark: "Dark",
+      light: "Light",
+      system: "System",
+    },
   },
   footer: {
     description:

@@ -16,6 +16,11 @@ export const jaMessages: LocaleContent = {
       pdfTextEditor: "PDF テキスト編集",
     },
     tagline: "日常向けオンラインツール",
+    theme: {
+      dark: "ダーク",
+      light: "ライト",
+      system: "システム",
+    },
   },
   footer: {
     description:

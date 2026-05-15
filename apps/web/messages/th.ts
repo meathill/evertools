@@ -16,6 +16,11 @@ export const thMessages: LocaleContent = {
       pdfTextEditor: "แก้ไขข้อความ PDF",
     },
     tagline: "รวมเครื่องมือออนไลน์ที่ใช้บ่อย",
+    theme: {
+      dark: "มืด",
+      light: "สว่าง",
+      system: "ระบบ",
+    },
   },
   footer: {
     description:

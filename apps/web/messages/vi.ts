@@ -16,6 +16,11 @@ export const viMessages: LocaleContent = {
       pdfTextEditor: "Sua van ban PDF",
     },
     tagline: "Cong cu truc tuyen thuc dung",
+    theme: {
+      dark: "Toi",
+      light: "Sang",
+      system: "He thong",
+    },
   },
   footer: {
     description:

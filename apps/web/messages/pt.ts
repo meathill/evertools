@@ -16,6 +16,11 @@ export const ptMessages: LocaleContent = {
       pdfTextEditor: "Editor de texto PDF",
     },
     tagline: "Ferramentas praticas online",
+    theme: {
+      dark: "Escuro",
+      light: "Claro",
+      system: "Sistema",
+    },
   },
   footer: {
     description:

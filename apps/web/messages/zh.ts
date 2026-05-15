@@ -14,6 +14,11 @@ export const zhMessages = {
       pdfTextEditor: "PDF 文本编辑",
     },
     tagline: "在线常用工具集合",
+    theme: {
+      dark: "暗",
+      light: "亮",
+      system: "系统",
+    },
   },
   footer: {
     description:
