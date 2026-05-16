@@ -4,7 +4,7 @@ export const esMessages: LocaleContent = {
   metadata: {
     defaultTitle: "Herramientas en línea",
     siteDescription:
-      "Meathill Tools ofrece herramientas en línea que funcionan directamente en tu navegador. Ahora puedes convertir formatos de imagen y cambiar su tamaño con procesamiento local y sin subir archivos.",
+      "Meathill Tools ofrece herramientas en línea que funcionan directamente en tu navegador. Procesamiento local, sin subidas, gratis.",
     siteTitle: "Meathill Tools",
   },
   header: {
@@ -24,7 +24,7 @@ export const esMessages: LocaleContent = {
   },
   footer: {
     description:
-      "Herramientas en línea para tareas rápidas del día a día. Ahora mismo puedes convertir formatos de imagen y cambiar su tamaño directamente en el navegador.",
+      "Herramientas en línea que funcionan directamente en tu navegador. Sin instalación, sin registro.",
     toolsTitle: "Herramientas disponibles",
   },
   toolCard: {
@@ -33,15 +33,19 @@ export const esMessages: LocaleContent = {
     openTool: "Abrir herramienta",
   },
   home: {
+    featuredTools: {
+      description: "Herramientas disponibles. Haz clic para empezar a usar.",
+      title: "Herramientas destacadas",
+    },
     metadata: {
       description:
-        "Meathill Tools ofrece herramientas en línea que puedes usar de inmediato en el navegador. Empieza con conversión de formato de imagen, cambio de tamaño y descarga directa.",
+        "Meathill Tools ofrece herramientas en línea que puedes usar de inmediato en el navegador. Conversión de imágenes, cambio de tamaño y edición de texto PDF.",
       keywords: [
         "herramientas en línea",
         "herramientas del navegador",
         "convertidor de imágenes",
         "redimensionar imagen",
-        "convertir png a jpg",
+        "editor de texto pdf",
       ],
       title: "Herramientas en línea",
     },
@@ -51,26 +55,25 @@ export const esMessages: LocaleContent = {
     hero: {
       badges: {
         scalable: "Procesamiento local",
-        seo: "Sin subida",
-        stack: "Exportación rápida",
+        seo: "Sin instalación",
+        stack: "Gratis",
       },
       description:
-        "Empieza con conversión de formato y cambio de tamaño de imágenes. Elige una imagen, ajusta el formato y las dimensiones en el navegador, luego previsualiza y descarga el resultado.",
-      primaryCta: "Empezar a convertir imágenes",
+        "Herramientas en línea que funcionan directamente en tu navegador. Sin instalar software, sin subir archivos — abre y usa.",
       secondaryCta: "Ver herramientas",
-      title: "Herramientas en línea que puedes abrir y usar al instante.",
+      title: "Herramientas en línea, abre y usa.",
     },
     strategy: {
       description:
-        "Pensado para tareas rápidas con imágenes y con la menor cantidad posible de pasos.",
+        "Enfocado en resolver problemas cotidianos con los menos pasos posibles.",
       indexedPagesDescription:
-        "Elige una imagen, ajusta el formato y el tamaño, y genera el resultado en una sola página.",
+        "Selecciona un archivo, ajusta configuración, previsualiza resultados — todo en una página.",
       indexedPagesTitle: "Empieza enseguida",
       lightweightExpansionDescription:
-        "Previsualiza el resultado y descárgalo al momento.",
-      lightweightExpansionTitle: "Exportación sencilla",
+        "Previsualiza el resultado antes de decidir descargar.",
+      lightweightExpansionTitle: "Previsualiza y descarga",
       localProcessingDescription:
-        "Las imágenes se procesan completamente en el navegador, lo que es más rápido y mejor para la privacidad.",
+        "Los archivos se procesan completamente en el navegador, lo que es más rápido y mejor para la privacidad.",
       localProcessingTitle: "Procesamiento local",
       title: "Por qué usarlo",
     },
@@ -80,14 +83,14 @@ export const esMessages: LocaleContent = {
     },
     info: {
       expansionMatrixDescription:
-        "Comprueba el resultado antes de guardarlo en tu dispositivo.",
-      expansionMatrixTitle: "Previsualiza y descarga",
+        "Cada herramienta soporta formatos comunes para necesidades cotidianas.",
+      expansionMatrixTitle: "Formatos habituales",
       highFrequencyDescription:
-        "Convierte entre PNG, JPG/JPEG y WebP, y cambia el tamaño cuando lo necesites.",
-      highFrequencyTitle: "Formatos habituales",
+        "Enfocado en resolver problemas frecuentes y pequeños sin sobrediseñar.",
+      highFrequencyTitle: "Pequeño y enfocado",
       substantialPagesDescription:
-        "Sin registro ni instalación: abre la página y procesa tu imagen.",
-      substantialPagesTitle: "Flujo rápido",
+        "Sin registro ni instalación: abre la página, procesa tu archivo y descarga el resultado.",
+      substantialPagesTitle: "Sin barreras",
     },
   },
   imageConverter: {

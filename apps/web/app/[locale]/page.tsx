@@ -1,6 +1,12 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { ArrowRightIcon, CloudUploadIcon, ShieldCheckIcon } from "lucide-react";
+import {
+  ArrowRightIcon,
+  CloudUploadIcon,
+  FileTextIcon,
+  ImageIcon,
+  ShieldCheckIcon,
+} from "lucide-react";
 import { StructuredData } from "@/components/structured-data";
 import { ToolCard } from "@/components/tool-card";
 import { Badge } from "@/components/ui/badge";
@@ -97,27 +103,9 @@ export default async function HomePage({
             </div>
 
             <div className="flex flex-wrap gap-3">
-              <Button
-                render={
-                  <Link
-                    href={getLocalizedPathname(
-                      locale,
-                      "/tools/image-converter",
-                    )}
-                  />
-                }
-                size="lg"
-                variant="press"
-              >
-                {content.home.hero.primaryCta}
-                <ArrowRightIcon />
-              </Button>
-              <Button
-                render={<a href="#tools" />}
-                size="lg"
-                variant="press-ink"
-              >
+              <Button render={<a href="#tools" />} size="lg" variant="press">
                 {content.home.hero.secondaryCta}
+                <ArrowRightIcon />
               </Button>
             </div>
           </div>
@@ -148,6 +136,101 @@ export default async function HomePage({
                 title={content.home.strategy.lightweightExpansionTitle}
               />
             </CardPanel>
+          </Card>
+        </div>
+      </section>
+
+      <section className="mx-auto max-w-6xl px-4 py-12 sm:px-6">
+        <div className="mb-6 space-y-2">
+          <h2 className="font-display font-bold text-2xl text-ink">
+            {content.home.featuredTools.title}
+          </h2>
+          <p className="text-ink-soft">
+            {content.home.featuredTools.description}
+          </p>
+        </div>
+
+        <div className="grid gap-6 md:grid-cols-2">
+          <Card className="overflow-hidden border-2 border-ink shadow-press-ink transition-transform hover:-translate-y-0.5">
+            <CardHeader className="border-b border-rule bg-paper-deep/50">
+              <div className="flex items-center gap-3">
+                <div className="flex size-10 items-center justify-center rounded-md bg-yellow text-ink shadow-press-yellow">
+                  <ImageIcon className="size-5" />
+                </div>
+                <div>
+                  <CardTitle>{tools[0].name}</CardTitle>
+                  <Badge variant="outline" className="mt-1">
+                    {tools[0].category}
+                  </Badge>
+                </div>
+              </div>
+            </CardHeader>
+            <CardPanel className="space-y-4">
+              <p className="text-ink-soft text-sm leading-relaxed">
+                {tools[0].summary}
+              </p>
+              <ul className="space-y-2 text-sm text-ink-soft">
+                {tools[0].features.slice(0, 2).map((feature) => (
+                  <li className="flex gap-2" key={feature}>
+                    <span className="mt-1 size-1.5 shrink-0 rounded-full bg-yellow-deep" />
+                    <span>{feature}</span>
+                  </li>
+                ))}
+              </ul>
+            </CardPanel>
+            <div className="border-t border-rule bg-fluff/40 px-6 py-4">
+              <Button
+                render={
+                  <Link href={getLocalizedPathname(locale, tools[0].href)} />
+                }
+                size="sm"
+                variant="press"
+              >
+                {content.toolCard.openTool}
+                <ArrowRightIcon />
+              </Button>
+            </div>
+          </Card>
+
+          <Card className="overflow-hidden border-2 border-ink shadow-press-ink transition-transform hover:-translate-y-0.5">
+            <CardHeader className="border-b border-rule bg-paper-deep/50">
+              <div className="flex items-center gap-3">
+                <div className="flex size-10 items-center justify-center rounded-md bg-info text-ink shadow-press-info">
+                  <FileTextIcon className="size-5" />
+                </div>
+                <div>
+                  <CardTitle>{tools[1].name}</CardTitle>
+                  <Badge variant="outline" className="mt-1">
+                    {tools[1].category}
+                  </Badge>
+                </div>
+              </div>
+            </CardHeader>
+            <CardPanel className="space-y-4">
+              <p className="text-ink-soft text-sm leading-relaxed">
+                {tools[1].summary}
+              </p>
+              <ul className="space-y-2 text-sm text-ink-soft">
+                {tools[1].features.slice(0, 2).map((feature) => (
+                  <li className="flex gap-2" key={feature}>
+                    <span className="mt-1 size-1.5 shrink-0 rounded-full bg-info-deep" />
+                    <span>{feature}</span>
+                  </li>
+                ))}
+              </ul>
+            </CardPanel>
+            <div className="border-t border-rule bg-fluff/40 px-6 py-4">
+              <Button
+                render={
+                  <Link href={getLocalizedPathname(locale, tools[1].href)} />
+                }
+                size="sm"
+                variant="press"
+              >
+                {content.toolCard.openTool}
+                <ArrowRightIcon />
+              </Button>
+            </div>
           </Card>
         </div>
       </section>

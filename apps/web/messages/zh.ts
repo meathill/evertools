@@ -2,7 +2,7 @@ export const zhMessages = {
   metadata: {
     defaultTitle: "常用在线工具",
     siteDescription:
-      "Meathill Tools 提供可直接在浏览器中使用的在线工具。当前可用于图片格式转换与尺寸调整，支持本地处理、无需上传。",
+      "Meathill Tools 提供可直接在浏览器中使用的在线工具，支持本地处理、无需上传、免费使用。",
     siteTitle: "Meathill Tools",
   },
   header: {
@@ -21,8 +21,7 @@ export const zhMessages = {
     },
   },
   footer: {
-    description:
-      "提供可直接在浏览器中使用的在线工具。当前可用工具为图片格式与尺寸转换。",
+    description: "提供可直接在浏览器中使用的在线工具，无需安装、无需注册。",
     toolsTitle: "可用工具",
   },
   toolCard: {
@@ -31,14 +30,19 @@ export const zhMessages = {
     openTool: "打开工具",
   },
   home: {
+    featuredTools: {
+      description: "当前可用的工具，点击即可开始使用。",
+      title: "热门工具",
+    },
     metadata: {
       description:
-        "Meathill Tools 提供打开即可使用的在线工具。当前可直接完成图片格式转换、尺寸调整与结果下载，整个过程都在浏览器中进行。",
+        "Meathill Tools 提供打开即可使用的在线工具。当前可直接完成图片格式转换、尺寸调整、PDF 文本编辑，整个过程都在浏览器中进行。",
       keywords: [
         "在线工具",
         "常用工具网站",
         "图片格式转换",
         "图片尺寸调整",
+        "PDF 文本编辑",
         "browser tools",
       ],
       title: "常用在线工具",
@@ -49,41 +53,40 @@ export const zhMessages = {
     hero: {
       badges: {
         scalable: "本地处理",
-        seo: "无需上传",
-        stack: "快速导出",
+        seo: "无需安装",
+        stack: "免费使用",
       },
       description:
-        "上传图片后即可切换格式、调整尺寸并导出结果。整个过程都在浏览器中完成，更适合临时处理图片。",
-      primaryCta: "开始转换图片",
+        "提供可在浏览器中直接使用的在线工具，无需安装软件、无需上传文件，打开即用。",
       secondaryCta: "查看工具",
-      title: "在线转换图片格式并调整尺寸。",
+      title: "在线工具，打开即用。",
     },
     strategy: {
-      description: "适合临时转换格式、压缩图片和调整网页所需尺寸。",
+      description: "专注于解决日常小问题，减少不必要的操作步骤。",
       indexedPagesDescription:
-        "上传图片后即可直接设置格式、尺寸与质量，不用安装软件。",
+        "选择文件后即可直接设置参数、预览结果，不用安装软件。",
       indexedPagesTitle: "打开就能用",
       lightweightExpansionDescription:
         "生成结果后可以先预览，再决定是否下载保存。",
       lightweightExpansionTitle: "预览后再下载",
       localProcessingDescription:
-        "图片处理在浏览器中完成，不上传原图，速度更快也更安心。",
+        "文件处理在浏览器中完成，不上传服务器，速度更快也更安心。",
       localProcessingTitle: "本地处理",
       title: "使用体验",
     },
     tools: {
-      description: "当前可直接使用的工具。点击进入后即可开始处理图片。",
+      description: "当前可直接使用的工具。点击进入后即可开始处理文件。",
       title: "可用工具",
     },
     info: {
-      expansionMatrixDescription:
-        "支持导出为 PNG、JPG/JPEG、WebP，并按需要调整输出尺寸。",
+      expansionMatrixDescription: "每个工具都支持多种常用格式，满足日常需求。",
       expansionMatrixTitle: "常用格式够用",
-      highFrequencyDescription: "锁定比例后，修改一边尺寸时另一边会自动同步。",
-      highFrequencyTitle: "改尺寸更省心",
+      highFrequencyDescription:
+        "专注于解决高频、小规模的日常问题，避免过度设计。",
+      highFrequencyTitle: "小而精",
       substantialPagesDescription:
-        "结果图可直接预览和下载，适合快速完成一次性处理。",
-      substantialPagesTitle: "处理完就能带走",
+        "无需注册账号，打开页面就能开始处理，结果直接下载。",
+      substantialPagesTitle: "零门槛",
     },
   },
   imageConverter: {

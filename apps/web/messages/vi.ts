@@ -4,7 +4,7 @@ export const viMessages: LocaleContent = {
   metadata: {
     defaultTitle: "Cong cu truc tuyen",
     siteDescription:
-      "Meathill Tools cung cap cong cu truc tuyen chay ngay trong trinh duyet. Hien tai ban co the chuyen doi dinh dang anh va thay doi kich thuoc voi xu ly cuc bo, khong can tai len.",
+      "Meathill Tools cung cap cong cu truc tuyen chay ngay trong trinh duyet. Xu ly cuc bo, khong can tai len, mien phi.",
     siteTitle: "Meathill Tools",
   },
   header: {
@@ -24,7 +24,7 @@ export const viMessages: LocaleContent = {
   },
   footer: {
     description:
-      "Cong cu truc tuyen cho cac tac vu nhanh hang ngay. Hien tai ban co the chuyen doi dinh dang anh va thay doi kich thuoc ngay trong trinh duyet.",
+      "Cong cu truc tuyen chay ngay trong trinh duyet. Khong can cai dat, khong can dang ky.",
     toolsTitle: "Cong cu san co",
   },
   toolCard: {
@@ -33,15 +33,19 @@ export const viMessages: LocaleContent = {
     openTool: "Mo cong cu",
   },
   home: {
+    featuredTools: {
+      description: "Cong cu hien co. Click de bat dau su dung.",
+      title: "Cong cu noi bat",
+    },
     metadata: {
       description:
-        "Meathill Tools cung cap cong cu truc tuyen co the dung ngay trong trinh duyet. Bat dau voi chuyen doi dinh dang anh, doi kich thuoc va tai xuong truc tiep.",
+        "Meathill Tools cung cap cong cu truc tuyen co the dung ngay trong trinh duyet. Chuyen doi anh, doi kich thuoc va sua van ban PDF.",
       keywords: [
         "cong cu truc tuyen",
         "cong cu trinh duyet",
         "chuyen doi anh",
         "doi kich thuoc anh",
-        "png sang jpg",
+        "sua van ban pdf",
       ],
       title: "Cong cu truc tuyen",
     },
@@ -51,43 +55,42 @@ export const viMessages: LocaleContent = {
     hero: {
       badges: {
         scalable: "Xu ly cuc bo",
-        seo: "Khong can tai len",
-        stack: "Xuat nhanh",
+        seo: "Khong can cai dat",
+        stack: "Mien phi",
       },
       description:
-        "Bat dau voi chuyen doi dinh dang va thay doi kich thuoc anh. Chon anh, dieu chinh dinh dang va kich thuoc ngay trong trinh duyet, sau do xem truoc va tai xuong ket qua.",
-      primaryCta: "Bat dau chuyen doi anh",
+        "Cong cu truc tuyen chay ngay trong trinh duyet. Khong can cai dat phan mem, khong can tai tep len — mo la dung.",
       secondaryCta: "Xem cong cu",
-      title: "Cong cu truc tuyen mo la dung ngay.",
+      title: "Cong cu truc tuyen, mo la dung.",
     },
     strategy: {
       description:
-        "Duoc thiet ke cho cac tac vu anh nhanh voi it buoc nhat co the.",
+        "Tap trung giai quyet van de hang ngay voi it buoc nhat co the.",
       indexedPagesDescription:
-        "Chon anh, dat dinh dang va kich thuoc, sau do tao ket qua tren mot trang duy nhat.",
+        "Chon tep, dieu chinh cau hinh, xem truoc ket qua — tat ca trong mot trang.",
       indexedPagesTitle: "Bat dau ngay",
       lightweightExpansionDescription:
-        "Xem truoc ket qua va tai xuong ngay lap tuc.",
-      lightweightExpansionTitle: "Xuat de dang",
+        "Xem truoc ket qua truoc khi quyet dinh tai xuong.",
+      lightweightExpansionTitle: "Xem truoc roi tai",
       localProcessingDescription:
-        "Anh duoc xu ly hoan toan trong trinh duyet, nhanh hon va tot hon cho quyen rieng tu.",
+        "Tep duoc xu ly hoan toan trong trinh duyet, nhanh hon va tot hon cho quyen rieng tu.",
       localProcessingTitle: "Xu ly cuc bo",
       title: "Ly do nen dung",
     },
     tools: {
-      description: "Nhung cong cu hien dang san sang de su dung truc tiep.",
+      description: "Nhung cong cu hien dang san sang de su dung.",
       title: "Cong cu san co",
     },
     info: {
       expansionMatrixDescription:
-        "Kiem tra ket qua truoc khi luu vao thiet bi cua ban.",
-      expansionMatrixTitle: "Xem truoc va tai xuong",
+        "Moi cong cu ho tro cac dinh dang pho bien cho nhu cau hang ngay.",
+      expansionMatrixTitle: "Dinh dang pho bien",
       highFrequencyDescription:
-        "Chuyen doi giua PNG, JPG/JPEG va WebP, dong thoi doi kich thuoc khi can.",
-      highFrequencyTitle: "Dinh dang pho bien",
+        "Tap trung giai quyet van de nho, xay ra thuong xuyen ma khong qua thiet ke.",
+      highFrequencyTitle: "Nho va tap trung",
       substantialPagesDescription:
-        "Khong can dang ky hay cai dat, chi can mo trang va xu ly anh.",
-      substantialPagesTitle: "Quy trinh nhanh",
+        "Khong can dang ky hay cai dat, chi can mo trang va xu ly tep.",
+      substantialPagesTitle: "Khong can dang ky",
     },
   },
   imageConverter: {

@@ -4,7 +4,7 @@ export const ptMessages: LocaleContent = {
   metadata: {
     defaultTitle: "Ferramentas online",
     siteDescription:
-      "Meathill Tools oferece ferramentas online que funcionam diretamente no navegador. Agora voce pode converter formatos de imagem e redimensionar imagens com processamento local e sem upload.",
+      "Meathill Tools oferece ferramentas online que funcionam diretamente no navegador. Processamento local, sem upload, gratuito.",
     siteTitle: "Meathill Tools",
   },
   header: {
@@ -24,7 +24,7 @@ export const ptMessages: LocaleContent = {
   },
   footer: {
     description:
-      "Ferramentas online para tarefas rapidas do dia a dia. Agora voce pode converter formatos de imagem e redimensionar imagens diretamente no navegador.",
+      "Ferramentas online que funcionam diretamente no navegador. Sem instalacao, sem cadastro.",
     toolsTitle: "Ferramentas disponiveis",
   },
   toolCard: {
@@ -33,15 +33,19 @@ export const ptMessages: LocaleContent = {
     openTool: "Abrir ferramenta",
   },
   home: {
+    featuredTools: {
+      description: "Ferramentas disponiveis. Clique para comecar a usar.",
+      title: "Ferramentas destaque",
+    },
     metadata: {
       description:
-        "Meathill Tools oferece ferramentas online para usar imediatamente no navegador. Comece com conversao de formato de imagem, redimensionamento e download direto.",
+        "Meathill Tools oferece ferramentas online para usar imediatamente no navegador. Conversao de imagens, redimensionamento e edicao de texto PDF.",
       keywords: [
         "ferramentas online",
         "ferramentas de navegador",
         "conversor de imagens",
         "redimensionar imagem",
-        "converter png para jpg",
+        "editor de texto pdf",
       ],
       title: "Ferramentas online",
     },
@@ -51,25 +55,25 @@ export const ptMessages: LocaleContent = {
     hero: {
       badges: {
         scalable: "Processamento local",
-        seo: "Sem upload",
-        stack: "Exportacao rapida",
+        seo: "Sem instalacao",
+        stack: "Gratuito",
       },
       description:
-        "Comece com conversao de formato e redimensionamento de imagens. Escolha uma imagem, ajuste formato e dimensoes no navegador, depois visualize e baixe o resultado.",
-      primaryCta: "Comecar a converter imagens",
+        "Ferramentas online que funcionam diretamente no navegador. Sem instalar software, sem enviar arquivos — abra e use.",
       secondaryCta: "Ver ferramentas",
-      title: "Ferramentas online para abrir e usar na hora.",
+      title: "Ferramentas online, abra e use.",
     },
     strategy: {
       description:
-        "Feito para tarefas rapidas com imagens, com o menor numero possivel de etapas.",
+        "Focado em resolver problemas do dia a dia com o minimo de etapas possivel.",
       indexedPagesDescription:
-        "Escolha uma imagem, defina formato e tamanho, e gere o resultado em uma unica pagina.",
+        "Selecione um arquivo, ajuste as configuracoes, visualize o resultado — tudo em uma pagina.",
       indexedPagesTitle: "Comece imediatamente",
-      lightweightExpansionDescription: "Visualize o resultado e baixe na hora.",
-      lightweightExpansionTitle: "Exportacao simples",
+      lightweightExpansionDescription:
+        "Visualize o resultado antes de decidir baixar.",
+      lightweightExpansionTitle: "Visualize e baixe",
       localProcessingDescription:
-        "As imagens sao processadas totalmente no navegador, o que e mais rapido e melhor para a privacidade.",
+        "Os arquivos sao processados totalmente no navegador, o que e mais rapido e melhor para a privacidade.",
       localProcessingTitle: "Processamento local",
       title: "Por que usar",
     },
@@ -79,14 +83,14 @@ export const ptMessages: LocaleContent = {
     },
     info: {
       expansionMatrixDescription:
-        "Confira o resultado antes de salvar no seu dispositivo.",
-      expansionMatrixTitle: "Visualize e baixe",
+        "Cada ferramenta suporta formatos comuns para necessidades cotidianas.",
+      expansionMatrixTitle: "Formatos comuns",
       highFrequencyDescription:
-        "Converta entre PNG, JPG/JPEG e WebP, e redimensione quando precisar.",
-      highFrequencyTitle: "Formatos comuns",
+        "Focado em resolver problemas frequentes e pequenos sem sobre-projetar.",
+      highFrequencyTitle: "Pequeno e focado",
       substantialPagesDescription:
-        "Sem cadastro nem instalacao: basta abrir a pagina e processar sua imagem.",
-      substantialPagesTitle: "Fluxo rapido",
+        "Sem cadastro nem instalacao: abra a pagina, processe seu arquivo e baixe o resultado.",
+      substantialPagesTitle: "Zero barreiras",
     },
   },
   imageConverter: {

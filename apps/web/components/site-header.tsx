@@ -127,9 +127,7 @@ export function SiteHeader({ content, locale }: SiteHeaderProps) {
                 <GlobeIcon className="size-3.5" />
                 <SelectValue>
                   {(value) =>
-                    value
-                      ? localeMetadata[value as AppLocale].nativeLabel
-                      : ""
+                    value ? localeMetadata[value as AppLocale].nativeLabel : ""
                   }
                 </SelectValue>
               </SelectTrigger>
@@ -153,11 +151,7 @@ export function SiteHeader({ content, locale }: SiteHeaderProps) {
                 <SunIcon className="size-3.5 dark:hidden" />
                 <MoonIcon className="hidden size-3.5 dark:block" />
                 <SelectValue>
-                  {(value) =>
-                    value
-                      ? content.theme[value as ThemeMode]
-                      : ""
-                  }
+                  {(value) => (value ? content.theme[value as ThemeMode] : "")}
                 </SelectValue>
               </SelectTrigger>
               <SelectPopup>

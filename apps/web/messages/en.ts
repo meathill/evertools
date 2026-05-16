@@ -4,7 +4,7 @@ export const enMessages: LocaleContent = {
   metadata: {
     defaultTitle: "Online Tools",
     siteDescription:
-      "Meathill Tools offers online tools that run directly in your browser. You can currently convert image formats and resize images with local processing and no uploads.",
+      "Meathill Tools offers online tools that run directly in your browser. Local processing, no uploads, free to use.",
     siteTitle: "Meathill Tools",
   },
   header: {
@@ -24,7 +24,7 @@ export const enMessages: LocaleContent = {
   },
   footer: {
     description:
-      "Online tools for quick everyday tasks. Right now you can convert image formats and resize images directly in the browser.",
+      "Online tools that run directly in your browser. No install, no sign-up.",
     toolsTitle: "Available tools",
   },
   toolCard: {
@@ -33,15 +33,19 @@ export const enMessages: LocaleContent = {
     openTool: "Open tool",
   },
   home: {
+    featuredTools: {
+      description: "Tools currently available. Click to start using.",
+      title: "Featured tools",
+    },
     metadata: {
       description:
-        "Meathill Tools offers online tools you can use right away in the browser. Start with image format conversion, resizing and direct download.",
+        "Meathill Tools offers online tools you can use right away in the browser. Start with image format conversion, resizing, and PDF text editing.",
       keywords: [
         "online tools",
         "browser tools",
         "image converter",
         "resize image",
-        "convert png to jpg",
+        "pdf text editor",
       ],
       title: "Online Tools",
     },
@@ -51,25 +55,24 @@ export const enMessages: LocaleContent = {
     hero: {
       badges: {
         scalable: "Local processing",
-        seo: "No upload",
-        stack: "Fast export",
+        seo: "No install",
+        stack: "Free to use",
       },
       description:
-        "Start with image format conversion and resizing. Choose an image, adjust format and dimensions in the browser, then preview and download the result.",
-      primaryCta: "Start converting images",
+        "Online tools that run directly in your browser. No software to install, no files to upload — just open and use.",
       secondaryCta: "Browse tools",
-      title: "Online tools you can open and use right away.",
+      title: "Online tools, open and use.",
     },
     strategy: {
-      description: "Built for quick image tasks with as few steps as possible.",
+      description: "Focused on solving everyday problems with minimal steps.",
       indexedPagesDescription:
-        "Choose an image, set format and size, then generate the result on one page.",
+        "Select a file, adjust settings, preview results — all on one page.",
       indexedPagesTitle: "Start immediately",
       lightweightExpansionDescription:
-        "Preview the output and download it right away.",
-      lightweightExpansionTitle: "Easy export",
+        "Preview the output before deciding to download.",
+      lightweightExpansionTitle: "Preview then download",
       localProcessingDescription:
-        "Images are processed entirely in the browser, which is faster and better for privacy.",
+        "Files are processed entirely in the browser, which is faster and better for privacy.",
       localProcessingTitle: "Local processing",
       title: "Why use it",
     },
@@ -79,14 +82,14 @@ export const enMessages: LocaleContent = {
     },
     info: {
       expansionMatrixDescription:
-        "Check the result before saving it to your device.",
-      expansionMatrixTitle: "Preview and download",
+        "Each tool supports common formats for everyday needs.",
+      expansionMatrixTitle: "Common formats",
       highFrequencyDescription:
-        "Convert between PNG, JPG/JPEG and WebP, and resize when needed.",
-      highFrequencyTitle: "Common formats",
+        "Focused on solving frequent, small-scale problems without over-engineering.",
+      highFrequencyTitle: "Small and focused",
       substantialPagesDescription:
-        "No sign-up or install, just open the page and process your image.",
-      substantialPagesTitle: "Quick workflow",
+        "No sign-up required. Open the page, process your file, and download the result.",
+      substantialPagesTitle: "Zero barrier",
     },
   },
   imageConverter: {

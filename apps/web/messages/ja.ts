@@ -4,7 +4,7 @@ export const jaMessages: LocaleContent = {
   metadata: {
     defaultTitle: "オンラインツール",
     siteDescription:
-      "Meathill Tools はブラウザでそのまま使えるオンラインツールを提供します。現在は画像形式とサイズの変換ツールを公開しており、ローカル処理でアップロード不要です。",
+      "Meathill Tools はブラウザでそのまま使えるオンラインツールを提供します。ローカル処理、アップロード不要、無料で利用可能。",
     siteTitle: "Meathill Tools",
   },
   header: {
@@ -24,7 +24,7 @@ export const jaMessages: LocaleContent = {
   },
   footer: {
     description:
-      "ブラウザですぐ使えるオンラインツールです。現在は画像形式とサイズの変換を利用できます。",
+      "ブラウザですぐ使えるオンラインツールです。インストール不要、登録不要。",
     toolsTitle: "公開中のツール",
   },
   toolCard: {
@@ -33,15 +33,19 @@ export const jaMessages: LocaleContent = {
     openTool: "ツールを開く",
   },
   home: {
+    featuredTools: {
+      description: "現在利用可能なツール。クリックして使い始めましょう。",
+      title: "おすすめツール",
+    },
     metadata: {
       description:
-        "Meathill Tools はブラウザでそのまま使えるオンラインツールを提供します。現在は画像形式とサイズ変換を中心に、ローカル処理、高速利用、検索に強いページ構成を重視しています。",
+        "Meathill Tools はブラウザでそのまま使えるオンラインツールを提供します。画像形式変換、リサイズ、PDF テキスト編集。",
       keywords: [
         "オンラインツール",
         "ブラウザツール",
         "画像変換",
         "画像リサイズ",
-        "png jpg 変換",
+        "PDF テキスト編集",
       ],
       title: "オンラインツール",
     },
@@ -51,44 +55,42 @@ export const jaMessages: LocaleContent = {
     hero: {
       badges: {
         scalable: "ローカル処理",
-        seo: "アップロード不要",
-        stack: "すぐ書き出し",
+        seo: "インストール不要",
+        stack: "無料で利用",
       },
       description:
-        "画像をアップロードせずに、形式変換、リサイズ、書き出しまでをブラウザ内で完結できます。",
-      primaryCta: "画像変換を使う",
-      secondaryCta: "公開中のツールを見る",
-      title: "開いてすぐ使えるオンライン画像変換。",
+        "ブラウザで直接使えるオンラインツールです。ソフトウェアのインストールもファイルのアップロードも不要 — 開いてすぐ使えます。",
+      secondaryCta: "ツールを見る",
+      title: "オンラインツール、開いてすぐ使えます。",
     },
     strategy: {
       description:
-        "よくある画像変換作業を、できるだけ少ない手順で終えられるようにしています。",
+        "日常の小さな問題を、できるだけ少ない手順で解決することに特化しています。",
       indexedPagesDescription:
-        "画像を選び、形式やサイズを決めて、そのまま結果を生成できます。",
+        "ファイルを選択して設定を調整し、結果をプレビュー — すべて1ページで完結します。",
       indexedPagesTitle: "すぐ使える",
       lightweightExpansionDescription:
-        "結果をプレビューしてから保存できるので、ちょっとした変換にも向いています。",
-      lightweightExpansionTitle: "確認して保存",
+        "ダウンロードする前に結果をプレビューできます。",
+      lightweightExpansionTitle: "確認してから保存",
       localProcessingDescription:
-        "画像処理はすべてブラウザ内で完結し、元画像はアップロードされません。",
+        "ファイルはすべてブラウザ内で処理され、サーバーには送信されません。",
       localProcessingTitle: "ローカル処理",
       title: "使いやすいポイント",
     },
     tools: {
-      description:
-        "各ツールには専用ページ、専用タイトル、専用説明を用意し、ユーザーが検索から直接問題解決ページに到達できるようにしています。",
+      description: "現在利用可能なツールです。",
       title: "公開中のツール",
     },
     info: {
       expansionMatrixDescription:
-        "PNG、JPG/JPEG、WebP の変換とリサイズに対応しています。",
-      expansionMatrixTitle: "よく使う形式に対応",
+        "各ツールは日常的なニーズに対応する一般的な形式をサポートしています。",
+      expansionMatrixTitle: "一般的な形式に対応",
       highFrequencyDescription:
-        "縦横比を固定すれば、片方を変えるだけでもう片方が自動で調整されます。",
-      highFrequencyTitle: "サイズ変更が簡単",
+        "過度な設計を避け、頻繁に発生する小規模な問題の解決に特化しています。",
+      highFrequencyTitle: "小さく集中",
       substantialPagesDescription:
-        "変換後はその場でプレビューしてダウンロードできます。",
-      substantialPagesTitle: "仕上がりを確認できる",
+        "登録不要、インストール不要。ページを開いてファイルを処理し、結果をダウンロードできます。",
+      substantialPagesTitle: "ゼロバリア",
     },
   },
   imageConverter: {
