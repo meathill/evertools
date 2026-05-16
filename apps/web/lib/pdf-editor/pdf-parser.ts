@@ -105,10 +105,7 @@ export async function parsePdfFile(
 
     let textContent: Awaited<ReturnType<typeof page.getTextContent>>;
     try {
-      textContent = await page.getTextContent({
-        disableNormalization: true,
-        includeMarkedContent: false,
-      });
+      textContent = await page.getTextContent();
     } catch (error) {
       throw createPdfEditorError(
         PDF_EDITOR_ERROR_CODES.LOAD_FAILED,
