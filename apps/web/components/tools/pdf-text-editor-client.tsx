@@ -2,7 +2,7 @@
 
 import { RefreshCcwIcon } from "lucide-react";
 import { useEffect, useMemo, useRef, useState } from "react";
-import { PdfExportPanel } from "@/components/tools/pdf-export-panel";
+import { PdfEditorToolbar } from "@/components/tools/pdf-editor-toolbar";
 import { PdfUploadCard } from "@/components/tools/pdf-upload-card";
 import { PdfViewerCard } from "@/components/tools/pdf-viewer-card";
 import { Button } from "@/components/ui/button";
@@ -309,106 +309,107 @@ export function PdfTextEditorClient({ content }: PdfTextEditorClientProps) {
   }, [exportMissingGlyphs]);
 
   return (
-    <div className="grid gap-6 lg:grid-cols-[minmax(0,1.1fr)_minmax(320px,380px)]">
-      <div className="space-y-6">
-        <PdfUploadCard
-          content={content}
-          fileName={fileName}
-          fileSize={fileSize}
-          inputRef={pdfInputRef}
-          isDragging={isDragging}
-          isLoading={isLoading}
-          isScanned={isScanned}
-          onClear={handleReset}
-          onDragLeave={handleDragLeave}
-          onDragOver={handleDragOver}
-          onDrop={handleDrop}
-          onFileInputChange={handlePdfInputChange}
-          pagesCount={pages.length}
-        />
-
-        {isScanned && pages.length > 0 ? (
-          <Card>
-            <CardHeader>
-              <CardTitle>{content.client.scanned.title}</CardTitle>
-              <CardDescription>
-                {content.client.scanned.description}
-              </CardDescription>
-            </CardHeader>
-          </Card>
-        ) : null}
-
-        {pages.length > 0 && !isScanned ? (
-          <PdfViewerCard
-            activeBlockKey={activeBlockKey}
-            activePage={activePage}
-            containerScale={containerScale}
-            content={content}
-            currentPageIndex={currentPageIndex}
-            editedBlocks={editedBlocks}
-            editedCount={editedBlocks.size}
-            onActivateBlock={(key) => setActiveBlock(key)}
-            onDeactivateBlock={() => setActiveBlock(null)}
-            onPageChange={setCurrentPageIndex}
-            onTextChange={updateBlockText}
-            onZoomIn={() =>
-              setContainerScale((value) => Math.min(2, value + 0.1))
-            }
-            onZoomOut={() =>
-              setContainerScale((value) => Math.max(0.3, value - 0.1))
-            }
-            pagesCount={pages.length}
-          />
-        ) : null}
-      </div>
-
-      <div className="space-y-6">
-        <PdfExportPanel
+    <div className="flex flex-col">
+      {pages.length > 0 ? (
+        <PdfEditorToolbar
           cjkLoadProgress={cjkLoadProgress}
           cjkStatus={cjkStatus}
+          containerScale={containerScale}
           content={content}
+          currentPageIndex={currentPageIndex}
           documentKey={documentKey}
           editedCount={editedBlocks.size}
           errorMessage={errorMessage}
           exportErrorMessage={exportErrorMessage}
           exportProgress={exportProgress}
+          fileName={fileName ?? ""}
+          fileSize={fileSize}
           fontInputRef={fontInputRef}
           hasEdits={hasEdits}
           isExporting={isExporting}
           isScanned={isScanned}
           missingGlyphList={missingGlyphList}
+          onClear={handleReset}
           onExport={handleExport}
           onFontInputChange={handleFontInputChange}
+          onPageChange={setCurrentPageIndex}
           onRemoveUserFont={handleRemoveUserFont}
+          onReselect={() => pdfInputRef.current?.click()}
+          onZoomIn={() =>
+            setContainerScale((value) => Math.min(2, value + 0.1))
+          }
+          onZoomOut={() =>
+            setContainerScale((value) => Math.max(0.3, value - 0.1))
+          }
           pagesCount={pages.length}
           statusMessage={statusMessage}
           userFontName={userFontName}
         />
+      ) : null}
 
-        {activeBlockKey ? (
-          <Card>
-            <CardHeader>
-              <CardTitle>{content.client.editor.activeBlockTitle}</CardTitle>
-            </CardHeader>
-            <CardPanel className="space-y-3 text-sm">
-              <p className="text-muted-foreground text-xs leading-5">
-                {content.client.editor.escToExit}
-              </p>
-              <Button
-                onClick={() => {
-                  discardBlockEdit(activeBlockKey);
-                  setActiveBlock(null);
-                }}
-                size="sm"
-                variant="ghost"
-              >
-                <RefreshCcwIcon />
-                {content.client.editor.resetBlock}
-              </Button>
-            </CardPanel>
-          </Card>
-        ) : null}
+      <div className="flex-1">
+        {pages.length === 0 ? (
+          <div className="flex min-h-[calc(100vh-4rem)] items-center justify-center p-6">
+            <PdfUploadCard
+              content={content}
+              fileName={fileName}
+              fileSize={fileSize}
+              inputRef={pdfInputRef}
+              isDragging={isDragging}
+              isLoading={isLoading}
+              isScanned={isScanned}
+              onClear={handleReset}
+              onDragLeave={handleDragLeave}
+              onDragOver={handleDragOver}
+              onDrop={handleDrop}
+              onFileInputChange={handlePdfInputChange}
+              pagesCount={pages.length}
+            />
+          </div>
+        ) : isScanned ? (
+          <div className="p-6">
+            <Card>
+              <CardHeader>
+                <CardTitle>{content.client.scanned.title}</CardTitle>
+                <CardDescription>
+                  {content.client.scanned.description}
+                </CardDescription>
+              </CardHeader>
+            </Card>
+          </div>
+        ) : (
+          <div className="p-6">
+            <PdfViewerCard
+              activeBlockKey={activeBlockKey}
+              activePage={activePage}
+              containerScale={containerScale}
+              content={content}
+              currentPageIndex={currentPageIndex}
+              editedBlocks={editedBlocks}
+              editedCount={editedBlocks.size}
+              onActivateBlock={(key) => setActiveBlock(key)}
+              onDeactivateBlock={() => setActiveBlock(null)}
+              onPageChange={setCurrentPageIndex}
+              onTextChange={updateBlockText}
+              onZoomIn={() =>
+                setContainerScale((value) => Math.min(2, value + 0.1))
+              }
+              onZoomOut={() =>
+                setContainerScale((value) => Math.max(0.3, value - 0.1))
+              }
+              pagesCount={pages.length}
+            />
+          </div>
+        )}
       </div>
+
+      <input
+        accept="application/pdf,.pdf"
+        className="sr-only"
+        onChange={handlePdfInputChange}
+        ref={pdfInputRef}
+        type="file"
+      />
     </div>
   );
 }
