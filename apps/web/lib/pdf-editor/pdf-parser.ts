@@ -103,10 +103,18 @@ export async function parsePdfFile(
       // Some PDFs throw here for non-fatal reasons; font loading is best-effort.
     });
 
-    const textContent = await page.getTextContent({
-      disableNormalization: true,
-      includeMarkedContent: false,
-    });
+    let textContent: Awaited<ReturnType<typeof page.getTextContent>>;
+    try {
+      textContent = await page.getTextContent({
+        disableNormalization: true,
+        includeMarkedContent: false,
+      });
+    } catch (error) {
+      throw createPdfEditorError(
+        PDF_EDITOR_ERROR_CODES.LOAD_FAILED,
+        `Page ${pageNumber}: ${error instanceof Error ? error.message : String(error)}`,
+      );
+    }
 
     const textBlocks: PdfTextBlock[] = [];
     for (let index = 0; index < textContent.items.length; index++) {
@@ -139,11 +147,15 @@ export async function parsePdfFile(
       totalTextChars += item.str.length;
     }
 
-    extractEmbeddedFonts({
-      documentKey,
-      page,
-      seenFontKeys,
-    });
+    try {
+      extractEmbeddedFonts({
+        documentKey,
+        page,
+        seenFontKeys,
+      });
+    } catch {
+      // Font extraction is best-effort; failure here is non-fatal.
+    }
 
     pages.push({
       canvasDataUrl,

@@ -32,10 +32,16 @@ export function parsePdfEditorError(error: unknown): {
     return { code: null };
   }
 
-  const [code, detail] = error.message.split("::");
+  const separatorIndex = error.message.indexOf("::");
+  if (separatorIndex === -1) {
+    return { code: null, detail: error.message || undefined };
+  }
+
+  const code = error.message.slice(0, separatorIndex);
+  const detail = error.message.slice(separatorIndex + 2) || undefined;
 
   if (!errorCodeSet.has(code)) {
-    return { code: null };
+    return { code: null, detail: error.message || undefined };
   }
 
   return {

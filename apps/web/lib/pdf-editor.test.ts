@@ -35,9 +35,10 @@ describe("pdf editor helpers", () => {
     });
   });
 
-  it("returns null for unknown error codes", () => {
+  it("returns null for unknown error codes but preserves detail", () => {
     expect(parsePdfEditorError(new Error("RANDOM_THING"))).toEqual({
       code: null,
+      detail: "RANDOM_THING",
     });
     expect(parsePdfEditorError("not an error")).toEqual({ code: null });
   });
