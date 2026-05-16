@@ -59,7 +59,13 @@ export function PdfPageCanvas({
           style={{ height: `${page.height}px`, width: `${page.width}px` }}
           width={page.width}
         />
-        <div className="pointer-events-none absolute inset-0">
+        <div
+          className="pointer-events-none absolute inset-0"
+          style={{
+            transform: `scale(${page.viewportScale})`,
+            transformOrigin: "top left",
+          }}
+        >
           {page.textBlocks.map((block) => {
             const blockKey = buildBlockKey(page.pageIndex, block.blockId);
             const edited = editedBlocks.get(blockKey);
