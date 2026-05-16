@@ -87,7 +87,7 @@ export async function parsePdfFile(
     }
 
     try {
-      await page.render({ canvas, canvasContext, viewport }).promise;
+      await page.render({ canvasContext, viewport }).promise;
     } catch (error) {
       throw createPdfEditorError(
         PDF_EDITOR_ERROR_CODES.LOAD_FAILED,
