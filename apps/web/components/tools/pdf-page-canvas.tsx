@@ -52,7 +52,7 @@ export function PdfPageCanvas({
         <img
           alt=""
           aria-hidden="true"
-          className="absolute inset-0 select-none"
+          className="pointer-events-none absolute inset-0 select-none"
           draggable={false}
           height={page.height}
           src={page.canvasDataUrl}
