@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>短视频 App CDN 成本与盈亏平衡计算器</title>
+    <style>
+        :root {
+            --bg: #ffffff;
+            --bg-secondary: #f5f4ee;
+            --bg-tertiary: #eeece2;
+            --text-primary: #1a1a1a;
+            --text-secondary: #6b6b66;
+            --text-tertiary: #999996;
+            --border: rgba(0, 0, 0, 0.12);
+            --success: #1D9E75;
+            --danger: #D85A30;
+            --accent: #378ADD;
+            --radius-md: 8px;
+            --radius-lg: 12px;
+        }
+
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --bg: #1a1a1a;
+                --bg-secondary: #262626;
+                --bg-tertiary: #1f1f1f;
+                --text-primary: #f0f0f0;
+                --text-secondary: #a8a8a8;
+                --text-tertiary: #707070;
+                --border: rgba(255, 255, 255, 0.15);
+            }
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+            background: var(--bg-tertiary);
+            color: var(--text-primary);
+            margin: 0;
+            padding: 24px 16px;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: var(--bg);
+            border-radius: var(--radius-lg);
+            border: 0.5px solid var(--border);
+            padding: 24px 28px;
+        }
+
+        h1 {
+            font-size: 20px;
+            font-weight: 500;
+            margin: 0 0 4px;
+        }
+
+        .subtitle {
+            font-size: 13px;
+            color: var(--text-secondary);
+            margin: 0 0 1.5rem;
+        }
+
+        h3 {
+            font-size: 13px;
+            font-weight: 500;
+            margin: 1.25rem 0 0.5rem;
+            color: var(--text-secondary);
+        }
+
+        .metrics {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 10px;
+        }
+
+        .mc {
+            background: var(--bg-secondary);
+            border-radius: var(--radius-md);
+            padding: 12px 14px;
+        }
+
+        .mc-label {
+            font-size: 12px;
+            color: var(--text-secondary);
+            margin-bottom: 4px;
+        }
+
+        .mc-value {
+            font-size: 20px;
+            font-weight: 500;
+        }
+
+        .mc-value.pos {
+            color: var(--success);
+        }
+
+        .mc-value.neg {
+            color: var(--danger);
+        }
+
+        .sliders {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 14px 24px;
+        }
+
+        @media (max-width: 600px) {
+            .sliders {
+                grid-template-columns: 1fr;
+            }
+
+            .metrics {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        .s-row {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        .s-head {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            gap: 8px;
+        }
+
+        .s-label {
+            font-size: 13px;
+            color: var(--text-secondary);
+        }
+
+        .s-val {
+            font-size: 13px;
+            font-weight: 500;
+            min-width: 60px;
+            text-align: right;
+        }
+
+        input[type=range] {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 100%;
+            height: 4px;
+            background: var(--border);
+            border-radius: 2px;
+            outline: none;
+        }
+
+        input[type=range]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 18px;
+            height: 18px;
+            background: var(--bg);
+            border: 1.5px solid var(--text-primary);
+            border-radius: 50%;
+            cursor: pointer;
+        }
+
+        input[type=range]::-moz-range-thumb {
+            width: 18px;
+            height: 18px;
+            background: var(--bg);
+            border: 1.5px solid var(--text-primary);
+            border-radius: 50%;
+            cursor: pointer;
+        }
+
+        .breakdown {
+            background: var(--bg-secondary);
+            border-radius: var(--radius-md);
+            padding: 12px 16px;
+            font-size: 13px;
+            margin-top: 1rem;
+        }
+
+        .bd-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 4px 0;
+            gap: 12px;
+        }
+
+        .bd-row span:first-child {
+            color: var(--text-secondary);
+        }
+
+        .bd-row span:last-child {
+            font-weight: 500;
+        }
+
+        .bd-divider {
+            height: 0.5px;
+            background: var(--border);
+            margin: 6px 0;
+        }
+
+        .chart-wrap {
+            margin: 0.75rem 0 0.25rem;
+            height: 260px;
+            position: relative;
+        }
+
+        .note {
+            font-size: 12px;
+            color: var(--text-tertiary);
+            line-height: 1.6;
+            margin-top: 0.75rem;
+        }
+
+        .preset-bar {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+            margin: 8px 0 16px;
+        }
+
+        .preset-btn {
+            background: var(--bg-secondary);
+            border: 0.5px solid var(--border);
+            color: var(--text-primary);
+            font-size: 12px;
+            padding: 6px 12px;
+            border-radius: var(--radius-md);
+            cursor: pointer;
+            font-family: inherit;
+        }
+
+        .preset-btn:hover {
+            background: var(--bg-tertiary);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>短视频 App CDN 成本与盈亏平衡计算器</h1>
+        <p class="subtitle">基于 Cloudflare Stream 公开定价的硬成本估算 — 拖动滑块即可实时看到月利润和盈亏点</p>
+
+        <div class="preset-bar">
+            <span style="font-size: 12px; color: var(--text-secondary); align-self: center;">快速预设:</span>
+            <button class="preset-btn" data-preset="stream">Cloudflare Stream</button>
+            <button class="preset-btn" data-preset="cloudfront">AWS CloudFront (1.2 Mbps 720p)</button>
+            <button class="preset-btn" data-preset="bunny">Bunny CDN (1.2 Mbps 720p)</button>
+        </div>
+
+        <div class="metrics">
+            <div class="mc">
+                <div class="mc-label">月流量成本</div>
+                <div class="mc-value" id="m-delivery">$0</div>
+            </div>
+            <div class="mc">
+                <div class="mc-label">月存储成本</div>
+                <div class="mc-value" id="m-storage">$0</div>
+            </div>
+            <div class="mc">
+                <div class="mc-label">月订阅收入</div>
+                <div class="mc-value" id="m-revenue">$0</div>
+            </div>
+            <div class="mc">
+                <div class="mc-label">月净利润</div>
+                <div class="mc-value" id="m-profit">$0</div>
+            </div>
+        </div>
+
+        <h3>用户规模</h3>
+        <div class="sliders">
+            <div class="s-row">
+                <div class="s-head"><span class="s-label">总用户数</span><span class="s-val" id="v-users">10,000</span>
+                </div>
+                <input type="range" min="1000" max="500000" step="1000" value="10000" id="i-users">
+            </div>
+            <div class="s-row">
+                <div class="s-head"><span class="s-label">付费用户比例</span><span class="s-val" id="v-ratio">5.0%</span>
+                </div>
+                <input type="range" min="0" max="30" step="0.5" value="5" id="i-ratio">
+            </div>
+        </div>
+
+        <h3>用户观看行为</h3>
+        <div class="sliders">
+            <div class="s-row">
+                <div class="s-head"><span class="s-label">免费用户日观看视频数</span><span class="s-val" id="v-free-vids">5
+                        个</span></div>
+                <input type="range" min="0" max="30" step="1" value="5" id="i-free-vids">
+            </div>
+            <div class="s-row">
+                <div class="s-head"><span class="s-label">单视频时长</span><span class="s-val" id="v-vlen">30 秒</span></div>
+                <input type="range" min="10" max="180" step="5" value="30" id="i-vlen">
+            </div>
+            <div class="s-row">
+                <div class="s-head"><span class="s-label">付费用户日观看时长</span><span class="s-val" id="v-paid-h">4.0
+                        小时</span></div>
+                <input type="range" min="0" max="12" step="0.5" value="4" id="i-paid-h">
+            </div>
+            <div class="s-row">
+                <div class="s-head"><span class="s-label">视频库总时长</span><span class="s-val" id="v-lib">200 小时</span>
+                </div>
+                <input type="range" min="10" max="5000" step="10" value="200" id="i-lib">
+            </div>
+        </div>
+
+        <h3>定价 & 商业参数 (按分钟计费模式)</h3>
+        <div class="sliders">
+            <div class="s-row">
+                <div class="s-head"><span class="s-label">流量单价 ($/1000 分钟)</span><span class="s-val"
+                        id="v-pdel">$1.00</span></div>
+                <input type="range" min="0.05" max="5" step="0.05" value="1.0" id="i-pdel">
+            </div>
+            <div class="s-row">
+                <div class="s-head"><span class="s-label">存储单价 ($/1000 分钟·月)</span><span class="s-val"
+                        id="v-pstor">$5.00</span></div>
+                <input type="range" min="0.1" max="10" step="0.1" value="5.0" id="i-pstor">
+            </div>
+            <div class="s-row">
+                <div class="s-head"><span class="s-label">付费用户月订阅费</span><span class="s-val" id="v-fee">$10</span></div>
+                <input type="range" min="0" max="50" step="1" value="10" id="i-fee">
+            </div>
+        </div>
+
+        <div class="breakdown" id="breakdown"></div>
+
+        <h3>盈亏曲线:月利润随付费用户比例变化</h3>
+        <div class="chart-wrap"><canvas id="chart"></canvas></div>
+
+        <p class="note">
+            <strong style="font-weight:500">关于计费模型:</strong>Cloudflare Stream 按视频播放/存储分钟数计费,与视频分辨率(480p/720p/1080p)无关。
+            如果对比按 GB 计费的 CDN(CloudFront、Bunny 等),公式为:
+            每分钟流量 ≈ bitrate(Mbps) × 60s ÷ 8 = bitrate × 7.5 MB。
+            例如 720p (1.2 Mbps) ≈ 9 MB/分钟,则按 GB 单价 $/GB × 9/1024 = $/分钟 × 1000 即可换算。
+            预设按钮已内置常见 CDN 的等价单价。
+        </p>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+    <script>
+        (function () {
+            const $ = id => document.getElementById(id);
+            const fmt = n => Math.round(n).toLocaleString('en-US');
+            const fmtUSD = n => '$' + Math.round(n).toLocaleString('en-US');
+            const fmtUSD2 = n => '$' + n.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+
+            const inputs = {
+                users: $('i-users'), ratio: $('i-ratio'),
+                freeVids: $('i-free-vids'), vlen: $('i-vlen'),
+                paidH: $('i-paid-h'), lib: $('i-lib'),
+                pdel: $('i-pdel'), pstor: $('i-pstor'), fee: $('i-fee')
+            };
+
+            // 预设价格(2026-05 web 核对):换算到"每 1000 分钟"等价单价,基于 720p 1.2 Mbps ≈ 9 MB/分钟 ≈ 8.79 GB/1000min
+            // Cloudflare Stream: 官方 $1/1000min 流量 + $5/1000min·月 存储 (不按 GB,与分辨率无关)
+            // CloudFront: $0.085/GB (US/EU 首 10TB) × 8.79 = $0.75/1000min; S3 Std 存储 $0.023/GB·月 × 8.79 = $0.20/1000min·月
+            // Bunny Volume Network: €0.005/GB ≈ $0.0055/GB × 8.79 = $0.05/1000min; Edge Storage $0.01/GB·月 × 8.79 = $0.09/1000min·月
+            const presets = {
+                stream: { pdel: 1.00, pstor: 5.00 },
+                cloudfront: { pdel: 0.75, pstor: 0.20 },
+                bunny: { pdel: 0.05, pstor: 0.09 }
+            };
+
+            function calc(overrideRatio) {
+                const users = +inputs.users.value;
+                const r = (overrideRatio !== undefined ? overrideRatio : +inputs.ratio.value) / 100;
+                const freeUsers = users * (1 - r);
+                const paidUsers = users * r;
+                const freeDailyMin = +inputs.freeVids.value * +inputs.vlen.value / 60;
+                const paidDailyMin = +inputs.paidH.value * 60;
+                const libMin = +inputs.lib.value * 60;
+                const pdel = +inputs.pdel.value / 1000;
+                const pstor = +inputs.pstor.value / 1000;
+                const fee = +inputs.fee.value;
+
+                const monthlyMin = (freeUsers * freeDailyMin + paidUsers * paidDailyMin) * 30;
+                const delivery = monthlyMin * pdel;
+                const storage = libMin * pstor;
+                const revenue = paidUsers * fee;
+                const cost = delivery + storage;
+                const profit = revenue - cost;
+
+                const costPerFree = freeDailyMin * 30 * pdel;
+                const costPerPaid = paidDailyMin * 30 * pdel;
+                const denom = fee - costPerPaid + costPerFree;
+                const breakEvenP = denom > 0 ? (users * costPerFree + storage) / denom : Infinity;
+                const breakEvenRatio = breakEvenP / users * 100;
+
+                return {
+                    users, freeUsers, paidUsers, monthlyMin, delivery, storage, revenue, cost, profit,
+                    costPerFree, costPerPaid, breakEvenP, breakEvenRatio, fee
+                };
+            }
+
+            let chart;
+
+            function render() {
+                $('v-users').textContent = fmt(+inputs.users.value);
+                $('v-ratio').textContent = (+inputs.ratio.value).toFixed(1) + '%';
+                $('v-free-vids').textContent = inputs.freeVids.value + ' 个';
+                $('v-vlen').textContent = inputs.vlen.value + ' 秒';
+                $('v-paid-h').textContent = (+inputs.paidH.value).toFixed(1) + ' 小时';
+                $('v-lib').textContent = fmt(+inputs.lib.value) + ' 小时';
+                $('v-pdel').textContent = '$' + (+inputs.pdel.value).toFixed(2);
+                $('v-pstor').textContent = '$' + (+inputs.pstor.value).toFixed(2);
+                $('v-fee').textContent = '$' + inputs.fee.value;
+
+                const r = calc();
+                $('m-delivery').textContent = fmtUSD(r.delivery);
+                $('m-storage').textContent = fmtUSD(r.storage);
+                $('m-revenue').textContent = fmtUSD(r.revenue);
+                const p = $('m-profit');
+                p.textContent = (r.profit >= 0 ? '+' : '−') + '$' + Math.abs(Math.round(r.profit)).toLocaleString('en-US');
+                p.className = 'mc-value ' + (r.profit >= 0 ? 'pos' : 'neg');
+
+                const bd = $('breakdown');
+                let breakEvenText;
+                if (!isFinite(r.breakEvenRatio) || r.breakEvenRatio < 0) {
+                    breakEvenText = '<span style="color:var(--danger)">当前订阅价覆盖不了单付费用户成本</span>';
+                } else if (r.breakEvenRatio > 100) {
+                    breakEvenText = '<span style="color:var(--danger)">即使 100% 付费也无法回本</span>';
+                } else {
+                    breakEvenText = r.breakEvenRatio.toFixed(2) + '% (' + fmt(Math.ceil(r.breakEvenP)) + ' 人)';
+                }
+                bd.innerHTML =
+                    '<div class="bd-row"><span>月总播放分钟数</span><span>' + fmt(r.monthlyMin) + ' 分钟</span></div>' +
+                    '<div class="bd-row"><span>单付费用户月均成本(' + fmt(r.paidUsers) + ' 人)</span><span>' + fmtUSD2(r.costPerPaid) + '/人</span></div>' +
+                    '<div class="bd-row"><span>单免费用户月均成本(' + fmt(r.freeUsers) + ' 人)</span><span>' + fmtUSD2(r.costPerFree) + '/人</span></div>' +
+                    '<div class="bd-divider"></div>' +
+                    '<div class="bd-row"><span>月总成本(流量 + 存储)</span><span>' + fmtUSD(r.cost) + '</span></div>' +
+                    '<div class="bd-row"><span>当前订阅价下盈亏平衡所需付费比例</span><span>' + breakEvenText + '</span></div>';
+
+                updateChart();
+            }
+
+            function updateChart() {
+                if (!window.Chart) { setTimeout(updateChart, 100); return; }
+                const points = [];
+                for (let i = 0; i <= 60; i++) {
+                    const ratio = i * 0.5;
+                    points.push({ x: ratio, y: calc(ratio).profit });
+                }
+                const currentRatio = +inputs.ratio.value;
+                const currentProfit = calc().profit;
+
+                const isDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+                const textColor = isDark ? '#a8a8a8' : '#6b6b66';
+
+                if (!chart) {
+                    const ctx = $('chart').getContext('2d');
+                    chart = new Chart(ctx, {
+                        type: 'line',
+                        data: {
+                            datasets: [
+                                { label: '盈亏平衡线', data: [{ x: 0, y: 0 }, { x: 30, y: 0 }], borderColor: 'rgba(140,140,140,0.5)', borderDash: [4, 4], pointRadius: 0, borderWidth: 1, fill: false },
+                                { label: '月利润', data: points, borderColor: '#1D9E75', backgroundColor: 'rgba(29,158,117,0.12)', fill: true, borderWidth: 2, pointRadius: 0, tension: 0.25 },
+                                { label: '当前位置', data: [{ x: currentRatio, y: currentProfit }], type: 'scatter', borderColor: '#D85A30', backgroundColor: '#D85A30', pointRadius: 6, pointHoverRadius: 7 }
+                            ]
+                        },
+                        options: {
+                            maintainAspectRatio: false,
+                            plugins: {
+                                legend: { display: false },
+                                tooltip: { callbacks: { label: c => '利润 ' + fmtUSD(c.parsed.y) + ' @ 付费比例 ' + c.parsed.x.toFixed(1) + '%' } }
+                            },
+                            scales: {
+                                x: { type: 'linear', min: 0, max: 30, title: { display: true, text: '付费用户比例 (%)', color: textColor }, ticks: { callback: v => v + '%', color: textColor } },
+                                y: { title: { display: true, text: '月净利润 ($)', color: textColor }, grid: { color: 'rgba(128,128,128,0.1)' }, ticks: { callback: v => '$' + v.toLocaleString('en-US'), color: textColor } }
+                            }
+                        }
+                    });
+                } else {
+                    chart.data.datasets[1].data = points;
+                    chart.data.datasets[2].data = [{ x: currentRatio, y: currentProfit }];
+                    chart.update('none');
+                }
+            }
+
+            Object.values(inputs).forEach(el => el.addEventListener('input', render));
+
+            document.querySelectorAll('.preset-btn').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    const p = presets[btn.dataset.preset];
+                    if (!p) return;
+                    inputs.pdel.value = p.pdel;
+                    inputs.pstor.value = p.pstor;
+                    render();
+                });
+            });
+
+            render();
+        })();
+    </script>
+</body>
+
+</html>
