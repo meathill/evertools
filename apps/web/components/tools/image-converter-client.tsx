@@ -28,11 +28,13 @@ import {
 } from "@/components/ui/select";
 import { Separator } from "@/components/ui/separator";
 import { Slider } from "@/components/ui/slider";
-import { Switch } from "@/components/ui/switch";
 import {
   ACCEPTED_IMAGE_TYPES,
+  CROP_HORIZONTALS,
+  CROP_VERTICALS,
   IMAGE_CONVERTER_ERROR_CODES,
   OUTPUT_FORMATS,
+  RESIZE_MODES,
   buildOutputFilename,
   convertImageFile,
   formatBytes,
@@ -43,7 +45,9 @@ import {
   readImageFile,
   resolveTargetDimensions,
   supportsQuality,
+  type CropAnchor,
   type OutputFormat,
+  type ResizeMode,
 } from "@/lib/image-converter";
 import type { LocaleContent } from "@/messages/types";
 import { useImageConverterStore } from "@/stores/image-converter-store";
@@ -60,11 +64,13 @@ type SourceImage = {
 
 type ResultImage = {
   blob: Blob;
+  cropAnchor: CropAnchor | null;
   fileName: string;
   format: OutputFormat;
   height: number;
   previewUrl: string;
   quality: number;
+  resizeMode: ResizeMode;
   size: number;
   width: number;
 };
@@ -72,6 +78,12 @@ type ResultImage = {
 type ImageConverterClientProps = {
   content: LocaleContent["imageConverter"];
 };
+
+const RESIZE_MODE_LABEL_KEYS = {
+  crop: "modeCrop",
+  lock: "modeLock",
+  stretch: "modeStretch",
+} as const satisfies Record<ResizeMode, string>;
 
 export function ImageConverterClient({ content }: ImageConverterClientProps) {
   const acceptedFormatsText = ACCEPTED_IMAGE_TYPES.map((type) =>
@@ -89,20 +101,24 @@ export function ImageConverterClient({ content }: ImageConverterClientProps) {
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
 
   const {
+    cropAnchor,
     hydrateFromSource,
-    isAspectLocked,
     outputFormat,
     quality,
     reset,
-    setAspectLocked,
+    resizeMode,
+    setCropAnchor,
     setOutputFormat,
     setQuality,
+    setResizeMode,
     setTargetDimensions,
     setTargetHeight,
     setTargetWidth,
     targetHeight,
     targetWidth,
   } = useImageConverterStore();
+
+  const isAspectLocked = resizeMode === "lock";
 
   useEffect(() => {
     return () => {
@@ -135,6 +151,10 @@ export function ImageConverterClient({ content }: ImageConverterClientProps) {
         (resultImage.format !== outputFormat ||
           resultImage.width !== currentTargetDimensions.width ||
           resultImage.height !== currentTargetDimensions.height ||
+          resultImage.resizeMode !== resizeMode ||
+          (resizeMode === "crop" &&
+            (resultImage.cropAnchor?.horizontal !== cropAnchor.horizontal ||
+              resultImage.cropAnchor?.vertical !== cropAnchor.vertical)) ||
           (qualityEnabled && resultImage.quality !== quality)),
     );
 
@@ -250,10 +270,10 @@ export function ImageConverterClient({ content }: ImageConverterClientProps) {
     );
   }
 
-  function handleAspectLockChange(checked: boolean) {
-    setAspectLocked(checked);
+  function handleResizeModeChange(mode: ResizeMode) {
+    setResizeMode(mode);
 
-    if (!checked || !sourceImage) {
+    if (mode !== "lock" || !sourceImage) {
       return;
     }
 
@@ -323,6 +343,7 @@ export function ImageConverterClient({ content }: ImageConverterClientProps) {
       });
 
       const blob = await convertImageFile({
+        crop: resizeMode === "crop" ? { anchor: cropAnchor } : undefined,
         file: sourceImage.file,
         format: outputFormat,
         height: targetDimensions.height,
@@ -335,11 +356,13 @@ export function ImageConverterClient({ content }: ImageConverterClientProps) {
       replaceResultUrl(previewUrl);
       setResultImage({
         blob,
+        cropAnchor: resizeMode === "crop" ? cropAnchor : null,
         fileName: buildOutputFilename(sourceImage.name, outputFormat),
         format: outputFormat,
         height: targetDimensions.height,
         previewUrl,
         quality,
+        resizeMode,
         size: blob.size,
         width: targetDimensions.width,
       });
@@ -579,19 +602,27 @@ export function ImageConverterClient({ content }: ImageConverterClientProps) {
           <Separator />
 
           <div className="space-y-4">
-            <div className="flex items-center justify-between gap-3 rounded-xl bg-muted/40 px-3 py-2.5">
+            <div className="space-y-2 rounded-xl bg-muted/40 px-3 py-2.5">
               <div>
                 <div className="font-medium text-sm text-foreground">
-                  {content.client.settings.aspectLockTitle}
+                  {content.client.settings.resizeModeTitle}
                 </div>
                 <div className="text-muted-foreground text-xs">
-                  {content.client.settings.aspectLockDescription}
+                  {content.client.settings.resizeModeDescription}
                 </div>
               </div>
-              <Switch
-                checked={isAspectLocked}
-                onCheckedChange={handleAspectLockChange}
-              />
+              <div className="grid grid-cols-3 gap-1.5">
+                {RESIZE_MODES.map((mode) => (
+                  <Button
+                    key={mode}
+                    onClick={() => handleResizeModeChange(mode)}
+                    size="sm"
+                    variant={resizeMode === mode ? "default" : "outline"}
+                  >
+                    {content.client.settings[RESIZE_MODE_LABEL_KEYS[mode]]}
+                  </Button>
+                ))}
+              </div>
             </div>
 
             <div className="grid gap-4 sm:grid-cols-2">
@@ -623,6 +654,61 @@ export function ImageConverterClient({ content }: ImageConverterClientProps) {
                 />
               </Field>
             </div>
+
+            {resizeMode === "crop" ? (
+              <div className="space-y-2">
+                <div>
+                  <div className="font-medium text-sm text-foreground">
+                    {content.client.settings.cropAnchorTitle}
+                  </div>
+                  <div className="text-muted-foreground text-xs">
+                    {content.client.settings.cropAnchorDescription}
+                  </div>
+                </div>
+                <div className="grid w-fit grid-cols-3 gap-1.5">
+                  {CROP_VERTICALS.map((vertical) =>
+                    CROP_HORIZONTALS.map((horizontal) => {
+                      const isActive =
+                        cropAnchor.vertical === vertical &&
+                        cropAnchor.horizontal === horizontal;
+
+                      return (
+                        <Button
+                          aria-label={content.client.settings.cropAnchorAria
+                            .replace(
+                              "{vertical}",
+                              content.client.settings.cropVertical[vertical],
+                            )
+                            .replace(
+                              "{horizontal}",
+                              content.client.settings.cropHorizontal[
+                                horizontal
+                              ],
+                            )}
+                          aria-pressed={isActive}
+                          className="size-10 p-0"
+                          key={`${vertical}-${horizontal}`}
+                          onClick={() =>
+                            setCropAnchor({ horizontal, vertical })
+                          }
+                          size="icon"
+                          variant={isActive ? "default" : "outline"}
+                        >
+                          <span
+                            className={[
+                              "block size-2 rounded-full",
+                              isActive
+                                ? "bg-current"
+                                : "bg-muted-foreground/40",
+                            ].join(" ")}
+                          />
+                        </Button>
+                      );
+                    }),
+                  )}
+                </div>
+              </div>
+            ) : null}
           </div>
 
           {qualityEnabled ? (

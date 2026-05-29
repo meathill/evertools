@@ -208,20 +208,37 @@ export const jaMessages: LocaleContent = {
         title: "元画像をアップロード",
       },
       settings: {
-        aspectLockDescription:
-          "有効にすると片方のサイズ変更に合わせてもう片方も自動で更新されます。",
-        aspectLockTitle: "元の比率を固定",
+        cropAnchorAria: "{vertical}{horizontal}",
+        cropAnchorDescription:
+          "画像のどの領域を残すかを選びます。はみ出した部分は切り取られます。",
+        cropAnchorTitle: "切り抜き位置",
+        cropHorizontal: {
+          center: "中央",
+          left: "左",
+          right: "右",
+        },
+        cropVertical: {
+          bottom: "下",
+          middle: "中央",
+          top: "上",
+        },
         description:
           "まず出力形式を選び、その後でサイズを変更するか決めます。JPEG と WebP では品質も調整できます。",
         download: "画像をダウンロード",
         generate: "結果を生成",
         height: "高さ (px)",
         heightPlaceholder: "例: 800",
+        modeCrop: "切り抜いて合わせる",
+        modeLock: "比率を固定",
+        modeStretch: "自由に伸縮",
         quality: "出力品質",
         qualityAria: "出力品質",
         qualityDescription:
           "品質を上げるほど通常はファイルサイズも大きくなります。まずは 82 前後から試すのがおすすめです。",
         regenerate: "結果を再生成",
+        resizeModeDescription:
+          "比率を固定すると画像が歪みません。自由に伸縮では幅と高さを個別に変更できます。切り抜いて合わせるでは大きい方の比率で拡大し、はみ出しを切り取ります。",
+        resizeModeTitle: "リサイズ方法",
         targetFormat: "出力形式",
         title: "変換設定",
         width: "幅 (px)",

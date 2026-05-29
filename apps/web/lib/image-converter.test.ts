@@ -3,6 +3,7 @@ import {
   IMAGE_CONVERTER_ERROR_CODES,
   buildOutputFilename,
   clampQuality,
+  computeCropSourceRect,
   formatBytes,
   getDefaultOutputFormat,
   getSyncedDimensionValue,
@@ -80,5 +81,90 @@ describe("image converter helpers", () => {
     expect(clampQuality(-1)).toBe(1);
     expect(getDefaultOutputFormat("image/jpeg")).toBe("image/jpeg");
     expect(getDefaultOutputFormat("image/gif")).toBe("image/png");
+  });
+});
+
+describe("computeCropSourceRect", () => {
+  // 1600x800 横图裁成 600x600 方图：scale=max(600/1600, 600/800)=0.75，
+  // 可见区域 = 600/0.75 = 800，正好是原图高度。宽度裁到 800。
+  const baseInput = {
+    sourceHeight: 800,
+    sourceWidth: 1600,
+    targetHeight: 600,
+    targetWidth: 600,
+  } as const;
+
+  it("scales by the larger ratio and crops the wider axis", () => {
+    const rect = computeCropSourceRect({
+      ...baseInput,
+      anchor: { horizontal: "center", vertical: "middle" },
+    });
+
+    expect(rect.sWidth).toBe(800);
+    expect(rect.sHeight).toBe(800);
+    expect(rect.sWidth).toBeLessThan(baseInput.sourceWidth);
+    expect(rect.sHeight).toBe(baseInput.sourceHeight);
+  });
+
+  it("offsets horizontally by anchor", () => {
+    expect(
+      computeCropSourceRect({
+        ...baseInput,
+        anchor: { horizontal: "left", vertical: "middle" },
+      }).sx,
+    ).toBe(0);
+    expect(
+      computeCropSourceRect({
+        ...baseInput,
+        anchor: { horizontal: "center", vertical: "middle" },
+      }).sx,
+    ).toBe(400);
+    expect(
+      computeCropSourceRect({
+        ...baseInput,
+        anchor: { horizontal: "right", vertical: "middle" },
+      }).sx,
+    ).toBe(800);
+  });
+
+  it("offsets vertically by anchor", () => {
+    // 800x1600 竖图裁成 600x600：可见区域高度裁到 800，宽度满。
+    const portrait = {
+      sourceHeight: 1600,
+      sourceWidth: 800,
+      targetHeight: 600,
+      targetWidth: 600,
+    } as const;
+
+    expect(
+      computeCropSourceRect({
+        ...portrait,
+        anchor: { horizontal: "center", vertical: "top" },
+      }).sy,
+    ).toBe(0);
+    expect(
+      computeCropSourceRect({
+        ...portrait,
+        anchor: { horizontal: "center", vertical: "middle" },
+      }).sy,
+    ).toBe(400);
+    expect(
+      computeCropSourceRect({
+        ...portrait,
+        anchor: { horizontal: "center", vertical: "bottom" },
+      }).sy,
+    ).toBe(800);
+  });
+
+  it("covers the whole source when target ratio matches", () => {
+    const rect = computeCropSourceRect({
+      anchor: { horizontal: "center", vertical: "middle" },
+      sourceHeight: 800,
+      sourceWidth: 1600,
+      targetHeight: 400,
+      targetWidth: 800,
+    });
+
+    expect(rect).toEqual({ sHeight: 800, sWidth: 1600, sx: 0, sy: 0 });
   });
 });

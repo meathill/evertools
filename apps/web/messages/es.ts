@@ -212,20 +212,37 @@ export const esMessages: LocaleContent = {
         title: "Subir imagen",
       },
       settings: {
-        aspectLockDescription:
-          "Cuando está activado, al cambiar un lado se actualiza el otro automáticamente.",
-        aspectLockTitle: "Bloquear proporción original",
+        cropAnchorAria: "{vertical} {horizontal}",
+        cropAnchorDescription:
+          "Elige qué área de la imagen conservar; el resto se recorta.",
+        cropAnchorTitle: "Posición de recorte",
+        cropHorizontal: {
+          center: "Centro",
+          left: "Izquierda",
+          right: "Derecha",
+        },
+        cropVertical: {
+          bottom: "Abajo",
+          middle: "Centro",
+          top: "Arriba",
+        },
         description:
           "Elige primero el formato de salida y luego decide si quieres cambiar el ancho y la altura. JPEG y WebP también permiten controlar la calidad.",
         download: "Descargar imagen",
         generate: "Generar resultado",
         height: "Alto (px)",
         heightPlaceholder: "p. ej. 800",
+        modeCrop: "Recortar para llenar",
+        modeLock: "Bloquear proporción",
+        modeStretch: "Estirar libremente",
         quality: "Calidad de salida",
         qualityAria: "Calidad de salida",
         qualityDescription:
           "Una mayor calidad normalmente significa un archivo más grande. Empezar cerca de 82 suele funcionar bien.",
         regenerate: "Regenerar resultado",
+        resizeModeDescription:
+          "Bloquear proporción mantiene la imagen sin distorsión; estirar libremente cambia ancho y alto por separado; recortar para llenar escala por la proporción mayor y recorta lo sobrante.",
+        resizeModeTitle: "Modo de ajuste",
         targetFormat: "Formato de salida",
         title: "Ajustes de conversión",
         width: "Ancho (px)",

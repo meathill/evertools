@@ -212,20 +212,37 @@ export const ptMessages: LocaleContent = {
         title: "Enviar imagem",
       },
       settings: {
-        aspectLockDescription:
-          "Quando ativado, ao mudar um lado o outro sera atualizado automaticamente.",
-        aspectLockTitle: "Bloquear proporcao original",
+        cropAnchorAria: "{vertical} {horizontal}",
+        cropAnchorDescription:
+          "Escolha qual area da imagem manter; o excedente sera cortado.",
+        cropAnchorTitle: "Posicao do corte",
+        cropHorizontal: {
+          center: "Centro",
+          left: "Esquerda",
+          right: "Direita",
+        },
+        cropVertical: {
+          bottom: "Embaixo",
+          middle: "Centro",
+          top: "Em cima",
+        },
         description:
           "Escolha primeiro o formato de saida e depois decida se quer mudar largura e altura. JPEG e WebP tambem permitem controlar a qualidade.",
         download: "Baixar imagem",
         generate: "Gerar resultado",
         height: "Altura (px)",
         heightPlaceholder: "ex.: 800",
+        modeCrop: "Cortar para preencher",
+        modeLock: "Bloquear proporcao",
+        modeStretch: "Esticar livremente",
         quality: "Qualidade de saida",
         qualityAria: "Qualidade de saida",
         qualityDescription:
           "Maior qualidade normalmente significa arquivo maior. Comecar perto de 82 costuma ser uma boa escolha.",
         regenerate: "Gerar novamente",
+        resizeModeDescription:
+          "Bloquear proporcao mantem a imagem sem distorcao; esticar livremente muda largura e altura de forma independente; cortar para preencher escala pela proporcao maior e corta o excedente.",
+        resizeModeTitle: "Modo de redimensionamento",
         targetFormat: "Formato de saida",
         title: "Configuracoes de conversao",
         width: "Largura (px)",

@@ -32,8 +32,16 @@ export const OUTPUT_FORMATS = [
   },
 ] as const;
 
+export const RESIZE_MODES = ["lock", "stretch", "crop"] as const;
+export const CROP_VERTICALS = ["top", "middle", "bottom"] as const;
+export const CROP_HORIZONTALS = ["left", "center", "right"] as const;
+
 export type OutputFormat = (typeof OUTPUT_FORMATS)[number]["value"];
 export type OutputFormatKey = (typeof OUTPUT_FORMATS)[number]["key"];
+export type ResizeMode = (typeof RESIZE_MODES)[number];
+export type CropVertical = (typeof CROP_VERTICALS)[number];
+export type CropHorizontal = (typeof CROP_HORIZONTALS)[number];
+export type CropAnchor = { horizontal: CropHorizontal; vertical: CropVertical };
 export type ImageConverterErrorCode =
   (typeof IMAGE_CONVERTER_ERROR_CODES)[keyof typeof IMAGE_CONVERTER_ERROR_CODES];
 
@@ -60,11 +68,19 @@ export type ReadImageResult = {
 };
 
 export type ConvertImageInput = {
+  crop?: { anchor: CropAnchor };
   file: File;
   format: OutputFormat;
   height: number;
   quality: number;
   width: number;
+};
+
+export type CropSourceRect = {
+  sHeight: number;
+  sWidth: number;
+  sx: number;
+  sy: number;
 };
 
 const acceptedImageTypeSet = new Set<string>(ACCEPTED_IMAGE_TYPES);
@@ -222,6 +238,53 @@ export function resolveTargetDimensions(input: ResolveTargetDimensionsInput): {
   };
 }
 
+export function computeCropSourceRect(input: {
+  anchor: CropAnchor;
+  sourceHeight: number;
+  sourceWidth: number;
+  targetHeight: number;
+  targetWidth: number;
+}): CropSourceRect {
+  const scale = Math.max(
+    input.targetWidth / input.sourceWidth,
+    input.targetHeight / input.sourceHeight,
+  );
+
+  const sWidth = Math.min(
+    input.sourceWidth,
+    Math.round(input.targetWidth / scale),
+  );
+  const sHeight = Math.min(
+    input.sourceHeight,
+    Math.round(input.targetHeight / scale),
+  );
+
+  return {
+    sHeight,
+    sWidth,
+    sx: resolveCropOffset(input.anchor.horizontal, input.sourceWidth, sWidth),
+    sy: resolveCropOffset(input.anchor.vertical, input.sourceHeight, sHeight),
+  };
+}
+
+function resolveCropOffset(
+  anchor: CropHorizontal | CropVertical,
+  sourceSize: number,
+  cropSize: number,
+): number {
+  const maxOffset = sourceSize - cropSize;
+
+  if (anchor === "left" || anchor === "top") {
+    return 0;
+  }
+
+  if (anchor === "right" || anchor === "bottom") {
+    return maxOffset;
+  }
+
+  return Math.min(maxOffset, Math.max(0, Math.round(maxOffset / 2)));
+}
+
 export async function readImageFile(file: File): Promise<ReadImageResult> {
   const previewUrl = URL.createObjectURL(file);
 
@@ -267,7 +330,30 @@ export async function convertImageFile(
 
     context.imageSmoothingEnabled = true;
     context.imageSmoothingQuality = "high";
-    context.drawImage(image, 0, 0, input.width, input.height);
+
+    if (input.crop) {
+      const rect = computeCropSourceRect({
+        anchor: input.crop.anchor,
+        sourceHeight: image.naturalHeight,
+        sourceWidth: image.naturalWidth,
+        targetHeight: input.height,
+        targetWidth: input.width,
+      });
+
+      context.drawImage(
+        image,
+        rect.sx,
+        rect.sy,
+        rect.sWidth,
+        rect.sHeight,
+        0,
+        0,
+        input.width,
+        input.height,
+      );
+    } else {
+      context.drawImage(image, 0, 0, input.width, input.height);
+    }
 
     const blob = await canvasToBlob(
       canvas,

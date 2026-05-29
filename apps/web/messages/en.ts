@@ -211,20 +211,37 @@ export const enMessages: LocaleContent = {
         title: "Upload image",
       },
       settings: {
-        aspectLockDescription:
-          "When enabled, changing one side updates the other automatically.",
-        aspectLockTitle: "Lock original ratio",
+        cropAnchorAria: "{vertical} {horizontal}",
+        cropAnchorDescription:
+          "Choose which area of the image to keep; the overflow is cropped away.",
+        cropAnchorTitle: "Crop position",
+        cropHorizontal: {
+          center: "Center",
+          left: "Left",
+          right: "Right",
+        },
+        cropVertical: {
+          bottom: "Bottom",
+          middle: "Middle",
+          top: "Top",
+        },
         description:
           "Choose the output format first, then decide whether to change width and height. JPEG and WebP also support quality control.",
         download: "Download image",
         generate: "Generate result",
         height: "Height (px)",
         heightPlaceholder: "e.g. 800",
+        modeCrop: "Crop to fill",
+        modeLock: "Lock ratio",
+        modeStretch: "Free stretch",
         quality: "Output quality",
         qualityAria: "Output quality",
         qualityDescription:
           "Higher quality usually means a larger file. Starting around 82 is a practical default.",
         regenerate: "Regenerate result",
+        resizeModeDescription:
+          "Lock ratio keeps the image undistorted; free stretch changes width and height independently; crop to fill scales by the larger ratio and crops the excess.",
+        resizeModeTitle: "Resize mode",
         targetFormat: "Output format",
         title: "Conversion settings",
         width: "Width (px)",

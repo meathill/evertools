@@ -201,19 +201,36 @@ export const thMessages: LocaleContent = {
         title: "อัปโหลดรูปภาพ",
       },
       settings: {
-        aspectLockDescription: "เมื่อเปิดใช้งาน การเปลี่ยนด้านหนึ่งจะอัปเดตอีกด้านให้อัตโนมัติ",
-        aspectLockTitle: "ล็อกอัตราส่วนเดิม",
+        cropAnchorAria: "{vertical} {horizontal}",
+        cropAnchorDescription: "เลือกว่าจะเก็บพื้นที่ส่วนใดของภาพ ส่วนที่เกินจะถูกตัดออก",
+        cropAnchorTitle: "ตำแหน่งการครอป",
+        cropHorizontal: {
+          center: "กลาง",
+          left: "ซ้าย",
+          right: "ขวา",
+        },
+        cropVertical: {
+          bottom: "ล่าง",
+          middle: "กลาง",
+          top: "บน",
+        },
         description:
           "เลือกฟอร์แมตปลายทางก่อน แล้วค่อยตัดสินใจว่าจะเปลี่ยนขนาดหรือไม่ JPEG และ WebP ยังสามารถปรับคุณภาพได้",
         download: "ดาวน์โหลดรูปภาพ",
         generate: "สร้างผลลัพธ์",
         height: "ความสูง (px)",
         heightPlaceholder: "เช่น 800",
+        modeCrop: "ครอปให้เต็ม",
+        modeLock: "ล็อกอัตราส่วน",
+        modeStretch: "ยืดอิสระ",
         quality: "คุณภาพผลลัพธ์",
         qualityAria: "คุณภาพผลลัพธ์",
         qualityDescription:
           "คุณภาพสูงขึ้นมักทำให้ไฟล์ใหญ่ขึ้น เริ่มที่ประมาณ 82 มักเป็นค่าที่เหมาะสม",
         regenerate: "สร้างผลลัพธ์ใหม่",
+        resizeModeDescription:
+          "ล็อกอัตราส่วนทำให้ภาพไม่ผิดสัดส่วน ยืดอิสระเปลี่ยนความกว้างและความสูงแยกกัน ครอปให้เต็มจะย่อขยายตามอัตราส่วนที่ใหญ่กว่าแล้วตัดส่วนเกินออก",
+        resizeModeTitle: "โหมดปรับขนาด",
         targetFormat: "ฟอร์แมตปลายทาง",
         title: "การตั้งค่าการแปลง",
         width: "ความกว้าง (px)",

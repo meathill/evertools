@@ -201,19 +201,36 @@ export const zhMessages = {
         title: "上传原图",
       },
       settings: {
-        aspectLockDescription: "开启后修改一边尺寸，另一边会自动同步。",
-        aspectLockTitle: "锁定原始比例",
+        cropAnchorAria: "{vertical}{horizontal}",
+        cropAnchorDescription: "选择保留画面的哪个区域，多余部分会被裁掉。",
+        cropAnchorTitle: "裁切位置",
+        cropHorizontal: {
+          center: "中",
+          left: "左",
+          right: "右",
+        },
+        cropVertical: {
+          bottom: "下",
+          middle: "中",
+          top: "上",
+        },
         description:
           "先选目标格式，再决定是否改宽高。JPEG 与 WebP 可以额外设置压缩质量。",
         download: "下载图片",
         generate: "生成结果",
         height: "高度（px）",
         heightPlaceholder: "例如 800",
+        modeCrop: "裁切填充",
+        modeLock: "锁定比例",
+        modeStretch: "自由拉伸",
         quality: "输出质量",
         qualityAria: "输出质量",
         qualityDescription:
           "质量越高，文件通常越大。建议先从 82 左右开始尝试。",
         regenerate: "重新生成结果",
+        resizeModeDescription:
+          "锁定比例保持原图不变形；自由拉伸可独立改宽高；裁切填充按较大比例缩放后裁掉多余部分。",
+        resizeModeTitle: "缩放方式",
         targetFormat: "目标格式",
         title: "转换设置",
         width: "宽度（px）",

@@ -212,20 +212,37 @@ export const viMessages: LocaleContent = {
         title: "Tai anh len",
       },
       settings: {
-        aspectLockDescription:
-          "Khi bat, thay doi mot canh se tu dong cap nhat canh con lai.",
-        aspectLockTitle: "Khoa ti le goc",
+        cropAnchorAria: "{vertical} {horizontal}",
+        cropAnchorDescription:
+          "Chon vung anh muon giu lai; phan thua se bi cat bo.",
+        cropAnchorTitle: "Vi tri cat",
+        cropHorizontal: {
+          center: "Giua",
+          left: "Trai",
+          right: "Phai",
+        },
+        cropVertical: {
+          bottom: "Duoi",
+          middle: "Giua",
+          top: "Tren",
+        },
         description:
           "Chon dinh dang dau ra truoc, sau do quyet dinh co doi chieu rong va chieu cao hay khong. JPEG va WebP cung ho tro dieu chinh chat luong.",
         download: "Tai anh xuong",
         generate: "Tao ket qua",
         height: "Chieu cao (px)",
         heightPlaceholder: "vi du 800",
+        modeCrop: "Cat de lap day",
+        modeLock: "Khoa ti le",
+        modeStretch: "Keo giai tu do",
         quality: "Chat luong dau ra",
         qualityAria: "Chat luong dau ra",
         qualityDescription:
           "Chat luong cao hon thuong dong nghia tep lon hon. Bat dau quanh 82 la mot lua chon hop ly.",
         regenerate: "Tao lai ket qua",
+        resizeModeDescription:
+          "Khoa ti le giu anh khong bi meo; keo giai tu do doi chieu rong va chieu cao doc lap; cat de lap day phong theo ti le lon hon roi cat phan thua.",
+        resizeModeTitle: "Che do thay doi kich thuoc",
         targetFormat: "Dinh dang dau ra",
         title: "Thiet lap chuyen doi",
         width: "Chieu rong (px)",
