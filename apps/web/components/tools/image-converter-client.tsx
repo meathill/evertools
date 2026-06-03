@@ -427,8 +427,8 @@ export function ImageConverterClient({ content }: ImageConverterClientProps) {
   return (
     <div className="grid gap-6 lg:grid-cols-[minmax(0,1.1fr)_minmax(320px,380px)]">
       <div className="space-y-6">
-        <Card className="overflow-hidden">
-          <CardHeader className="border-b border-border/60 bg-muted/35">
+        <Card className="overflow-hidden border-2 border-ink shadow-press-ink">
+          <CardHeader className="border-b border-rule bg-paper-deep/50">
             <div className="flex flex-wrap items-center gap-2">
               <Badge variant="info">
                 <ShieldCheckIcon />
@@ -452,10 +452,10 @@ export function ImageConverterClient({ content }: ImageConverterClientProps) {
           <CardPanel>
             <div
               className={[
-                "rounded-2xl border border-dashed p-5 transition-colors sm:p-6",
+                "rounded-lg border-2 border-dashed p-5 transition-colors sm:p-6",
                 isDragging
-                  ? "border-primary bg-primary/6"
-                  : "border-border bg-gradient-to-br from-muted/40 via-background to-background",
+                  ? "border-yellow bg-fluff/60"
+                  : "border-rule-strong bg-paper-deep/25",
               ].join(" ")}
               onDragLeave={handleDragLeave}
               onDragOver={handleDragOver}
@@ -474,10 +474,10 @@ export function ImageConverterClient({ content }: ImageConverterClientProps) {
                 <div className="space-y-5">
                   <div className="flex flex-wrap items-center justify-between gap-3">
                     <div>
-                      <div className="font-medium text-sm text-foreground">
+                      <div className="font-medium text-sm text-ink">
                         {sourceImage.name}
                       </div>
-                      <div className="text-muted-foreground text-xs">
+                      <div className="text-mute text-xs">
                         {sourceImage.width} x {sourceImage.height} px ·{" "}
                         {formatBytes(sourceImage.size)}
                       </div>
@@ -534,18 +534,18 @@ export function ImageConverterClient({ content }: ImageConverterClientProps) {
                 </div>
               ) : (
                 <div className="flex min-h-72 flex-col items-center justify-center gap-4 text-center">
-                  <div className="flex size-14 items-center justify-center rounded-2xl bg-primary/10 text-primary">
+                  <div className="flex size-14 items-center justify-center rounded-lg bg-yellow text-ink shadow-press-yellow">
                     <ImageUpIcon className="size-6" />
                   </div>
                   <div className="space-y-2">
-                    <div className="font-heading font-semibold text-lg text-foreground">
+                    <div className="font-semibold text-lg text-ink">
                       {content.client.upload.emptyTitle}
                     </div>
-                    <p className="max-w-md text-muted-foreground text-sm leading-6">
+                    <p className="max-w-md text-mute text-sm leading-6">
                       {content.client.upload.emptyDescription}
                     </p>
                   </div>
-                  <Button onClick={handleBrowseClick}>
+                  <Button onClick={handleBrowseClick} variant="press">
                     <ImageUpIcon />
                     {content.client.upload.chooseImage}
                   </Button>
@@ -556,8 +556,8 @@ export function ImageConverterClient({ content }: ImageConverterClientProps) {
         </Card>
       </div>
 
-      <Card className="h-fit lg:sticky lg:top-24">
-        <CardHeader className="border-b border-border/60 bg-muted/35">
+      <Card className="h-fit border-2 border-ink shadow-press-ink lg:sticky lg:top-24">
+        <CardHeader className="border-b border-rule bg-paper-deep/50">
           <div className="flex items-center gap-2">
             <Badge variant="secondary">
               {content.client.badges.firstVersion}
@@ -586,7 +586,7 @@ export function ImageConverterClient({ content }: ImageConverterClientProps) {
                   <SelectItem key={item.value} value={item.value}>
                     <div className="flex flex-col gap-0.5">
                       <span>{content.formats[item.key].label}</span>
-                      <span className="text-muted-foreground text-xs">
+                      <span className="text-mute text-xs">
                         {content.formats[item.key].description}
                       </span>
                     </div>
@@ -602,12 +602,12 @@ export function ImageConverterClient({ content }: ImageConverterClientProps) {
           <Separator />
 
           <div className="space-y-4">
-            <div className="space-y-2 rounded-xl bg-muted/40 px-3 py-2.5">
+            <div className="space-y-2 rounded-md bg-paper-deep/40 px-3 py-2.5">
               <div>
-                <div className="font-medium text-sm text-foreground">
+                <div className="font-medium text-sm text-ink">
                   {content.client.settings.resizeModeTitle}
                 </div>
-                <div className="text-muted-foreground text-xs">
+                <div className="text-mute text-xs">
                   {content.client.settings.resizeModeDescription}
                 </div>
               </div>
@@ -658,10 +658,10 @@ export function ImageConverterClient({ content }: ImageConverterClientProps) {
             {resizeMode === "crop" ? (
               <div className="space-y-2">
                 <div>
-                  <div className="font-medium text-sm text-foreground">
+                  <div className="font-medium text-sm text-ink">
                     {content.client.settings.cropAnchorTitle}
                   </div>
-                  <div className="text-muted-foreground text-xs">
+                  <div className="text-mute text-xs">
                     {content.client.settings.cropAnchorDescription}
                   </div>
                 </div>
@@ -697,9 +697,7 @@ export function ImageConverterClient({ content }: ImageConverterClientProps) {
                           <span
                             className={[
                               "block size-2 rounded-full",
-                              isActive
-                                ? "bg-current"
-                                : "bg-muted-foreground/40",
+                              isActive ? "bg-current" : "bg-mute/40",
                             ].join(" ")}
                           />
                         </Button>
@@ -717,7 +715,7 @@ export function ImageConverterClient({ content }: ImageConverterClientProps) {
               <Field>
                 <div className="mb-1 flex items-center justify-between gap-3">
                   <FieldLabel>{content.client.settings.quality}</FieldLabel>
-                  <span className="font-medium text-sm text-foreground">
+                  <span className="font-medium text-sm text-ink">
                     {quality}
                   </span>
                 </div>
@@ -736,13 +734,17 @@ export function ImageConverterClient({ content }: ImageConverterClientProps) {
           ) : null}
 
           {errorMessage ? (
-            <div className="rounded-xl border border-destructive/20 bg-destructive/6 px-3 py-2.5 text-destructive-foreground text-sm">
+            <div className="rounded-md border border-danger/30 bg-danger-bg px-3 py-2.5 text-danger text-sm">
               {errorMessage}
             </div>
           ) : null}
 
           <div className="grid gap-3 sm:grid-cols-2">
-            <Button loading={isConverting} onClick={handleGenerateClick}>
+            <Button
+              loading={isConverting}
+              onClick={handleGenerateClick}
+              variant="press"
+            >
               <SparklesIcon />
               {resultImage
                 ? content.client.settings.regenerate
@@ -751,7 +753,7 @@ export function ImageConverterClient({ content }: ImageConverterClientProps) {
             <Button
               disabled={!resultImage}
               onClick={handleDownloadClick}
-              variant="outline"
+              variant="press-ink"
             >
               <DownloadIcon />
               {content.client.settings.download}
@@ -783,24 +785,24 @@ function PreviewCard({
   staleLabel,
 }: PreviewCardProps) {
   return (
-    <div className="overflow-hidden rounded-2xl border bg-background">
-      <div className="flex items-center justify-between gap-3 border-b border-border/60 px-4 py-3">
+    <div className="overflow-hidden rounded-lg border border-rule-strong bg-cream">
+      <div className="flex items-center justify-between gap-3 border-b border-rule/60 px-4 py-3">
         <div>
-          <div className="font-medium text-sm text-foreground">{label}</div>
-          <div className="text-muted-foreground text-xs">{meta}</div>
+          <div className="font-medium text-sm text-ink">{label}</div>
+          <div className="text-mute text-xs">{meta}</div>
         </div>
         {stale ? <Badge variant="warning">{staleLabel}</Badge> : null}
       </div>
-      <div className="flex min-h-64 items-center justify-center bg-muted/30 p-4">
+      <div className="flex min-h-64 items-center justify-center bg-paper-deep/30 p-4">
         {src ? (
           <img
             alt={altText}
-            className="max-h-80 w-full rounded-xl object-contain"
+            className="max-h-80 w-full rounded-md object-contain"
             src={src}
           />
         ) : (
-          <div className="flex flex-col items-center gap-3 text-center text-muted-foreground">
-            <div className="flex size-12 items-center justify-center rounded-2xl bg-muted">
+          <div className="flex flex-col items-center gap-3 text-center text-mute">
+            <div className="flex size-12 items-center justify-center rounded-lg bg-paper-deep">
               <SparklesIcon className="size-5" />
             </div>
             <p className="max-w-xs text-sm leading-6">{emptyDescription}</p>

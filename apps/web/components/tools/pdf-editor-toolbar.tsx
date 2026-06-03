@@ -80,13 +80,13 @@ export function PdfEditorToolbar({
   const fontInputId = useId();
 
   return (
-    <div className="sticky top-0 z-20 border-b border-border/60 bg-background/80 backdrop-blur-sm">
+    <div className="sticky top-0 z-20 border-b border-rule/60 bg-cream/80 backdrop-blur-sm">
       <div className="flex flex-wrap items-center gap-3 px-4 py-2">
         <div className="min-w-0 flex-1">
-          <div className="truncate font-medium text-sm text-foreground">
+          <div className="truncate font-medium text-sm text-ink">
             {fileName}
           </div>
-          <div className="text-muted-foreground text-xs">
+          <div className="text-mute text-xs">
             {formatFileSize(fileSize)} · {pagesCount}{" "}
             {content.client.upload.pageCountLabel.replace("{count}", "")}
           </div>
@@ -101,7 +101,7 @@ export function PdfEditorToolbar({
           >
             <ChevronLeftIcon />
           </Button>
-          <span className="text-sm text-muted-foreground">
+          <span className="text-sm text-mute">
             {currentPageIndex + 1} / {pagesCount}
           </span>
           <Button
@@ -122,7 +122,7 @@ export function PdfEditorToolbar({
           <Button onClick={onZoomOut} size="sm" variant="outline">
             <ZoomOutIcon />
           </Button>
-          <span className="text-sm text-muted-foreground">
+          <span className="text-sm text-mute">
             {Math.round(containerScale * 100)}%
           </span>
           <Button onClick={onZoomIn} size="sm" variant="outline">
@@ -143,9 +143,7 @@ export function PdfEditorToolbar({
           />
           {userFontName ? (
             <div className="flex items-center gap-2">
-              <span className="text-xs text-muted-foreground">
-                {userFontName}
-              </span>
+              <span className="text-xs text-mute">{userFontName}</span>
               <Button onClick={onRemoveUserFont} size="sm" variant="ghost">
                 <RefreshCcwIcon />
               </Button>
@@ -181,6 +179,7 @@ export function PdfEditorToolbar({
             loading={isExporting}
             onClick={onExport}
             size="sm"
+            variant="press"
           >
             <DownloadIcon />
             {hasEdits
@@ -203,19 +202,19 @@ export function PdfEditorToolbar({
       </div>
 
       {(statusMessage || errorMessage || exportErrorMessage) && (
-        <div className="border-t border-border/60 px-4 py-2">
+        <div className="border-t border-rule/60 px-4 py-2">
           {statusMessage && (
-            <div className="rounded-lg bg-emerald-500/10 px-3 py-2 text-emerald-700 text-xs">
+            <div className="rounded-lg bg-success-bg px-3 py-2 text-success text-xs">
               {statusMessage}
             </div>
           )}
           {errorMessage && (
-            <div className="rounded-lg border border-destructive/20 bg-destructive/6 px-3 py-2 text-destructive-foreground text-xs">
+            <div className="rounded-lg border border-danger/30 bg-danger-bg px-3 py-2 text-danger text-xs">
               {errorMessage}
             </div>
           )}
           {exportErrorMessage && (
-            <div className="rounded-lg border border-destructive/20 bg-destructive/6 px-3 py-2 text-destructive-foreground text-xs">
+            <div className="rounded-lg border border-danger/30 bg-danger-bg px-3 py-2 text-danger text-xs">
               <div>{exportErrorMessage}</div>
               {missingGlyphList && (
                 <div className="mt-1">

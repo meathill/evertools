@@ -39,7 +39,7 @@ export function PdfViewerCard({
 }: PdfViewerCardProps) {
   return (
     <div className="flex flex-col items-center">
-      <div className="w-full overflow-auto rounded-xl bg-muted/30 p-4">
+      <div className="w-full overflow-auto rounded-lg bg-paper-deep/30 p-4">
         {activePage ? (
           <PdfPageCanvas
             activeBlockKey={activeBlockKey}
@@ -52,7 +52,7 @@ export function PdfViewerCard({
           />
         ) : null}
       </div>
-      <p className="mt-3 text-center text-muted-foreground text-xs leading-5">
+      <p className="mt-3 text-center text-mute text-xs leading-5">
         {content.client.editor.clickToEditHint}
       </p>
     </div>

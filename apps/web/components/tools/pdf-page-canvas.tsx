@@ -44,7 +44,7 @@ export function PdfPageCanvas({
 
   return (
     <div
-      className="relative overflow-hidden rounded-xl border border-border bg-white shadow-sm"
+      className="relative overflow-hidden rounded-lg border border-rule-strong bg-white shadow-sm"
       style={wrapperStyle}
     >
       <div className="relative" style={innerStyle}>

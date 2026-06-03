@@ -368,7 +368,7 @@ export function PdfTextEditorClient({ content }: PdfTextEditorClientProps) {
           </div>
         ) : isScanned ? (
           <div className="p-6">
-            <Card>
+            <Card className="border-2 border-ink shadow-press-ink">
               <CardHeader>
                 <CardTitle>{content.client.scanned.title}</CardTitle>
                 <CardDescription>

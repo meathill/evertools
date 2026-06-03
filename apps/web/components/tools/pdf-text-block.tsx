@@ -87,10 +87,10 @@ export function PdfTextBlockView({
         "pointer-events-auto absolute origin-top-left cursor-text whitespace-pre rounded-sm px-[1px] outline-none",
         "transition-[background-color,box-shadow]",
         isActive
-          ? "bg-white text-foreground shadow-[0_0_0_2px_rgb(59_130_246/.6)]"
+          ? "bg-white text-ink shadow-[0_0_0_2px_rgb(230_195_74/.7)]"
           : isDirty
-            ? "bg-amber-100/80 hover:bg-amber-200/90"
-            : "bg-transparent text-transparent hover:bg-primary/15 hover:text-foreground/80",
+            ? "bg-warning-bg hover:bg-corgi/40"
+            : "bg-transparent text-transparent hover:bg-yellow/20 hover:text-ink/80",
       ].join(" ")}
       contentEditable={isActive}
       data-pdf-block-key={blockKey}

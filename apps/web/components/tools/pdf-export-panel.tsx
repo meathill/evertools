@@ -62,17 +62,17 @@ export function PdfExportPanel({
   const fontInputId = useId();
 
   return (
-    <Card className="h-fit lg:sticky lg:top-24">
-      <CardHeader className="border-b border-border/60 bg-muted/35">
+    <Card className="h-fit border-2 border-ink shadow-press-ink lg:sticky lg:top-24">
+      <CardHeader className="border-b border-rule/60 bg-paper-deep/35">
         <CardTitle>{content.client.export.title}</CardTitle>
         <CardDescription>{content.client.export.description}</CardDescription>
       </CardHeader>
       <CardPanel className="space-y-4">
-        <div className="rounded-xl bg-muted/40 px-3 py-3">
-          <div className="font-medium text-sm text-foreground">
+        <div className="rounded-md bg-paper-deep/40 px-3 py-3">
+          <div className="font-medium text-sm text-ink">
             {content.client.fonts.title}
           </div>
-          <p className="pt-1 text-muted-foreground text-xs leading-5">
+          <p className="pt-1 text-mute text-xs leading-5">
             {content.client.fonts.description}
           </p>
           <div className="pt-3 text-xs">
@@ -94,11 +94,9 @@ export function PdfExportPanel({
           {userFontName ? (
             <div className="flex items-center justify-between gap-3 text-xs">
               <div>
-                <div className="font-medium text-foreground">
-                  {userFontName}
-                </div>
+                <div className="font-medium text-ink">{userFontName}</div>
                 <div
-                  className="text-muted-foreground"
+                  className="text-mute"
                   style={{
                     fontFamily: `"${USER_FONT_CSS_FAMILY}", sans-serif`,
                   }}
@@ -121,25 +119,25 @@ export function PdfExportPanel({
               {content.client.fonts.uploadFontButton}
             </Button>
           )}
-          <p className="pt-2 text-muted-foreground text-xs leading-5">
+          <p className="pt-2 text-mute text-xs leading-5">
             {content.client.fonts.acceptedFontTypes}
           </p>
         </div>
 
         {statusMessage ? (
-          <div className="rounded-xl bg-emerald-500/10 px-3 py-2 text-emerald-700 text-xs">
+          <div className="rounded-md bg-success-bg px-3 py-2 text-success text-xs">
             {statusMessage}
           </div>
         ) : null}
 
         {errorMessage ? (
-          <div className="rounded-xl border border-destructive/20 bg-destructive/6 px-3 py-2.5 text-destructive-foreground text-sm">
+          <div className="rounded-md border border-danger/30 bg-danger-bg px-3 py-2.5 text-danger text-sm">
             {errorMessage}
           </div>
         ) : null}
 
         {exportErrorMessage ? (
-          <div className="rounded-xl border border-destructive/20 bg-destructive/6 px-3 py-2.5 text-destructive-foreground text-sm">
+          <div className="rounded-md border border-danger/30 bg-danger-bg px-3 py-2.5 text-danger text-sm">
             <div>{exportErrorMessage}</div>
             {missingGlyphList ? (
               <div className="pt-1 text-xs">
@@ -153,7 +151,7 @@ export function PdfExportPanel({
         ) : null}
 
         {isExporting ? (
-          <div className="rounded-xl bg-muted/40 px-3 py-2 text-xs">
+          <div className="rounded-md bg-paper-deep/40 px-3 py-2 text-xs">
             {content.client.export.exporting} {Math.round(exportProgress * 100)}
             %
           </div>
@@ -165,13 +163,14 @@ export function PdfExportPanel({
           }
           loading={isExporting}
           onClick={onExport}
+          variant="press"
         >
           <DownloadIcon />
           {hasEdits
             ? content.client.export.buttonEdited
             : content.client.export.button}
         </Button>
-        <p className="text-muted-foreground text-xs leading-5">
+        <p className="text-mute text-xs leading-5">
           {hasEdits
             ? content.client.export.editedHint.replace(
                 "{count}",
@@ -192,27 +191,19 @@ type CjkStatusLabelProps = {
 
 function CjkStatusLabel({ content, progress, status }: CjkStatusLabelProps) {
   if (status === "idle") {
-    return (
-      <span className="text-muted-foreground">
-        {content.client.fonts.cjkIdle}
-      </span>
-    );
+    return <span className="text-mute">{content.client.fonts.cjkIdle}</span>;
   }
   if (status === "loading") {
     return (
-      <span className="text-foreground">
+      <span className="text-ink">
         {content.client.fonts.cjkLoading} {Math.round(progress * 100)}%
       </span>
     );
   }
   if (status === "ready") {
     return (
-      <span className="text-emerald-700">{content.client.fonts.cjkReady}</span>
+      <span className="text-success">{content.client.fonts.cjkReady}</span>
     );
   }
-  return (
-    <span className="text-destructive-foreground">
-      {content.client.fonts.cjkFailed}
-    </span>
-  );
+  return <span className="text-danger">{content.client.fonts.cjkFailed}</span>;
 }

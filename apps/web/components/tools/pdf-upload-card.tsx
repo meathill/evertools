@@ -53,8 +53,8 @@ export function PdfUploadCard({
   const inputId = useId();
 
   return (
-    <Card className="overflow-hidden">
-      <CardHeader className="border-b border-border/60 bg-muted/35">
+    <Card className="overflow-hidden border-2 border-ink shadow-press-ink">
+      <CardHeader className="border-b border-rule/60 bg-paper-deep/35">
         <div className="flex flex-wrap items-center gap-2">
           <Badge variant="info">
             <ShieldCheckIcon />
@@ -78,10 +78,10 @@ export function PdfUploadCard({
       <CardPanel>
         <div
           className={[
-            "rounded-2xl border border-dashed p-5 transition-colors sm:p-6",
+            "rounded-lg border-2 border-dashed p-5 transition-colors sm:p-6",
             isDragging
-              ? "border-primary bg-primary/6"
-              : "border-border bg-gradient-to-br from-muted/40 via-background to-background",
+              ? "border-yellow bg-fluff/60"
+              : "border-rule-strong bg-paper-deep/25",
           ].join(" ")}
           onDragLeave={onDragLeave}
           onDragOver={onDragOver}
@@ -98,10 +98,8 @@ export function PdfUploadCard({
           {fileName ? (
             <div className="flex flex-wrap items-center justify-between gap-3">
               <div>
-                <div className="font-medium text-sm text-foreground">
-                  {fileName}
-                </div>
-                <div className="text-muted-foreground text-xs">
+                <div className="font-medium text-sm text-ink">{fileName}</div>
+                <div className="text-mute text-xs">
                   {formatBytes(fileSize)} ·{" "}
                   {content.client.upload.pageCountLabel.replace(
                     "{count}",
@@ -125,25 +123,26 @@ export function PdfUploadCard({
             </div>
           ) : (
             <div className="flex min-h-64 flex-col items-center justify-center gap-4 text-center">
-              <div className="flex size-14 items-center justify-center rounded-2xl bg-primary/10 text-primary">
+              <div className="flex size-14 items-center justify-center rounded-lg bg-yellow text-ink shadow-press-yellow">
                 <FileTextIcon className="size-6" />
               </div>
               <div className="space-y-2">
-                <div className="font-heading font-semibold text-lg text-foreground">
+                <div className="font-semibold text-lg text-ink">
                   {content.client.upload.emptyTitle}
                 </div>
-                <p className="max-w-md text-muted-foreground text-sm leading-6">
+                <p className="max-w-md text-mute text-sm leading-6">
                   {content.client.upload.emptyDescription}
                 </p>
               </div>
               <Button
                 loading={isLoading}
                 onClick={() => inputRef.current?.click()}
+                variant="press"
               >
                 <UploadIcon />
                 {content.client.upload.choosePdf}
               </Button>
-              <p className="text-muted-foreground text-xs">
+              <p className="text-mute text-xs">
                 {content.client.upload.maxSizeHint.replace(
                   "{size}",
                   formatBytes(MAX_PDF_FILE_SIZE),
