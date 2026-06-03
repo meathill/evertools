@@ -94,7 +94,7 @@ export default async function HomePage({
             </div>
 
             <div className="space-y-4">
-              <h1 className="max-w-3xl font-display font-bold text-4xl tracking-tight text-ink leading-tight sm:text-5xl">
+              <h1 className="h-hero max-w-3xl text-balance text-ink">
                 {content.home.hero.title}
               </h1>
               <p className="max-w-2xl text-base text-ink-soft leading-relaxed sm:text-lg">
@@ -103,11 +103,25 @@ export default async function HomePage({
             </div>
 
             <div className="flex flex-wrap gap-3">
-              <Button render={<a href="#tools" />} size="lg" variant="press">
+              <Button
+                className="glow-yellow"
+                render={<a href="#tools" />}
+                size="lg"
+                variant="press"
+              >
                 {content.home.hero.secondaryCta}
                 <ArrowRightIcon />
               </Button>
             </div>
+
+            <img
+              alt=""
+              aria-hidden="true"
+              className="wiggle hidden size-28 origin-bottom select-none lg:mt-4 lg:block dark:lg:hidden"
+              height={112}
+              src="/mui-mark.png"
+              width={112}
+            />
           </div>
 
           <Card className="overflow-hidden border-2 border-ink shadow-press-ink">

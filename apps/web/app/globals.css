@@ -638,6 +638,12 @@ a:hover {
   box-shadow: 0 1px 0 0 var(--color-ink-line);
 }
 
+.glow-yellow {
+  filter: drop-shadow(
+    0 0 18px color-mix(in srgb, var(--color-yellow) 45%, transparent)
+  );
+}
+
 .bg-grid {
   background-image: radial-gradient(
     circle,
