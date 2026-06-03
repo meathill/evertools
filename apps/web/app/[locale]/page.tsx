@@ -195,7 +195,7 @@ export default async function HomePage({
           <Card className="overflow-hidden border-2 border-ink shadow-press-ink transition-transform hover:-translate-y-0.5">
             <CardHeader className="border-b border-rule bg-paper-deep/50">
               <div className="flex items-center gap-3">
-                <div className="flex size-10 items-center justify-center rounded-md bg-info text-ink shadow-press-info">
+                <div className="flex size-10 items-center justify-center rounded-md bg-info text-cream shadow-press-ink">
                   <FileTextIcon className="size-5" />
                 </div>
                 <div>
@@ -213,7 +213,7 @@ export default async function HomePage({
               <ul className="space-y-2 text-sm text-ink-soft">
                 {tools[1].features.slice(0, 2).map((feature) => (
                   <li className="flex gap-2" key={feature}>
-                    <span className="mt-1 size-1.5 shrink-0 rounded-full bg-info-deep" />
+                    <span className="mt-1 size-1.5 shrink-0 rounded-full bg-info" />
                     <span>{feature}</span>
                   </li>
                 ))}

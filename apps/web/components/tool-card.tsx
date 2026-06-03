@@ -27,7 +27,7 @@ export function ToolCard({ content, locale, tool }: ToolCardProps) {
       <CardHeader className="gap-3 border-b border-rule bg-paper-deep/40">
         <div className="flex items-center justify-between gap-3">
           <Badge variant="outline">{tool.category}</Badge>
-          <span className="text-mono text-xs text-mute">
+          <span className="font-mono text-xs text-mute">
             {content.firstBatch}
           </span>
         </div>
@@ -54,7 +54,7 @@ export function ToolCard({ content, locale, tool }: ToolCardProps) {
       </CardPanel>
 
       <CardFooter className="justify-between border-t border-rule bg-fluff/40">
-        <span className="text-mono text-xs text-mute">
+        <span className="font-mono text-xs text-mute">
           {content.footerHint}
         </span>
         <Button
