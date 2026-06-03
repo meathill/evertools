@@ -7,6 +7,7 @@
   --color-foreground: var(--foreground);
   --font-sans: var(--font-sans);
   --font-mono: var(--font-mono);
+  --font-display: var(--font-display);
   --animate-skeleton: skeleton 2s -1s infinite linear;
   --animate-caret-blink: 1s ease-out infinite caret-blink;
   --animate-toast-success-odd: toast-success-odd 0.32s
@@ -16,7 +17,6 @@
   --animate-toast-error-odd: toast-error-odd 0.28s cubic-bezier(0.5, 1, 0.89, 1);
   --animate-toast-error-even: toast-error-even 0.28s
     cubic-bezier(0.5, 1, 0.89, 1);
-  --font-heading: var(--font-heading);
   --color-sidebar-ring: var(--sidebar-ring);
   --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
   --color-sidebar-primary: var(--sidebar-primary);
@@ -56,6 +56,33 @@
   --color-info-foreground: var(--info-foreground);
   --color-info: var(--info);
   --color-destructive-foreground: var(--destructive-foreground);
+
+  /* 品牌 token —— 注册成 Tailwind utility（沿用上面 --font-sans 的 inline 自引用写法；
+     dark 模式仍由 .dark{} 覆盖同名 CSS 变量实现，所以这里不能内联具体值） */
+  --color-cream: var(--color-cream);
+  --color-paper: var(--color-paper);
+  --color-paper-deep: var(--color-paper-deep);
+  --color-fluff: var(--color-fluff);
+  --color-corgi: var(--color-corgi);
+  --color-yellow: var(--color-yellow);
+  --color-yellow-warm: var(--color-yellow-warm);
+  --color-yellow-deep: var(--color-yellow-deep);
+  --color-tongue: var(--color-tongue);
+  --color-ink: var(--color-ink);
+  --color-ink-soft: var(--color-ink-soft);
+  --color-mute: var(--color-mute);
+  --color-rule: var(--color-rule);
+  --color-rule-strong: var(--color-rule-strong);
+  --color-ink-line: var(--color-ink-line);
+  --color-danger: var(--color-danger);
+  --color-success-bg: var(--color-success-bg);
+  --color-warning-bg: var(--color-warning-bg);
+  --color-danger-bg: var(--color-danger-bg);
+  --color-info-bg: var(--color-info-bg);
+  --shadow-press-yellow: var(--shadow-press-yellow);
+  --shadow-press-ink: var(--shadow-press-ink);
+  --shadow-press-yellow-lg: var(--shadow-press-yellow-lg);
+  --shadow-press-ink-lg: var(--shadow-press-ink-lg);
   --radius-sm: var(--radius-sm);
   --radius-md: var(--radius-md);
   --radius-lg: var(--radius-lg);
@@ -461,7 +488,8 @@ h4,
 h5,
 h6 {
   color: var(--color-ink);
-  font-family: var(--font-sans);
+  /* 默认继承 body 的 Nunito（应用/工具内标题用无衬线）；
+     营销/编辑型标题通过 .font-display / .h-hero 显式切到 Fraunces */
   font-weight: 800;
   letter-spacing: var(--tracking-tight);
   line-height: var(--leading-tight);

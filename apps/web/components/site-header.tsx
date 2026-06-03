@@ -68,7 +68,7 @@ export function SiteHeader({ content, locale }: SiteHeaderProps) {
   }
 
   return (
-    <header className="sticky top-0 z-40 border-b border-rule bg-cream/88 backdrop-blur dark:bg-ink/88">
+    <header className="sticky top-0 z-40 border-b border-rule bg-cream/88 backdrop-blur">
       <div className="mx-auto flex max-w-6xl items-center justify-between gap-4 px-4 py-3 sm:px-6">
         <Link
           className="flex min-w-0 items-center gap-3"
@@ -83,7 +83,7 @@ export function SiteHeader({ content, locale }: SiteHeaderProps) {
             width={40}
           />
           <div className="min-w-0">
-            <div className="truncate font-display font-bold text-base text-ink dark:text-cream">
+            <div className="truncate font-display font-bold text-base text-ink">
               Meathill Tools
             </div>
             <div className="flex items-center gap-2 text-mute text-xs">
@@ -99,7 +99,7 @@ export function SiteHeader({ content, locale }: SiteHeaderProps) {
           <nav className="flex items-center gap-1 overflow-x-auto">
             {navItems.map((item) => (
               <Link
-                className="whitespace-nowrap rounded-sm px-2 py-1 text-ink-soft transition-colors hover:bg-fluff hover:text-ink dark:text-cream dark:hover:bg-paper-deep"
+                className="whitespace-nowrap rounded-sm px-2 py-1 text-ink-soft transition-colors hover:bg-fluff hover:text-ink"
                 href={item.href}
                 key={item.href}
                 locale={locale}
@@ -108,7 +108,7 @@ export function SiteHeader({ content, locale }: SiteHeaderProps) {
               </Link>
             ))}
             <a
-              className="flex items-center gap-1 whitespace-nowrap rounded-sm px-2 py-1 text-ink-soft transition-colors hover:bg-fluff hover:text-ink dark:text-cream dark:hover:bg-paper-deep"
+              className="flex items-center gap-1 whitespace-nowrap rounded-sm px-2 py-1 text-ink-soft transition-colors hover:bg-fluff hover:text-ink"
               href="https://meathill.com"
               rel="noopener noreferrer"
               target="_blank"
@@ -121,7 +121,7 @@ export function SiteHeader({ content, locale }: SiteHeaderProps) {
           <div className="flex items-center gap-2">
             <Select onValueChange={handleLocaleChange} value={locale}>
               <SelectTrigger
-                className="h-8 min-w-[120px] gap-1.5 border-rule-strong bg-cream text-mono text-xs text-mute dark:border-paper-deep dark:bg-paper dark:text-cream"
+                className="h-8 min-w-[120px] gap-1.5 border-rule-strong bg-paper font-mono text-xs text-mute"
                 size="sm"
               >
                 <GlobeIcon className="size-3.5" />
@@ -145,7 +145,7 @@ export function SiteHeader({ content, locale }: SiteHeaderProps) {
               onValueChange={handleThemeChange}
             >
               <SelectTrigger
-                className="h-8 min-w-[100px] gap-1.5 border-rule-strong bg-cream text-mono text-xs text-mute dark:border-paper-deep dark:bg-paper dark:text-cream"
+                className="h-8 min-w-[100px] gap-1.5 border-rule-strong bg-paper font-mono text-xs text-mute"
                 size="sm"
               >
                 <SunIcon className="size-3.5 dark:hidden" />
