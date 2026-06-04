@@ -5,10 +5,13 @@ import {
   clampQuality,
   computeCropSourceRect,
   formatBytes,
+  getCurrentTargetDimensions,
   getDefaultOutputFormat,
+  getImageConverterErrorMessage,
   getSyncedDimensionValue,
   resolveTargetDimensions,
 } from "@/lib/image-converter";
+import { getLocaleContent } from "@/messages";
 
 describe("image converter helpers", () => {
   it("resolves locked dimensions from width", () => {
@@ -166,5 +169,96 @@ describe("computeCropSourceRect", () => {
     });
 
     expect(rect).toEqual({ sHeight: 800, sWidth: 1600, sx: 0, sy: 0 });
+  });
+});
+
+describe("getCurrentTargetDimensions", () => {
+  it("returns null when the source size is unknown", () => {
+    expect(
+      getCurrentTargetDimensions({
+        heightInput: "100",
+        isAspectLocked: true,
+        widthInput: "100",
+      }),
+    ).toBeNull();
+  });
+
+  it("resolves dimensions when the source size is known", () => {
+    expect(
+      getCurrentTargetDimensions({
+        heightInput: "",
+        isAspectLocked: true,
+        originalHeight: 800,
+        originalWidth: 1600,
+        widthInput: "400",
+      }),
+    ).toEqual({ height: 200, width: 400 });
+  });
+
+  it("returns null instead of throwing on invalid input", () => {
+    expect(
+      getCurrentTargetDimensions({
+        heightInput: "abc",
+        isAspectLocked: false,
+        originalHeight: 800,
+        originalWidth: 1600,
+        widthInput: "xyz",
+      }),
+    ).toBeNull();
+  });
+});
+
+describe("getImageConverterErrorMessage", () => {
+  const content = getLocaleContent("zh").imageConverter;
+  const acceptedFormats = "PNG, JPEG";
+  const fallback = "Unsupported file. Use {formats}.";
+
+  it("maps known error codes to localized messages", () => {
+    expect(
+      getImageConverterErrorMessage(
+        new Error(IMAGE_CONVERTER_ERROR_CODES.BLOB_FAILED),
+        content,
+        acceptedFormats,
+        fallback,
+      ),
+    ).toBe(content.client.errors.blobFailed);
+    expect(
+      getImageConverterErrorMessage(
+        new Error(IMAGE_CONVERTER_ERROR_CODES.INVALID_DIMENSIONS),
+        content,
+        acceptedFormats,
+        fallback,
+      ),
+    ).toBe(content.client.errors.invalidDimensions);
+  });
+
+  it("interpolates the offending format for unsupported output", () => {
+    expect(
+      getImageConverterErrorMessage(
+        new Error(`${IMAGE_CONVERTER_ERROR_CODES.UNSUPPORTED_OUTPUT}::avif`),
+        content,
+        acceptedFormats,
+        fallback,
+      ),
+    ).toBe(content.client.errors.unsupportedOutput.replace("{format}", "avif"));
+  });
+
+  it("falls back with the accepted formats for unknown errors", () => {
+    expect(
+      getImageConverterErrorMessage(
+        new Error("something else"),
+        content,
+        acceptedFormats,
+        fallback,
+      ),
+    ).toBe("Unsupported file. Use PNG, JPEG.");
+    expect(
+      getImageConverterErrorMessage(
+        "not an error",
+        content,
+        acceptedFormats,
+        fallback,
+      ),
+    ).toBe("Unsupported file. Use PNG, JPEG.");
   });
 });

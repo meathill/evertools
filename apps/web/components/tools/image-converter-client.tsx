@@ -8,6 +8,7 @@ import {
   ShieldCheckIcon,
   SparklesIcon,
 } from "lucide-react";
+import { PreviewCard } from "@/components/tools/image-converter-preview-card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import {
@@ -32,16 +33,16 @@ import {
   ACCEPTED_IMAGE_TYPES,
   CROP_HORIZONTALS,
   CROP_VERTICALS,
-  IMAGE_CONVERTER_ERROR_CODES,
   OUTPUT_FORMATS,
   RESIZE_MODES,
   buildOutputFilename,
   convertImageFile,
   formatBytes,
+  getCurrentTargetDimensions,
+  getImageConverterErrorMessage,
   getOutputFormatKey,
   getSyncedDimensionValue,
   isAcceptedImageType,
-  parseImageConverterError,
   readImageFile,
   resolveTargetDimensions,
   supportsQuality,
@@ -187,7 +188,7 @@ export function ImageConverterClient({ content }: ImageConverterClientProps) {
       setErrorMessage(null);
     } catch (error) {
       setErrorMessage(
-        getErrorMessage(
+        getImageConverterErrorMessage(
           error,
           content,
           acceptedFormatsText,
@@ -372,7 +373,7 @@ export function ImageConverterClient({ content }: ImageConverterClientProps) {
       );
     } catch (error) {
       setErrorMessage(
-        getErrorMessage(
+        getImageConverterErrorMessage(
           error,
           content,
           acceptedFormatsText,
@@ -765,109 +766,10 @@ export function ImageConverterClient({ content }: ImageConverterClientProps) {
   );
 }
 
-type PreviewCardProps = {
-  altText: string;
-  emptyDescription: string;
-  label: string;
-  meta: string;
-  src?: string;
-  stale?: boolean;
-  staleLabel: string;
-};
-
-function PreviewCard({
-  altText,
-  emptyDescription,
-  label,
-  meta,
-  src,
-  stale = false,
-  staleLabel,
-}: PreviewCardProps) {
-  return (
-    <div className="overflow-hidden rounded-lg border border-rule-strong bg-cream">
-      <div className="flex items-center justify-between gap-3 border-b border-rule/60 px-4 py-3">
-        <div>
-          <div className="font-medium text-sm text-ink">{label}</div>
-          <div className="text-mute text-xs">{meta}</div>
-        </div>
-        {stale ? <Badge variant="warning">{staleLabel}</Badge> : null}
-      </div>
-      <div className="flex min-h-64 items-center justify-center bg-paper-deep/30 p-4">
-        {src ? (
-          <img
-            alt={altText}
-            className="max-h-80 w-full rounded-md object-contain"
-            src={src}
-          />
-        ) : (
-          <div className="flex flex-col items-center gap-3 text-center text-mute">
-            <div className="flex size-12 items-center justify-center rounded-lg bg-paper-deep">
-              <SparklesIcon className="size-5" />
-            </div>
-            <p className="max-w-xs text-sm leading-6">{emptyDescription}</p>
-          </div>
-        )}
-      </div>
-    </div>
-  );
-}
-
-function getCurrentTargetDimensions(input: {
-  heightInput: string;
-  isAspectLocked: boolean;
-  originalHeight?: number;
-  originalWidth?: number;
-  widthInput: string;
-}) {
-  if (!input.originalHeight || !input.originalWidth) {
-    return null;
-  }
-
-  try {
-    return resolveTargetDimensions({
-      heightInput: input.heightInput,
-      isAspectLocked: input.isAspectLocked,
-      originalHeight: input.originalHeight,
-      originalWidth: input.originalWidth,
-      widthInput: input.widthInput,
-    });
-  } catch {
-    return null;
-  }
-}
-
 function cleanupUrl(url: string | null) {
   if (!url) {
     return;
   }
 
   URL.revokeObjectURL(url);
-}
-
-function getErrorMessage(
-  error: unknown,
-  content: LocaleContent["imageConverter"],
-  acceptedFormatsText: string,
-  fallbackMessage: string,
-): string {
-  const parsed = parseImageConverterError(error);
-
-  switch (parsed.code) {
-    case IMAGE_CONVERTER_ERROR_CODES.BLOB_FAILED:
-      return content.client.errors.blobFailed;
-    case IMAGE_CONVERTER_ERROR_CODES.CANVAS_UNSUPPORTED:
-      return content.client.errors.canvasUnsupported;
-    case IMAGE_CONVERTER_ERROR_CODES.IMAGE_READ_FAILED:
-      return content.client.errors.imageBroken;
-    case IMAGE_CONVERTER_ERROR_CODES.INVALID_DIMENSIONS:
-      return content.client.errors.invalidDimensions;
-    case IMAGE_CONVERTER_ERROR_CODES.UNSUPPORTED_OUTPUT:
-      return content.client.errors.unsupportedOutput.replace(
-        "{format}",
-        parsed.detail ?? "",
-      );
-    default:
-      return fallbackMessage.replace("{formats}", acceptedFormatsText);
-  }
 }

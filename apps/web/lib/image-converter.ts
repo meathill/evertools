@@ -1,3 +1,5 @@
+import type { LocaleContent } from "@/messages/types";
+
 export const DEFAULT_QUALITY = 82;
 
 export const IMAGE_CONVERTER_ERROR_CODES = {
@@ -154,6 +156,57 @@ export function parseImageConverterError(error: unknown): {
     code: code as ImageConverterErrorCode,
     detail,
   };
+}
+
+export function getCurrentTargetDimensions(input: {
+  heightInput: string;
+  isAspectLocked: boolean;
+  originalHeight?: number;
+  originalWidth?: number;
+  widthInput: string;
+}): { height: number; width: number } | null {
+  if (!input.originalHeight || !input.originalWidth) {
+    return null;
+  }
+
+  try {
+    return resolveTargetDimensions({
+      heightInput: input.heightInput,
+      isAspectLocked: input.isAspectLocked,
+      originalHeight: input.originalHeight,
+      originalWidth: input.originalWidth,
+      widthInput: input.widthInput,
+    });
+  } catch {
+    return null;
+  }
+}
+
+export function getImageConverterErrorMessage(
+  error: unknown,
+  content: LocaleContent["imageConverter"],
+  acceptedFormatsText: string,
+  fallbackMessage: string,
+): string {
+  const parsed = parseImageConverterError(error);
+
+  switch (parsed.code) {
+    case IMAGE_CONVERTER_ERROR_CODES.BLOB_FAILED:
+      return content.client.errors.blobFailed;
+    case IMAGE_CONVERTER_ERROR_CODES.CANVAS_UNSUPPORTED:
+      return content.client.errors.canvasUnsupported;
+    case IMAGE_CONVERTER_ERROR_CODES.IMAGE_READ_FAILED:
+      return content.client.errors.imageBroken;
+    case IMAGE_CONVERTER_ERROR_CODES.INVALID_DIMENSIONS:
+      return content.client.errors.invalidDimensions;
+    case IMAGE_CONVERTER_ERROR_CODES.UNSUPPORTED_OUTPUT:
+      return content.client.errors.unsupportedOutput.replace(
+        "{format}",
+        parsed.detail ?? "",
+      );
+    default:
+      return fallbackMessage.replace("{formats}", acceptedFormatsText);
+  }
 }
 
 export function buildOutputFilename(

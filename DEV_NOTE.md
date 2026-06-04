@@ -41,3 +41,24 @@ Tailwind v4 **只为 `@theme` 块里声明的 token 生成 utility**。仅写在
 
 吉祥物素材是白底，明色背景下融合、暗色下会出现刺眼白块。大尺寸装饰用它时按主题处理
 （首页 hero 的吉祥物用 `dark:lg:hidden` 暗色下隐藏）。
+
+## 新增一个工具的标准步骤
+
+工具页的样板（metadata、结构化数据、hero/内容卡布局）已抽成共享件，新增工具按约定走即可：
+
+1. **注册工具**：在 `lib/content.ts` 新增 `getXxxTool(content)`，填好
+   `applicationCategory` / `totalTime` / `stepsTitle` 等字段，并加进 `getTools()`。
+2. **建页面**：`app/[locale]/tools/<slug>/page.tsx` 里，`generateMetadata` 一行委托给
+   `generateToolPageMetadata`（`lib/tool-page.ts`），页面体调 `buildToolStructuredData`
+   并渲染 `ToolPageLayout`（`components/tool-page/`），把工具的客户端组件作为 children 传入。
+   页面只需提供三处差异：第三个 badge、scenarios 的图标+文案行、infoCard（privacy 或 limits）。
+3. **分层**：客户端交互组件放 `components/tools/`，纯逻辑（解析/格式化/错误映射）放 `lib/` 便于单测。
+4. **补全 7 国文案**：`messages/*.ts` 为 `zh/en/ja/th/vi/es/pt` 全部补齐；类型以 `zh.ts` 为准
+   （`LocaleContent = DeepWiden<typeof zhMessages>`），漏翻会直接类型报错。
+5. **锁 SEO 输出**：结构化数据/metadata 统一由 `lib/tool-page.ts` 产出，改动后跑
+   `lib/tool-page.test.ts`，它锁定了四个 schema.org 块的键序与字段（即 `JSON.stringify` 的字节序）。
+
+## pdfjs-dist 锁定 4.10.38
+
+更高版本的 `getTextContent` 会崩溃，故锁在 4.10.38。升级前务必先跑通 PDF 文本编辑器的解析路径。
+worker 文件由 `pnpm copy:pdf-worker` 拷到 `public/pdf/`，`dev` / `build` 脚本已自动带上，别手动改。
