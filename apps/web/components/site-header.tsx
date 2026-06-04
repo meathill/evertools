@@ -72,8 +72,7 @@ export function SiteHeader({ content, locale }: SiteHeaderProps) {
       <div className="mx-auto flex max-w-6xl items-center justify-between gap-4 px-4 py-3 sm:px-6">
         <Link
           className="flex min-w-0 items-center gap-3"
-          href="/"
-          locale={locale}
+          href={getLocalizedPathname(locale, "/")}
         >
           <img
             alt="Meathill Tools"
@@ -100,9 +99,8 @@ export function SiteHeader({ content, locale }: SiteHeaderProps) {
             {navItems.map((item) => (
               <Link
                 className="whitespace-nowrap rounded-sm px-2 py-1 text-ink-soft transition-colors hover:bg-fluff hover:text-ink"
-                href={item.href}
+                href={getLocalizedPathname(locale, item.href)}
                 key={item.href}
-                locale={locale}
               >
                 {content.nav[item.key]}
               </Link>
