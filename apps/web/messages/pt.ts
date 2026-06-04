@@ -482,4 +482,135 @@ export const ptMessages: LocaleContent = {
       },
     },
   },
+  jsonViewer: {
+    metadata: {
+      description:
+        "Cole JSON online e formate como uma arvore recolhivel com cores por tipo. Pesquise e filtre, e expanda strings JSON aninhadas. Tudo roda localmente no seu navegador — otimo para inspecionar requisicoes e respostas HTTP.",
+      keywords: [
+        "formatar JSON",
+        "visualizador JSON",
+        "json viewer",
+        "json formatter",
+        "arvore json",
+        "ferramenta json online",
+      ],
+      title: "Formatador e visualizador de arvore JSON",
+    },
+    hero: {
+      badges: {
+        category: "Ferramentas para desenvolvedores",
+        localProcessing: "Roda no seu navegador",
+        nested: "Suporte a JSON aninhado",
+      },
+      description:
+        "Cole JSON e formate na hora como uma arvore expansivel e recolhivel. Cores por tipo, pesquisa e filtro, e analise de strings JSON aninhadas — feito para inspecionar requisicoes e respostas HTTP, com dados que nunca saem do seu navegador.",
+      title: "Formatador e visualizador de arvore JSON",
+    },
+    scenarios: {
+      description:
+        "Ideal para ver e depurar JSON rapidamente, nao para editar dados em grande escala.",
+      local:
+        "Voce se importa com privacidade e nao quer colar dados de API em um site de terceiros.",
+      nested:
+        "Ha uma string JSON com escape aninhada dentro de um corpo HTTP e voce quer expandi-la.",
+      search:
+        "Voce trabalha com uma resposta grande e quer pesquisar um campo ou valor e ir ate ele.",
+      title: "Util quando voce precisa",
+    },
+    tool: {
+      category: "Ferramentas para desenvolvedores",
+      description:
+        "Cole JSON online e formate como uma arvore recolhivel com cores por tipo. Pesquise e filtre, e expanda strings JSON aninhadas. Tudo roda localmente no seu navegador — otimo para inspecionar requisicoes e respostas HTTP.",
+      faq: [
+        {
+          answer:
+            "Nao. A analise, a formatacao e a pesquisa acontecem localmente no seu navegador; seus dados nunca sao enviados a um servidor.",
+          question: "Meu JSON e enviado para um servidor?",
+        },
+        {
+          answer:
+            "Ele mostra por que a analise falhou e indica a linha e a coluna exatas para voce corrigir rapidamente.",
+          question: "O que acontece se meu JSON for invalido?",
+        },
+        {
+          answer:
+            "Respostas HTTP costumam guardar um trecho de JSON como string dentro de um campo. Quando essa string e detectada, voce pode clicar em um botao para expandi-la em uma subarvore.",
+          question: "O que significa “analisar strings JSON aninhadas”?",
+        },
+      ],
+      features: [
+        "Formata ao colar e mostra uma arvore expansivel e recolhivel",
+        "Colore os valores por tipo: string / number / boolean / null",
+        "Pesquisa chaves e valores, destaca correspondencias e expande automaticamente, com modo somente correspondencias",
+        "Expande ou recolhe todos os nos de uma vez e copia o JSON formatado",
+        "Detecta e expande strings JSON aninhadas dentro dos campos",
+      ],
+      keywords: [
+        "formatar JSON",
+        "visualizador JSON",
+        "json viewer",
+        "json formatter",
+        "arvore json",
+        "ferramenta json online",
+      ],
+      name: "Formatador e visualizador de arvore JSON",
+      steps: [
+        "Cole ou digite JSON na caixa a esquerda.",
+        "A direita, ele e formatado na hora como uma arvore recolhivel e colorida por tipo.",
+        "Use a caixa de pesquisa para localizar um campo ou valor e ative “Somente correspondencias” se precisar.",
+        "Para strings JSON aninhadas, clique no botao do no para expandi-las; copie o resultado formatado quando precisar.",
+      ],
+      summary:
+        "Formata JSON como uma arvore recolhivel localmente no seu navegador, com pesquisa e expansao de JSON aninhado.",
+    },
+    content: {
+      faqDescription: "Algumas perguntas comuns antes de comecar.",
+      faqTitle: "Perguntas frequentes",
+      privacyDescription: "Bom saber antes de usar.",
+      privacyItems: [
+        "Nada e enviado — a analise e a pesquisa rodam inteiramente no seu navegador.",
+        "Ha suporte a JSON padrao; comentarios, virgulas finais e outra sintaxe nao padrao falharao na analise.",
+        "Expandir por completo um JSON muito grande pode ficar lento — recolha primeiro ou use a pesquisa para navegar.",
+      ],
+      privacyTitle: "Observacoes",
+      stepsDescription: "Siga estes passos para ver seu JSON.",
+      stepsTitle: "Como usar",
+      supportDescription:
+        "Recursos praticos pensados para inspecionar requisicoes e respostas HTTP.",
+      supportTitle: "Recursos principais",
+    },
+    client: {
+      empty: {
+        description:
+          "Cole JSON a esquerda e a arvore formatada e recolhivel aparecera aqui.",
+        title: "Cole JSON para comecar",
+      },
+      error: {
+        location: "Linha {line}, coluna {column}",
+        title: "Nao foi possivel analisar o JSON",
+      },
+      input: {
+        clear: "Limpar",
+        placeholder:
+          "Cole JSON aqui, por exemplo o corpo de uma requisicao ou resposta HTTP…",
+        title: "Entrada JSON",
+      },
+      status: {
+        characters: "{count} caracteres",
+        invalid: "JSON invalido",
+        valid: "JSON valido",
+      },
+      toolbar: {
+        collapseAll: "Recolher tudo",
+        copied: "Copiado",
+        copy: "Copiar",
+        expandAll: "Expandir tudo",
+        onlyMatches: "Somente correspondencias",
+        searchPlaceholder: "Pesquisar chaves ou valores…",
+      },
+      tree: {
+        parseNested: "Analisar como JSON",
+      },
+    },
+  },
 };

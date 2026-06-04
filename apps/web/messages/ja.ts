@@ -476,4 +476,135 @@ export const jaMessages: LocaleContent = {
       },
     },
   },
+  jsonViewer: {
+    metadata: {
+      description:
+        "JSON を貼り付けるだけで、型ごとに色分けされた折りたたみ可能なツリーに整形します。検索・絞り込みや、ネストされた JSON 文字列の展開にも対応。処理はすべてブラウザ内で完結するため、HTTP リクエストやレスポンスの確認に最適です。",
+      keywords: [
+        "JSON 整形",
+        "JSON ビューア",
+        "json viewer",
+        "json formatter",
+        "json ツリー",
+        "オンライン json ツール",
+      ],
+      title: "JSON フォーマッター & ツリービューア",
+    },
+    hero: {
+      badges: {
+        category: "開発者ツール",
+        localProcessing: "ブラウザ内で処理",
+        nested: "ネスト JSON 対応",
+      },
+      description:
+        "JSON を貼り付けると、すぐに展開・折りたたみできるツリーに整形します。型ごとの色分け、検索・絞り込み、ネストされた JSON 文字列の解析に対応。HTTP リクエストやレスポンスの確認のために作られ、データはブラウザの外に出ません。",
+      title: "JSON フォーマッター & ツリービューア",
+    },
+    scenarios: {
+      description:
+        "JSON をすばやく確認・デバッグする用途に最適で、大規模なデータ編集には向きません。",
+      local:
+        "プライバシーが気になり、API データを第三者サイトに貼り付けたくない。",
+      nested:
+        "HTTP ボディ内にエスケープされた JSON 文字列がネストされていて、展開して確認したい。",
+      search:
+        "レスポンスが大きく、特定のフィールドや値を検索してすぐ見つけたい。",
+      title: "こんなときに便利",
+    },
+    tool: {
+      category: "開発者ツール",
+      description:
+        "JSON を貼り付けるだけで、型ごとに色分けされた折りたたみ可能なツリーに整形します。検索・絞り込みや、ネストされた JSON 文字列の展開にも対応。処理はすべてブラウザ内で完結するため、HTTP リクエストやレスポンスの確認に最適です。",
+      faq: [
+        {
+          answer:
+            "いいえ。解析・整形・検索はすべてブラウザ内で行われ、データがサーバーに送信されることはありません。",
+          question: "JSON データはサーバーにアップロードされますか？",
+        },
+        {
+          answer:
+            "解析に失敗した原因を表示し、該当する行と列を特定するので、すばやく修正できます。",
+          question: "JSON の形式が正しくない場合はどうなりますか？",
+        },
+        {
+          answer:
+            "HTTP レスポンスでは、1 つの JSON が文字列としてフィールド内に格納されることがよくあります。そのような文字列を検出すると、ボタンでサブツリーとして展開できます。",
+          question: "「ネストされた JSON 文字列を解析」とは？",
+        },
+      ],
+      features: [
+        "貼り付けるだけで整形し、展開・折りたたみ可能なツリーに表示",
+        "string / number / boolean / null など型ごとに色分け",
+        "キーと値を検索し、ヒットを強調表示して自動展開。一致のみ表示も可能",
+        "すべてのノードを一括で展開・折りたたみ、整形した JSON をコピー",
+        "フィールド内にネストされた JSON 文字列を検出して展開",
+      ],
+      keywords: [
+        "JSON 整形",
+        "JSON ビューア",
+        "json viewer",
+        "json formatter",
+        "json ツリー",
+        "オンライン json ツール",
+      ],
+      name: "JSON フォーマッター & ツリービューア",
+      steps: [
+        "左側のテキストボックスに JSON を貼り付けるか入力します。",
+        "右側で即座に折りたたみ可能な、型ごとに色分けされたツリーに整形されます。",
+        "検索ボックスでフィールドや値を探し、必要に応じて「一致のみ表示」をオンにします。",
+        "ネストされた JSON 文字列は、ノードのボタンで展開します。必要なときは整形結果をコピーできます。",
+      ],
+      summary:
+        "ブラウザ内で JSON を折りたたみ可能なツリーに整形し、検索とネスト JSON の展開に対応。",
+    },
+    content: {
+      faqDescription: "始める前によくある質問。",
+      faqTitle: "よくある質問",
+      privacyDescription: "使う前に知っておきたいこと。",
+      privacyItems: [
+        "アップロードは行われず、解析と検索はすべてブラウザ内で完結します。",
+        "標準的な JSON に対応します。コメントや末尾カンマなどの非標準な記法は解析に失敗します。",
+        "非常に大きな JSON をすべて展開すると遅くなることがあります。折りたたむか検索で移動してください。",
+      ],
+      privacyTitle: "ご利用にあたって",
+      stepsDescription: "次の手順で JSON を確認できます。",
+      stepsTitle: "使い方",
+      supportDescription:
+        "HTTP リクエストとレスポンスの確認を中心に作られた実用的な機能。",
+      supportTitle: "主な機能",
+    },
+    client: {
+      empty: {
+        description:
+          "左側に JSON を貼り付けると、整形された折りたたみ可能なツリーがここに表示されます。",
+        title: "JSON を貼り付けて開始",
+      },
+      error: {
+        location: "{line} 行 {column} 列",
+        title: "JSON を解析できませんでした",
+      },
+      input: {
+        clear: "クリア",
+        placeholder:
+          "ここに JSON を貼り付けます（例：HTTP リクエストやレスポンスのボディ）…",
+        title: "JSON 入力",
+      },
+      status: {
+        characters: "{count} 文字",
+        invalid: "無効な JSON",
+        valid: "有効な JSON",
+      },
+      toolbar: {
+        collapseAll: "すべて折りたたむ",
+        copied: "コピーしました",
+        copy: "コピー",
+        expandAll: "すべて展開",
+        onlyMatches: "一致のみ表示",
+        searchPlaceholder: "キーや値を検索…",
+      },
+      tree: {
+        parseNested: "JSON として解析",
+      },
+    },
+  },
 };

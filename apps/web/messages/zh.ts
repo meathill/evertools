@@ -445,4 +445,128 @@ export const zhMessages = {
       },
     },
   },
+  jsonViewer: {
+    metadata: {
+      description:
+        "在线把 JSON 粘贴进来，格式化成可折叠的树，按类型着色，支持搜索过滤和展开嵌套的 JSON 字符串。数据只在浏览器本地处理，适合查看 HTTP 请求和响应。",
+      keywords: [
+        "JSON 格式化",
+        "JSON 查看器",
+        "json viewer",
+        "json formatter",
+        "json 树",
+        "在线 json 工具",
+      ],
+      title: "JSON 格式化与树状查看器",
+    },
+    hero: {
+      badges: {
+        category: "开发者工具",
+        localProcessing: "浏览器本地处理",
+        nested: "支持嵌套 JSON",
+      },
+      description:
+        "粘贴 JSON，立即格式化成可展开折叠的树。按值类型着色、搜索过滤、解析嵌套的 JSON 字符串——专为查看 HTTP 请求和响应而做，数据不离开浏览器。",
+      title: "JSON 格式化与树状查看器",
+    },
+    scenarios: {
+      description: "适合快速查看和排查 JSON，不适合大规模数据编辑。",
+      local: "对隐私敏感，不想把接口数据贴到第三方网站。",
+      nested: "HTTP body 里嵌套了被转义的 JSON 字符串，想二次展开看清楚。",
+      search: "响应很大，想搜索某个字段或值并快速定位。",
+      title: "适合这些情况",
+    },
+    tool: {
+      category: "开发者工具",
+      description:
+        "在线把 JSON 粘贴进来，格式化成可折叠的树，按类型着色，支持搜索过滤和展开嵌套的 JSON 字符串。数据只在浏览器本地处理，适合查看 HTTP 请求和响应。",
+      faq: [
+        {
+          answer:
+            "不会。解析、格式化和搜索都在你的浏览器本地完成，数据不会发送到服务器。",
+          question: "我的 JSON 数据会上传服务器吗？",
+        },
+        {
+          answer:
+            "会显示解析失败的原因，并定位到具体的行和列，方便你快速修正。",
+          question: "JSON 格式错误会怎样？",
+        },
+        {
+          answer:
+            "HTTP 响应常把一段 JSON 作为字符串放在字段里。识别到这种字符串后，可以点按钮把它二次展开成子树。",
+          question: "“解析嵌套 JSON 字符串”是什么意思？",
+        },
+      ],
+      features: [
+        "粘贴即格式化，渲染成可展开折叠的树",
+        "按 string / number / boolean / null 等类型着色",
+        "搜索 key 和 value，高亮命中并自动展开，支持只看匹配",
+        "一键展开 / 折叠全部节点，复制格式化后的 JSON",
+        "识别并二次展开字段里嵌套的 JSON 字符串",
+      ],
+      keywords: [
+        "JSON 格式化",
+        "JSON 查看器",
+        "json viewer",
+        "json formatter",
+        "json 树",
+        "在线 json 工具",
+      ],
+      name: "JSON 格式化与树状查看器",
+      steps: [
+        "把 JSON 粘贴或输入到左侧文本框。",
+        "右侧会立即格式化成可折叠的树，并按类型着色。",
+        "用搜索框定位字段或值，必要时开启“仅显示匹配”。",
+        "遇到嵌套的 JSON 字符串，点节点上的按钮二次展开；需要时复制格式化结果。",
+      ],
+      summary:
+        "在浏览器本地把 JSON 格式化成可折叠的树，支持搜索和展开嵌套 JSON。",
+    },
+    content: {
+      faqDescription: "开始前常见的几个问题。",
+      faqTitle: "常见问题",
+      privacyDescription: "使用前先了解这些说明。",
+      privacyItems: [
+        "数据不会上传，解析与搜索都在你的浏览器里完成。",
+        "支持标准 JSON；带注释、尾逗号等非标准写法会解析失败。",
+        "超大 JSON 全部展开时可能较慢，可先折叠或用搜索定位。",
+      ],
+      privacyTitle: "使用说明",
+      stepsDescription: "按下面的步骤即可查看 JSON。",
+      stepsTitle: "使用方法",
+      supportDescription: "围绕查看 HTTP 请求和响应打造的实用能力。",
+      supportTitle: "主要功能",
+    },
+    client: {
+      empty: {
+        description: "在左侧粘贴 JSON，这里会显示格式化后的可折叠树。",
+        title: "粘贴 JSON 开始查看",
+      },
+      error: {
+        location: "第 {line} 行，第 {column} 列",
+        title: "JSON 解析失败",
+      },
+      input: {
+        clear: "清空",
+        placeholder: "在这里粘贴 JSON，例如 HTTP 请求或响应的 body…",
+        title: "输入 JSON",
+      },
+      status: {
+        characters: "{count} 字符",
+        invalid: "无效 JSON",
+        valid: "有效 JSON",
+      },
+      toolbar: {
+        collapseAll: "全部折叠",
+        copied: "已复制",
+        copy: "复制",
+        expandAll: "全部展开",
+        onlyMatches: "仅显示匹配",
+        searchPlaceholder: "搜索 key 或 value…",
+      },
+      tree: {
+        parseNested: "解析为 JSON",
+      },
+    },
+  },
 } as const;

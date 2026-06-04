@@ -474,4 +474,135 @@ export const viMessages: LocaleContent = {
       },
     },
   },
+  jsonViewer: {
+    metadata: {
+      description:
+        "Dan JSON truc tuyen va dinh dang thanh cay co the thu gon/mo rong, to mau theo kieu du lieu. Tim kiem va loc, mo rong cac chuoi JSON long nhau. Moi thu chay cuc bo trong trinh duyet — rat hop de xem HTTP request va response.",
+      keywords: [
+        "dinh dang JSON",
+        "xem JSON",
+        "json viewer",
+        "json formatter",
+        "cay json",
+        "cong cu json truc tuyen",
+      ],
+      title: "Trinh dinh dang & xem cay JSON",
+    },
+    hero: {
+      badges: {
+        category: "Cong cu lap trinh",
+        localProcessing: "Chay trong trinh duyet",
+        nested: "Ho tro JSON long nhau",
+      },
+      description:
+        "Dan JSON va lap tuc dinh dang thanh cay co the mo rong/thu gon. To mau theo kieu, tim kiem va loc, va phan tich cac chuoi JSON long nhau — duoc tao ra de xem HTTP request va response, du lieu khong roi khoi trinh duyet.",
+      title: "Trinh dinh dang & xem cay JSON",
+    },
+    scenarios: {
+      description:
+        "Phu hop de xem va go loi JSON nhanh, khong danh cho chinh sua du lieu quy mo lon.",
+      local:
+        "Ban quan tam quyen rieng tu va khong muon dan du lieu API vao trang web ben thu ba.",
+      nested:
+        "Co mot chuoi JSON da escape long trong HTTP body va ban muon mo rong no.",
+      search:
+        "Ban lam viec voi response lon va muon tim kiem mot truong hoac gia tri roi nhay den.",
+      title: "Huu ich khi ban can",
+    },
+    tool: {
+      category: "Cong cu lap trinh",
+      description:
+        "Dan JSON truc tuyen va dinh dang thanh cay co the thu gon/mo rong, to mau theo kieu du lieu. Tim kiem va loc, mo rong cac chuoi JSON long nhau. Moi thu chay cuc bo trong trinh duyet — rat hop de xem HTTP request va response.",
+      faq: [
+        {
+          answer:
+            "Khong. Viec phan tich, dinh dang va tim kiem deu dien ra cuc bo trong trinh duyet; du lieu cua ban khong bao gio duoc gui den may chu.",
+          question: "Du lieu JSON cua toi co duoc tai len may chu khong?",
+        },
+        {
+          answer:
+            "No se hien thi ly do phan tich that bai va chi ro dong va cot chinh xac de ban sua nhanh.",
+          question: "Dieu gi xay ra neu JSON khong hop le?",
+        },
+        {
+          answer:
+            "Response HTTP thuong luu mot doan JSON duoi dang chuoi ben trong mot truong. Khi phat hien chuoi nhu vay, ban co the bam nut de mo rong no thanh cay con.",
+          question: "“Phan tich chuoi JSON long nhau” nghia la gi?",
+        },
+      ],
+      features: [
+        "Dinh dang ngay khi dan va hien thi cay co the mo rong/thu gon",
+        "To mau gia tri theo kieu: string / number / boolean / null",
+        "Tim key va gia tri, danh dau ket qua va tu dong mo rong, co che do chi hien ket qua khop",
+        "Mo rong hoac thu gon tat ca nut cung luc, va sao chep JSON da dinh dang",
+        "Phat hien va mo rong chuoi JSON long ben trong cac truong",
+      ],
+      keywords: [
+        "dinh dang JSON",
+        "xem JSON",
+        "json viewer",
+        "json formatter",
+        "cay json",
+        "cong cu json truc tuyen",
+      ],
+      name: "Trinh dinh dang & xem cay JSON",
+      steps: [
+        "Dan hoac nhap JSON vao o ben trai.",
+        "Ben phai se lap tuc dinh dang thanh cay co the thu gon va to mau theo kieu.",
+        "Dung o tim kiem de tim truong hoac gia tri, va bat “Chi hien khop” neu can.",
+        "Voi cac chuoi JSON long nhau, bam nut tren nut cay de mo rong; sao chep ket qua da dinh dang khi can.",
+      ],
+      summary:
+        "Dinh dang JSON thanh cay co the thu gon ngay trong trinh duyet, voi tim kiem va mo rong JSON long nhau.",
+    },
+    content: {
+      faqDescription: "Mot vai cau hoi thuong gap truoc khi bat dau.",
+      faqTitle: "Cau hoi thuong gap",
+      privacyDescription: "Nen biet truoc khi su dung.",
+      privacyItems: [
+        "Khong co gi duoc tai len — phan tich va tim kiem chay hoan toan trong trinh duyet.",
+        "Ho tro JSON chuan; chu thich, dau phay cuoi va cu phap khong chuan khac se phan tich that bai.",
+        "Mo rong toan bo mot JSON rat lon co the cham — hay thu gon truoc hoac dung tim kiem de di chuyen.",
+      ],
+      privacyTitle: "Luu y",
+      stepsDescription: "Lam theo cac buoc sau de xem JSON.",
+      stepsTitle: "Cach dung",
+      supportDescription:
+        "Cac tinh nang thiet thuc duoc xay dung quanh viec xem HTTP request va response.",
+      supportTitle: "Tinh nang chinh",
+    },
+    client: {
+      empty: {
+        description:
+          "Dan JSON o ben trai va cay da dinh dang, co the thu gon se hien o day.",
+        title: "Dan JSON de bat dau",
+      },
+      error: {
+        location: "Dong {line}, cot {column}",
+        title: "Khong the phan tich JSON",
+      },
+      input: {
+        clear: "Xoa",
+        placeholder:
+          "Dan JSON vao day, vi du body cua HTTP request hoac response…",
+        title: "Nhap JSON",
+      },
+      status: {
+        characters: "{count} ky tu",
+        invalid: "JSON khong hop le",
+        valid: "JSON hop le",
+      },
+      toolbar: {
+        collapseAll: "Thu gon tat ca",
+        copied: "Da sao chep",
+        copy: "Sao chep",
+        expandAll: "Mo rong tat ca",
+        onlyMatches: "Chi hien khop",
+        searchPlaceholder: "Tim key hoac gia tri…",
+      },
+      tree: {
+        parseNested: "Phan tich thanh JSON",
+      },
+    },
+  },
 };

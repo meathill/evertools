@@ -48,6 +48,25 @@ export function getPdfTextEditorTool(content: LocaleContent): ToolDefinition {
   };
 }
 
+export function getJsonViewerTool(content: LocaleContent): ToolDefinition {
+  return {
+    category: content.jsonViewer.tool.category,
+    description: content.jsonViewer.tool.description,
+    faq: content.jsonViewer.tool.faq,
+    features: content.jsonViewer.tool.features,
+    href: "/tools/json-viewer",
+    keywords: content.jsonViewer.tool.keywords,
+    name: content.jsonViewer.tool.name,
+    slug: "json-viewer",
+    steps: content.jsonViewer.tool.steps,
+    summary: content.jsonViewer.tool.summary,
+  };
+}
+
 export function getTools(content: LocaleContent): ToolDefinition[] {
-  return [getImageConverterTool(content), getPdfTextEditorTool(content)];
+  return [
+    getImageConverterTool(content),
+    getPdfTextEditorTool(content),
+    getJsonViewerTool(content),
+  ];
 }

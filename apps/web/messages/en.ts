@@ -477,4 +477,135 @@ export const enMessages: LocaleContent = {
       },
     },
   },
+  jsonViewer: {
+    metadata: {
+      description:
+        "Paste JSON online and format it into a collapsible tree with type-based colors. Search and filter, and expand nested JSON strings. Everything runs locally in your browser — great for inspecting HTTP requests and responses.",
+      keywords: [
+        "JSON formatter",
+        "JSON viewer",
+        "json viewer",
+        "json formatter",
+        "json tree",
+        "online json tool",
+      ],
+      title: "JSON Formatter & Tree Viewer",
+    },
+    hero: {
+      badges: {
+        category: "Developer tools",
+        localProcessing: "Runs in your browser",
+        nested: "Nested JSON support",
+      },
+      description:
+        "Paste JSON and instantly format it into an expandable, collapsible tree. Type-based colors, search and filter, and parsing of nested JSON strings — built for inspecting HTTP requests and responses, with data never leaving your browser.",
+      title: "JSON Formatter & Tree Viewer",
+    },
+    scenarios: {
+      description:
+        "Best for quickly viewing and debugging JSON, not for large-scale data editing.",
+      local:
+        "You care about privacy and don't want to paste API data into a third-party site.",
+      nested:
+        "An escaped JSON string is nested inside an HTTP body and you want to expand it.",
+      search:
+        "You work with a large response and want to search for a field or value and jump to it.",
+      title: "Great when you need to",
+    },
+    tool: {
+      category: "Developer tools",
+      description:
+        "Paste JSON online and format it into a collapsible tree with type-based colors. Search and filter, and expand nested JSON strings. Everything runs locally in your browser — great for inspecting HTTP requests and responses.",
+      faq: [
+        {
+          answer:
+            "No. Parsing, formatting and search all happen locally in your browser; your data is never sent to a server.",
+          question: "Is my JSON uploaded to a server?",
+        },
+        {
+          answer:
+            "It shows why parsing failed and pinpoints the exact line and column so you can fix it quickly.",
+          question: "What happens if my JSON is invalid?",
+        },
+        {
+          answer:
+            "HTTP responses often store a chunk of JSON as a string inside a field. When such a string is detected, you can click a button to expand it into a subtree.",
+          question: "What does “parse nested JSON strings” mean?",
+        },
+      ],
+      features: [
+        "Format on paste and render an expandable, collapsible tree",
+        "Color values by type: string / number / boolean / null",
+        "Search keys and values, highlight matches and auto-expand, with a matches-only mode",
+        "Expand or collapse all nodes at once, and copy the formatted JSON",
+        "Detect and expand JSON strings nested inside fields",
+      ],
+      keywords: [
+        "JSON formatter",
+        "JSON viewer",
+        "json viewer",
+        "json formatter",
+        "json tree",
+        "online json tool",
+      ],
+      name: "JSON Formatter & Tree Viewer",
+      steps: [
+        "Paste or type JSON into the box on the left.",
+        "The right side instantly formats it into a collapsible, color-coded tree.",
+        "Use the search box to locate a field or value, and turn on “Matches only” if needed.",
+        "For nested JSON strings, click the button on the node to expand them; copy the formatted result when you need it.",
+      ],
+      summary:
+        "Format JSON into a collapsible tree locally in your browser, with search and nested-JSON expansion.",
+    },
+    content: {
+      faqDescription: "A few common questions before you start.",
+      faqTitle: "FAQ",
+      privacyDescription: "Good to know before you use it.",
+      privacyItems: [
+        "Nothing is uploaded — parsing and search run entirely in your browser.",
+        "Standard JSON is supported; comments, trailing commas and other non-standard syntax will fail to parse.",
+        "Expanding a very large JSON fully can be slow — collapse it first or use search to navigate.",
+      ],
+      privacyTitle: "Notes",
+      stepsDescription: "Follow these steps to view your JSON.",
+      stepsTitle: "How to use",
+      supportDescription:
+        "Practical features built around inspecting HTTP requests and responses.",
+      supportTitle: "Key features",
+    },
+    client: {
+      empty: {
+        description:
+          "Paste JSON on the left and the formatted, collapsible tree will appear here.",
+        title: "Paste JSON to get started",
+      },
+      error: {
+        location: "Line {line}, column {column}",
+        title: "Couldn't parse JSON",
+      },
+      input: {
+        clear: "Clear",
+        placeholder:
+          "Paste JSON here, e.g. the body of an HTTP request or response…",
+        title: "JSON input",
+      },
+      status: {
+        characters: "{count} characters",
+        invalid: "Invalid JSON",
+        valid: "Valid JSON",
+      },
+      toolbar: {
+        collapseAll: "Collapse all",
+        copied: "Copied",
+        copy: "Copy",
+        expandAll: "Expand all",
+        onlyMatches: "Matches only",
+        searchPlaceholder: "Search keys or values…",
+      },
+      tree: {
+        parseNested: "Parse as JSON",
+      },
+    },
+  },
 };

@@ -482,4 +482,135 @@ export const esMessages: LocaleContent = {
       },
     },
   },
+  jsonViewer: {
+    metadata: {
+      description:
+        "Pega JSON en línea y dale formato como un árbol plegable con colores por tipo. Busca y filtra, y expande cadenas JSON anidadas. Todo se procesa localmente en tu navegador, ideal para inspeccionar solicitudes y respuestas HTTP.",
+      keywords: [
+        "formatear JSON",
+        "visor JSON",
+        "json viewer",
+        "json formatter",
+        "árbol json",
+        "herramienta json en línea",
+      ],
+      title: "Formateador y visor de árbol JSON",
+    },
+    hero: {
+      badges: {
+        category: "Herramientas para desarrolladores",
+        localProcessing: "Se ejecuta en tu navegador",
+        nested: "Compatible con JSON anidado",
+      },
+      description:
+        "Pega JSON y dale formato al instante como un árbol expandible y plegable. Colores por tipo, búsqueda y filtro, y análisis de cadenas JSON anidadas: creado para inspeccionar solicitudes y respuestas HTTP, con datos que nunca salen de tu navegador.",
+      title: "Formateador y visor de árbol JSON",
+    },
+    scenarios: {
+      description:
+        "Ideal para ver y depurar JSON rápidamente, no para editar datos a gran escala.",
+      local:
+        "Te importa la privacidad y no quieres pegar datos de una API en un sitio de terceros.",
+      nested:
+        "Tienes una cadena JSON escapada anidada dentro de un cuerpo HTTP y quieres expandirla.",
+      search:
+        "Trabajas con una respuesta grande y quieres buscar un campo o valor y saltar a él.",
+      title: "Útil cuando necesitas",
+    },
+    tool: {
+      category: "Herramientas para desarrolladores",
+      description:
+        "Pega JSON en línea y dale formato como un árbol plegable con colores por tipo. Busca y filtra, y expande cadenas JSON anidadas. Todo se procesa localmente en tu navegador, ideal para inspeccionar solicitudes y respuestas HTTP.",
+      faq: [
+        {
+          answer:
+            "No. El análisis, el formato y la búsqueda ocurren localmente en tu navegador; tus datos nunca se envían a un servidor.",
+          question: "¿Se sube mi JSON a un servidor?",
+        },
+        {
+          answer:
+            "Muestra por qué falló el análisis e indica la línea y la columna exactas para que puedas corregirlo rápido.",
+          question: "¿Qué pasa si mi JSON no es válido?",
+        },
+        {
+          answer:
+            "Las respuestas HTTP suelen guardar un fragmento de JSON como una cadena dentro de un campo. Cuando se detecta una cadena así, puedes pulsar un botón para expandirla en un subárbol.",
+          question: "¿Qué significa “analizar cadenas JSON anidadas”?",
+        },
+      ],
+      features: [
+        "Da formato al pegar y muestra un árbol expandible y plegable",
+        "Colorea los valores por tipo: string / number / boolean / null",
+        "Busca claves y valores, resalta coincidencias y expande automáticamente, con un modo solo coincidencias",
+        "Expande o pliega todos los nodos a la vez y copia el JSON formateado",
+        "Detecta y expande cadenas JSON anidadas dentro de los campos",
+      ],
+      keywords: [
+        "formatear JSON",
+        "visor JSON",
+        "json viewer",
+        "json formatter",
+        "árbol json",
+        "herramienta json en línea",
+      ],
+      name: "Formateador y visor de árbol JSON",
+      steps: [
+        "Pega o escribe JSON en el cuadro de la izquierda.",
+        "A la derecha se formatea al instante como un árbol plegable y con colores por tipo.",
+        "Usa el cuadro de búsqueda para localizar un campo o valor y activa “Solo coincidencias” si lo necesitas.",
+        "Para cadenas JSON anidadas, pulsa el botón del nodo para expandirlas; copia el resultado formateado cuando lo necesites.",
+      ],
+      summary:
+        "Da formato a JSON como un árbol plegable localmente en tu navegador, con búsqueda y expansión de JSON anidado.",
+    },
+    content: {
+      faqDescription: "Algunas preguntas habituales antes de empezar.",
+      faqTitle: "Preguntas frecuentes",
+      privacyDescription: "Conviene saberlo antes de usarlo.",
+      privacyItems: [
+        "No se sube nada: el análisis y la búsqueda se ejecutan por completo en tu navegador.",
+        "Se admite JSON estándar; los comentarios, las comas finales y otra sintaxis no estándar fallarán al analizar.",
+        "Expandir por completo un JSON muy grande puede ser lento: pliégalo primero o usa la búsqueda para navegar.",
+      ],
+      privacyTitle: "Notas",
+      stepsDescription: "Sigue estos pasos para ver tu JSON.",
+      stepsTitle: "Cómo usarlo",
+      supportDescription:
+        "Funciones prácticas pensadas para inspeccionar solicitudes y respuestas HTTP.",
+      supportTitle: "Funciones clave",
+    },
+    client: {
+      empty: {
+        description:
+          "Pega JSON a la izquierda y aquí aparecerá el árbol formateado y plegable.",
+        title: "Pega JSON para empezar",
+      },
+      error: {
+        location: "Línea {line}, columna {column}",
+        title: "No se pudo analizar el JSON",
+      },
+      input: {
+        clear: "Borrar",
+        placeholder:
+          "Pega JSON aquí, p. ej. el cuerpo de una solicitud o respuesta HTTP…",
+        title: "Entrada JSON",
+      },
+      status: {
+        characters: "{count} caracteres",
+        invalid: "JSON no válido",
+        valid: "JSON válido",
+      },
+      toolbar: {
+        collapseAll: "Plegar todo",
+        copied: "Copiado",
+        copy: "Copiar",
+        expandAll: "Expandir todo",
+        onlyMatches: "Solo coincidencias",
+        searchPlaceholder: "Buscar claves o valores…",
+      },
+      tree: {
+        parseNested: "Analizar como JSON",
+      },
+    },
+  },
 };
