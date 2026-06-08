@@ -113,7 +113,7 @@ export const esMessages: LocaleContent = {
         singleImage: "Imagen única",
       },
       description:
-        "Convierte entre PNG, JPG y WebP, cambia el tamaño de las imágenes y exporta el resultado directamente en el navegador sin subir archivos al servidor.",
+        "Convierte fotos HEIC del iPhone a JPG, PNG o WebP, convierte entre PNG, JPG y WebP y cambia el tamaño de las imágenes directamente en el navegador sin subir archivos al servidor.",
       title: "Convertidor de formato y tamaño de imágenes",
     },
     scenarios: {
@@ -130,7 +130,7 @@ export const esMessages: LocaleContent = {
     tool: {
       category: "Herramienta de imagen",
       description:
-        "Convierte imágenes PNG, JPG y WebP y cambia su tamaño en línea. Todo se ejecuta en tu navegador sin subidas, ideal para compresión rápida, cambio de tamaño y de formato.",
+        "Convierte fotos HEIC/HEIF del iPhone a JPG, PNG o WebP, convierte entre PNG, JPG y WebP y cambia su tamaño en línea. Todo se ejecuta en tu navegador sin subidas, ideal para compresión rápida, cambio de tamaño y de formato.",
       faq: [
         {
           answer:
@@ -139,8 +139,13 @@ export const esMessages: LocaleContent = {
         },
         {
           answer:
-            "Actualmente admite conversión y cambio de tamaño de una sola imagen para PNG, JPG/JPEG y WebP.",
+            "Convierte HEIC/HEIF (fotos del iPhone) a JPG, PNG y WebP, además de conversión y cambio de tamaño de una sola imagen entre PNG, JPG/JPEG y WebP.",
           question: "¿Qué formatos de imagen son compatibles?",
+        },
+        {
+          answer:
+            "Sí. Solo sube el archivo .heic/.heif: tu navegador lo decodifica localmente y lo convierte a JPG, PNG o WebP, sin subirlo.",
+          question: "¿Puedo convertir fotos HEIC del iPhone?",
         },
         {
           answer:
@@ -149,6 +154,7 @@ export const esMessages: LocaleContent = {
         },
       ],
       features: [
+        "Convierte fotos HEIC/HEIF del iPhone a JPG, PNG o WebP",
         "Convierte entre PNG, JPG y WebP",
         "Define ancho y alto personalizados con opción de bloquear la proporción",
         "Ajusta la calidad de JPEG y WebP",
@@ -161,16 +167,20 @@ export const esMessages: LocaleContent = {
         "png a jpg",
         "webp a png",
         "comprimir imagen navegador",
+        "heic a jpg",
+        "heic to jpg",
+        "convertir heic",
+        "convertidor de fotos iphone",
       ],
-      name: "Convertidor de formato y tamaño de imágenes",
+      name: "Convertidor de formato y tamaño de imágenes — HEIC a JPG",
       steps: [
-        "Sube una imagen PNG, JPG o WebP.",
+        "Sube una imagen PNG, JPG, WebP o HEIC.",
         "Elige el formato de salida e introduce las dimensiones si lo necesitas.",
         "Opcionalmente bloquea la proporción y ajusta la calidad de compresión.",
         "Genera el resultado, previsualízalo y descarga la imagen convertida.",
       ],
       summary:
-        "Convierte formatos de imagen, cambia dimensiones y ajusta la calidad completamente en el navegador.",
+        "Convierte fotos HEIC y otras a JPG/PNG/WebP, cambia dimensiones y ajusta la calidad completamente en el navegador.",
     },
     content: {
       faqDescription: "Algunas preguntas frecuentes antes de empezar.",
@@ -180,13 +190,13 @@ export const esMessages: LocaleContent = {
       privacyItems: [
         "Las imágenes nunca se suben. Toda la conversión ocurre en tu navegador.",
         "JPEG no admite transparencia, así que las áreas transparentes se rellenarán con blanco.",
-        "HEIC, GIF animado, exportación SVG y conversión por lotes aún no están disponibles.",
+        "GIF animado, exportación SVG y conversión por lotes aún no están disponibles.",
       ],
       privacyTitle: "Notas y limitaciones",
       stepsDescription: "Sigue estos pasos para convertir tu imagen.",
       stepsTitle: "Cómo usarla",
       supportDescription:
-        "PNG, JPG/JPEG y WebP están disponibles tanto para entrada como para salida.",
+        "Se pueden importar PNG, JPG/JPEG, WebP y HEIC/HEIF; para exportar están disponibles PNG, JPG/JPEG y WebP (HEIC solo como entrada).",
       supportTitle: "Formatos compatibles",
     },
     client: {
@@ -204,7 +214,7 @@ export const esMessages: LocaleContent = {
         description:
           "Arrastra una imagen al área inferior o haz clic en el botón para elegir una. Por ahora procesa una sola imagen cada vez y nunca la sube.",
         emptyDescription:
-          "Admite PNG, JPG/JPEG y WebP. Puedes cambiar el tamaño, el formato de salida y ajustar la calidad.",
+          "Admite PNG, JPG/JPEG, WebP y HEIC (fotos del iPhone). Puedes cambiar el tamaño, el formato de salida y ajustar la calidad.",
         emptyTitle: "Suelta una imagen para empezar",
         pendingResult: "Ajusta la configuración y genera el resultado",
         reselect: "Elegir otra",

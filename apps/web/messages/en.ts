@@ -112,7 +112,7 @@ export const enMessages: LocaleContent = {
         singleImage: "Single image",
       },
       description:
-        "Convert between PNG, JPG and WebP, resize images and export results directly in the browser without uploading files to a server.",
+        "Convert iPhone HEIC photos to JPG, PNG or WebP, switch between PNG, JPG and WebP, and resize images directly in the browser without uploading files to a server.",
       title: "Image Format and Size Converter",
     },
     scenarios: {
@@ -129,7 +129,7 @@ export const enMessages: LocaleContent = {
     tool: {
       category: "Image tool",
       description:
-        "Convert PNG, JPG and WebP images and resize them online. Everything runs in your browser without uploads, which works well for quick compression, resizing and format changes.",
+        "Convert iPhone HEIC/HEIF photos to JPG, PNG or WebP, switch between PNG, JPG and WebP, and resize images online. Everything runs in your browser without uploads, which works well for quick compression, resizing and format changes.",
       faq: [
         {
           answer:
@@ -138,8 +138,13 @@ export const enMessages: LocaleContent = {
         },
         {
           answer:
-            "It currently supports single-image conversion and resizing for PNG, JPG/JPEG and WebP.",
+            "It converts HEIC/HEIF (iPhone photos) to JPG, PNG and WebP, plus single-image conversion and resizing between PNG, JPG/JPEG and WebP.",
           question: "Which image formats are supported?",
+        },
+        {
+          answer:
+            "Yes. Just upload the .heic/.heif file — your browser decodes it locally and converts it to JPG, PNG or WebP, with no upload.",
+          question: "Can I convert iPhone HEIC photos?",
         },
         {
           answer:
@@ -148,6 +153,7 @@ export const enMessages: LocaleContent = {
         },
       ],
       features: [
+        "Convert iPhone HEIC/HEIF photos to JPG, PNG or WebP",
         "Convert between PNG, JPG and WebP",
         "Set custom width and height with optional aspect ratio lock",
         "Adjust JPEG and WebP quality",
@@ -160,16 +166,20 @@ export const enMessages: LocaleContent = {
         "png to jpg",
         "webp to png",
         "compress image browser",
+        "heic to jpg",
+        "heic to png",
+        "convert heic",
+        "iphone photo converter",
       ],
-      name: "Image Format and Size Converter",
+      name: "Image Format and Size Converter — HEIC to JPG",
       steps: [
-        "Upload a PNG, JPG or WebP image.",
+        "Upload a PNG, JPG, WebP or HEIC image.",
         "Choose the output format and enter target dimensions if needed.",
         "Optionally lock aspect ratio and adjust compression quality.",
         "Generate the result, preview it and download the converted image.",
       ],
       summary:
-        "Convert image formats, resize dimensions and tune quality entirely in the browser.",
+        "Convert HEIC and other photos to JPG/PNG/WebP, resize dimensions and tune quality entirely in the browser.",
     },
     content: {
       faqDescription: "A few common questions before you start.",
@@ -179,13 +189,13 @@ export const enMessages: LocaleContent = {
       privacyItems: [
         "Images are never uploaded. All conversion happens in your browser.",
         "JPEG does not support transparency, so transparent areas will be filled with white.",
-        "HEIC, animated GIF, SVG export and batch conversion are not supported yet.",
+        "Animated GIF, SVG export and batch conversion are not supported yet.",
       ],
       privacyTitle: "Notes and limitations",
       stepsDescription: "Follow these steps to convert your image.",
       stepsTitle: "How to use it",
       supportDescription:
-        "PNG, JPG/JPEG and WebP are supported for both input and output.",
+        "PNG, JPG/JPEG, WebP and HEIC/HEIF can be imported; PNG, JPG/JPEG and WebP are available for export (HEIC is input only).",
       supportTitle: "Supported formats",
     },
     client: {
@@ -203,7 +213,7 @@ export const enMessages: LocaleContent = {
         description:
           "Drag an image into the area below or click the button to choose one. It currently handles one image at a time and never uploads it.",
         emptyDescription:
-          "Supports PNG, JPG/JPEG and WebP. You can resize the image, switch output format and adjust quality.",
+          "Supports PNG, JPG/JPEG, WebP and HEIC (iPhone photos). You can resize the image, switch output format and adjust quality.",
         emptyTitle: "Drop an image to begin",
         pendingResult: "Adjust settings and generate a result",
         reselect: "Choose another",

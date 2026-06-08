@@ -113,7 +113,7 @@ export const jaMessages: LocaleContent = {
         singleImage: "単一画像",
       },
       description:
-        "PNG、JPG、WebP の形式変換、画像のリサイズ、結果の書き出しをブラウザ内で行えます。ファイルはサーバーへアップロードされません。",
+        "iPhone の HEIC 写真を JPG/PNG/WebP に変換でき、PNG、JPG、WebP の相互変換やリサイズもブラウザ内で行えます。ファイルはサーバーへアップロードされません。",
       title: "画像形式とサイズの変換",
     },
     scenarios: {
@@ -129,7 +129,7 @@ export const jaMessages: LocaleContent = {
     tool: {
       category: "画像ツール",
       description:
-        "PNG、JPG、WebP の形式変換とリサイズをオンラインで行えます。処理はすべてブラウザ内で完結し、アップロード不要なので、素早い圧縮、サイズ変更、形式変更に向いています。",
+        "iPhone の HEIC/HEIF 写真を JPG、PNG、WebP に変換し、PNG、JPG、WebP の相互変換やリサイズもオンラインで行えます。処理はすべてブラウザ内で完結し、アップロード不要なので、素早い圧縮、サイズ変更、形式変更に向いています。",
       faq: [
         {
           answer:
@@ -138,8 +138,13 @@ export const jaMessages: LocaleContent = {
         },
         {
           answer:
-            "現在は PNG、JPG/JPEG、WebP の 3 形式で、単一画像の変換とリサイズに対応しています。",
+            "HEIC/HEIF（iPhone 写真）を JPG、PNG、WebP に変換でき、PNG、JPG/JPEG、WebP の単一画像変換とリサイズにも対応しています。",
           question: "対応している画像形式は何ですか？",
+        },
+        {
+          answer:
+            "はい。.heic/.heif ファイルをアップロードするだけで、ブラウザ内でデコードして JPG、PNG、WebP に変換します。アップロードは行いません。",
+          question: "iPhone の HEIC 写真を変換できますか？",
         },
         {
           answer:
@@ -148,6 +153,7 @@ export const jaMessages: LocaleContent = {
         },
       ],
       features: [
+        "iPhone の HEIC/HEIF 写真を JPG、PNG、WebP に変換",
         "PNG、JPG、WebP の相互変換に対応",
         "幅と高さを自由に指定でき、縦横比の固定にも対応",
         "JPEG / WebP の品質調整に対応",
@@ -160,15 +166,19 @@ export const jaMessages: LocaleContent = {
         "png jpg 変換",
         "webp png 変換",
         "ブラウザ画像圧縮",
+        "heic jpg 変換",
+        "heic to jpg",
+        "iPhone 写真 変換",
       ],
-      name: "画像形式とサイズの変換",
+      name: "画像形式とサイズの変換 — HEIC を JPG に変換",
       steps: [
-        "PNG、JPG、または WebP の画像を 1 枚アップロードします。",
+        "PNG、JPG、WebP、または HEIC の画像を 1 枚アップロードします。",
         "出力形式を選び、必要ならサイズを入力します。",
         "必要に応じて縦横比固定や圧縮品質を調整します。",
         "結果を生成し、プレビューしてダウンロードします。",
       ],
-      summary: "ブラウザ内で画像形式の変換、サイズ変更、品質調整を行います。",
+      summary:
+        "ブラウザ内で HEIC などの写真を JPG/PNG/WebP に変換し、サイズ変更や品質調整も行います。",
     },
     content: {
       faqDescription: "使う前によく気になるポイントをまとめています。",
@@ -177,12 +187,13 @@ export const jaMessages: LocaleContent = {
       privacyItems: [
         "画像はサーバーにアップロードされず、変換はすべてブラウザ内で行われます。",
         "JPEG は透明背景に対応していないため、透明部分は白で補完されます。",
-        "HEIC、アニメーション GIF、SVG 書き出し、複数画像の一括変換には未対応です。",
+        "アニメーション GIF、SVG 書き出し、複数画像の一括変換には未対応です。",
       ],
       privacyTitle: "利用上の注意",
       stepsDescription: "次の手順で変換できます。",
       stepsTitle: "使い方",
-      supportDescription: "現在の入出力形式は PNG、JPG/JPEG、WebP です。",
+      supportDescription:
+        "入力は PNG、JPG/JPEG、WebP、HEIC/HEIF に対応。出力は PNG、JPG/JPEG、WebP です（HEIC は入力のみ）。",
       supportTitle: "対応形式",
     },
     client: {
@@ -200,7 +211,7 @@ export const jaMessages: LocaleContent = {
         description:
           "下のエリアに画像をドラッグするか、ボタンから画像を 1 枚選択してください。現在は単一画像のみ対応し、サーバーへはアップロードしません。",
         emptyDescription:
-          "PNG、JPG/JPEG、WebP に対応しています。リサイズ、出力形式の切り替え、品質調整が行えます。",
+          "PNG、JPG/JPEG、WebP、HEIC（iPhone 写真）に対応しています。リサイズ、出力形式の切り替え、品質調整が行えます。",
         emptyTitle: "画像をドロップして開始",
         pendingResult: "設定を調整して結果を生成してください",
         reselect: "別の画像を選ぶ",

@@ -110,7 +110,7 @@ export const zhMessages = {
         singleImage: "单图转换",
       },
       description:
-        "在线完成 PNG、JPG、WebP 的格式切换与尺寸缩放。图片在浏览器本地处理，不上传服务器，适合临时换格式、改尺寸和快速导出结果图。",
+        "把 iPhone 拍的 HEIC 照片转成 JPG/PNG/WebP，也能在 PNG、JPG、WebP 之间互转并缩放尺寸。图片在浏览器本地处理，不上传服务器，适合临时换格式、改尺寸和快速导出结果图。",
       title: "图片格式与尺寸转换",
     },
     scenarios: {
@@ -123,15 +123,21 @@ export const zhMessages = {
     tool: {
       category: "图片工具",
       description:
-        "在线完成 PNG、JPG、WebP 的格式转换与尺寸调整。所有处理都在浏览器本地完成，不上传图片，适合快速压缩、改尺寸和换格式。",
+        "在线把 iPhone 的 HEIC 照片转成 JPG、PNG 或 WebP，也支持 PNG、JPG、WebP 之间互转与尺寸调整。所有处理都在浏览器本地完成，不上传图片，适合快速压缩、改尺寸和换格式。",
       faq: [
         {
           answer: "不会。所有处理都在浏览器本地完成，文件不会发送到服务器。",
           question: "图片会上传到服务器吗？",
         },
         {
-          answer: "目前支持 PNG、JPG/JPEG、WebP 三种常用格式的单图转换与缩放。",
+          answer:
+            "支持把 HEIC/HEIF（iPhone 照片）转成 JPG、PNG、WebP，也支持 PNG、JPG/JPEG、WebP 之间的单图互转与缩放。",
           question: "当前支持哪些图片格式？",
+        },
+        {
+          answer:
+            "可以。直接上传 .heic/.heif 文件即可，浏览器会在本地解码后转成 JPG、PNG 或 WebP，全程不上传。",
+          question: "可以转换 iPhone 的 HEIC 照片吗？",
         },
         {
           answer:
@@ -140,6 +146,7 @@ export const zhMessages = {
         },
       ],
       features: [
+        "把 iPhone 的 HEIC/HEIF 照片转成 JPG、PNG 或 WebP",
         "支持 PNG、JPG、WebP 三种常用格式互转",
         "支持自定义宽高，并可锁定原始比例",
         "支持 JPEG / WebP 质量调节",
@@ -153,15 +160,19 @@ export const zhMessages = {
         "png 转 jpg",
         "webp 转 png",
         "在线改尺寸",
+        "HEIC 转 JPG",
+        "heic to jpg",
+        "iPhone 照片转换",
       ],
-      name: "图片格式与尺寸转换",
+      name: "图片格式与尺寸转换 — HEIC 转 JPG",
       steps: [
-        "上传一张 PNG、JPG 或 WebP 图片。",
+        "上传一张 PNG、JPG、WebP 或 HEIC 图片。",
         "选择目标格式，并按需填写宽高。",
         "如果需要，开启或关闭锁定比例，并调整压缩质量。",
         "点击生成结果，预览并下载转换后的图片。",
       ],
-      summary: "在浏览器本地完成图片格式转换、尺寸缩放与质量调整。",
+      summary:
+        "在浏览器本地把 HEIC 等照片转成 JPG/PNG/WebP，并完成尺寸缩放与质量调整。",
     },
     content: {
       faqDescription: "开始前常见的几个问题。",
@@ -170,12 +181,13 @@ export const zhMessages = {
       privacyItems: [
         "图片不会上传到服务器，所有转换都在你的浏览器里完成。",
         "JPEG 不支持透明背景，导出时会自动补成白底。",
-        "暂不支持 HEIC、GIF 动图、SVG 导出和批量转换。",
+        "暂不支持 GIF 动图、SVG 导出和批量转换。",
       ],
       privacyTitle: "使用说明",
       stepsDescription: "按下面的步骤即可完成转换。",
       stepsTitle: "使用方法",
-      supportDescription: "目前支持 PNG、JPG/JPEG、WebP 的导入与导出。",
+      supportDescription:
+        "导入支持 PNG、JPG/JPEG、WebP 和 HEIC/HEIF；导出支持 PNG、JPG/JPEG、WebP（HEIC 仅作为输入）。",
       supportTitle: "支持的格式",
     },
     client: {
@@ -193,7 +205,7 @@ export const zhMessages = {
         description:
           "拖拽图片到下方区域，或点击按钮选择图片。当前支持处理单张图片，不会上传到服务器。",
         emptyDescription:
-          "支持 PNG、JPG/JPEG、WebP。你可以直接改尺寸，也可以切换输出格式并调节质量。",
+          "支持 PNG、JPG/JPEG、WebP 和 HEIC（iPhone 照片）。你可以直接改尺寸，也可以切换输出格式并调节质量。",
         emptyTitle: "拖入图片开始转换",
         pendingResult: "调整参数后点击生成结果",
         reselect: "重新选择",

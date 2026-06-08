@@ -113,7 +113,7 @@ export const viMessages: LocaleContent = {
         singleImage: "Mot anh",
       },
       description:
-        "Chuyen doi giua PNG, JPG va WebP, thay doi kich thuoc anh va xuat ket qua truc tiep trong trinh duyet ma khong can tai tep len may chu.",
+        "Chuyen anh HEIC tu iPhone sang JPG, PNG hoac WebP, chuyen doi giua PNG, JPG va WebP va thay doi kich thuoc anh truc tiep trong trinh duyet ma khong can tai tep len may chu.",
       title: "Chuyen doi dinh dang va kich thuoc anh",
     },
     scenarios: {
@@ -130,7 +130,7 @@ export const viMessages: LocaleContent = {
     tool: {
       category: "Cong cu anh",
       description:
-        "Chuyen doi anh PNG, JPG va WebP va thay doi kich thuoc truc tuyen. Moi thu chay trong trinh duyet, khong can tai len, rat phu hop cho viec nen nhanh, doi kich thuoc va doi dinh dang.",
+        "Chuyen anh HEIC/HEIF tu iPhone sang JPG, PNG hoac WebP, chuyen doi giua PNG, JPG va WebP va thay doi kich thuoc truc tuyen. Moi thu chay trong trinh duyet, khong can tai len, rat phu hop cho viec nen nhanh, doi kich thuoc va doi dinh dang.",
       faq: [
         {
           answer:
@@ -139,8 +139,13 @@ export const viMessages: LocaleContent = {
         },
         {
           answer:
-            "Hien tai cong cu ho tro chuyen doi va doi kich thuoc mot anh cho PNG, JPG/JPEG va WebP.",
+            "Ho tro chuyen HEIC/HEIF (anh iPhone) sang JPG, PNG va WebP, cung nhu chuyen doi va doi kich thuoc mot anh giua PNG, JPG/JPEG va WebP.",
           question: "Cong cu ho tro nhung dinh dang nao?",
+        },
+        {
+          answer:
+            "Co. Chi can tai len tep .heic/.heif — trinh duyet giai ma cuc bo va chuyen sang JPG, PNG hoac WebP, khong tai len.",
+          question: "Toi co the chuyen anh HEIC tu iPhone khong?",
         },
         {
           answer:
@@ -149,6 +154,7 @@ export const viMessages: LocaleContent = {
         },
       ],
       features: [
+        "Chuyen anh HEIC/HEIF tu iPhone sang JPG, PNG hoac WebP",
         "Chuyen doi giua PNG, JPG va WebP",
         "Dat chieu rong va chieu cao tuy chinh kem tuy chon khoa ti le",
         "Dieu chinh chat luong JPEG va WebP",
@@ -161,16 +167,19 @@ export const viMessages: LocaleContent = {
         "png sang jpg",
         "webp sang png",
         "nen anh tren trinh duyet",
+        "heic sang jpg",
+        "heic to jpg",
+        "chuyen doi anh iphone",
       ],
-      name: "Chuyen doi dinh dang va kich thuoc anh",
+      name: "Chuyen doi dinh dang va kich thuoc anh — HEIC sang JPG",
       steps: [
-        "Tai len mot anh PNG, JPG hoac WebP.",
+        "Tai len mot anh PNG, JPG, WebP hoac HEIC.",
         "Chon dinh dang dau ra va nhap kich thuoc neu can.",
         "Tuy chon khoa ti le va dieu chinh chat luong nen.",
         "Tao ket qua, xem truoc va tai xuong anh da chuyen doi.",
       ],
       summary:
-        "Chuyen doi dinh dang anh, thay doi kich thuoc va dieu chinh chat luong hoan toan trong trinh duyet.",
+        "Chuyen anh HEIC va anh khac sang JPG/PNG/WebP, thay doi kich thuoc va dieu chinh chat luong hoan toan trong trinh duyet.",
     },
     content: {
       faqDescription: "Mot vai cau hoi thuong gap truoc khi bat dau.",
@@ -180,13 +189,13 @@ export const viMessages: LocaleContent = {
       privacyItems: [
         "Anh khong bao gio duoc tai len. Moi qua trinh chuyen doi dien ra trong trinh duyet cua ban.",
         "JPEG khong ho tro trong suot, vi vay cac vung trong suot se duoc dien bang mau trang.",
-        "HEIC, GIF dong, xuat SVG va chuyen doi hang loat hien chua duoc ho tro.",
+        "GIF dong, xuat SVG va chuyen doi hang loat hien chua duoc ho tro.",
       ],
       privacyTitle: "Ghi chu va gioi han",
       stepsDescription: "Lam theo cac buoc sau de chuyen doi anh.",
       stepsTitle: "Cach su dung",
       supportDescription:
-        "PNG, JPG/JPEG va WebP duoc ho tro cho ca dau vao va dau ra.",
+        "Co the nhap PNG, JPG/JPEG, WebP va HEIC/HEIF; xuat ho tro PNG, JPG/JPEG va WebP (HEIC chi dung lam dau vao).",
       supportTitle: "Dinh dang duoc ho tro",
     },
     client: {
@@ -204,7 +213,7 @@ export const viMessages: LocaleContent = {
         description:
           "Keo tha anh vao vung ben duoi hoac bam nut de chon mot anh. Hien tai cong cu xu ly tung anh mot va khong bao gio tai len.",
         emptyDescription:
-          "Ho tro PNG, JPG/JPEG va WebP. Ban co the doi kich thuoc, doi dinh dang dau ra va dieu chinh chat luong.",
+          "Ho tro PNG, JPG/JPEG, WebP va HEIC (anh iPhone). Ban co the doi kich thuoc, doi dinh dang dau ra va dieu chinh chat luong.",
         emptyTitle: "Tha anh vao de bat dau",
         pendingResult: "Dieu chinh thiet lap va tao ket qua",
         reselect: "Chon anh khac",
