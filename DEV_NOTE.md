@@ -62,3 +62,28 @@ Tailwind v4 **只为 `@theme` 块里声明的 token 生成 utility**。仅写在
 
 更高版本的 `getTextContent` 会崩溃，故锁在 4.10.38。升级前务必先跑通 PDF 文本编辑器的解析路径。
 worker 文件由 `pnpm copy:pdf-worker` 拷到 `public/pdf/`，`dev` / `build` 脚本已自动带上，别手动改。
+
+## 图片转换器 HEIC 支持（heic-to）
+
+- **浏览器原生 `<img>` 只有 Safari 能解码 HEIC**。`lib/image-converter.ts` 的 `loadImage()` 用
+  `new Image()`，Chrome/Firefox/Edge 遇 HEIC 会 `onerror`，所以**不能**让 canvas 直接吃 HEIC。
+- 方案：`normalizeSourceFile()` 在选文件时检测 HEIC（MIME 或 `.heic/.heif` 后缀——很多系统
+  `file.type` 为空，必须后缀兜底），用 **heic-to**（`await import("heic-to")` 动态加载）解码成
+  JPEG `File`，之后下游预览/canvas/转换完全按普通图片处理。HEIC **仅作输入**（canvas 跨浏览器
+  无法编码 HEIC）。
+- **动态 import 是硬要求**：heic-to 自带 libheif WASM（~3MB），必须只在上传 HEIC 时加载独立
+  chunk，别在模块顶层 import。它内部用 Web Worker + Blob 内联 WASM，无需额外 Next 资源配置，
+  也不卡主线程。若遇 CSP `unsafe-eval` 报错，改用 `heic-to/csp`。
+- 中间格式用 JPEG q0.92：HEIC 本就有损、典型输出也有损，二次压缩不可感知；好处是内存低，且
+  归一化后 `image.type==="image/jpeg"` → 默认输出自动落 JPG（适合照片）。
+
+## xxx-to-ooo 转换落地页（/tools/[conversion]）
+
+- 为「heic to jpg」等高搜索词建的专属 SEO 落地页，配对配置在 `lib/conversions.ts`（9 个）。
+- 路由 `app/[locale]/tools/[conversion]/page.tsx` 与静态工具目录**同级共存**：Next 静态段优先，
+  `image-converter` 等不被遮蔽；`dynamicParams = false` + `generateStaticParams` 只放行白名单
+  slug，其余 404。
+- 落地页 =「模板化 SEO 外壳 + 预设输出格式」：`getConversionTool()` 用 `{from}/{to}` 插值生成
+  标题/描述/关键词，正文（features/steps/faq）直接复用 `imageConverter.tool.*`，避免写 9×7 份
+  文案；客户端通过 `ImageConverterClient` 的 `initialOutputFormat` 预设目标格式。
+- 新增配对只需往 `CONVERSION_PAIRS` 加一行，路由 / sitemap / 站内链接（`ConversionLinks`）自动覆盖。
