@@ -294,6 +294,18 @@ export const viMessages: LocaleContent = {
         label: "WebP",
       },
     },
+    conversions: {
+      description:
+        "Chuyen {from} sang {to} truc tuyen, mien phi va rieng tu, ngay trong trinh duyet. Khong tai len, khong dang ky; tep cua ban khong bao gio roi khoi thiet bi.",
+      keywords: [
+        "{from} sang {to}",
+        "chuyen {from} sang {to}",
+        "{from} sang {to} truc tuyen",
+        "{from} to {to}",
+      ],
+      relatedTitle: "Chuyen doi pho bien",
+      title: "Cong cu chuyen {from} sang {to}",
+    },
   },
   pdfTextEditor: {
     metadata: {

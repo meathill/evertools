@@ -293,6 +293,18 @@ export const jaMessages: LocaleContent = {
         label: "WebP",
       },
     },
+    conversions: {
+      description:
+        "{from} を {to} にブラウザ内で無料変換。アップロードや登録は不要で、ファイルは端末から外に出ません。",
+      keywords: [
+        "{from} {to} 変換",
+        "{from} to {to}",
+        "{from} を {to} に変換",
+        "{from} {to} 無料",
+      ],
+      relatedTitle: "よく使う変換",
+      title: "{from} を {to} に変換",
+    },
   },
   pdfTextEditor: {
     metadata: {

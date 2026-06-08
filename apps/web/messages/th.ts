@@ -279,6 +279,18 @@ export const thMessages: LocaleContent = {
         label: "WebP",
       },
     },
+    conversions: {
+      description:
+        "แปลง {from} เป็น {to} ออนไลน์ ฟรีและเป็นส่วนตัว ทำงานในเบราว์เซอร์ ไม่ต้องอัปโหลดหรือสมัคร ไฟล์ไม่ออกจากเครื่องของคุณ",
+      keywords: [
+        "{from} เป็น {to}",
+        "แปลง {from} เป็น {to}",
+        "{from} เป็น {to} ออนไลน์",
+        "{from} to {to}",
+      ],
+      relatedTitle: "การแปลงยอดนิยม",
+      title: "ตัวแปลง {from} เป็น {to}",
+    },
   },
   pdfTextEditor: {
     metadata: {

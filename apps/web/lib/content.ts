@@ -1,3 +1,8 @@
+import {
+  type ConversionPair,
+  conversionFormatLabel,
+  conversionSlug,
+} from "@/lib/conversions";
 import type { LocaleContent } from "@/messages/types";
 
 export type ToolFaq = {
@@ -35,6 +40,37 @@ export function getImageConverterTool(content: LocaleContent): ToolDefinition {
     steps: content.imageConverter.tool.steps,
     stepsTitle: content.imageConverter.content.stepsTitle,
     summary: content.imageConverter.tool.summary,
+    totalTime: "PT1M",
+  };
+}
+
+// 转换落地页（如 heic-to-jpg）：唯一字段用模板插值生成强 SEO 信号，
+// features/steps/faq 等正文直接复用图片转换器内容，避免重写 9×7 份文案。
+export function getConversionTool(
+  content: LocaleContent,
+  pair: ConversionPair,
+): ToolDefinition {
+  const { imageConverter } = content;
+  const { conversions } = imageConverter;
+  const from = conversionFormatLabel(pair.from);
+  const to = conversionFormatLabel(pair.to);
+  const fill = (value: string) =>
+    value.replaceAll("{from}", from).replaceAll("{to}", to);
+  const slug = conversionSlug(pair);
+
+  return {
+    applicationCategory: "MultimediaApplication",
+    category: imageConverter.tool.category,
+    description: fill(conversions.description),
+    faq: imageConverter.tool.faq,
+    features: imageConverter.tool.features,
+    href: `/tools/${slug}`,
+    keywords: conversions.keywords.map(fill),
+    name: fill(conversions.title),
+    slug,
+    steps: imageConverter.tool.steps,
+    stepsTitle: imageConverter.content.stepsTitle,
+    summary: imageConverter.tool.summary,
     totalTime: "PT1M",
   };
 }

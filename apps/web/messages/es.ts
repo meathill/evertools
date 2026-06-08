@@ -298,6 +298,18 @@ export const esMessages: LocaleContent = {
         label: "WebP",
       },
     },
+    conversions: {
+      description:
+        "Convierte {from} a {to} en línea, gratis y de forma privada, directamente en tu navegador. Sin subidas ni registro; tus archivos nunca salen de tu dispositivo.",
+      keywords: [
+        "{from} a {to}",
+        "convertir {from} a {to}",
+        "{from} a {to} online",
+        "{from} to {to}",
+      ],
+      relatedTitle: "Conversiones populares",
+      title: "Convertidor de {from} a {to}",
+    },
   },
   pdfTextEditor: {
     metadata: {

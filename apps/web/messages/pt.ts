@@ -298,6 +298,18 @@ export const ptMessages: LocaleContent = {
         label: "WebP",
       },
     },
+    conversions: {
+      description:
+        "Converta {from} para {to} online, gratis e com privacidade, direto no navegador. Sem upload nem cadastro; seus arquivos nunca saem do dispositivo.",
+      keywords: [
+        "{from} para {to}",
+        "converter {from} para {to}",
+        "{from} para {to} online",
+        "{from} to {to}",
+      ],
+      relatedTitle: "Conversoes populares",
+      title: "Conversor de {from} para {to}",
+    },
   },
   pdfTextEditor: {
     metadata: {

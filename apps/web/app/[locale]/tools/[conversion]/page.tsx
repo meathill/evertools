@@ -1,9 +1,16 @@
 import { LockIcon, ShieldCheckIcon, SparklesIcon } from "lucide-react";
 import type { Metadata } from "next";
+import { notFound } from "next/navigation";
 import { ConversionLinks } from "@/components/tool-page/conversion-links";
 import { ToolPageLayout } from "@/components/tool-page/tool-page-layout";
 import { ImageConverterClient } from "@/components/tools/image-converter-client";
-import { getImageConverterTool } from "@/lib/content";
+import {
+  CONVERSION_PAIRS,
+  conversionOutputFormat,
+  conversionSlug,
+  parseConversionSlug,
+} from "@/lib/conversions";
+import { getConversionTool } from "@/lib/content";
 import { getLocaleFromParams } from "@/lib/locale";
 import {
   buildToolStructuredData,
@@ -11,25 +18,46 @@ import {
 } from "@/lib/tool-page";
 import { getLocaleContent } from "@/messages";
 
+// 仅白名单 slug 静态生成，其余一律 404（不渲染任意 {x}-to-{y}）。
+export const dynamicParams = false;
+
+export function generateStaticParams() {
+  return CONVERSION_PAIRS.map((pair) => ({ conversion: conversionSlug(pair) }));
+}
+
 export async function generateMetadata({
   params,
 }: {
-  params: Promise<{ locale: string }>;
+  params: Promise<{ conversion: string; locale: string }>;
 }): Promise<Metadata> {
   const locale = await getLocaleFromParams(params);
-  const tool = getImageConverterTool(getLocaleContent(locale));
+  const { conversion } = await params;
+  const pair = parseConversionSlug(conversion);
+
+  if (!pair) {
+    notFound();
+  }
+
+  const tool = getConversionTool(getLocaleContent(locale), pair);
   return generateToolPageMetadata(locale, tool);
 }
 
-export default async function ImageConverterPage({
+export default async function ConversionPage({
   params,
 }: {
-  params: Promise<{ locale: string }>;
+  params: Promise<{ conversion: string; locale: string }>;
 }) {
   const locale = await getLocaleFromParams(params);
+  const { conversion } = await params;
+  const pair = parseConversionSlug(conversion);
+
+  if (!pair) {
+    notFound();
+  }
+
   const content = getLocaleContent(locale);
   const page = content.imageConverter;
-  const tool = getImageConverterTool(content);
+  const tool = getConversionTool(content, pair);
 
   return (
     <ToolPageLayout
@@ -39,7 +67,7 @@ export default async function ImageConverterPage({
         page.hero.badges.singleImage,
       ]}
       contentSection={page.content}
-      description={page.hero.description}
+      description={tool.description}
       faq={tool.faq}
       features={tool.features}
       infoCard={{
@@ -62,10 +90,17 @@ export default async function ImageConverterPage({
         tool,
         content.header.nav.home,
       )}
-      title={page.hero.title}
+      title={tool.name}
     >
-      <ImageConverterClient content={page} />
-      <ConversionLinks locale={locale} title={page.conversions.relatedTitle} />
+      <ImageConverterClient
+        content={page}
+        initialOutputFormat={conversionOutputFormat(pair.to)}
+      />
+      <ConversionLinks
+        currentSlug={conversionSlug(pair)}
+        locale={locale}
+        title={page.conversions.relatedTitle}
+      />
     </ToolPageLayout>
   );
 }

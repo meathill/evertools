@@ -293,6 +293,18 @@ export const enMessages: LocaleContent = {
         label: "WebP",
       },
     },
+    conversions: {
+      description:
+        "Convert {from} to {to} online — free, private and right in your browser. No upload, no signup; your files never leave your device.",
+      keywords: [
+        "{from} to {to}",
+        "convert {from} to {to}",
+        "{from} to {to} converter",
+        "{from} to {to} online",
+      ],
+      relatedTitle: "Popular conversions",
+      title: "{from} to {to} Converter",
+    },
   },
   pdfTextEditor: {
     metadata: {

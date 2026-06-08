@@ -279,6 +279,18 @@ export const zhMessages = {
         label: "WebP",
       },
     },
+    conversions: {
+      description:
+        "在浏览器里免费把 {from} 转成 {to}，不上传、不注册，图片全程留在本地设备上。",
+      keywords: [
+        "{from} 转 {to}",
+        "{from} to {to}",
+        "{from} 转 {to} 在线",
+        "免费 {from} 转 {to}",
+      ],
+      relatedTitle: "常见转换",
+      title: "{from} 转 {to} 在线转换器",
+    },
   },
   pdfTextEditor: {
     metadata: {
