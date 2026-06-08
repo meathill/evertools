@@ -200,6 +200,7 @@ export const ptMessages: LocaleContent = {
       upload: {
         chooseImage: "Escolher imagem",
         clear: "Limpar",
+        decoding: "Decodificando foto HEIC…",
         description:
           "Arraste uma imagem para a area abaixo ou clique no botao para escolher uma. Por enquanto, processa uma imagem por vez e nunca faz upload.",
         emptyDescription:

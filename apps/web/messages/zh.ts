@@ -189,6 +189,7 @@ export const zhMessages = {
       upload: {
         chooseImage: "选择图片",
         clear: "清空",
+        decoding: "正在解码 HEIC 照片…",
         description:
           "拖拽图片到下方区域，或点击按钮选择图片。当前支持处理单张图片，不会上传到服务器。",
         emptyDescription:

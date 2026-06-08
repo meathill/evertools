@@ -91,6 +91,63 @@ export function isAcceptedImageType(type: string): boolean {
   return acceptedImageTypeSet.has(type);
 }
 
+// HEIC/HEIF 系列 MIME。浏览器原生 <img> 只有 Safari 能解码 HEIC，
+// 因此这些类型不进 ACCEPTED_IMAGE_TYPES（canvas 原生类型），而是先经
+// normalizeSourceFile 解码成标准位图再进入既有管线。
+const HEIC_MIME_TYPES = new Set<string>([
+  "image/heic",
+  "image/heif",
+  "image/heic-sequence",
+  "image/heif-sequence",
+]);
+
+const HEIC_EXTENSION_PATTERN = /\.(heic|heif)$/i;
+
+// HEIC 在很多系统上 file.type 为空，必须用后缀兜底判断。
+export function isHeicFile(file: File): boolean {
+  return (
+    HEIC_MIME_TYPES.has(file.type.toLowerCase()) ||
+    HEIC_EXTENSION_PATTERN.test(file.name)
+  );
+}
+
+export function isAcceptedImageFile(file: File): boolean {
+  return isAcceptedImageType(file.type) || isHeicFile(file);
+}
+
+// 给 <input accept> 用：同时带 MIME 与后缀，确保各 OS 文件选择器都能筛到 .heic。
+export const FILE_INPUT_ACCEPT = [
+  ...ACCEPTED_IMAGE_TYPES,
+  "image/heic",
+  "image/heif",
+  ".heic",
+  ".heif",
+].join(",");
+
+// 把 HEIC 归一化成浏览器可解码的 JPEG File；非 HEIC 原样返回（零开销，不触发动态 import）。
+// 解码在 heic-to 的内部 worker 中完成（WASM 经 Blob 内联，无需额外资源配置）。
+export async function normalizeSourceFile(file: File): Promise<File> {
+  if (!isHeicFile(file)) {
+    return file;
+  }
+
+  try {
+    const { heicTo } = await import("heic-to");
+    const blob = await heicTo({
+      blob: file,
+      quality: 0.92,
+      type: "image/jpeg",
+    });
+    const baseName = file.name.replace(/\.[^.]+$/, "").trim() || "image";
+
+    return new File([blob], `${baseName}.jpg`, { type: "image/jpeg" });
+  } catch {
+    throw createImageConverterError(
+      IMAGE_CONVERTER_ERROR_CODES.IMAGE_READ_FAILED,
+    );
+  }
+}
+
 export function supportsQuality(format: OutputFormat): boolean {
   return format !== "image/png";
 }

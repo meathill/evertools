@@ -189,6 +189,7 @@ export const thMessages: LocaleContent = {
       upload: {
         chooseImage: "เลือกรูปภาพ",
         clear: "ล้าง",
+        decoding: "กำลังถอดรหัสรูป HEIC…",
         description:
           "ลากรูปภาพมาวางในพื้นที่ด้านล่าง หรือกดปุ่มเพื่อเลือกหนึ่งรูป ตอนนี้รองรับรูปเดียวและจะไม่อัปโหลดไปยังเซิร์ฟเวอร์",
         emptyDescription:

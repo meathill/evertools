@@ -196,6 +196,7 @@ export const jaMessages: LocaleContent = {
       upload: {
         chooseImage: "画像を選択",
         clear: "クリア",
+        decoding: "HEIC 写真をデコード中…",
         description:
           "下のエリアに画像をドラッグするか、ボタンから画像を 1 枚選択してください。現在は単一画像のみ対応し、サーバーへはアップロードしません。",
         emptyDescription:

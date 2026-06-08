@@ -12,6 +12,7 @@ type ImageConverterState = {
   cropAnchor: CropAnchor;
   hydrateFromSource: (input: {
     height: number;
+    preferredFormat?: OutputFormat;
     type?: string;
     width: number;
   }) => void;
@@ -46,10 +47,10 @@ const initialState = {
 
 export const useImageConverterStore = create<ImageConverterState>((set) => ({
   ...initialState,
-  hydrateFromSource: ({ height, type, width }) => {
+  hydrateFromSource: ({ height, preferredFormat, type, width }) => {
     set({
       cropAnchor: DEFAULT_CROP_ANCHOR,
-      outputFormat: getDefaultOutputFormat(type),
+      outputFormat: preferredFormat ?? getDefaultOutputFormat(type),
       quality: DEFAULT_QUALITY,
       resizeMode: "lock",
       targetHeight: String(height),

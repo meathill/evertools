@@ -200,6 +200,7 @@ export const viMessages: LocaleContent = {
       upload: {
         chooseImage: "Chon anh",
         clear: "Xoa",
+        decoding: "Dang giai ma anh HEIC…",
         description:
           "Keo tha anh vao vung ben duoi hoac bam nut de chon mot anh. Hien tai cong cu xu ly tung anh mot va khong bao gio tai len.",
         emptyDescription:

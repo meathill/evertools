@@ -1,5 +1,6 @@
-import { describe, expect, it } from "vitest";
+import { describe, expect, it, vi } from "vitest";
 import {
+  FILE_INPUT_ACCEPT,
   IMAGE_CONVERTER_ERROR_CODES,
   buildOutputFilename,
   clampQuality,
@@ -9,9 +10,19 @@ import {
   getDefaultOutputFormat,
   getImageConverterErrorMessage,
   getSyncedDimensionValue,
+  isAcceptedImageFile,
+  isHeicFile,
+  normalizeSourceFile,
   resolveTargetDimensions,
 } from "@/lib/image-converter";
 import { getLocaleContent } from "@/messages";
+
+// 用轻量 mock 替代真实 heic-to（避免在 node 环境加载 WASM/Worker）。
+vi.mock("heic-to", () => ({
+  heicTo: vi.fn(
+    async () => new Blob([new Uint8Array([9])], { type: "image/jpeg" }),
+  ),
+}));
 
 describe("image converter helpers", () => {
   it("resolves locked dimensions from width", () => {
@@ -260,5 +271,62 @@ describe("getImageConverterErrorMessage", () => {
         fallback,
       ),
     ).toBe("Unsupported file. Use PNG, JPEG.");
+  });
+});
+
+describe("HEIC detection and normalization", () => {
+  function makeFile(name: string, type: string): File {
+    return new File([new Uint8Array([1, 2, 3])], name, { type });
+  }
+
+  it("detects HEIC by MIME type", () => {
+    expect(isHeicFile(makeFile("x", "image/heic"))).toBe(true);
+    expect(isHeicFile(makeFile("x", "image/heif"))).toBe(true);
+    expect(isHeicFile(makeFile("x", "image/heic-sequence"))).toBe(true);
+  });
+
+  it("detects HEIC by extension when the MIME type is missing", () => {
+    expect(isHeicFile(makeFile("IMG_1234.HEIC", ""))).toBe(true);
+    expect(isHeicFile(makeFile("photo.heif", ""))).toBe(true);
+  });
+
+  it("rejects non-HEIC files", () => {
+    expect(isHeicFile(makeFile("a.png", "image/png"))).toBe(false);
+    expect(isHeicFile(makeFile("notes.txt", "text/plain"))).toBe(false);
+  });
+
+  it("accepts canvas-native and HEIC sources, rejects others", () => {
+    expect(isAcceptedImageFile(makeFile("a.png", "image/png"))).toBe(true);
+    expect(isAcceptedImageFile(makeFile("a.jpg", "image/jpeg"))).toBe(true);
+    expect(isAcceptedImageFile(makeFile("a.webp", "image/webp"))).toBe(true);
+    expect(isAcceptedImageFile(makeFile("a.heic", ""))).toBe(true);
+    expect(isAcceptedImageFile(makeFile("a.bmp", "image/bmp"))).toBe(false);
+  });
+
+  it("exposes HEIC alongside PNG in the file input accept list", () => {
+    expect(FILE_INPUT_ACCEPT).toContain("image/heic");
+    expect(FILE_INPUT_ACCEPT).toContain(".heic");
+    expect(FILE_INPUT_ACCEPT).toContain("image/png");
+  });
+
+  it("returns non-HEIC files unchanged without decoding", async () => {
+    const file = makeFile("a.png", "image/png");
+    expect(await normalizeSourceFile(file)).toBe(file);
+  });
+
+  it("decodes HEIC to a JPEG file, preserving the base name", async () => {
+    const result = await normalizeSourceFile(
+      makeFile("IMG_0001.heic", "image/heic"),
+    );
+    expect(result.name).toBe("IMG_0001.jpg");
+    expect(result.type).toBe("image/jpeg");
+  });
+
+  it("maps HEIC decode failures to IMAGE_READ_FAILED", async () => {
+    const { heicTo } = await import("heic-to");
+    vi.mocked(heicTo).mockRejectedValueOnce(new Error("boom"));
+    await expect(
+      normalizeSourceFile(makeFile("bad.heic", "image/heic")),
+    ).rejects.toThrow(IMAGE_CONVERTER_ERROR_CODES.IMAGE_READ_FAILED);
   });
 });

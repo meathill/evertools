@@ -1,6 +1,7 @@
 import {
   type ChangeEvent,
   type DragEvent,
+  useEffect,
   useId,
   useRef,
   useState,
@@ -14,8 +15,9 @@ import {
   getCurrentTargetDimensions,
   getImageConverterErrorMessage,
   getSyncedDimensionValue,
-  isAcceptedImageType,
+  isAcceptedImageFile,
   type CropAnchor,
+  normalizeSourceFile,
   type OutputFormat,
   readImageFile,
   resolveTargetDimensions,
@@ -48,10 +50,16 @@ type ResultImage = {
   width: number;
 };
 
-export function useImageConverter(content: LocaleContent["imageConverter"]) {
-  const acceptedFormatsText = ACCEPTED_IMAGE_TYPES.map((type) =>
-    type.replace("image/", "").toUpperCase(),
-  ).join(" / ");
+export function useImageConverter(
+  content: LocaleContent["imageConverter"],
+  preferredOutputFormat?: OutputFormat,
+) {
+  const acceptedFormatsText = [
+    ...ACCEPTED_IMAGE_TYPES.map((type) =>
+      type.replace("image/", "").toUpperCase(),
+    ),
+    "HEIC",
+  ].join(" / ");
   const inputId = useId();
   const inputRef = useRef<HTMLInputElement | null>(null);
   const replacePreviewUrl = useRevocableObjectUrl();
@@ -61,6 +69,7 @@ export function useImageConverter(content: LocaleContent["imageConverter"]) {
   const [resultImage, setResultImage] = useState<ResultImage | null>(null);
   const [isDragging, setIsDragging] = useState(false);
   const [isConverting, setIsConverting] = useState(false);
+  const [isPreparing, setIsPreparing] = useState(false);
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
 
   const {
@@ -82,6 +91,13 @@ export function useImageConverter(content: LocaleContent["imageConverter"]) {
   } = useImageConverterStore();
 
   const isAspectLocked = resizeMode === "lock";
+
+  // 转换落地页（如 /tools/heic-to-jpg）预设目标输出格式；通用页不传则行为不变。
+  useEffect(() => {
+    if (preferredOutputFormat) {
+      setOutputFormat(preferredOutputFormat);
+    }
+  }, [preferredOutputFormat, setOutputFormat]);
 
   const outputFormatInfo = OUTPUT_FORMATS.find(
     (item) => item.value === outputFormat,
@@ -114,8 +130,8 @@ export function useImageConverter(content: LocaleContent["imageConverter"]) {
           (qualityEnabled && resultImage.quality !== quality)),
     );
 
-  async function handleSelectedFile(file: File) {
-    if (!isAcceptedImageType(file.type)) {
+  async function handleSelectedFile(originalFile: File) {
+    if (!isAcceptedImageFile(originalFile)) {
       setErrorMessage(
         content.client.errors.unsupportedFormat.replace(
           "{formats}",
@@ -126,21 +142,30 @@ export function useImageConverter(content: LocaleContent["imageConverter"]) {
     }
 
     try {
+      setIsPreparing(true);
+      setErrorMessage(null);
+
+      // HEIC 先解码成标准 JPEG；非 HEIC 原样返回。之后下游全部按普通图片处理。
+      const file = await normalizeSourceFile(originalFile);
       const image = await readImageFile(file);
 
       replacePreviewUrl(image.previewUrl);
       setSourceImage({
         file,
         height: image.height,
-        name: file.name,
+        name: originalFile.name,
         previewUrl: image.previewUrl,
-        size: file.size,
-        type: file.type,
+        size: originalFile.size,
+        type: originalFile.type || file.type,
         width: image.width,
       });
       clearResult();
-      hydrateFromSource(image);
-      setErrorMessage(null);
+      hydrateFromSource({
+        height: image.height,
+        preferredFormat: preferredOutputFormat,
+        type: image.type,
+        width: image.width,
+      });
     } catch (error) {
       setErrorMessage(
         getImageConverterErrorMessage(
@@ -150,6 +175,8 @@ export function useImageConverter(content: LocaleContent["imageConverter"]) {
           content.client.errors.readFailed,
         ),
       );
+    } finally {
+      setIsPreparing(false);
     }
   }
 
@@ -387,6 +414,7 @@ export function useImageConverter(content: LocaleContent["imageConverter"]) {
     inputRef,
     isConverting,
     isDragging,
+    isPreparing,
     isResultStale,
     outputFormat,
     outputFormatContent,

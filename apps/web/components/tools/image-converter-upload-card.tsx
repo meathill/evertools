@@ -1,4 +1,9 @@
-import { ImageUpIcon, RefreshCcwIcon, ShieldCheckIcon } from "lucide-react";
+import {
+  ImageUpIcon,
+  Loader2Icon,
+  RefreshCcwIcon,
+  ShieldCheckIcon,
+} from "lucide-react";
 import { PreviewCard } from "@/components/tools/image-converter-preview-card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -10,7 +15,7 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import type { ImageConverterController } from "@/hooks/use-image-converter";
-import { ACCEPTED_IMAGE_TYPES, formatBytes } from "@/lib/image-converter";
+import { FILE_INPUT_ACCEPT, formatBytes } from "@/lib/image-converter";
 import type { LocaleContent } from "@/messages/types";
 
 type ImageConverterUploadCardProps = {
@@ -33,6 +38,7 @@ export function ImageConverterUploadCard({
     inputId,
     inputRef,
     isDragging,
+    isPreparing,
     isResultStale,
     resultImage,
     sourceImage,
@@ -75,7 +81,7 @@ export function ImageConverterUploadCard({
             onDrop={handleDrop}
           >
             <input
-              accept={ACCEPTED_IMAGE_TYPES.join(",")}
+              accept={FILE_INPUT_ACCEPT}
               className="sr-only"
               id={inputId}
               onChange={handleFileInputChange}
@@ -144,6 +150,15 @@ export function ImageConverterUploadCard({
                     stale={Boolean(isResultStale)}
                   />
                 </div>
+              </div>
+            ) : isPreparing ? (
+              <div className="flex min-h-72 flex-col items-center justify-center gap-4 text-center">
+                <div className="flex size-14 items-center justify-center rounded-lg bg-yellow text-ink shadow-press-yellow">
+                  <Loader2Icon className="size-6 animate-spin" />
+                </div>
+                <p className="max-w-md text-mute text-sm leading-6">
+                  {content.client.upload.decoding}
+                </p>
               </div>
             ) : (
               <div className="flex min-h-72 flex-col items-center justify-center gap-4 text-center">

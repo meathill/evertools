@@ -200,6 +200,7 @@ export const esMessages: LocaleContent = {
       upload: {
         chooseImage: "Elegir imagen",
         clear: "Limpiar",
+        decoding: "Decodificando foto HEIC…",
         description:
           "Arrastra una imagen al área inferior o haz clic en el botón para elegir una. Por ahora procesa una sola imagen cada vez y nunca la sube.",
         emptyDescription:

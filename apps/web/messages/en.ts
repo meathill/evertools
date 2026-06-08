@@ -199,6 +199,7 @@ export const enMessages: LocaleContent = {
       upload: {
         chooseImage: "Choose image",
         clear: "Clear",
+        decoding: "Decoding HEIC photo…",
         description:
           "Drag an image into the area below or click the button to choose one. It currently handles one image at a time and never uploads it.",
         emptyDescription:
