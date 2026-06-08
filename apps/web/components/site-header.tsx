@@ -1,6 +1,5 @@
 "use client";
 
-import Link from "next/link";
 import {
   ExternalLinkIcon,
   GlobeIcon,
@@ -8,6 +7,8 @@ import {
   MoonIcon,
   SunIcon,
 } from "lucide-react";
+import Link from "next/link";
+import { useEffect, useState } from "react";
 import { Badge } from "@/components/ui/badge";
 import {
   Select,
@@ -40,10 +41,21 @@ export function SiteHeader({ content, locale }: SiteHeaderProps) {
     window.location.href = getLocalizedPathname(nextLocale, "/");
   }
 
+  const [theme, setTheme] = useState<ThemeMode>("system");
+
+  // 只在挂载后读取 localStorage：SSR 与首次客户端渲染都用稳定的 "system"，
+  // 避免主题值在服务端/客户端不一致导致的水合文本不匹配。
+  useEffect(() => {
+    const stored = localStorage.getItem("theme");
+    setTheme(stored === "dark" || stored === "light" ? stored : "system");
+  }, []);
+
   function handleThemeChange(value: string | null) {
     if (!value) return;
     const mode = value as ThemeMode;
     const root = document.documentElement;
+
+    setTheme(mode);
 
     if (mode === "system") {
       localStorage.removeItem("theme");
@@ -58,13 +70,6 @@ export function SiteHeader({ content, locale }: SiteHeaderProps) {
       localStorage.setItem("theme", "light");
       root.classList.remove("dark");
     }
-  }
-
-  function getCurrentTheme(): ThemeMode {
-    if (typeof window === "undefined") return "light";
-    const stored = localStorage.getItem("theme");
-    if (stored === "dark" || stored === "light") return stored;
-    return "system";
   }
 
   return (
@@ -138,10 +143,7 @@ export function SiteHeader({ content, locale }: SiteHeaderProps) {
               </SelectPopup>
             </Select>
 
-            <Select
-              defaultValue={getCurrentTheme()}
-              onValueChange={handleThemeChange}
-            >
+            <Select onValueChange={handleThemeChange} value={theme}>
               <SelectTrigger
                 className="h-8 min-w-[100px] gap-1.5 border-rule-strong bg-paper font-mono text-xs text-mute"
                 size="sm"
