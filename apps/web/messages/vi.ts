@@ -496,6 +496,210 @@ export const viMessages: LocaleContent = {
       },
     },
   },
+  ogImageValidator: {
+    metadata: {
+      description:
+        "Nhap URL de lay va kiem tra the Open Graph va Twitter Card, xem truoc the chia se tren Facebook, X, LinkedIn, Discord va Slack, va kiem tra kich thuoc, ti le va kich thuoc tep og:image. Ban cung co the tai len anh de kiem tra truc tiep.",
+      keywords: [
+        "kiem tra og image",
+        "open graph debugger",
+        "twitter card validator",
+        "xem truoc chia se mang xa hoi",
+        "kich thuoc og:image",
+        "kiem tra opengraph",
+        "kiem tra og image",
+      ],
+      title: "Cong cu kiem tra OG Image / Xem truoc the chia se mang xa hoi",
+    },
+    hero: {
+      badges: {
+        category: "Cong cu SEO",
+        platforms: "Xem truoc 5 nen tang",
+        realtime: "Kiem tra the truc tiep",
+      },
+      description:
+        "Nhap URL de lay va phan tich the Open Graph / Twitter Card, xem truoc giao dien khi chia se tren Facebook, X, LinkedIn, Discord va Slack, va kiem tra kich thuoc, ti le, kich thuoc tep va dinh dang og:image. Ban cung co the tai len mot anh rieng le de kiem tra.",
+      title: "Cong cu kiem tra OG Image & the chia se mang xa hoi",
+    },
+    scenarios: {
+      description:
+        "Phu hop de kiem tra giao dien chia se truoc khi dang, khong danh cho giam sat hang loat.",
+      debug:
+        "Lien ket chia se cua ban khong hien anh hoac tieu de tren mang xa hoi va ban muon go loi cac the OG.",
+      optimize:
+        "Ban muon xac nhan kich thuoc, ti le va dung luong og:image dap ung yeu cau tung nen tang de tang ty le nhan chuot.",
+      preview:
+        "Truoc khi dang bai hoac trang dich, ban muon xem giao dien khi chia se tren tung nen tang.",
+      title: "Phu hop voi nhung truong hop nay",
+    },
+    tool: {
+      category: "Cong cu SEO",
+      description:
+        "Lay cac the Open Graph va Twitter Card cua bat ky URL nao truc tuyen, xem truoc the chia se cho Facebook, X, LinkedIn, Discord va Slack, va kiem tra kich thuoc, ti le, kich thuoc tep va dinh dang og:image. Ban cung co the tai len anh de kiem tra thu cong.",
+      faq: [
+        {
+          answer:
+            "Che do URL lay trang dich tren may chu de phan tich the (trinh duyet khong the lay trang khac nguon goc); no chi doc noi dung cong khai va khong luu tru gi. Che do tai len chay hoan toan trong trinh duyet va khong bao gio tai anh len.",
+          question: "Du lieu cua toi duoc xu ly nhu the nao khi kiem tra URL?",
+        },
+        {
+          answer:
+            "Mot so trang tra ve noi dung rut gon cho cac yeu cau khong phai trinh duyet, hoac chen the OG qua JavaScript; nhung trang nhu vay co the khong lo cac the day du, dieu nay la binh thuong.",
+          question: "Tai sao mot so trang khong the phan tich duoc?",
+        },
+        {
+          answer:
+            "1200×630 pixel voi ti le xap xi 1.91:1 la khuyen nghi pho bien. Duoi 600×315 mot so nen tang hien the nho, va duoi 200×200 anh thuong khong duoc chap nhan.",
+          question: "Kich thuoc og:image duoc khuyen nghi la bao nhieu?",
+        },
+        {
+          answer:
+            "Khoang 8MB cho Facebook / Discord va 5MB cho X / LinkedIn / Slack. Luon tham khao tai lieu chinh thuc cua tung nen tang; cong cu nay canh bao dua tren cac nguong do.",
+          question: "Gioi han dung luong anh tren tung nen tang la bao nhieu?",
+        },
+      ],
+      features: [
+        "Lay cac the Open Graph va Twitter Card cua bat ky URL nao",
+        "Xem truoc the chia se cho Facebook, X, LinkedIn, Discord va Slack",
+        "Kiem tra kich thuoc, ti le (1.91:1), dung luong va dinh dang og:image",
+        "Chan doan dat/canh bao/loi theo tung nen tang",
+        "Tai len anh de kiem tra kich thuoc va ti le thu cong",
+        "Giai quyet du phong tu twitter:image→og:image va og:title→title",
+      ],
+      keywords: [
+        "kiem tra og image",
+        "open graph debugger",
+        "twitter card validator",
+        "xem truoc chia se mang xa hoi",
+        "kich thuoc og:image",
+        "xem truoc the chia se",
+        "kiem tra opengraph",
+        "kiem tra og image",
+      ],
+      name: "Cong cu kiem tra OG Image — Xem truoc the chia se mang xa hoi",
+      steps: [
+        'Chuyen sang "Tu URL" va dan URL trang ban muon kiem tra.',
+        "Nhan Kiem tra va doi trong khi he thong lay va phan tich the OG / Twitter cua trang.",
+        "Xem lai xem truoc the chia se theo tung nen tang va bao cao kich thuoc, ti le, dung luong va the.",
+        'Hoac chuyen sang "Tai len anh" de kiem tra mot anh don le voi thong so cua tung nen tang.',
+      ],
+      summary:
+        "Lay the Open Graph / Twitter cua URL, xem truoc the chia se da nen tang va kiem tra anh.",
+    },
+    content: {
+      faqDescription: "Mot vai cau hoi thuong gap truoc khi bat dau.",
+      faqTitle: "Cau hoi thuong gap",
+      privacyDescription: "Mot vai luu y truoc khi su dung.",
+      privacyItems: [
+        "Che do URL can may chu lay trang dich giup ban (de tranh gioi han cross-origin cua trinh duyet); chi doc noi dung cong khai va khong luu tru gi.",
+        "Cac dia chi rieng tu, loopback va noi bo bi chinh sach bao mat chan va khong the lay.",
+        "Che do tai len kiem tra hoan toan trong trinh duyet; anh khong roi khoi thiet bi cua ban.",
+      ],
+      privacyTitle: "Luu y",
+      stepsDescription: "Lam theo cac buoc duoi day de thuc hien kiem tra.",
+      stepsTitle: "Cach dung",
+      supportDescription:
+        "Kiem tra the Open Graph, Twitter Card va the SEO co ban, bao gom the chia se cua Facebook, X, LinkedIn, Discord va Slack.",
+      supportTitle: "Nhung gi cong cu kiem tra",
+    },
+    client: {
+      modes: {
+        upload: "Tai len anh",
+        url: "Tu URL",
+      },
+      url: {
+        emptyDescription:
+          "Dan URL trang co the truy cap cong khai va chung toi se lay the OG / Twitter va xem truoc the chia se cho tung nen tang.",
+        emptyTitle: "Nhap URL de bat dau",
+        fetching: "Dang lay va phan tich trang…",
+        hint: "Nhap URL day du (bao gom https://) cua trang ban muon kiem tra giao dien chia se.",
+        label: "URL trang",
+        placeholder: "https://example.com/article",
+        resubmit: "Kiem tra lai",
+        submit: "Kiem tra",
+      },
+      upload: {
+        choose: "Chon anh",
+        clear: "Xoa",
+        decoding: "Dang doc anh…",
+        description:
+          "Keo anh vao khu vuc duoi day hoac nhan de chon. Chi kiem tra kich thuoc, ti le, dung luong va dinh dang cuc bo — khong co gi duoc tai len.",
+        dropHint: "Tha ra de tai anh",
+        emptyDescription:
+          "Ho tro PNG, JPG, WebP va GIF. Kiem tra kich thuoc, ti le va dung luong theo thong so OG cua tung nen tang.",
+        emptyTitle: "Tha anh vao de kiem tra",
+        reselect: "Chon lai",
+        title: "Tai len anh",
+      },
+      result: {
+        dimensionsUnknown: "Khong ro kich thuoc",
+        generalTitle: "Kiem tra tong the",
+        noImage: "Khong tim thay og:image",
+        overallFail: "Co van de",
+        overallPass: "Tat ca on",
+        overallWarn: "Con co the cai thien",
+        platformsTitle: "Chan doan theo tung nen tang",
+        previewTitle: "Xem truoc the chia se",
+        sizeUnknown: "Khong ro dung luong",
+        sourceLabel: "Nguon anh",
+        tagsTitle: "The da phan tich",
+      },
+      status: {
+        fail: "Loi",
+        pass: "Dat",
+        warn: "Canh bao",
+      },
+      platforms: {
+        discord: "Discord",
+        facebook: "Facebook",
+        linkedin: "LinkedIn",
+        slack: "Slack",
+        twitter: "X (Twitter)",
+      },
+      checks: {
+        "image-dimensions": "Kich thuoc anh",
+        "image-ratio": "Ti le khung hinh",
+        "platform-filesize": "Dung luong tep",
+        "platform-format": "Dinh dang anh",
+        "platform-min-size": "Kich thuoc toi thieu",
+        "platform-required-tags": "The bat buoc",
+        "tag-description": "Mo ta (description)",
+        "tag-image-alt": "Van ban alt anh (og:image:alt)",
+        "tag-og-image": "Anh (og:image)",
+        "tag-og-url": "URL chuan (og:url)",
+        "tag-title": "Tieu de (og:title / title)",
+        "tag-twitter-card": "Loai the (twitter:card)",
+      },
+      details: {
+        "image-dimensions":
+          "{width}×{height} px (khuyen nghi {idealWidth}×{idealHeight})",
+        "image-ratio": "{ratio} : 1 (khuyen nghi {idealRatio} : 1)",
+        missing: "Thieu",
+        "platform-filesize": "{size} / gioi han {max}",
+        "platform-format": "{format}",
+        "platform-min-size":
+          "{width}×{height} px (toi thieu {minWidth}×{minHeight})",
+        present: "Da co",
+        requiredTagsMissing: "Thieu {missing}",
+        unknown: "Khong doc duoc",
+      },
+      errors: {
+        BLOCKED_HOST:
+          "Dia chi nay bi chinh sach bao mat chan (dia chi rieng tu / cuc bo / noi bo khong the lay).",
+        FETCH_FAILED:
+          "Khong the ket noi den trang dich. Kiem tra xem URL co truy cap duoc khong.",
+        FETCH_TIMEOUT:
+          "Het thoi gian cho — trang dich phan hoi qua cham. Hay thu lai sau.",
+        INVALID_URL: "URL khong hop le. Vui long nhap URL day du dang http(s).",
+        NOT_HTML:
+          "URL nay khong tra ve trang web, nen khong the phan tich the.",
+        TOO_MANY_REDIRECTS: "Qua nhieu chuyen huong — khong the lay URL nay.",
+        UPSTREAM_ERROR:
+          "Trang dich tra ve loi, co the trang khong ton tai hoac tam thoi khong kha dung.",
+        UNKNOWN: "Kiem tra that bai. Hay thu lai sau.",
+      },
+    },
+  },
   jsonViewer: {
     metadata: {
       description:

@@ -505,6 +505,213 @@ export const ptMessages: LocaleContent = {
       },
     },
   },
+  ogImageValidator: {
+    metadata: {
+      description:
+        "Informe uma URL para buscar e validar as tags Open Graph e Twitter Card, previa os cards de compartilhamento no Facebook, X, LinkedIn, Discord e Slack, e verifique as dimensoes, proporcao e tamanho do og:image. Voce tambem pode enviar uma imagem para validar diretamente.",
+      keywords: [
+        "validador og image",
+        "open graph debugger",
+        "twitter card validator",
+        "previa de compartilhamento social",
+        "og:image tamanho",
+        "validador opengraph",
+        "verificador og image",
+      ],
+      title:
+        "Validador de OG Image / Depurador de previa de compartilhamento social",
+    },
+    hero: {
+      badges: {
+        category: "Ferramenta SEO",
+        platforms: "Previa em 5 plataformas",
+        realtime: "Verificacao ao vivo",
+      },
+      description:
+        "Informe uma URL para buscar e analisar as tags Open Graph / Twitter Card, previa como ela aparece ao ser compartilhada no Facebook, X, LinkedIn, Discord e Slack, e valide as dimensoes, proporcao, tamanho e formato do og:image. Voce tambem pode enviar uma imagem para valida-la separadamente.",
+      title: "Validador de OG Image e previa de compartilhamento social",
+    },
+    scenarios: {
+      description:
+        "Ideal para verificar a aparencia antes de publicar, nao para monitoramento em massa.",
+      debug:
+        "Seu link compartilhado nao mostra imagem ou titulo nas redes sociais e voce quer depurar as tags OG.",
+      optimize:
+        "Voce quer confirmar que as dimensoes, proporcao e tamanho do og:image atendem aos requisitos de cada plataforma para melhorar o CTR.",
+      preview:
+        "Antes de publicar um artigo ou landing page, voce quer ver como ele ficara ao ser compartilhado em cada plataforma.",
+      title: "Bom para estes casos",
+    },
+    tool: {
+      category: "Ferramenta SEO",
+      description:
+        "Busque as tags Open Graph e Twitter Card de qualquer URL online, previa os cards de compartilhamento para Facebook, X, LinkedIn, Discord e Slack, e valide as dimensoes, proporcao, tamanho e formato do og:image. Voce tambem pode enviar uma imagem para validacao offline.",
+      faq: [
+        {
+          answer:
+            "O modo URL busca a pagina no servidor para analisar as tags (o navegador nao pode buscar paginas de outras origens); apenas le o conteudo publico e nao armazena nada. O modo de envio roda totalmente no seu navegador e nunca faz upload da imagem.",
+          question: "Como meus dados sao tratados ao validar uma URL?",
+        },
+        {
+          answer:
+            "Alguns sites retornam conteudo simplificado para requisicoes nao-navegador ou injetam tags OG via JavaScript; essas paginas podem nao expor todas as tags, o que e esperado.",
+          question: "Por que alguns sites nao podem ser analisados?",
+        },
+        {
+          answer:
+            "1200×630 pixels com proporcao aproximada de 1.91:1 e a recomendacao mais comum. Abaixo de 600×315 algumas plataformas mostram um card pequeno, e abaixo de 200×200 a imagem geralmente nao e exibida.",
+          question: "Qual o tamanho recomendado para og:image?",
+        },
+        {
+          answer:
+            "Aproximadamente 8MB para Facebook / Discord e 5MB para X / LinkedIn / Slack. Consulte sempre a documentacao oficial de cada plataforma; esta ferramenta sinaliza problemas com base nesses limites.",
+          question:
+            "Quais sao os limites de tamanho de arquivo por plataforma?",
+        },
+      ],
+      features: [
+        "Busque as tags Open Graph e Twitter Card de qualquer URL",
+        "Previa os cards de compartilhamento para Facebook, X, LinkedIn, Discord e Slack",
+        "Valide as dimensoes, proporcao (1.91:1), tamanho e formato do og:image",
+        "Diagnostico de aprovacao / aviso / falha por plataforma",
+        "Envie uma imagem para validar dimensoes e proporcao offline",
+        "Resolve fallbacks de twitter:image→og:image e og:title→title",
+      ],
+      keywords: [
+        "validador og image",
+        "open graph debugger",
+        "twitter card validator",
+        "previa de compartilhamento social",
+        "og:image tamanho",
+        "previa de card de compartilhamento",
+        "validador opengraph",
+        "verificador og image",
+      ],
+      name: "Validador de OG Image — Depurador de previa de compartilhamento social",
+      steps: [
+        'Mude para "Via URL" e cole a URL da pagina que deseja verificar.',
+        "Clique em Verificar e aguarde enquanto buscamos e analisamos as tags OG / Twitter da pagina.",
+        "Revise as previas dos cards de compartilhamento por plataforma e o relatorio de dimensoes, proporcao, tamanho e tags.",
+        'Ou mude para "Enviar imagem" para validar uma unica imagem conforme as especificacoes de cada plataforma.',
+      ],
+      summary:
+        "Busque as tags Open Graph / Twitter de uma URL, previa cards de compartilhamento multiplas plataformas e valide a imagem.",
+    },
+    content: {
+      faqDescription: "Algumas perguntas comuns antes de comecar.",
+      faqTitle: "Perguntas frequentes",
+      privacyDescription: "Algumas observacoes antes de usar.",
+      privacyItems: [
+        "O modo URL precisa que o servidor busque a pagina por voce (para contornar os limites de origem cruzada do navegador); le apenas conteudo publico e nao armazena nada.",
+        "Enderecos privados, loopback e de rede interna sao bloqueados pela politica de seguranca e nao podem ser buscados.",
+        "O modo de envio valida totalmente no seu navegador; a imagem nunca sai do seu dispositivo.",
+      ],
+      privacyTitle: "Observacoes",
+      stepsDescription: "Siga os passos abaixo para executar uma verificacao.",
+      stepsTitle: "Como usar",
+      supportDescription:
+        "Valida tags Open Graph, Twitter Card e SEO basico, cobrindo os cards de compartilhamento do Facebook, X, LinkedIn, Discord e Slack.",
+      supportTitle: "O que e verificado",
+    },
+    client: {
+      modes: {
+        upload: "Enviar imagem",
+        url: "Via URL",
+      },
+      url: {
+        emptyDescription:
+          "Cole uma URL de pagina publica e buscaremos as tags OG / Twitter e mostraremos a previa dos cards de compartilhamento para cada plataforma.",
+        emptyTitle: "Informe uma URL para comecar",
+        fetching: "Buscando e analisando a pagina…",
+        hint: "Informe a URL completa (incluindo https://) cuja aparencia de compartilhamento voce quer verificar.",
+        label: "URL da pagina",
+        placeholder: "https://example.com/article",
+        resubmit: "Verificar novamente",
+        submit: "Verificar",
+      },
+      upload: {
+        choose: "Escolher imagem",
+        clear: "Limpar",
+        decoding: "Lendo imagem…",
+        description:
+          "Arraste uma imagem para a area abaixo ou clique para escolher. Valida apenas dimensoes, proporcao, tamanho e formato localmente — nada e enviado.",
+        dropHint: "Solte para carregar a imagem",
+        emptyDescription:
+          "Suporta PNG, JPG, WebP e GIF. Valida dimensoes, proporcao e tamanho conforme as especificacoes OG de cada plataforma.",
+        emptyTitle: "Solte uma imagem para validar",
+        reselect: "Escolher outra",
+        title: "Enviar imagem",
+      },
+      result: {
+        dimensionsUnknown: "Dimensoes desconhecidas",
+        generalTitle: "Verificacoes gerais",
+        noImage: "Nenhum og:image encontrado",
+        overallFail: "Problemas encontrados",
+        overallPass: "Tudo certo",
+        overallWarn: "Ha margem para melhorar",
+        platformsTitle: "Diagnostico por plataforma",
+        previewTitle: "Previas dos cards de compartilhamento",
+        sizeUnknown: "Tamanho desconhecido",
+        sourceLabel: "Origem da imagem",
+        tagsTitle: "Tags analisadas",
+      },
+      status: {
+        fail: "Falhou",
+        pass: "Passou",
+        warn: "Aviso",
+      },
+      platforms: {
+        discord: "Discord",
+        facebook: "Facebook",
+        linkedin: "LinkedIn",
+        slack: "Slack",
+        twitter: "X (Twitter)",
+      },
+      checks: {
+        "image-dimensions": "Dimensoes da imagem",
+        "image-ratio": "Proporcao de aspecto",
+        "platform-filesize": "Tamanho do arquivo",
+        "platform-format": "Formato da imagem",
+        "platform-min-size": "Tamanho minimo",
+        "platform-required-tags": "Tags obrigatorias",
+        "tag-description": "Descricao (description)",
+        "tag-image-alt": "Texto alternativo da imagem (og:image:alt)",
+        "tag-og-image": "Imagem (og:image)",
+        "tag-og-url": "URL canonica (og:url)",
+        "tag-title": "Titulo (og:title / title)",
+        "tag-twitter-card": "Tipo de card (twitter:card)",
+      },
+      details: {
+        "image-dimensions":
+          "{width}×{height} px (recomendado {idealWidth}×{idealHeight})",
+        "image-ratio": "{ratio} : 1 (recomendado {idealRatio} : 1)",
+        missing: "Ausente",
+        "platform-filesize": "{size} / limite {max}",
+        "platform-format": "{format}",
+        "platform-min-size":
+          "{width}×{height} px (minimo {minWidth}×{minHeight})",
+        present: "Definido",
+        requiredTagsMissing: "Ausente {missing}",
+        unknown: "Nao foi possivel ler",
+      },
+      errors: {
+        BLOCKED_HOST:
+          "Este endereco e bloqueado pela politica de seguranca (enderecos privados / locais / internos nao podem ser buscados).",
+        FETCH_FAILED:
+          "Nao foi possivel conectar ao site de destino. Verifique se a URL esta acessivel.",
+        FETCH_TIMEOUT:
+          "A busca expirou — o site de destino respondeu muito devagar. Tente novamente mais tarde.",
+        INVALID_URL: "URL invalida. Informe uma URL http(s) completa.",
+        NOT_HTML:
+          "Esta URL nao retornou uma pagina web, entao as tags nao podem ser analisadas.",
+        TOO_MANY_REDIRECTS:
+          "Redirecionamentos demais — nao foi possivel buscar esta URL.",
+        UPSTREAM_ERROR:
+          "O site de destino retornou um erro; a pagina pode nao existir ou estar temporariamente indisponivel.",
+        UNKNOWN: "A validacao falhou. Tente novamente mais tarde.",
+      },
+    },
+  },
   jsonViewer: {
     metadata: {
       description:

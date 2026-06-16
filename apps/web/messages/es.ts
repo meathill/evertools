@@ -505,6 +505,214 @@ export const esMessages: LocaleContent = {
       },
     },
   },
+  ogImageValidator: {
+    metadata: {
+      description:
+        "Introduce una URL para obtener y validar sus etiquetas Open Graph y Twitter Card, previsualiza las tarjetas de compartición en Facebook, X, LinkedIn, Discord y Slack, y comprueba las dimensiones, la proporción y el tamaño de archivo de og:image. También puedes subir una imagen para validarla directamente.",
+      keywords: [
+        "validador de og image",
+        "depurador open graph",
+        "validador de twitter card",
+        "previsualización de compartición en redes",
+        "tamaño og:image",
+        "validador opengraph",
+        "comprobador de og image",
+      ],
+      title:
+        "Validador de OG Image / Depurador de previsualización en redes sociales",
+    },
+    hero: {
+      badges: {
+        category: "Herramienta SEO",
+        platforms: "Previsualización en 5 plataformas",
+        realtime: "Comprobación de etiquetas en tiempo real",
+      },
+      description:
+        "Introduce una URL para obtener y analizar sus etiquetas Open Graph / Twitter Card, previsualiza cómo se verá al compartirla en Facebook, X, LinkedIn, Discord y Slack, y valida las dimensiones, la proporción, el tamaño de archivo y el formato de og:image. También puedes subir una imagen para validarla de forma independiente.",
+      title: "Validador de OG Image y previsualización en redes sociales",
+    },
+    scenarios: {
+      description:
+        "Ideal para comprobar el aspecto al compartir antes de publicar, no para monitorización masiva.",
+      debug:
+        "Tu enlace compartido no muestra imagen ni título en las plataformas sociales y quieres depurar las etiquetas OG.",
+      optimize:
+        "Quieres confirmar que las dimensiones, la proporción y el tamaño de og:image cumplen los requisitos de cada plataforma para mejorar el porcentaje de clics.",
+      preview:
+        "Antes de publicar un artículo o una página de aterrizaje, quieres ver cómo se verá al compartirlo en cada plataforma.",
+      title: "Casos en los que encaja",
+    },
+    tool: {
+      category: "Herramienta SEO",
+      description:
+        "Obtén las etiquetas Open Graph y Twitter Card de cualquier URL en línea, previsualiza las tarjetas de compartición para Facebook, X, LinkedIn, Discord y Slack, y valida las dimensiones, la proporción, el tamaño de archivo y el formato de og:image. También puedes subir una imagen para validarla sin conexión.",
+      faq: [
+        {
+          answer:
+            "El modo URL obtiene la página de destino desde el servidor para analizar sus etiquetas (los navegadores no pueden obtener páginas de origen cruzado); solo lee el contenido público de la página y no almacena nada. El modo de subida se ejecuta completamente en tu navegador y nunca sube la imagen.",
+          question: "¿Cómo se tratan mis datos al validar una URL?",
+        },
+        {
+          answer:
+            "Algunos sitios devuelven contenido simplificado a peticiones que no son del navegador, o inyectan etiquetas OG mediante JavaScript; esas páginas pueden no exponer etiquetas completas, lo cual es normal.",
+          question: "¿Por qué no se pueden analizar algunos sitios?",
+        },
+        {
+          answer:
+            "1200×630 píxeles con una proporción aproximada de 1.91:1 es la recomendación habitual. Por debajo de 600×315 algunas plataformas muestran una tarjeta pequeña, y por debajo de 200×200 la imagen generalmente no se recoge.",
+          question: "¿Cuál es el tamaño de og:image recomendado?",
+        },
+        {
+          answer:
+            "Aproximadamente 8MB para Facebook / Discord y 5MB para X / LinkedIn / Slack. Consulta siempre la documentación oficial de cada plataforma; esta herramienta señala los problemas según esos límites.",
+          question:
+            "¿Cuáles son los límites de tamaño de archivo por plataforma?",
+        },
+      ],
+      features: [
+        "Obtén las etiquetas Open Graph y Twitter Card de cualquier URL",
+        "Previsualiza las tarjetas de compartición para Facebook, X, LinkedIn, Discord y Slack",
+        "Valida las dimensiones, la proporción (1.91:1), el tamaño de archivo y el formato de og:image",
+        "Diagnóstico por plataforma: correcto / aviso / error",
+        "Sube una imagen para validar dimensiones y proporción sin conexión",
+        "Resuelve los valores de respaldo twitter:image→og:image y og:title→title",
+      ],
+      keywords: [
+        "validador de og image",
+        "depurador open graph",
+        "validador de twitter card",
+        "previsualización de compartición en redes",
+        "tamaño og:image",
+        "previsualización de tarjeta de compartición",
+        "validador opengraph",
+        "comprobador de og image",
+      ],
+      name: "Validador de OG Image — Depurador de previsualización en redes sociales",
+      steps: [
+        'Cambia a "Desde URL" y pega la URL de la página que quieres comprobar.',
+        "Haz clic en Comprobar y espera mientras obtenemos y analizamos las etiquetas OG / Twitter de la página.",
+        "Revisa las previsualizaciones de tarjeta de compartición por plataforma y el informe de dimensiones, proporción, tamaño y etiquetas.",
+        'O cambia a "Subir imagen" para validar una imagen individual frente a las especificaciones de cada plataforma.',
+      ],
+      summary:
+        "Obtén las etiquetas Open Graph / Twitter de una URL, previsualiza tarjetas de compartición en múltiples plataformas y valida la imagen.",
+    },
+    content: {
+      faqDescription: "Algunas preguntas habituales antes de empezar.",
+      faqTitle: "Preguntas frecuentes",
+      privacyDescription: "Algunas notas antes de usarla.",
+      privacyItems: [
+        "El modo URL necesita que el servidor obtenga la página de destino por ti (para evitar las restricciones de origen cruzado del navegador); solo lee contenido público y no almacena nada.",
+        "Las direcciones privadas, de bucle local y de red interna están bloqueadas por la política de seguridad y no pueden obtenerse.",
+        "El modo de subida valida completamente en tu navegador; la imagen nunca sale de tu dispositivo.",
+      ],
+      privacyTitle: "Notas",
+      stepsDescription:
+        "Sigue los pasos a continuación para hacer una comprobación.",
+      stepsTitle: "Cómo usarla",
+      supportDescription:
+        "Valida etiquetas Open Graph, Twitter Card y SEO básico, cubriendo las tarjetas de compartición de Facebook, X, LinkedIn, Discord y Slack.",
+      supportTitle: "Qué comprueba",
+    },
+    client: {
+      modes: {
+        upload: "Subir imagen",
+        url: "Desde URL",
+      },
+      url: {
+        emptyDescription:
+          "Pega una URL de página accesible públicamente y obtendremos sus etiquetas OG / Twitter y previsualizaremos las tarjetas de compartición para cada plataforma.",
+        emptyTitle: "Introduce una URL para empezar",
+        fetching: "Obteniendo y analizando la página…",
+        hint: "Introduce la URL completa (con https://) cuya apariencia al compartir quieres comprobar.",
+        label: "URL de la página",
+        placeholder: "https://example.com/article",
+        resubmit: "Volver a comprobar",
+        submit: "Comprobar",
+      },
+      upload: {
+        choose: "Elegir imagen",
+        clear: "Limpiar",
+        decoding: "Leyendo imagen…",
+        description:
+          "Arrastra una imagen al área inferior o haz clic para elegir. Solo valida dimensiones, proporción, tamaño y formato de forma local — no se sube nada.",
+        dropHint: "Suelta para cargar la imagen",
+        emptyDescription:
+          "Admite PNG, JPG, WebP y GIF. Valida dimensiones, proporción y tamaño frente a las especificaciones OG de cada plataforma.",
+        emptyTitle: "Suelta una imagen para validar",
+        reselect: "Volver a seleccionar",
+        title: "Subir imagen",
+      },
+      result: {
+        dimensionsUnknown: "Dimensiones desconocidas",
+        generalTitle: "Comprobaciones generales",
+        noImage: "No se encontró og:image",
+        overallFail: "Se encontraron problemas",
+        overallPass: "Todo correcto",
+        overallWarn: "Hay margen de mejora",
+        platformsTitle: "Diagnóstico por plataforma",
+        previewTitle: "Previsualización de tarjetas de compartición",
+        sizeUnknown: "Tamaño desconocido",
+        sourceLabel: "Origen de la imagen",
+        tagsTitle: "Etiquetas analizadas",
+      },
+      status: {
+        fail: "Error",
+        pass: "Correcto",
+        warn: "Aviso",
+      },
+      platforms: {
+        discord: "Discord",
+        facebook: "Facebook",
+        linkedin: "LinkedIn",
+        slack: "Slack",
+        twitter: "X (Twitter)",
+      },
+      checks: {
+        "image-dimensions": "Dimensiones de la imagen",
+        "image-ratio": "Proporción de aspecto",
+        "platform-filesize": "Tamaño de archivo",
+        "platform-format": "Formato de imagen",
+        "platform-min-size": "Tamaño mínimo",
+        "platform-required-tags": "Etiquetas obligatorias",
+        "tag-description": "Descripción (description)",
+        "tag-image-alt": "Texto alternativo de la imagen (og:image:alt)",
+        "tag-og-image": "Imagen (og:image)",
+        "tag-og-url": "URL canónica (og:url)",
+        "tag-title": "Título (og:title / title)",
+        "tag-twitter-card": "Tipo de tarjeta (twitter:card)",
+      },
+      details: {
+        "image-dimensions":
+          "{width}×{height} px (recomendado {idealWidth}×{idealHeight})",
+        "image-ratio": "{ratio} : 1 (recomendado {idealRatio} : 1)",
+        missing: "Falta",
+        "platform-filesize": "{size} / límite {max}",
+        "platform-format": "{format}",
+        "platform-min-size":
+          "{width}×{height} px (mínimo {minWidth}×{minHeight})",
+        present: "Establecido",
+        requiredTagsMissing: "Falta {missing}",
+        unknown: "No se pudo leer",
+      },
+      errors: {
+        BLOCKED_HOST:
+          "Esta dirección está bloqueada por la política de seguridad (las direcciones privadas, locales e internas no se pueden obtener).",
+        FETCH_FAILED:
+          "No se pudo conectar al sitio de destino. Comprueba que la URL sea accesible.",
+        FETCH_TIMEOUT:
+          "La solicitud expiró: el sitio de destino respondió demasiado lento. Inténtalo más tarde.",
+        INVALID_URL: "URL no válida. Introduce una URL http(s) completa.",
+        NOT_HTML:
+          "Esta URL no devolvió una página web, por lo que no se pueden analizar las etiquetas.",
+        TOO_MANY_REDIRECTS:
+          "Demasiadas redirecciones: no se pudo obtener esta URL.",
+        UPSTREAM_ERROR:
+          "El sitio de destino devolvió un error; puede que la página no exista o no esté disponible temporalmente.",
+        UNKNOWN: "La validación falló. Inténtalo más tarde.",
+      },
+    },
+  },
   jsonViewer: {
     metadata: {
       description:

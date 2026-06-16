@@ -500,6 +500,211 @@ export const jaMessages: LocaleContent = {
       },
     },
   },
+  ogImageValidator: {
+    metadata: {
+      description:
+        "URL を入力すると Open Graph・Twitter Card タグを取得して検証し、Facebook、X、LinkedIn、Discord、Slack でのシェアカードをプレビューできます。og:image の寸法・比率・ファイルサイズも確認可能。画像を直接アップロードして検証することもできます。",
+      keywords: [
+        "OG 画像 検証",
+        "open graph デバッガ",
+        "twitter card 検証",
+        "SNS シェアプレビュー",
+        "og:image サイズ",
+        "opengraph バリデータ",
+        "OG 画像チェッカー",
+      ],
+      title: "OG 画像バリデータ / ソーシャルシェアプレビューデバッガ",
+    },
+    hero: {
+      badges: {
+        category: "SEO ツール",
+        platforms: "5 プラットフォーム対応",
+        realtime: "リアルタイムタグチェック",
+      },
+      description:
+        "URL を入力すると Open Graph / Twitter Card タグを取得・解析し、Facebook、X、LinkedIn、Discord、Slack でのシェア表示をプレビューできます。og:image の寸法・比率・ファイルサイズ・形式も検証できます。単独の画像をアップロードして検証することも可能です。",
+      title: "OG 画像 & ソーシャルシェアプレビューバリデータ",
+    },
+    scenarios: {
+      description:
+        "公開前のシェア表示を確認するのに適しており、大量の URL を一括監視する用途には向きません。",
+      debug:
+        "SNS でリンクをシェアしても画像やタイトルが表示されない場合に、OG タグをデバッグできます。",
+      optimize:
+        "og:image の寸法・比率・サイズが各プラットフォームの要件を満たしているか確認し、クリック率を改善したい場合。",
+      preview:
+        "記事やランディングページを公開する前に、各プラットフォームでどう表示されるか確認したい場合。",
+      title: "こんな場面に",
+    },
+    tool: {
+      category: "SEO ツール",
+      description:
+        "任意の URL の Open Graph・Twitter Card タグをオンラインで取得し、Facebook、X、LinkedIn、Discord、Slack のシェアカードをプレビューして、og:image の寸法・比率・ファイルサイズ・形式を検証します。画像をアップロードしてオフラインで検証することもできます。",
+      faq: [
+        {
+          answer:
+            "URL モードではサーバー側がページを取得してタグを解析します（ブラウザのクロスオリジン制限を回避するため）。読み取るのは公開コンテンツのみで、データは保存しません。アップロードモードはブラウザ内で完結し、画像は外部に送信されません。",
+          question: "URL を検証する際、データはどう扱われますか？",
+        },
+        {
+          answer:
+            "サイトによっては非ブラウザリクエストに対して簡略化されたコンテンツを返したり、OG タグを JavaScript で動的に挿入したりする場合があります。そのようなページではタグが正常に取得できないことがありますが、これは想定内の動作です。",
+          question: "解析できないサイトがあるのはなぜですか？",
+        },
+        {
+          answer:
+            "1200×630 ピクセル・比率 1.91:1 が一般的な推奨値です。600×315 未満では一部プラットフォームで小さいカードが表示され、200×200 未満では画像が読み込まれないことがあります。",
+          question: "og:image の推奨サイズは？",
+        },
+        {
+          answer:
+            "Facebook / Discord は約 8MB、X / LinkedIn / Slack は約 5MB が上限の目安です。各プラットフォームの公式ドキュメントに従い、このツールはそれらのしきい値に基づいて問題を検出します。",
+          question: "プラットフォームごとのファイルサイズ上限は？",
+        },
+      ],
+      features: [
+        "任意の URL の Open Graph・Twitter Card タグを取得",
+        "Facebook、X、LinkedIn、Discord、Slack のシェアカードをプレビュー",
+        "og:image の寸法・比率（1.91:1）・ファイルサイズ・形式を検証",
+        "プラットフォームごとの合格 / 警告 / 不合格の診断結果を表示",
+        "画像をアップロードして寸法と比率をオフラインで検証",
+        "twitter:image→og:image、og:title→title のフォールバックを解決",
+      ],
+      keywords: [
+        "OG 画像 検証",
+        "open graph デバッガ",
+        "twitter card 検証",
+        "SNS シェアプレビュー",
+        "og:image サイズ",
+        "シェアカードプレビュー",
+        "opengraph バリデータ",
+        "OG 画像チェッカー",
+      ],
+      name: "OG 画像バリデータ — ソーシャルシェアプレビューデバッガ",
+      steps: [
+        "「URL から」に切り替えて、確認したいページの URL を貼り付けます。",
+        "「チェック」をクリックすると、ページの OG / Twitter タグを取得・解析します。",
+        "プラットフォームごとのシェアカードプレビューと、寸法・比率・サイズ・タグのレポートを確認します。",
+        "または「画像をアップロード」に切り替えて、単一画像を各プラットフォームの仕様に基づいて検証します。",
+      ],
+      summary:
+        "URL の Open Graph / Twitter タグを取得し、マルチプラットフォームのシェアカードをプレビューして画像を検証します。",
+    },
+    content: {
+      faqDescription: "始める前によくある質問。",
+      faqTitle: "よくある質問",
+      privacyDescription: "使い始める前に知っておきたい点。",
+      privacyItems: [
+        "URL モードでは、ブラウザのクロスオリジン制限を回避するためにサーバーがページを取得します。読み取るのは公開コンテンツのみで、データは保存しません。",
+        "プライベート・ループバック・内部ネットワークアドレスはセキュリティポリシーによりブロックされ、取得できません。",
+        "アップロードモードはブラウザ内で完結し、画像がデバイス外に出ることはありません。",
+      ],
+      privacyTitle: "ご利用にあたって",
+      stepsDescription: "以下の手順で検証を実行できます。",
+      stepsTitle: "使い方",
+      supportDescription:
+        "Open Graph・Twitter Card・基本的な SEO タグを検証し、Facebook、X、LinkedIn、Discord、Slack のシェアカードをカバーします。",
+      supportTitle: "チェック対象",
+    },
+    client: {
+      modes: {
+        upload: "画像をアップロード",
+        url: "URL から",
+      },
+      url: {
+        emptyDescription:
+          "公開されているページの URL を貼り付けると、OG / Twitter タグを取得して各プラットフォームのシェアカードをプレビューします。",
+        emptyTitle: "URL を入力して開始",
+        fetching: "ページを取得・解析中…",
+        hint: "シェア表示を確認したいページの完全な URL（https:// を含む）を入力してください。",
+        label: "ページ URL",
+        placeholder: "https://example.com/article",
+        resubmit: "再チェック",
+        submit: "チェック",
+      },
+      upload: {
+        choose: "画像を選択",
+        clear: "クリア",
+        decoding: "画像を読み込み中…",
+        description:
+          "下のエリアに画像をドラッグするか、クリックして選択してください。寸法・比率・サイズ・形式をローカルで検証します。アップロードは行いません。",
+        dropHint: "ドロップして読み込む",
+        emptyDescription:
+          "PNG、JPG、WebP、GIF に対応。各プラットフォームの OG 仕様に基づいて寸法・比率・サイズを検証します。",
+        emptyTitle: "画像をドロップして検証",
+        reselect: "選び直す",
+        title: "画像をアップロード",
+      },
+      result: {
+        dimensionsUnknown: "寸法不明",
+        generalTitle: "総合チェック",
+        noImage: "og:image が見つかりません",
+        overallFail: "問題が見つかりました",
+        overallPass: "すべて問題なし",
+        overallWarn: "改善の余地あり",
+        platformsTitle: "プラットフォームごとの診断",
+        previewTitle: "シェアカードプレビュー",
+        sizeUnknown: "サイズ不明",
+        sourceLabel: "画像ソース",
+        tagsTitle: "取得したタグ",
+      },
+      status: {
+        fail: "不合格",
+        pass: "合格",
+        warn: "警告",
+      },
+      platforms: {
+        discord: "Discord",
+        facebook: "Facebook",
+        linkedin: "LinkedIn",
+        slack: "Slack",
+        twitter: "X (Twitter)",
+      },
+      checks: {
+        "image-dimensions": "画像の寸法",
+        "image-ratio": "アスペクト比",
+        "platform-filesize": "ファイルサイズ",
+        "platform-format": "画像形式",
+        "platform-min-size": "最小サイズ",
+        "platform-required-tags": "必須タグ",
+        "tag-description": "説明 (description)",
+        "tag-image-alt": "画像の代替テキスト (og:image:alt)",
+        "tag-og-image": "画像 (og:image)",
+        "tag-og-url": "正規 URL (og:url)",
+        "tag-title": "タイトル (og:title / title)",
+        "tag-twitter-card": "カードタイプ (twitter:card)",
+      },
+      details: {
+        "image-dimensions":
+          "{width}×{height} px（推奨: {idealWidth}×{idealHeight}）",
+        "image-ratio": "{ratio} : 1（推奨: {idealRatio} : 1）",
+        missing: "未設定",
+        "platform-filesize": "{size} / 上限 {max}",
+        "platform-format": "{format}",
+        "platform-min-size":
+          "{width}×{height} px（最小: {minWidth}×{minHeight}）",
+        present: "設定済み",
+        requiredTagsMissing: "{missing} が不足",
+        unknown: "読み取れません",
+      },
+      errors: {
+        BLOCKED_HOST:
+          "このアドレスはセキュリティポリシーによりブロックされています（プライベート / ローカル / 内部ネットワークアドレスは取得できません）。",
+        FETCH_FAILED:
+          "対象サイトに接続できませんでした。URL が正しく、アクセス可能か確認してください。",
+        FETCH_TIMEOUT:
+          "取得がタイムアウトしました。対象サイトの応答が遅すぎます。後でもう一度お試しください。",
+        INVALID_URL:
+          "無効な URL です。http(s) で始まる完全な URL を入力してください。",
+        NOT_HTML:
+          "この URL は Web ページを返しませんでした。タグを解析できません。",
+        TOO_MANY_REDIRECTS: "リダイレクトが多すぎて取得できませんでした。",
+        UPSTREAM_ERROR:
+          "対象サイトがエラーを返しました。ページが存在しないか、一時的に利用できない可能性があります。",
+        UNKNOWN: "検証に失敗しました。後でもう一度お試しください。",
+      },
+    },
+  },
   jsonViewer: {
     metadata: {
       description:

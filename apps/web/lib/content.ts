@@ -111,10 +111,31 @@ export function getJsonViewerTool(content: LocaleContent): ToolDefinition {
   };
 }
 
+export function getOgImageValidatorTool(
+  content: LocaleContent,
+): ToolDefinition {
+  return {
+    applicationCategory: "DeveloperApplication",
+    category: content.ogImageValidator.tool.category,
+    description: content.ogImageValidator.tool.description,
+    faq: content.ogImageValidator.tool.faq,
+    features: content.ogImageValidator.tool.features,
+    href: "/tools/og-image-validator",
+    keywords: content.ogImageValidator.tool.keywords,
+    name: content.ogImageValidator.tool.name,
+    slug: "og-image-validator",
+    steps: content.ogImageValidator.tool.steps,
+    stepsTitle: content.ogImageValidator.content.stepsTitle,
+    summary: content.ogImageValidator.tool.summary,
+    totalTime: "PT1M",
+  };
+}
+
 export function getTools(content: LocaleContent): ToolDefinition[] {
   return [
     getImageConverterTool(content),
     getPdfTextEditorTool(content),
     getJsonViewerTool(content),
+    getOgImageValidatorTool(content),
   ];
 }

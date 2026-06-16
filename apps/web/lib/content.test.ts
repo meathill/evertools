@@ -2,6 +2,7 @@ import { describe, expect, it } from "vitest";
 import {
   getImageConverterTool,
   getJsonViewerTool,
+  getOgImageValidatorTool,
   getPdfTextEditorTool,
   getTools,
 } from "@/lib/content";
@@ -44,12 +45,24 @@ describe("getJsonViewerTool", () => {
   });
 });
 
+describe("getOgImageValidatorTool", () => {
+  it("builds the og-image-validator definition", () => {
+    const tool = getOgImageValidatorTool(zh);
+    expect(tool.slug).toBe("og-image-validator");
+    expect(tool.href).toBe("/tools/og-image-validator");
+    expect(tool.applicationCategory).toBe("DeveloperApplication");
+    expect(tool.totalTime).toBe("PT1M");
+    expect(tool.stepsTitle).toBe(zh.ogImageValidator.content.stepsTitle);
+  });
+});
+
 describe("getTools", () => {
-  it("returns the three tools in registration order", () => {
+  it("returns the four tools in registration order", () => {
     expect(getTools(zh).map((tool) => tool.slug)).toEqual([
       "image-converter",
       "pdf-text-editor",
       "json-viewer",
+      "og-image-validator",
     ]);
   });
 

@@ -470,6 +470,202 @@ export const zhMessages = {
       },
     },
   },
+  ogImageValidator: {
+    metadata: {
+      description:
+        "输入网址即可抓取并校验 Open Graph 与 Twitter Card 标签，预览 Facebook、X、LinkedIn、Discord、Slack 的分享卡片，检查 og:image 的尺寸、比例与体积。也支持直接上传图片校验。",
+      keywords: [
+        "og 图片校验",
+        "open graph 调试",
+        "twitter card 验证",
+        "社交分享预览",
+        "og:image 尺寸",
+        "opengraph validator",
+        "og image checker",
+      ],
+      title: "OG 图片校验 / 社交分享预览调试器",
+    },
+    hero: {
+      badges: {
+        category: "SEO 工具",
+        platforms: "5 平台预览",
+        realtime: "实时抓取校验",
+      },
+      description:
+        "输入一个网址，抓取并解析它的 Open Graph / Twitter Card 标签，实时预览在 Facebook、X、LinkedIn、Discord、Slack 上的分享卡片，并校验 og:image 的尺寸、比例、体积和格式。也可以直接上传一张图片单独校验。",
+      title: "OG 图片与社交分享预览校验",
+    },
+    scenarios: {
+      description: "适合上线前检查分享效果，不适合批量监控。",
+      debug: "分享到社交平台后卡片不显示图片或标题，想排查 OG 标签。",
+      optimize: "想确认 og:image 尺寸、比例、体积符合各平台要求，提升点击率。",
+      preview: "文章 / 落地页上线前，想先看看在各平台分享出来长什么样。",
+      title: "适合这些情况",
+    },
+    tool: {
+      category: "SEO 工具",
+      description:
+        "在线抓取任意网址的 Open Graph 与 Twitter Card 标签，预览 Facebook、X、LinkedIn、Discord、Slack 的分享卡片，并校验 og:image 的尺寸、比例、体积与格式。也支持直接上传图片做离线校验。",
+      faq: [
+        {
+          answer:
+            "网址模式由服务器抓取目标页面来解析标签（因为浏览器无法跨域抓取）；只读取公开页面内容，不保存。上传模式则完全在浏览器本地完成，图片不上传。",
+          question: "校验网址时，我的数据会怎么处理？",
+        },
+        {
+          answer:
+            "部分网站对非浏览器请求返回精简内容，或用 JavaScript 动态注入 OG 标签；这类页面可能解析不到完整标签，属正常现象。",
+          question: "为什么有的网站抓不到标签？",
+        },
+        {
+          answer:
+            "通用推荐 1200×630 像素、比例约 1.91:1。低于 600×315 在部分平台会显示为小图，低于 200×200 基本不会被抓取。",
+          question: "推荐的 og:image 尺寸是多少？",
+        },
+        {
+          answer:
+            "大致为 Facebook / Discord 约 8MB，X / LinkedIn / Slack 约 5MB。具体以各平台官方文档为准，本工具会按这些阈值给出提示。",
+          question: "各平台的图片体积上限是多少？",
+        },
+      ],
+      features: [
+        "抓取任意网址的 Open Graph 与 Twitter Card 标签",
+        "预览 Facebook、X、LinkedIn、Discord、Slack 的分享卡片",
+        "校验 og:image 的尺寸、比例（1.91:1）、体积与格式",
+        "按平台分别给出通过 / 建议 / 不通过的诊断",
+        "支持直接上传图片，离线校验尺寸与比例",
+        "识别 twitter:image→og:image、og:title→title 的回退关系",
+      ],
+      keywords: [
+        "og 图片校验",
+        "open graph 调试",
+        "twitter card 验证",
+        "社交分享预览",
+        "og:image 尺寸",
+        "分享卡片预览",
+        "opengraph validator",
+        "og image checker",
+      ],
+      name: "OG 图片校验 — 社交分享预览调试器",
+      steps: [
+        "切到「从网址检测」，粘贴要检查的页面网址。",
+        "点击检测，等待抓取并解析该页的 OG / Twitter 标签。",
+        "查看各平台分享卡片预览，以及尺寸、比例、体积、标签的校验报告。",
+        "也可切到「上传图片」，直接校验一张配图是否符合各平台规格。",
+      ],
+      summary:
+        "抓取网址的 Open Graph / Twitter 标签，预览多平台分享卡片并校验配图。",
+    },
+    content: {
+      faqDescription: "开始前常见的几个问题。",
+      faqTitle: "常见问题",
+      privacyDescription: "使用前先了解这些说明。",
+      privacyItems: [
+        "网址模式需要由服务器代为抓取目标页面（绕过浏览器跨域限制），只读取公开内容、不保存。",
+        "私有地址、本地回环、内网网址会被安全策略拦截，无法抓取。",
+        "上传模式完全在浏览器本地校验，图片不会离开你的设备。",
+      ],
+      privacyTitle: "使用说明",
+      stepsDescription: "按下面的步骤即可完成校验。",
+      stepsTitle: "使用方法",
+      supportDescription:
+        "校验 Open Graph、Twitter Card 与基础 SEO 标签，覆盖 Facebook、X、LinkedIn、Discord、Slack 五个平台的分享卡片。",
+      supportTitle: "校验范围",
+    },
+    client: {
+      modes: {
+        upload: "上传图片",
+        url: "从网址检测",
+      },
+      url: {
+        emptyDescription:
+          "粘贴一个公开可访问的页面网址，我们会抓取它的 OG / Twitter 标签并预览各平台分享卡片。",
+        emptyTitle: "输入网址开始检测",
+        fetching: "正在抓取并解析页面…",
+        hint: "输入要检查分享效果的完整网址（含 https://）。",
+        label: "页面网址",
+        placeholder: "https://example.com/article",
+        resubmit: "重新检测",
+        submit: "检测",
+      },
+      upload: {
+        choose: "选择图片",
+        clear: "清空",
+        decoding: "正在读取图片…",
+        description:
+          "拖拽图片到下方区域，或点击选择。仅在本地校验尺寸、比例、体积与格式，不上传。",
+        dropHint: "松开以载入图片",
+        emptyDescription:
+          "支持 PNG、JPG、WebP、GIF，会按各平台 OG 规格校验尺寸、比例与体积。",
+        emptyTitle: "拖入图片开始校验",
+        reselect: "重新选择",
+        title: "上传配图",
+      },
+      result: {
+        dimensionsUnknown: "尺寸未知",
+        generalTitle: "总体检查",
+        noImage: "未找到 og:image",
+        overallFail: "存在问题",
+        overallPass: "整体通过",
+        overallWarn: "有可优化项",
+        platformsTitle: "各平台诊断",
+        previewTitle: "分享卡片预览",
+        sizeUnknown: "体积未知",
+        sourceLabel: "图片来源",
+        tagsTitle: "解析到的标签",
+      },
+      status: {
+        fail: "不通过",
+        pass: "通过",
+        warn: "建议",
+      },
+      platforms: {
+        discord: "Discord",
+        facebook: "Facebook",
+        linkedin: "LinkedIn",
+        slack: "Slack",
+        twitter: "X (Twitter)",
+      },
+      checks: {
+        "image-dimensions": "图片尺寸",
+        "image-ratio": "宽高比例",
+        "platform-filesize": "文件体积",
+        "platform-format": "图片格式",
+        "platform-min-size": "最小尺寸",
+        "platform-required-tags": "必需标签",
+        "tag-description": "描述（description）",
+        "tag-image-alt": "图片替代文字（og:image:alt）",
+        "tag-og-image": "配图（og:image）",
+        "tag-og-url": "规范网址（og:url）",
+        "tag-title": "标题（og:title / title）",
+        "tag-twitter-card": "卡片类型（twitter:card）",
+      },
+      details: {
+        "image-dimensions":
+          "{width}×{height} px（推荐 {idealWidth}×{idealHeight}）",
+        "image-ratio": "{ratio} : 1（推荐 {idealRatio} : 1）",
+        missing: "缺失",
+        "platform-filesize": "{size} / 上限 {max}",
+        "platform-format": "{format}",
+        "platform-min-size":
+          "{width}×{height} px（最低 {minWidth}×{minHeight}）",
+        present: "已设置",
+        requiredTagsMissing: "缺少 {missing}",
+        unknown: "未能读取",
+      },
+      errors: {
+        BLOCKED_HOST:
+          "该地址被安全策略拦截（私有 / 本地 / 内网地址无法抓取）。",
+        FETCH_FAILED: "无法连接到目标网站，请检查网址是否可访问。",
+        FETCH_TIMEOUT: "抓取超时，目标网站响应过慢，请稍后重试。",
+        INVALID_URL: "网址无效，请输入完整的 http(s) 网址。",
+        NOT_HTML: "该网址返回的不是网页内容，无法解析标签。",
+        TOO_MANY_REDIRECTS: "重定向次数过多，无法抓取该网址。",
+        UNKNOWN: "校验失败，请稍后重试。",
+        UPSTREAM_ERROR: "目标网站返回了错误，可能页面不存在或暂时不可用。",
+      },
+    },
+  },
   jsonViewer: {
     metadata: {
       description:

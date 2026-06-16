@@ -500,6 +500,209 @@ export const enMessages: LocaleContent = {
       },
     },
   },
+  ogImageValidator: {
+    metadata: {
+      description:
+        "Enter a URL to fetch and validate its Open Graph and Twitter Card tags, preview the share cards on Facebook, X, LinkedIn, Discord and Slack, and check the og:image dimensions, ratio and file size. You can also upload an image to validate directly.",
+      keywords: [
+        "og image validator",
+        "open graph debugger",
+        "twitter card validator",
+        "social share preview",
+        "og:image size",
+        "opengraph validator",
+        "og image checker",
+      ],
+      title: "OG Image Validator / Social Share Preview Debugger",
+    },
+    hero: {
+      badges: {
+        category: "SEO tool",
+        platforms: "5-platform preview",
+        realtime: "Live tag check",
+      },
+      description:
+        "Enter a URL to fetch and parse its Open Graph / Twitter Card tags, preview how it looks when shared on Facebook, X, LinkedIn, Discord and Slack, and validate the og:image dimensions, ratio, file size and format. You can also upload a single image to validate on its own.",
+      title: "OG Image & Social Share Preview Validator",
+    },
+    scenarios: {
+      description:
+        "Best for checking share appearance before publishing, not for bulk monitoring.",
+      debug:
+        "Your shared link shows no image or title on social platforms and you want to debug the OG tags.",
+      optimize:
+        "You want to confirm the og:image dimensions, ratio and size meet each platform's requirements to improve click-through.",
+      preview:
+        "Before publishing an article or landing page, you want to see how it will look when shared on each platform.",
+      title: "Good for these cases",
+    },
+    tool: {
+      category: "SEO tool",
+      description:
+        "Fetch the Open Graph and Twitter Card tags of any URL online, preview the share cards for Facebook, X, LinkedIn, Discord and Slack, and validate the og:image dimensions, ratio, file size and format. You can also upload an image for offline validation.",
+      faq: [
+        {
+          answer:
+            "URL mode fetches the target page on the server to parse its tags (browsers can't fetch cross-origin pages); it only reads public page content and stores nothing. Upload mode runs entirely in your browser and never uploads the image.",
+          question: "How is my data handled when validating a URL?",
+        },
+        {
+          answer:
+            "Some sites return stripped-down content to non-browser requests, or inject OG tags via JavaScript; such pages may not expose complete tags, which is expected.",
+          question: "Why can't some sites be parsed?",
+        },
+        {
+          answer:
+            "1200×630 pixels with roughly a 1.91:1 ratio is the common recommendation. Below 600×315 some platforms show a small card, and below 200×200 the image is generally not picked up.",
+          question: "What's the recommended og:image size?",
+        },
+        {
+          answer:
+            "Roughly 8MB for Facebook / Discord and 5MB for X / LinkedIn / Slack. Always defer to each platform's official docs; this tool flags issues against those thresholds.",
+          question: "What are the image file-size limits per platform?",
+        },
+      ],
+      features: [
+        "Fetch the Open Graph and Twitter Card tags of any URL",
+        "Preview share cards for Facebook, X, LinkedIn, Discord and Slack",
+        "Validate og:image dimensions, ratio (1.91:1), file size and format",
+        "Per-platform pass / warning / fail diagnostics",
+        "Upload an image to validate dimensions and ratio offline",
+        "Resolve twitter:image→og:image and og:title→title fallbacks",
+      ],
+      keywords: [
+        "og image validator",
+        "open graph debugger",
+        "twitter card validator",
+        "social share preview",
+        "og:image size",
+        "share card preview",
+        "opengraph validator",
+        "og image checker",
+      ],
+      name: "OG Image Validator — Social Share Preview Debugger",
+      steps: [
+        'Switch to "From URL" and paste the page URL you want to check.',
+        "Click Check and wait while we fetch and parse the page's OG / Twitter tags.",
+        "Review the per-platform share-card previews and the dimension, ratio, size and tag report.",
+        'Or switch to "Upload image" to validate a single image against each platform\'s spec.',
+      ],
+      summary:
+        "Fetch a URL's Open Graph / Twitter tags, preview multi-platform share cards and validate the image.",
+    },
+    content: {
+      faqDescription: "A few common questions before you start.",
+      faqTitle: "FAQ",
+      privacyDescription: "A few notes before you use it.",
+      privacyItems: [
+        "URL mode needs the server to fetch the target page for you (to bypass browser cross-origin limits); it reads public content only and stores nothing.",
+        "Private, loopback and internal-network addresses are blocked by the safety policy and can't be fetched.",
+        "Upload mode validates entirely in your browser; the image never leaves your device.",
+      ],
+      privacyTitle: "Notes",
+      stepsDescription: "Follow the steps below to run a check.",
+      stepsTitle: "How to use",
+      supportDescription:
+        "Validates Open Graph, Twitter Card and basic SEO tags, covering the share cards of Facebook, X, LinkedIn, Discord and Slack.",
+      supportTitle: "What it checks",
+    },
+    client: {
+      modes: {
+        upload: "Upload image",
+        url: "From URL",
+      },
+      url: {
+        emptyDescription:
+          "Paste a publicly accessible page URL and we'll fetch its OG / Twitter tags and preview the share cards for each platform.",
+        emptyTitle: "Enter a URL to start",
+        fetching: "Fetching and parsing the page…",
+        hint: "Enter the full URL (including https://) whose share appearance you want to check.",
+        label: "Page URL",
+        placeholder: "https://example.com/article",
+        resubmit: "Re-check",
+        submit: "Check",
+      },
+      upload: {
+        choose: "Choose image",
+        clear: "Clear",
+        decoding: "Reading image…",
+        description:
+          "Drag an image onto the area below, or click to choose. It only validates dimensions, ratio, size and format locally — nothing is uploaded.",
+        dropHint: "Release to load the image",
+        emptyDescription:
+          "Supports PNG, JPG, WebP and GIF. Validates dimensions, ratio and size against each platform's OG spec.",
+        emptyTitle: "Drop an image to validate",
+        reselect: "Reselect",
+        title: "Upload image",
+      },
+      result: {
+        dimensionsUnknown: "Dimensions unknown",
+        generalTitle: "Overall checks",
+        noImage: "No og:image found",
+        overallFail: "Issues found",
+        overallPass: "All good",
+        overallWarn: "Room for improvement",
+        platformsTitle: "Per-platform diagnostics",
+        previewTitle: "Share card previews",
+        sizeUnknown: "Size unknown",
+        sourceLabel: "Image source",
+        tagsTitle: "Parsed tags",
+      },
+      status: {
+        fail: "Fail",
+        pass: "Pass",
+        warn: "Warn",
+      },
+      platforms: {
+        discord: "Discord",
+        facebook: "Facebook",
+        linkedin: "LinkedIn",
+        slack: "Slack",
+        twitter: "X (Twitter)",
+      },
+      checks: {
+        "image-dimensions": "Image dimensions",
+        "image-ratio": "Aspect ratio",
+        "platform-filesize": "File size",
+        "platform-format": "Image format",
+        "platform-min-size": "Minimum size",
+        "platform-required-tags": "Required tags",
+        "tag-description": "Description (description)",
+        "tag-image-alt": "Image alt text (og:image:alt)",
+        "tag-og-image": "Image (og:image)",
+        "tag-og-url": "Canonical URL (og:url)",
+        "tag-title": "Title (og:title / title)",
+        "tag-twitter-card": "Card type (twitter:card)",
+      },
+      details: {
+        "image-dimensions":
+          "{width}×{height} px (recommended {idealWidth}×{idealHeight})",
+        "image-ratio": "{ratio} : 1 (recommended {idealRatio} : 1)",
+        missing: "Missing",
+        "platform-filesize": "{size} / limit {max}",
+        "platform-format": "{format}",
+        "platform-min-size":
+          "{width}×{height} px (minimum {minWidth}×{minHeight})",
+        present: "Set",
+        requiredTagsMissing: "Missing {missing}",
+        unknown: "Couldn't read",
+      },
+      errors: {
+        BLOCKED_HOST:
+          "This address is blocked by the safety policy (private / local / internal addresses can't be fetched).",
+        FETCH_FAILED:
+          "Couldn't connect to the target site. Check that the URL is reachable.",
+        FETCH_TIMEOUT:
+          "The fetch timed out — the target site responded too slowly. Try again later.",
+        INVALID_URL: "Invalid URL. Please enter a full http(s) URL.",
+        NOT_HTML: "This URL didn't return a web page, so tags can't be parsed.",
+        TOO_MANY_REDIRECTS: "Too many redirects — couldn't fetch this URL.",
+        UPSTREAM_ERROR:
+          "The target site returned an error — the page may not exist or is temporarily unavailable.",
+        UNKNOWN: "Validation failed. Please try again later.",
+      },
+    },
+  },
   jsonViewer: {
     metadata: {
       description:

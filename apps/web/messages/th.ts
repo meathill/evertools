@@ -474,6 +474,208 @@ export const thMessages: LocaleContent = {
       },
     },
   },
+  ogImageValidator: {
+    metadata: {
+      description:
+        "ป้อน URL เพื่อดึงและตรวจสอบแท็ก Open Graph และ Twitter Card พร้อมดูตัวอย่างการ์ดแชร์บน Facebook, X, LinkedIn, Discord และ Slack และตรวจสอบขนาด อัตราส่วน และขนาดไฟล์ของ og:image นอกจากนี้ยังสามารถอัปโหลดรูปภาพเพื่อตรวจสอบโดยตรงได้",
+      keywords: [
+        "ตรวจสอบ og image",
+        "open graph debugger",
+        "twitter card validator",
+        "ดูตัวอย่างแชร์โซเชียล",
+        "ขนาด og:image",
+        "ตรวจสอบ opengraph",
+        "ตรวจสอบ og image",
+      ],
+      title: "OG Image Validator / Social Share Preview Debugger",
+    },
+    hero: {
+      badges: {
+        category: "เครื่องมือ SEO",
+        platforms: "พรีวิว 5 แพลตฟอร์ม",
+        realtime: "ตรวจสอบแท็กสด",
+      },
+      description:
+        "ป้อน URL เพื่อดึงและแยกวิเคราะห์แท็ก Open Graph / Twitter Card พร้อมดูตัวอย่างการแสดงผลเมื่อแชร์บน Facebook, X, LinkedIn, Discord และ Slack และตรวจสอบขนาด อัตราส่วน ขนาดไฟล์ และรูปแบบของ og:image นอกจากนี้ยังอัปโหลดรูปภาพเดียวเพื่อตรวจสอบแยกต่างหากได้",
+      title: "OG Image & Social Share Preview Validator",
+    },
+    scenarios: {
+      description:
+        "เหมาะกับการตรวจสอบหน้าตาการแชร์ก่อนเผยแพร่ ไม่ใช่สำหรับการติดตามจำนวนมาก",
+      debug: "ลิงก์ที่แชร์ไม่แสดงรูปภาพหรือชื่อบนโซเชียลมีเดีย และต้องการดีบัก OG tag",
+      optimize:
+        "ต้องการยืนยันว่าขนาด อัตราส่วน และน้ำหนักของ og:image ตรงตามข้อกำหนดของแต่ละแพลตฟอร์มเพื่อเพิ่มอัตราคลิก",
+      preview:
+        "ก่อนเผยแพร่บทความหรือหน้า Landing Page อยากเห็นว่าหน้าตาจะเป็นอย่างไรเมื่อแชร์บนแต่ละแพลตฟอร์ม",
+      title: "เหมาะกับกรณีเหล่านี้",
+    },
+    tool: {
+      category: "เครื่องมือ SEO",
+      description:
+        "ดึงแท็ก Open Graph และ Twitter Card ของ URL ใด ๆ ออนไลน์ พร้อมดูตัวอย่างการ์ดแชร์สำหรับ Facebook, X, LinkedIn, Discord และ Slack และตรวจสอบขนาด อัตราส่วน ขนาดไฟล์ และรูปแบบของ og:image นอกจากนี้ยังอัปโหลดรูปภาพเพื่อตรวจสอบแบบออฟไลน์ได้",
+      faq: [
+        {
+          answer:
+            "โหมด URL จะดึงหน้าเป้าหมายบนเซิร์ฟเวอร์เพื่อแยกวิเคราะห์แท็ก (เบราว์เซอร์ไม่สามารถดึงข้ามโดเมนได้) อ่านเฉพาะเนื้อหาสาธารณะและไม่จัดเก็บอะไร โหมดอัปโหลดทำงานในเบราว์เซอร์ทั้งหมดและไม่อัปโหลดรูปภาพ",
+          question: "ข้อมูลของฉันจะถูกจัดการอย่างไรเมื่อตรวจสอบ URL?",
+        },
+        {
+          answer:
+            "บางเว็บไซต์ส่งเนื้อหาแบบย่อสำหรับคำขอที่ไม่ใช่เบราว์เซอร์ หรือแทรก OG tag ผ่าน JavaScript ทำให้หน้าดังกล่าวอาจไม่แสดงแท็กครบถ้วน ซึ่งเป็นเรื่องปกติ",
+          question: "ทำไมบางเว็บไซต์ถึงแยกวิเคราะห์ไม่ได้?",
+        },
+        {
+          answer:
+            "ขนาดที่แนะนำคือ 1200×630 พิกเซล โดยมีอัตราส่วนประมาณ 1.91:1 หากต่ำกว่า 600×315 บางแพลตฟอร์มจะแสดงการ์ดขนาดเล็ก และหากต่ำกว่า 200×200 โดยทั่วไปรูปจะไม่ถูกหยิบไปใช้",
+          question: "ขนาด og:image ที่แนะนำคือเท่าไร?",
+        },
+        {
+          answer:
+            "ประมาณ 8MB สำหรับ Facebook / Discord และ 5MB สำหรับ X / LinkedIn / Slack ควรอ้างอิงเอกสารทางการของแต่ละแพลตฟอร์มเสมอ เครื่องมือนี้จะแจ้งเตือนเมื่อเกินขีดจำกัดดังกล่าว",
+          question: "ขีดจำกัดขนาดไฟล์รูปภาพของแต่ละแพลตฟอร์มคือเท่าไร?",
+        },
+      ],
+      features: [
+        "ดึงแท็ก Open Graph และ Twitter Card ของ URL ใด ๆ",
+        "ดูตัวอย่างการ์ดแชร์สำหรับ Facebook, X, LinkedIn, Discord และ Slack",
+        "ตรวจสอบขนาด อัตราส่วน (1.91:1) ขนาดไฟล์ และรูปแบบของ og:image",
+        "ผล pass / warning / fail แยกตามแพลตฟอร์ม",
+        "อัปโหลดรูปภาพเพื่อตรวจสอบขนาดและอัตราส่วนแบบออฟไลน์",
+        "รองรับการ fallback จาก twitter:image→og:image และ og:title→title",
+      ],
+      keywords: [
+        "ตรวจสอบ og image",
+        "open graph debugger",
+        "twitter card validator",
+        "ดูตัวอย่างแชร์โซเชียล",
+        "ขนาด og:image",
+        "ดูตัวอย่างการ์ดแชร์",
+        "ตรวจสอบ opengraph",
+        "ตรวจสอบ og image",
+      ],
+      name: "OG Image Validator — Social Share Preview Debugger",
+      steps: [
+        'เลือก "จาก URL" และวาง URL ของหน้าที่ต้องการตรวจสอบ',
+        "กด ตรวจสอบ และรอขณะที่ระบบดึงและแยกวิเคราะห์แท็ก OG / Twitter ของหน้านั้น",
+        "ดูตัวอย่างการ์ดแชร์แยกตามแพลตฟอร์ม และผลการตรวจสอบขนาด อัตราส่วน น้ำหนัก และแท็ก",
+        'หรือเลือก "อัปโหลดรูปภาพ" เพื่อตรวจสอบรูปเดียวกับข้อกำหนดของแต่ละแพลตฟอร์ม',
+      ],
+      summary:
+        "ดึงแท็ก Open Graph / Twitter ของ URL ดูตัวอย่างการ์ดแชร์หลายแพลตฟอร์ม และตรวจสอบรูปภาพ",
+    },
+    content: {
+      faqDescription: "คำถามที่พบบ่อยก่อนเริ่มใช้งาน",
+      faqTitle: "คำถามที่พบบ่อย",
+      privacyDescription: "สิ่งที่ควรรู้ก่อนใช้งาน",
+      privacyItems: [
+        "โหมด URL ต้องให้เซิร์ฟเวอร์ดึงหน้าเป้าหมายแทน (เพื่อข้ามข้อจำกัด cross-origin ของเบราว์เซอร์) อ่านเฉพาะเนื้อหาสาธารณะและไม่จัดเก็บอะไร",
+        "ที่อยู่ส่วนตัว loopback และเครือข่ายภายในถูกบล็อกตามนโยบายความปลอดภัยและไม่สามารถดึงได้",
+        "โหมดอัปโหลดตรวจสอบทั้งหมดในเบราว์เซอร์ รูปภาพไม่ออกจากเครื่องของคุณ",
+      ],
+      privacyTitle: "หมายเหตุ",
+      stepsDescription: "ทำตามขั้นตอนด้านล่างเพื่อเริ่มตรวจสอบ",
+      stepsTitle: "วิธีใช้งาน",
+      supportDescription:
+        "ตรวจสอบแท็ก Open Graph, Twitter Card และ SEO พื้นฐาน ครอบคลุมการ์ดแชร์ของ Facebook, X, LinkedIn, Discord และ Slack",
+      supportTitle: "สิ่งที่ตรวจสอบได้",
+    },
+    client: {
+      modes: {
+        upload: "อัปโหลดรูปภาพ",
+        url: "จาก URL",
+      },
+      url: {
+        emptyDescription:
+          "วาง URL ของหน้าสาธารณะแล้วเราจะดึงแท็ก OG / Twitter และดูตัวอย่างการ์ดแชร์ของแต่ละแพลตฟอร์มให้",
+        emptyTitle: "ป้อน URL เพื่อเริ่มต้น",
+        fetching: "กำลังดึงและแยกวิเคราะห์หน้า…",
+        hint: "ป้อน URL แบบเต็ม (รวม https://) ของหน้าที่ต้องการตรวจสอบการแชร์",
+        label: "URL ของหน้า",
+        placeholder: "https://example.com/article",
+        resubmit: "ตรวจสอบใหม่",
+        submit: "ตรวจสอบ",
+      },
+      upload: {
+        choose: "เลือกรูปภาพ",
+        clear: "ล้าง",
+        decoding: "กำลังอ่านรูปภาพ…",
+        description:
+          "ลากรูปภาพมาวางในพื้นที่ด้านล่าง หรือคลิกเพื่อเลือก ตรวจสอบขนาด อัตราส่วน น้ำหนัก และรูปแบบในเครื่องเท่านั้น ไม่มีการอัปโหลด",
+        dropHint: "ปล่อยเพื่อโหลดรูปภาพ",
+        emptyDescription:
+          "รองรับ PNG, JPG, WebP และ GIF ตรวจสอบขนาด อัตราส่วน และน้ำหนักตามข้อกำหนด OG ของแต่ละแพลตฟอร์ม",
+        emptyTitle: "วางรูปภาพเพื่อตรวจสอบ",
+        reselect: "เลือกใหม่",
+        title: "อัปโหลดรูปภาพ",
+      },
+      result: {
+        dimensionsUnknown: "ไม่ทราบขนาด",
+        generalTitle: "ผลการตรวจสอบโดยรวม",
+        noImage: "ไม่พบ og:image",
+        overallFail: "พบปัญหา",
+        overallPass: "ผ่านทั้งหมด",
+        overallWarn: "มีจุดที่ควรปรับปรุง",
+        platformsTitle: "ผลการวินิจฉัยแยกตามแพลตฟอร์ม",
+        previewTitle: "ตัวอย่างการ์ดแชร์",
+        sizeUnknown: "ไม่ทราบขนาดไฟล์",
+        sourceLabel: "แหล่งที่มาของรูปภาพ",
+        tagsTitle: "แท็กที่แยกวิเคราะห์ได้",
+      },
+      status: {
+        fail: "ไม่ผ่าน",
+        pass: "ผ่าน",
+        warn: "เตือน",
+      },
+      platforms: {
+        discord: "Discord",
+        facebook: "Facebook",
+        linkedin: "LinkedIn",
+        slack: "Slack",
+        twitter: "X (Twitter)",
+      },
+      checks: {
+        "image-dimensions": "ขนาดรูปภาพ",
+        "image-ratio": "อัตราส่วน",
+        "platform-filesize": "ขนาดไฟล์",
+        "platform-format": "รูปแบบรูปภาพ",
+        "platform-min-size": "ขนาดขั้นต่ำ",
+        "platform-required-tags": "แท็กที่จำเป็น",
+        "tag-description": "คำอธิบาย (description)",
+        "tag-image-alt": "ข้อความ alt ของรูปภาพ (og:image:alt)",
+        "tag-og-image": "รูปภาพ (og:image)",
+        "tag-og-url": "URL หลัก (og:url)",
+        "tag-title": "ชื่อเรื่อง (og:title / title)",
+        "tag-twitter-card": "ประเภทการ์ด (twitter:card)",
+      },
+      details: {
+        "image-dimensions":
+          "{width}×{height} px (แนะนำ {idealWidth}×{idealHeight})",
+        "image-ratio": "{ratio} : 1 (แนะนำ {idealRatio} : 1)",
+        missing: "ขาดหายไป",
+        "platform-filesize": "{size} / จำกัด {max}",
+        "platform-format": "{format}",
+        "platform-min-size":
+          "{width}×{height} px (ขั้นต่ำ {minWidth}×{minHeight})",
+        present: "ตั้งค่าแล้ว",
+        requiredTagsMissing: "ขาด {missing}",
+        unknown: "อ่านไม่ได้",
+      },
+      errors: {
+        BLOCKED_HOST:
+          "ที่อยู่นี้ถูกบล็อกตามนโยบายความปลอดภัย (ที่อยู่ส่วนตัว / ภายในเครื่อง / เครือข่ายภายในไม่สามารถดึงได้)",
+        FETCH_FAILED:
+          "ไม่สามารถเชื่อมต่อกับเว็บไซต์เป้าหมายได้ ตรวจสอบว่า URL สามารถเข้าถึงได้",
+        FETCH_TIMEOUT:
+          "การดึงข้อมูลหมดเวลา — เว็บไซต์เป้าหมายตอบสนองช้าเกินไป ลองใหม่ภายหลัง",
+        INVALID_URL: "URL ไม่ถูกต้อง กรุณาป้อน URL แบบ http(s) แบบเต็ม",
+        NOT_HTML: "URL นี้ไม่ได้ส่งคืนหน้าเว็บ จึงไม่สามารถแยกวิเคราะห์แท็กได้",
+        TOO_MANY_REDIRECTS: "เปลี่ยนเส้นทางมากเกินไป — ไม่สามารถดึง URL นี้ได้",
+        UPSTREAM_ERROR:
+          "เว็บไซต์เป้าหมายส่งคืนข้อผิดพลาด อาจไม่มีหน้านี้หรือใช้งานไม่ได้ชั่วคราว",
+        UNKNOWN: "การตรวจสอบล้มเหลว กรุณาลองใหม่ภายหลัง",
+      },
+    },
+  },
   jsonViewer: {
     metadata: {
       description:
