@@ -20,7 +20,7 @@ export type SafeFetchOptions = {
 };
 
 export type SafeFetchResult = {
-  bytes: Uint8Array;
+  bytes: Uint8Array<ArrayBuffer>;
   finalUrl: string;
   headers: Headers;
   status: number;
@@ -99,7 +99,10 @@ function isAbortError(error: unknown): boolean {
   return error instanceof Error && error.name === "AbortError";
 }
 
-function concatBytes(chunks: Uint8Array[], maxBytes: number): Uint8Array {
+function concatBytes(
+  chunks: Uint8Array[],
+  maxBytes: number,
+): Uint8Array<ArrayBuffer> {
   const total = chunks.reduce((sum, chunk) => sum + chunk.byteLength, 0);
   const out = new Uint8Array(total);
   let offset = 0;
@@ -114,7 +117,7 @@ function concatBytes(chunks: Uint8Array[], maxBytes: number): Uint8Array {
 async function readBodyCapped(
   response: Response,
   maxBytes: number,
-): Promise<Uint8Array> {
+): Promise<Uint8Array<ArrayBuffer>> {
   const reader = response.body?.getReader();
   if (!reader) {
     return new Uint8Array(0);
