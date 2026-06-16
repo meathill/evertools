@@ -92,7 +92,7 @@ export function ImageConverterSettingsCard({
           <FieldLabel>{content.client.settings.targetFormat}</FieldLabel>
           <Select onValueChange={handleFormatChange} value={outputFormat}>
             <SelectTrigger>
-              <SelectValue />
+              <SelectValue>{outputFormatContent?.label}</SelectValue>
             </SelectTrigger>
             <SelectPopup>
               {OUTPUT_FORMATS.map((item) => (
