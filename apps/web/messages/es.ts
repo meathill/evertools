@@ -844,4 +844,146 @@ export const esMessages: LocaleContent = {
       },
     },
   },
+  markdownToPdf: {
+    metadata: {
+      description:
+        "Convierte Markdown generado por IA en un PDF con formato, legible en móviles y ordenadores. Compatible con encabezados, listas, tablas y bloques de código. Todo el procesamiento ocurre localmente en tu navegador.",
+      keywords: [
+        "markdown a pdf",
+        "markdown to pdf",
+        "salida IA a PDF",
+        "formatear markdown",
+        "PDF para movil",
+      ],
+      title: "Markdown a PDF",
+    },
+    hero: {
+      badges: {
+        category: "Herramientas de documentos",
+        localProcessing: "Procesamiento local en navegador",
+        mobileFriendly: "Apto para movil",
+      },
+      description:
+        "Pega tu Markdown de IA, ve una vista previa con formato en tiempo real y exporta a PDF mediante impresion del navegador. El ancho predeterminado para movil permite que los amigos lean en el telefono sin hacer zoom.",
+      title: "Markdown a PDF",
+    },
+    scenarios: {
+      description:
+        "Ideal para convertir texto de IA en documentos con formato compartibles.",
+      ai: "Recibiste una respuesta en Markdown de IA y quieres enviar un documento con formato a amigos que no conocen Markdown.",
+      share:
+        "Los amigos no pueden ver Markdown en sus telefonos y necesitan un PDF con formato visible.",
+      privacy:
+        "El contenido es sensible y no quieres subirlo a un servidor de terceros.",
+      title: "Ideal para",
+    },
+    tool: {
+      category: "Herramientas de documentos",
+      description:
+        "Convierte Markdown de ChatGPT, Claude u otras IAs en PDF con formato, gratis y online. Legible en movil sin hacer zoom. Compatible con encabezados, listas, tablas y codigo. Todo el procesamiento es local, sin subidas.",
+      faq: [
+        {
+          answer:
+            "No. El Markdown se convierte a HTML localmente en tu navegador y nunca se envia a un servidor.",
+          question: "Se subira mi contenido a un servidor?",
+        },
+        {
+          answer:
+            "Haz clic en 'Descargar PDF' para abrir una nueva pestana. El cuadro de dialogo de impresion del navegador aparece automaticamente; elige 'Guardar como PDF' para exportar.",
+          question: "Como exporto a PDF?",
+        },
+        {
+          answer:
+            "El ancho predeterminado 'Apto para movil' es de ~105mm, cercano al ancho en portrait del telefono, por lo que el PDF ocupa la pantalla sin hacer zoom. Puedes cambiar a A5 o A4.",
+          question: "Por que configurar un ancho de pagina?",
+        },
+        {
+          answer:
+            "Aparecera un mensaje de ventana emergente bloqueada. Haz clic en el icono de ventana emergente en la barra de direcciones del navegador para permitir ventanas emergentes de este sitio y vuelve a intentarlo.",
+          question:
+            "No pasa nada cuando hago clic en 'Descargar PDF'. Que hago?",
+        },
+        {
+          answer:
+            "Si. Pega texto de ChatGPT, Claude, Gemini o cualquier herramienta de IA directamente. El convertidor maneja Markdown GFM estandar que casi todos los asistentes de IA producen.",
+          question:
+            "Puedo usar salida de ChatGPT, Claude u otras herramientas de IA?",
+        },
+      ],
+      features: [
+        "Compatible con encabezados (H1-H6), parrafos, negrita, cursiva y enlaces",
+        "Compatible con listas ordenadas, no ordenadas y de tareas",
+        "Compatible con tablas GFM",
+        "Compatible con bloques de codigo delimitados (```) con salto de linea automatico",
+        "Compatible con citas",
+        "Tres anchos de pagina: Apto para movil / A5 / A4",
+        "Procesamiento local en el navegador: el contenido nunca sale de tu dispositivo",
+        "Disenado para salida de ChatGPT, Claude y otros asistentes de IA",
+      ],
+      keywords: [
+        "markdown a pdf",
+        "markdown to pdf",
+        "ChatGPT a PDF",
+        "Claude a PDF",
+        "salida IA a PDF",
+        "convertir markdown a pdf gratis",
+        "convertir markdown a pdf online",
+        "PDF para movil",
+        "herramienta de documentos online",
+      ],
+      name: "Markdown a PDF",
+      steps: [
+        "Pega tu Markdown en el panel izquierdo; aparece una vista previa en tiempo real a la derecha.",
+        "Elige un ancho de pagina: 'Apto para movil' para compartir en telefono, 'A5' para uso general.",
+        "Haz clic en 'Descargar PDF' y elige 'Guardar como PDF' en el cuadro de dialogo de impresion del navegador.",
+      ],
+      summary:
+        "Renderiza Markdown en el navegador y exportalo como PDF apto para movil mediante impresion del navegador.",
+    },
+    content: {
+      faqDescription: "Preguntas comunes antes de empezar.",
+      faqTitle: "Preguntas frecuentes",
+      privacyDescription: "Lee estas notas antes de usar la herramienta.",
+      privacyItems: [
+        "El Markdown se renderiza localmente en tu navegador y nunca se sube a un servidor.",
+        "Haz clic en 'Descargar PDF' para abrir una nueva pestana, luego elige 'Guardar como PDF' en el dialogo de impresion.",
+        "Si las ventanas emergentes estan bloqueadas, permite ventanas emergentes de este sitio en la barra de direcciones del navegador y vuelve a intentarlo.",
+        "El ancho 'Apto para movil' predeterminado produce un PDF que llena la pantalla del movil sin hacer zoom.",
+      ],
+      privacyTitle: "Notas",
+      stepsDescription: "Sigue estos pasos para exportar tu PDF.",
+      stepsTitle: "Como usar",
+      supportDescription: "Basado en GFM (GitHub Flavored Markdown).",
+      supportTitle: "Formatos compatibles",
+    },
+    client: {
+      empty: {
+        description:
+          "Ingresa Markdown a la izquierda para ver una vista previa con formato en tiempo real aqui.",
+        title: "Pega Markdown para vista previa",
+      },
+      input: {
+        clear: "Limpiar",
+        placeholder:
+          "Pega aqui el Markdown generado por IA, o escribe el tuyo…\n\n# Encabezado\n\n**Negrita** y *cursiva*\n\n- Elemento de lista 1\n- Elemento de lista 2\n\n```\nbloque de codigo\n```",
+        title: "Entrada Markdown",
+      },
+      preview: {
+        title: "Vista previa",
+      },
+      toolbar: {
+        estimatedPages: "~{count} pagina(s)",
+        pageWidth: "Ancho de pagina",
+        pageWidthOptions: {
+          a4: "Estandar (A4 210mm)",
+          a5: "Universal (A5 148mm)",
+          phone: "Apto para movil (105mm)",
+        },
+        popupBlockedWarning:
+          "Ventana emergente bloqueada. Haz clic en el icono de ventana emergente en la barra de direcciones del navegador para permitir ventanas emergentes de este sitio y vuelve a intentarlo.",
+        print: "Descargar PDF",
+        wordCount: "{count} caracteres",
+      },
+    },
+  },
 };

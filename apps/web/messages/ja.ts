@@ -836,4 +836,143 @@ export const jaMessages: LocaleContent = {
       },
     },
   },
+  markdownToPdf: {
+    metadata: {
+      description:
+        "AIが生成したMarkdownを、スマホとPCで読みやすいPDFに変換します。見出し、リスト、表、コードブロックに対応。すべての処理はブラウザ内で行われます。",
+      keywords: [
+        "markdown pdf変換",
+        "markdown to pdf",
+        "AI出力 PDF",
+        "markdownフォーマット",
+        "スマホ対応PDF",
+      ],
+      title: "Markdown を PDF に変換",
+    },
+    hero: {
+      badges: {
+        category: "ドキュメントツール",
+        localProcessing: "ブラウザローカル処理",
+        mobileFriendly: "スマホ対応",
+      },
+      description:
+        "AIのMarkdown出力を貼り付けてリアルタイムプレビューを確認し、ブラウザ印刷でPDFに書き出します。デフォルトのスマホ対応幅で、友人がスマホで拡大なしに読めます。",
+      title: "Markdown を PDF に変換",
+    },
+    scenarios: {
+      description: "AIテキストを共有可能なドキュメントに変換するのに最適です。",
+      ai: "AIからMarkdownの返信を受け取り、Markdownを知らない友人に整形されたドキュメントを送りたい。",
+      share: "友人のスマホでMarkdownが表示できず、書式付きPDFが必要な場合。",
+      privacy:
+        "内容が機密でサードパーティサーバーにアップロードしたくない場合。",
+      title: "こんな場面に",
+    },
+    tool: {
+      category: "ドキュメントツール",
+      description:
+        "ChatGPT・Claude など AI が出力した Markdown を無料でフォーマット済み PDF に変換します。スマホで拡大不要、PC でも読みやすい。見出し・リスト・表・コードブロックに対応、すべてブラウザ内で処理しアップロード不要。",
+      faq: [
+        {
+          answer:
+            "しません。MarkdownはブラウザでHTMLにレンダリングされ、サーバーには送信されません。",
+          question: "コンテンツはサーバーにアップロードされますか？",
+        },
+        {
+          answer:
+            "'PDFをダウンロード'をクリックして新しいタブを開きます。ブラウザの印刷ダイアログで'PDFとして保存'を選択してください。",
+          question: "PDFに書き出すにはどうすればいいですか？",
+        },
+        {
+          answer:
+            "デフォルトの'スマホ対応'幅は約105mmで、スマホの縦画面幅に近く、拡大なしにPDFが表示されます。A5やA4に切り替えることもできます。",
+          question: "ページ幅を設定する理由は？",
+        },
+        {
+          answer:
+            "ポップアップブロックのメッセージが表示されます。ブラウザのアドレスバーのポップアップアイコンをクリックしてサイトのポップアップを許可し、再試行してください。",
+          question:
+            "'PDFをダウンロード'をクリックしても何も起きません。どうすればいいですか？",
+        },
+        {
+          answer:
+            "はい。ChatGPT、Claude、Gemini など、あらゆる AI ツールの出力をそのまま貼り付けられます。GFM 標準に対応しており、ほぼすべての AI が生成する Markdown 形式に対応しています。",
+          question: "ChatGPT、Claude などの AI 出力を直接使えますか？",
+        },
+      ],
+      features: [
+        "見出し(H1〜H6)、段落、太字、斜体、リンクに対応",
+        "番号付きリスト、箇条書き、タスクリストに対応",
+        "GFMテーブルに対応",
+        "フェンスコードブロック（```）に対応、自動折り返しあり",
+        "引用ブロックに対応",
+        "3種類のページ幅：スマホ対応 / A5 / A4",
+        "ブラウザローカル処理 — コンテンツがデバイスから出ることはありません",
+        "ChatGPT・Claude などの AI 出力に最適化 — そのまま貼り付けて変換可能",
+      ],
+      keywords: [
+        "markdown pdf変換",
+        "markdown to pdf",
+        "ChatGPT PDF変換",
+        "Claude PDF変換",
+        "AI出力 PDF",
+        "markdownオンライン変換",
+        "無料markdown pdf",
+        "スマホ対応PDF",
+        "オンラインドキュメントツール",
+      ],
+      name: "Markdown を PDF に変換",
+      steps: [
+        "左側のパネルにMarkdownを貼り付けると、右側にリアルタイムプレビューが表示されます。",
+        "ページ幅を選択：スマホ共有なら'スマホ対応'、汎用なら'A5'。",
+        "'PDFをダウンロード'をクリックし、ブラウザの印刷ダイアログで'PDFとして保存'を選択します。",
+      ],
+      summary:
+        "ブラウザでMarkdownをレンダリングし、ブラウザ印刷でスマホ対応PDFとして書き出します。",
+    },
+    content: {
+      faqDescription: "開始前のよくある質問。",
+      faqTitle: "よくある質問",
+      privacyDescription: "ツールを使用する前にこれらのメモをお読みください。",
+      privacyItems: [
+        "Markdownはブラウザ内でレンダリングされ、サーバーにはアップロードされません。",
+        "'PDFをダウンロード'をクリックして新しいタブを開き、印刷ダイアログで'PDFとして保存'を選択します。",
+        "ポップアップがブロックされている場合は、ブラウザのアドレスバーでポップアップを許可して再試行してください。",
+        "デフォルトの'スマホ対応'幅で、スマホ画面に拡大なしにフィットするPDFが生成されます。",
+      ],
+      privacyTitle: "注意事項",
+      stepsDescription: "以下の手順でPDFを書き出します。",
+      stepsTitle: "使い方",
+      supportDescription: "GFM（GitHub Flavored Markdown）に基づいています。",
+      supportTitle: "対応フォーマット",
+    },
+    client: {
+      empty: {
+        description:
+          "左側にMarkdownを入力すると、ここにリアルタイムのプレビューが表示されます。",
+        title: "Markdownを貼り付けてプレビュー",
+      },
+      input: {
+        clear: "クリア",
+        placeholder:
+          "AIが生成したMarkdownをここに貼り付けるか、自分で書いてください…\n\n# 見出し\n\n**太字** と *斜体*\n\n- リスト項目1\n- リスト項目2\n\n```\nコードブロック\n```",
+        title: "Markdown入力",
+      },
+      preview: {
+        title: "プレビュー",
+      },
+      toolbar: {
+        estimatedPages: "約{count}ページ",
+        pageWidth: "ページ幅",
+        pageWidthOptions: {
+          a4: "標準（A4 210mm）",
+          a5: "汎用（A5 148mm）",
+          phone: "スマホ対応（105mm）",
+        },
+        popupBlockedWarning:
+          "ポップアップがブロックされています。ブラウザのアドレスバーのポップアップアイコンをクリックしてサイトのポップアップを許可し、再試行してください。",
+        print: "PDFをダウンロード",
+        wordCount: "{count}文字",
+      },
+    },
+  },
 };

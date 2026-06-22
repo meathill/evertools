@@ -831,4 +831,143 @@ export const viMessages: LocaleContent = {
       },
     },
   },
+  markdownToPdf: {
+    metadata: {
+      description:
+        "Chuyen Markdown tu AI thanh PDF co dinh dang, doc duoc tren ca dien thoai va may tinh. Ho tro tieu de, danh sach, bang va khoi code. Xu ly hoan toan trong trinh duyet.",
+      keywords: [
+        "markdown sang pdf",
+        "markdown to pdf",
+        "AI output PDF",
+        "dinh dang markdown",
+        "PDF than thien voi dien thoai",
+      ],
+      title: "Chuyen Markdown sang PDF",
+    },
+    hero: {
+      badges: {
+        category: "Cong cu tai lieu",
+        localProcessing: "Xu ly trong trinh duyet",
+        mobileFriendly: "Than thien voi dien thoai",
+      },
+      description:
+        "Dan Markdown tu AI, xem ban xem truoc truc tiep va xuat sang PDF qua in trinh duyet. Chieu rong mac dinh than thien voi dien thoai, ban be co the doc tren dien thoai ma khong can phong to.",
+      title: "Chuyen Markdown sang PDF",
+    },
+    scenarios: {
+      description:
+        "Tuyet voi de chuyen van ban AI thanh tai lieu co the chia se.",
+      ai: "Nhan duoc phan hoi Markdown tu AI va muon gui tai lieu co dinh dang cho ban be khong quen Markdown.",
+      share:
+        "Ban be khong the hien thi Markdown tren dien thoai va can PDF co dinh dang.",
+      privacy: "Noi dung nham and ban khong muon tai len may chu ben thu ba.",
+      title: "Phu hop voi",
+    },
+    tool: {
+      category: "Cong cu tai lieu",
+      description:
+        "Chuyen Markdown tu ChatGPT, Claude va AI khac thanh PDF co dinh dang, mien phi truc tuyen. Doc tren dien thoai khong can phong to. Ho tro tieu de, danh sach, bang, khoi code. Xu ly trong trinh duyet, khong tai len.",
+      faq: [
+        {
+          answer:
+            "Khong. Markdown duoc hien thi thanh HTML trong trinh duyet va khong gui den may chu.",
+          question: "Noi dung co duoc tai len may chu khong?",
+        },
+        {
+          answer:
+            "Nhan 'Tai xuong PDF' de mo tab moi. Hop thoai in trinh duyet xuat hien tu dong, chon 'Luu dang PDF' de xuat.",
+          question: "Lam the nao de xuat sang PDF?",
+        },
+        {
+          answer:
+            "Chieu rong 'Than thien voi dien thoai' mac dinh la ~105mm, gan voi chieu rong man hinh dung dien thoai, nen PDF vua voi man hinh ma khong can phong to.",
+          question: "Tai sao can thiet lap chieu rong trang?",
+        },
+        {
+          answer:
+            "Thong bao bi chan cua so boc xuat hien. Nhan bieu tuong cua so boc trong thanh dia chi trinh duyet de cho phep cua so boc tu trang nay, sau do thu lai.",
+          question: "Khong co gi xay ra khi nhan 'Tai xuong PDF'. Phai lam gi?",
+        },
+        {
+          answer:
+            "Co the. Dan van ban tu ChatGPT, Claude, Gemini hoac bat ky AI nao truc tiep. Cong cu ho tro Markdown GFM tieu chuan ma hau het tro ly AI deu tao ra.",
+          question: "Co the dung dau ra tu ChatGPT, Claude hoac AI khac khong?",
+        },
+      ],
+      features: [
+        "Ho tro tieu de (H1–H6), doan van, in dam, in nghieng va lien ket",
+        "Ho tro danh sach co thu tu, danh sach khong thu tu va danh sach nhiem vu",
+        "Ho tro bang GFM",
+        "Ho tro khoi code rào can (```) voi ngat dong tu dong",
+        "Ho tro trich dan",
+        "Ba chieu rong trang: Than thien voi dien thoai / A5 / A4",
+        "Xu ly trong trinh duyet, noi dung khong roi khoi thiet bi",
+        "Thiet ke cho dau ra ChatGPT, Claude va AI khac — dan va chuyen doi ngay",
+      ],
+      keywords: [
+        "markdown sang pdf",
+        "markdown to pdf",
+        "ChatGPT sang PDF",
+        "Claude sang PDF",
+        "AI output PDF",
+        "chuyen doi markdown pdf mien phi",
+        "markdown truc tuyen mien phi",
+        "PDF than thien voi dien thoai",
+        "cong cu tai lieu truc tuyen",
+      ],
+      name: "Chuyen Markdown sang PDF",
+      steps: [
+        "Dan Markdown vao pane trai, ban xem truoc truc tiep xuat hien ben phai.",
+        "Chon chieu rong trang: 'Than thien voi dien thoai' de chia se tren dien thoai, 'A5' de su dung chung.",
+        "Nhan 'Tai xuong PDF', sau do chon 'Luu dang PDF' trong hop thoai in trinh duyet.",
+      ],
+      summary:
+        "Hien thi Markdown trong trinh duyet va xuat thanh PDF than thien voi dien thoai qua in trinh duyet.",
+    },
+    content: {
+      faqDescription: "Cac cau hoi pho bien truoc khi bat dau.",
+      faqTitle: "Cau hoi thuong gap",
+      privacyDescription: "Doc cac ghi chu nay truoc khi su dung cong cu.",
+      privacyItems: [
+        "Markdown duoc hien thi trong trinh duyet va khong duoc tai len may chu.",
+        "Nhan 'Tai xuong PDF' de mo tab moi, sau do chon 'Luu dang PDF' trong hop thoai in.",
+        "Neu cua so boc bi chan, cho phep cua so boc tu trang nay trong thanh dia chi trinh duyet, sau do thu lai.",
+        "Chieu rong 'Than thien voi dien thoai' mac dinh tao ra PDF vua voi man hinh dien thoai ma khong can phong to.",
+      ],
+      privacyTitle: "Ghi chu",
+      stepsDescription: "Lam theo cac buoc nay de xuat PDF.",
+      stepsTitle: "Cach su dung",
+      supportDescription: "Dua tren GFM (GitHub Flavored Markdown).",
+      supportTitle: "Dinh dang duoc ho tro",
+    },
+    client: {
+      empty: {
+        description:
+          "Nhap Markdown o ben trai de xem ban xem truoc truc tiep o day.",
+        title: "Dan Markdown de xem truoc",
+      },
+      input: {
+        clear: "Xoa",
+        placeholder:
+          "Dan Markdown do AI tao o day, hoac tu viet…\n\n# Tieu de\n\n**In dam** va *in nghieng*\n\n- Muc danh sach 1\n- Muc danh sach 2\n\n```\nkhoi code\n```",
+        title: "Nhap Markdown",
+      },
+      preview: {
+        title: "Xem truoc",
+      },
+      toolbar: {
+        estimatedPages: "~{count} trang",
+        pageWidth: "Chieu rong trang",
+        pageWidthOptions: {
+          a4: "Chuan (A4 210mm)",
+          a5: "Pho thong (A5 148mm)",
+          phone: "Than thien voi dien thoai (105mm)",
+        },
+        popupBlockedWarning:
+          "Cua so boc bi chan. Nhan bieu tuong cua so boc trong thanh dia chi trinh duyet de cho phep cua so boc tu trang nay, sau do thu lai.",
+        print: "Tai xuong PDF",
+        wordCount: "{count} ky tu",
+      },
+    },
+  },
 };

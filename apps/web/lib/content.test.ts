@@ -57,12 +57,13 @@ describe("getOgImageValidatorTool", () => {
 });
 
 describe("getTools", () => {
-  it("returns the four tools in registration order", () => {
+  it("returns the five tools in registration order", () => {
     expect(getTools(zh).map((tool) => tool.slug)).toEqual([
       "image-converter",
       "pdf-text-editor",
       "json-viewer",
       "og-image-validator",
+      "markdown-to-pdf",
     ]);
   });
 

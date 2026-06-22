@@ -843,4 +843,145 @@ export const ptMessages: LocaleContent = {
       },
     },
   },
+  markdownToPdf: {
+    metadata: {
+      description:
+        "Converta Markdown gerado por IA em PDF formatado, legivel em celular e computador. Suporta titulos, listas, tabelas e blocos de codigo. Todo o processamento ocorre localmente no seu navegador.",
+      keywords: [
+        "markdown para pdf",
+        "markdown to pdf",
+        "saida IA para PDF",
+        "formatar markdown",
+        "PDF para celular",
+      ],
+      title: "Markdown para PDF",
+    },
+    hero: {
+      badges: {
+        category: "Ferramentas de documentos",
+        localProcessing: "Processamento local no navegador",
+        mobileFriendly: "Compativel com celular",
+      },
+      description:
+        "Cole seu Markdown de IA, veja uma previa formatada em tempo real e exporte para PDF via impressao do navegador. A largura padrao para celular permite que amigos leiam no telefone sem dar zoom.",
+      title: "Markdown para PDF",
+    },
+    scenarios: {
+      description:
+        "Otimo para converter texto de IA em documentos formatados e compartilhaveis.",
+      ai: "Recebeu uma resposta em Markdown de IA e quer enviar um documento formatado para amigos que nao conhecem Markdown.",
+      share:
+        "Amigos nao conseguem exibir Markdown no celular e precisam de um PDF com formatacao visivel.",
+      privacy:
+        "O conteudo e sensivel e voce nao quer fazer upload para um servidor de terceiros.",
+      title: "Ideal para",
+    },
+    tool: {
+      category: "Ferramentas de documentos",
+      description:
+        "Converta Markdown do ChatGPT, Claude ou outras IAs em PDF formatado, gratis e online. Legivel no celular sem dar zoom. Suporta titulos, listas, tabelas e codigo. Processamento local no navegador, sem upload.",
+      faq: [
+        {
+          answer:
+            "Nao. O Markdown e renderizado para HTML localmente no seu navegador e nunca e enviado a um servidor.",
+          question: "Meu conteudo sera enviado para um servidor?",
+        },
+        {
+          answer:
+            "Clique em 'Baixar PDF' para abrir uma nova aba. A caixa de dialogo de impressao do navegador aparece automaticamente; escolha 'Salvar como PDF' para exportar.",
+          question: "Como exportar para PDF?",
+        },
+        {
+          answer:
+            "A largura padrao 'Compativel com celular' e de ~105mm, proxima a largura portrait do telefone, para que o PDF preencha a tela sem zoom. Voce pode mudar para A5 ou A4.",
+          question: "Por que definir uma largura de pagina?",
+        },
+        {
+          answer:
+            "Uma mensagem de pop-up bloqueado aparecera. Clique no icone de pop-up na barra de endereco do navegador para permitir pop-ups deste site e tente novamente.",
+          question: "Nada acontece quando clico em 'Baixar PDF'. O que fazer?",
+        },
+        {
+          answer:
+            "Sim. Cole texto do ChatGPT, Claude, Gemini ou qualquer ferramenta de IA diretamente. O conversor suporta Markdown GFM padrao que quase todos os assistentes de IA produzem.",
+          question:
+            "Posso usar saida do ChatGPT, Claude ou outras ferramentas de IA?",
+        },
+      ],
+      features: [
+        "Suporta titulos (H1-H6), paragrafos, negrito, italico e links",
+        "Suporta listas ordenadas, nao ordenadas e de tarefas",
+        "Suporta tabelas GFM",
+        "Suporta blocos de codigo delimitados (```) com quebra de linha automatica",
+        "Suporta citacoes",
+        "Tres larguras de pagina: Compativel com celular / A5 / A4",
+        "Processamento local no navegador — o conteudo nunca sai do seu dispositivo",
+        "Projetado para saida do ChatGPT, Claude e outros assistentes de IA",
+      ],
+      keywords: [
+        "markdown para pdf",
+        "markdown to pdf",
+        "ChatGPT para PDF",
+        "Claude para PDF",
+        "saida IA para PDF",
+        "converter markdown para pdf gratis",
+        "converter markdown para pdf online",
+        "PDF para celular",
+        "ferramenta de documentos online",
+      ],
+      name: "Markdown para PDF",
+      steps: [
+        "Cole seu Markdown no painel esquerdo — uma previa em tempo real aparece a direita.",
+        "Escolha uma largura de pagina: 'Compativel com celular' para compartilhar no celular, 'A5' para uso geral.",
+        "Clique em 'Baixar PDF' e escolha 'Salvar como PDF' na caixa de dialogo de impressao do navegador.",
+      ],
+      summary:
+        "Renderize Markdown no navegador e exporte como PDF compativel com celular via impressao do navegador.",
+    },
+    content: {
+      faqDescription: "Perguntas comuns antes de comecar.",
+      faqTitle: "Perguntas frequentes",
+      privacyDescription: "Leia estas notas antes de usar a ferramenta.",
+      privacyItems: [
+        "O Markdown e renderizado localmente no seu navegador e nunca e carregado para um servidor.",
+        "Clique em 'Baixar PDF' para abrir uma nova aba, depois escolha 'Salvar como PDF' na caixa de dialogo de impressao.",
+        "Se pop-ups estiverem bloqueados, permita pop-ups deste site na barra de endereco do navegador e tente novamente.",
+        "A largura padrao 'Compativel com celular' produz um PDF que preenche a tela do celular sem zoom.",
+      ],
+      privacyTitle: "Notas",
+      stepsDescription: "Siga estes passos para exportar seu PDF.",
+      stepsTitle: "Como usar",
+      supportDescription: "Baseado em GFM (GitHub Flavored Markdown).",
+      supportTitle: "Formatos suportados",
+    },
+    client: {
+      empty: {
+        description:
+          "Insira Markdown a esquerda para ver uma previa formatada em tempo real aqui.",
+        title: "Cole Markdown para visualizar",
+      },
+      input: {
+        clear: "Limpar",
+        placeholder:
+          "Cole aqui o Markdown gerado por IA, ou escreva o seu…\n\n# Titulo\n\n**Negrito** e *italico*\n\n- Item de lista 1\n- Item de lista 2\n\n```\nbloco de codigo\n```",
+        title: "Entrada Markdown",
+      },
+      preview: {
+        title: "Visualizacao",
+      },
+      toolbar: {
+        estimatedPages: "~{count} pagina(s)",
+        pageWidth: "Largura da pagina",
+        pageWidthOptions: {
+          a4: "Padrao (A4 210mm)",
+          a5: "Universal (A5 148mm)",
+          phone: "Compativel com celular (105mm)",
+        },
+        popupBlockedWarning:
+          "Pop-up bloqueado. Clique no icone de pop-up na barra de endereco do navegador para permitir pop-ups deste site e tente novamente.",
+        print: "Baixar PDF",
+        wordCount: "{count} caracteres",
+      },
+    },
+  },
 };

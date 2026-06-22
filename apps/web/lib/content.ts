@@ -131,11 +131,30 @@ export function getOgImageValidatorTool(
   };
 }
 
+export function getMarkdownToPdfTool(content: LocaleContent): ToolDefinition {
+  return {
+    applicationCategory: "UtilitiesApplication",
+    category: content.markdownToPdf.tool.category,
+    description: content.markdownToPdf.tool.description,
+    faq: content.markdownToPdf.tool.faq,
+    features: content.markdownToPdf.tool.features,
+    href: "/tools/markdown-to-pdf",
+    keywords: content.markdownToPdf.tool.keywords,
+    name: content.markdownToPdf.tool.name,
+    slug: "markdown-to-pdf",
+    steps: content.markdownToPdf.tool.steps,
+    stepsTitle: content.markdownToPdf.content.stepsTitle,
+    summary: content.markdownToPdf.tool.summary,
+    totalTime: "PT1M",
+  };
+}
+
 export function getTools(content: LocaleContent): ToolDefinition[] {
   return [
     getImageConverterTool(content),
     getPdfTextEditorTool(content),
     getJsonViewerTool(content),
     getOgImageValidatorTool(content),
+    getMarkdownToPdfTool(content),
   ];
 }

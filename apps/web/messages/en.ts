@@ -834,4 +834,146 @@ export const enMessages: LocaleContent = {
       },
     },
   },
+  markdownToPdf: {
+    metadata: {
+      description:
+        "Convert AI-generated Markdown into a formatted PDF, readable on both mobile and desktop. Supports headings, lists, tables, and code blocks. All processing happens locally in your browser.",
+      keywords: [
+        "markdown to pdf",
+        "convert markdown pdf",
+        "AI output to PDF",
+        "markdown formatter",
+        "mobile friendly PDF",
+      ],
+      title: "Markdown to PDF",
+    },
+    hero: {
+      badges: {
+        category: "Document Tools",
+        localProcessing: "Browser-local Processing",
+        mobileFriendly: "Mobile Friendly",
+      },
+      description:
+        "Paste your AI Markdown output, see a live formatted preview, and export to PDF via browser print. The default phone-friendly width lets friends read on mobile without zooming.",
+      title: "Markdown to PDF",
+    },
+    scenarios: {
+      description:
+        "Great for turning AI text into shareable formatted documents. Not for complex layouts.",
+      ai: "Got a Markdown reply from AI and want to send a formatted document to friends unfamiliar with Markdown.",
+      share:
+        "Friends can't render Markdown on their phones and need a PDF with visible formatting.",
+      privacy:
+        "Content is sensitive and you don't want to upload it to a third-party server.",
+      title: "Good For",
+    },
+    tool: {
+      category: "Document Tools",
+      description:
+        "Free online Markdown to PDF converter. Turn ChatGPT, Claude, or any AI Markdown output into a formatted PDF friends can read on any phone without zooming. Supports headings, lists, tables, and code blocks. All processing is local — nothing uploaded.",
+      faq: [
+        {
+          answer:
+            "No. Markdown is rendered to HTML locally in your browser and never sent to a server.",
+          question: "Will my content be uploaded to a server?",
+        },
+        {
+          answer:
+            "Click 'Download PDF' to open a new tab. The browser print dialog appears automatically — choose 'Save as PDF' to export.",
+          question: "How do I export to PDF?",
+        },
+        {
+          answer:
+            "The default 'Phone Friendly' width is ~105mm, close to a phone's portrait width, so the PDF fills the screen without zooming. You can switch to A5 or A4.",
+          question: "Why set a page width?",
+        },
+        {
+          answer:
+            "A popup-blocked message will appear. Click the popup icon in your browser's address bar to allow popups from this site, then try again.",
+          question:
+            "Nothing happens when I click 'Download PDF'. What do I do?",
+        },
+        {
+          answer:
+            "Yes. Paste text from ChatGPT, Claude, Gemini, or any AI tool directly — the converter handles standard GFM Markdown, which nearly all AI assistants produce.",
+          question: "Can I use output from ChatGPT, Claude, or other AI tools?",
+        },
+      ],
+      features: [
+        "Supports headings (H1–H6), paragraphs, bold, italic, and links",
+        "Supports ordered lists, unordered lists, and task lists",
+        "Supports GFM tables",
+        "Supports fenced code blocks (```) with automatic line wrapping",
+        "Supports blockquotes",
+        "Three page widths: Phone Friendly / A5 / A4",
+        "Browser-local processing — content never leaves your device",
+        "Designed for ChatGPT, Claude, and other AI output — paste and convert instantly",
+      ],
+      keywords: [
+        "markdown to pdf",
+        "convert markdown to pdf",
+        "chatgpt to pdf",
+        "claude to pdf",
+        "AI output to PDF",
+        "chatgpt output pdf",
+        "markdown pdf online free",
+        "markdown to pdf no upload",
+        "mobile friendly PDF",
+        "online document tool",
+      ],
+      name: "Markdown to PDF",
+      steps: [
+        "Paste your Markdown into the left panel — a live preview appears on the right.",
+        "Choose a page width: 'Phone Friendly' for mobile sharing, 'A5' for general use.",
+        "Click 'Download PDF', then choose 'Save as PDF' in the browser print dialog.",
+      ],
+      summary:
+        "Render Markdown in the browser and export it as a mobile-friendly PDF via browser print.",
+    },
+    content: {
+      faqDescription: "Common questions before you start.",
+      faqTitle: "FAQ",
+      privacyDescription: "Read these notes before using the tool.",
+      privacyItems: [
+        "Markdown is rendered locally in your browser and never uploaded to a server.",
+        "Click 'Download PDF' to open a new tab, then choose 'Save as PDF' in the print dialog.",
+        "If popups are blocked, allow this site to open popups in your browser's address bar, then retry.",
+        "The default 'Phone Friendly' width produces a PDF that fills a mobile screen without zooming.",
+      ],
+      privacyTitle: "Notes",
+      stepsDescription: "Follow these steps to export your PDF.",
+      stepsTitle: "How to Use",
+      supportDescription: "Based on GFM (GitHub Flavored Markdown).",
+      supportTitle: "Supported Formats",
+    },
+    client: {
+      empty: {
+        description:
+          "Enter Markdown on the left to see a live formatted preview here.",
+        title: "Paste Markdown to Preview",
+      },
+      input: {
+        clear: "Clear",
+        placeholder:
+          "Paste AI-generated Markdown here, or write your own…\n\n# Heading\n\n**Bold** and *italic*\n\n- List item 1\n- List item 2\n\n```\ncode block\n```",
+        title: "Markdown Input",
+      },
+      preview: {
+        title: "Preview",
+      },
+      toolbar: {
+        estimatedPages: "~{count} page(s)",
+        pageWidth: "Page Width",
+        pageWidthOptions: {
+          a4: "Standard (A4 210mm)",
+          a5: "Universal (A5 148mm)",
+          phone: "Phone Friendly (105mm)",
+        },
+        popupBlockedWarning:
+          "Popup blocked. Click the popup icon in your browser's address bar to allow popups from this site, then try again.",
+        print: "Download PDF",
+        wordCount: "{count} characters",
+      },
+    },
+  },
 };

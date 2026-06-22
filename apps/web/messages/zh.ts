@@ -790,4 +790,140 @@ export const zhMessages = {
       },
     },
   },
+  markdownToPdf: {
+    metadata: {
+      description:
+        "把 AI 输出的 Markdown 转成格式化 PDF，手机和电脑都能直接阅读。支持标题、列表、表格、代码块，全程在浏览器本地处理，不上传内容。",
+      keywords: [
+        "markdown 转 pdf",
+        "markdown to pdf",
+        "AI 输出转 PDF",
+        "markdown 格式化",
+        "手机友好 PDF",
+      ],
+      title: "Markdown 转 PDF",
+    },
+    hero: {
+      badges: {
+        category: "文档工具",
+        localProcessing: "浏览器本地处理",
+        mobileFriendly: "手机友好",
+      },
+      description:
+        "把 AI 输出的 Markdown 粘贴进来，立刻渲染成格式化预览，再通过浏览器导出为 PDF。默认使用手机友好宽度，朋友在手机上打开无需缩放就能直接阅读。",
+      title: "Markdown 转 PDF",
+    },
+    scenarios: {
+      description: "适合把 AI 文本转成可分享的格式化文档，不适合复杂排版需求。",
+      ai: "收到 AI 的 Markdown 回复，想转成格式化文档发给不熟悉 Markdown 的朋友。",
+      share: "朋友手机上无法渲染 Markdown，需要直接显示格式的 PDF。",
+      privacy: "内容涉及隐私，不想上传到第三方服务器处理。",
+      title: "适合这些情况",
+    },
+    tool: {
+      category: "文档工具",
+      description:
+        "把 ChatGPT、Claude 等 AI 输出的 Markdown 免费转成格式化 PDF。手机打开无需缩放，电脑上也清晰易读。支持标题、列表、表格、代码块，全程在浏览器本地处理，内容不上传。",
+      faq: [
+        {
+          answer: "不会。Markdown 在浏览器本地渲染为 HTML，不上传到服务器。",
+          question: "内容会上传到服务器吗？",
+        },
+        {
+          answer:
+            "点击「下载 PDF」会打开新标签页，页面自动弹出浏览器打印对话框，选择「保存为 PDF」即可。",
+          question: "怎么导出 PDF？",
+        },
+        {
+          answer:
+            "默认「手机友好」宽度约 105mm，接近手机竖屏宽度，手机打开无需缩放。也可以切换到 A5 或 A4。",
+          question: "为什么要设置页面宽度？",
+        },
+        {
+          answer:
+            "弹窗被拦截时会出现提示，请在浏览器地址栏右侧允许此网站打开弹窗，然后重试。",
+          question: "点击「下载 PDF」没有反应怎么办？",
+        },
+        {
+          answer:
+            "可以。把 ChatGPT、Claude、Gemini 等任何 AI 工具输出的 Markdown 文本直接粘贴进来即可，工具基于 GFM 标准，兼容绝大多数 AI 生成的 Markdown 格式。",
+          question: "ChatGPT、Claude 等 AI 的输出能直接用吗？",
+        },
+      ],
+      features: [
+        "支持标题（H1-H6）、段落、粗体、斜体、链接",
+        "支持有序列表、无序列表、任务列表",
+        "支持 GFM 表格",
+        "支持围栏代码块（```），代码块内自动换行",
+        "支持引用（blockquote）",
+        "三档页面宽度：手机友好 / A5 / A4",
+        "浏览器本地处理，内容不上传",
+        "专为 ChatGPT、Claude 等 AI 输出设计，粘贴即用",
+      ],
+      keywords: [
+        "markdown 转 pdf",
+        "markdown to pdf",
+        "AI 输出转 PDF",
+        "ChatGPT 输出转 PDF",
+        "Claude 输出转 PDF",
+        "markdown 在线转换",
+        "免费 markdown 转 pdf",
+        "markdown 导出 PDF",
+        "手机友好 PDF",
+        "在线文档工具",
+      ],
+      name: "Markdown 转 PDF",
+      steps: [
+        "把 Markdown 内容粘贴到左侧文本框，右侧会实时渲染预览。",
+        "根据分享场景选择页面宽度：手机优先选「手机友好」，通用选「A5」。",
+        "点击「下载 PDF」，在打开的标签页里选择「保存为 PDF」完成导出。",
+      ],
+      summary:
+        "在浏览器里把 Markdown 渲染成格式化预览，再通过打印导出为手机友好的 PDF。",
+    },
+    content: {
+      faqDescription: "开始前常见的几个问题。",
+      faqTitle: "常见问题",
+      privacyDescription: "使用前先了解这些说明。",
+      privacyItems: [
+        "Markdown 在浏览器本地渲染，不上传到服务器。",
+        "点击「下载 PDF」打开新标签页，通过浏览器打印功能选择「保存为 PDF」。",
+        "若弹窗被拦截，请在浏览器地址栏允许本站弹窗后重试。",
+        "默认使用「手机友好」宽度，PDF 在手机上无需缩放即可阅读。",
+      ],
+      privacyTitle: "使用说明",
+      stepsDescription: "按下面的步骤即可导出 PDF。",
+      stepsTitle: "使用方法",
+      supportDescription: "基于 GFM（GitHub Flavored Markdown）标准。",
+      supportTitle: "支持的格式",
+    },
+    client: {
+      empty: {
+        description: "在左侧输入 Markdown，这里会实时渲染格式化预览。",
+        title: "输入 Markdown 开始预览",
+      },
+      input: {
+        clear: "清空",
+        placeholder:
+          "在这里粘贴 AI 输出的 Markdown 内容，或者手写 Markdown…\n\n# 标题\n\n**粗体** 和 *斜体*\n\n- 列表项 1\n- 列表项 2\n\n```\n代码块\n```",
+        title: "输入 Markdown",
+      },
+      preview: {
+        title: "预览",
+      },
+      toolbar: {
+        estimatedPages: "约 {count} 页",
+        pageWidth: "页面宽度",
+        pageWidthOptions: {
+          a4: "标准（A4 210mm）",
+          a5: "通用（A5 148mm）",
+          phone: "手机友好（105mm）",
+        },
+        popupBlockedWarning:
+          "弹窗被浏览器拦截，请点击地址栏右侧的弹窗图标，允许此网站打开弹窗后重试。",
+        print: "下载 PDF",
+        wordCount: "{count} 字符",
+      },
+    },
+  },
 } as const;
