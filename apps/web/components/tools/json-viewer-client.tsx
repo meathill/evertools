@@ -103,7 +103,7 @@ export function JsonViewerClient({ content }: JsonViewerClientProps) {
   return (
     <div className="grid gap-6 lg:grid-cols-2">
       <Card className="border-2 border-ink shadow-press-ink">
-        <CardHeader className="flex-row items-center justify-between border-rule border-b bg-paper-deep/50">
+        <CardHeader className="flex items-center justify-between border-rule border-b bg-paper-deep/50">
           <CardTitle className="text-base">{t.input.title}</CardTitle>
           <Button
             disabled={input === ""}
