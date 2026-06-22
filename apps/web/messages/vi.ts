@@ -33,10 +33,6 @@ export const viMessages: LocaleContent = {
     openTool: "Mo cong cu",
   },
   home: {
-    featuredTools: {
-      description: "Cong cu hien co. Click de bat dau su dung.",
-      title: "Cong cu noi bat",
-    },
     metadata: {
       description:
         "Meathill Tools cung cap cong cu truc tuyen co the dung ngay trong trinh duyet. Chuyen doi anh, doi kich thuoc va sua van ban PDF.",

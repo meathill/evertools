@@ -33,10 +33,6 @@ export const enMessages: LocaleContent = {
     openTool: "Open tool",
   },
   home: {
-    featuredTools: {
-      description: "Tools currently available. Click to start using.",
-      title: "Featured tools",
-    },
     metadata: {
       description:
         "Meathill Tools offers online tools you can use right away in the browser. Start with image format conversion, resizing, and PDF text editing.",

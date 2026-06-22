@@ -32,10 +32,6 @@ export const thMessages: LocaleContent = {
     openTool: "เปิดเครื่องมือ",
   },
   home: {
-    featuredTools: {
-      description: "เครื่องมือที่ใช้งานได้ตอนนี้ คลิกเพื่อเริ่มใช้",
-      title: "เครื่องมือแนะนำ",
-    },
     metadata: {
       description:
         "Meathill Tools ให้บริการเครื่องมือออนไลน์ที่ทำงานในเบราว์เซอร์ แปลงรูปภาพ ปรับขนาด และแก้ไขข้อความ PDF",

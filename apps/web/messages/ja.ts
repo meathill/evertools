@@ -33,10 +33,6 @@ export const jaMessages: LocaleContent = {
     openTool: "ツールを開く",
   },
   home: {
-    featuredTools: {
-      description: "現在利用可能なツール。クリックして使い始めましょう。",
-      title: "おすすめツール",
-    },
     metadata: {
       description:
         "Meathill Tools はブラウザでそのまま使えるオンラインツールを提供します。画像形式変換、リサイズ、PDF テキスト編集。",

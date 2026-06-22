@@ -33,10 +33,6 @@ export const esMessages: LocaleContent = {
     openTool: "Abrir herramienta",
   },
   home: {
-    featuredTools: {
-      description: "Herramientas disponibles. Haz clic para empezar a usar.",
-      title: "Herramientas destacadas",
-    },
     metadata: {
       description:
         "Meathill Tools ofrece herramientas en línea que puedes usar de inmediato en el navegador. Conversión de imágenes, cambio de tamaño y edición de texto PDF.",

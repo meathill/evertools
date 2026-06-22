@@ -30,10 +30,6 @@ export const zhMessages = {
     openTool: "打开工具",
   },
   home: {
-    featuredTools: {
-      description: "当前可用的工具，点击即可开始使用。",
-      title: "热门工具",
-    },
     metadata: {
       description:
         "Meathill Tools 提供打开即可使用的在线工具。当前可直接完成图片格式转换、尺寸调整、PDF 文本编辑，整个过程都在浏览器中进行。",
