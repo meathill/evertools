@@ -70,7 +70,7 @@ export function MarkdownToPdfClient({ content }: MarkdownToPdfClientProps) {
   return (
     <div className="grid gap-6 lg:grid-cols-2">
       <Card className="border-2 border-ink shadow-press-ink">
-        <CardHeader className="flex-row items-center justify-between border-rule border-b bg-paper-deep/50">
+        <CardHeader className="flex items-center justify-between border-rule border-b bg-paper-deep/50">
           <CardTitle className="text-base">{t.input.title}</CardTitle>
           <Button
             disabled={isEmpty}
@@ -84,7 +84,7 @@ export function MarkdownToPdfClient({ content }: MarkdownToPdfClientProps) {
         </CardHeader>
         <CardPanel className="flex flex-col gap-3">
           <Textarea
-            className="font-mono text-xs leading-relaxed [&_textarea]:min-h-[26rem]"
+            className="font-mono text-xs leading-relaxed [&_textarea]:max-h-[34rem] [&_textarea]:min-h-[26rem]"
             onChange={(event) => setMarkdown(event.target.value)}
             placeholder={t.input.placeholder}
             spellCheck={false}
@@ -104,7 +104,7 @@ export function MarkdownToPdfClient({ content }: MarkdownToPdfClientProps) {
       </Card>
 
       <Card className="border-2 border-ink shadow-press-ink">
-        <CardHeader className="flex-row flex-wrap items-center gap-2 border-rule border-b bg-paper-deep/50">
+        <CardHeader className="flex flex-wrap items-center justify-between gap-2 border-rule border-b bg-paper-deep/50">
           <CardTitle className="text-base">{t.preview.title}</CardTitle>
           <div className="ml-auto flex items-center gap-2">
             <Select
