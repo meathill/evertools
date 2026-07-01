@@ -4,6 +4,7 @@ import {
   RefreshCcwIcon,
   ShieldCheckIcon,
 } from "lucide-react";
+import { ImageConverterBatchList } from "@/components/tools/image-converter-batch-list";
 import { PreviewCard } from "@/components/tools/image-converter-preview-card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -29,6 +30,7 @@ export function ImageConverterUploadCard({
 }: ImageConverterUploadCardProps) {
   const {
     acceptedFormatsText,
+    firstItem,
     handleBrowseClick,
     handleDragLeave,
     handleDragOver,
@@ -40,9 +42,10 @@ export function ImageConverterUploadCard({
     isDragging,
     isPreparing,
     isResultStale,
-    resultImage,
-    sourceImage,
+    items,
   } = controller;
+
+  const isSingleMode = items.length === 1 && Boolean(firstItem);
 
   return (
     <div className="space-y-6">
@@ -84,72 +87,111 @@ export function ImageConverterUploadCard({
               accept={FILE_INPUT_ACCEPT}
               className="sr-only"
               id={inputId}
+              multiple
               onChange={handleFileInputChange}
               ref={inputRef}
               type="file"
             />
 
-            {sourceImage ? (
+            {items.length > 0 ? (
               <div className="space-y-5">
                 <div className="flex flex-wrap items-center justify-between gap-3">
-                  <div>
-                    <div className="font-medium text-sm text-ink">
-                      {sourceImage.name}
-                    </div>
-                    <div className="text-mute text-xs">
-                      {sourceImage.width} x {sourceImage.height} px ·{" "}
-                      {formatBytes(sourceImage.size)}
-                    </div>
-                  </div>
-                  <div className="flex flex-wrap gap-2">
-                    <Button
-                      onClick={handleBrowseClick}
-                      size="sm"
-                      variant="outline"
-                    >
-                      {content.client.upload.reselect}
-                    </Button>
-                    <Button
-                      onClick={handleResetClick}
-                      size="sm"
-                      variant="ghost"
-                    >
-                      <RefreshCcwIcon />
-                      {content.client.upload.clear}
-                    </Button>
-                  </div>
+                  {isSingleMode && firstItem ? (
+                    <>
+                      <div>
+                        <div className="font-medium text-sm text-ink">
+                          {firstItem.originalName}
+                        </div>
+                        <div className="text-mute text-xs">
+                          {firstItem.width} x {firstItem.height} px ·{" "}
+                          {formatBytes(firstItem.size)}
+                        </div>
+                      </div>
+                      <div className="flex flex-wrap gap-2">
+                        <Button
+                          onClick={handleBrowseClick}
+                          size="sm"
+                          variant="outline"
+                        >
+                          {content.client.upload.reselect}
+                        </Button>
+                        <Button
+                          onClick={handleResetClick}
+                          size="sm"
+                          variant="ghost"
+                        >
+                          <RefreshCcwIcon />
+                          {content.client.upload.clear}
+                        </Button>
+                      </div>
+                    </>
+                  ) : (
+                    <>
+                      <div className="font-medium text-sm text-ink">
+                        {content.client.upload.selectedCount.replace(
+                          "{count}",
+                          String(items.length),
+                        )}
+                      </div>
+                      <div className="flex flex-wrap gap-2">
+                        <Button
+                          onClick={handleBrowseClick}
+                          size="sm"
+                          variant="outline"
+                        >
+                          <ImageUpIcon />
+                          {content.client.upload.addMore}
+                        </Button>
+                        <Button
+                          onClick={handleResetClick}
+                          size="sm"
+                          variant="ghost"
+                        >
+                          <RefreshCcwIcon />
+                          {content.client.upload.clearAll}
+                        </Button>
+                      </div>
+                    </>
+                  )}
                 </div>
 
-                <div className="grid gap-4 lg:grid-cols-2">
-                  <PreviewCard
-                    altText={content.client.preview.alt.replace(
-                      "{label}",
-                      content.client.upload.sourceLabel,
-                    )}
-                    emptyDescription={content.client.preview.emptyDescription}
-                    label={content.client.upload.sourceLabel}
-                    meta={`${sourceImage.width} x ${sourceImage.height} px`}
-                    src={sourceImage.previewUrl}
-                    staleLabel={content.client.badges.stalePreview}
-                    stale={false}
+                {isSingleMode && firstItem ? (
+                  <div className="grid gap-4 lg:grid-cols-2">
+                    <PreviewCard
+                      altText={content.client.preview.alt.replace(
+                        "{label}",
+                        content.client.upload.sourceLabel,
+                      )}
+                      emptyDescription={content.client.preview.emptyDescription}
+                      label={content.client.upload.sourceLabel}
+                      meta={`${firstItem.width} x ${firstItem.height} px`}
+                      src={firstItem.previewUrl || undefined}
+                      staleLabel={content.client.badges.stalePreview}
+                      stale={false}
+                    />
+                    <PreviewCard
+                      altText={content.client.preview.alt.replace(
+                        "{label}",
+                        content.client.upload.resultLabel,
+                      )}
+                      emptyDescription={content.client.preview.emptyDescription}
+                      label={content.client.upload.resultLabel}
+                      meta={
+                        firstItem.result
+                          ? `${firstItem.result.width} x ${firstItem.result.height} px · ${formatBytes(firstItem.result.size)}`
+                          : content.client.upload.pendingResult
+                      }
+                      src={firstItem.result?.previewUrl}
+                      staleLabel={content.client.badges.stalePreview}
+                      stale={Boolean(isResultStale)}
+                    />
+                  </div>
+                ) : (
+                  <ImageConverterBatchList
+                    content={content}
+                    controller={controller}
                   />
-                  <PreviewCard
-                    altText={content.client.preview.alt.replace(
-                      "{label}",
-                      content.client.upload.resultLabel,
-                    )}
-                    emptyDescription={content.client.preview.emptyDescription}
-                    label={content.client.upload.resultLabel}
-                    meta={
-                      resultImage
-                        ? `${resultImage.width} x ${resultImage.height} px · ${formatBytes(resultImage.size)}`
-                        : content.client.upload.pendingResult
-                    }
-                    src={resultImage?.previewUrl}
-                    staleLabel={content.client.badges.stalePreview}
-                    stale={Boolean(isResultStale)}
-                  />
-                </div>
+                )}
               </div>
             ) : isPreparing ? (
               <div className="flex min-h-72 flex-col items-center justify-center gap-4 text-center">

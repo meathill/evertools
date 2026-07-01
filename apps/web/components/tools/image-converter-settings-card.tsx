@@ -1,4 +1,4 @@
-import { DownloadIcon, SparklesIcon } from "lucide-react";
+import { DownloadIcon, PackageIcon, SparklesIcon } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import {
@@ -47,38 +47,50 @@ export function ImageConverterSettingsCard({
   const {
     cropAnchor,
     errorMessage,
-    handleDownloadClick,
+    firstItem,
+    handleDownloadAllClick,
+    handleDownloadItem,
     handleFormatChange,
-    handleGenerateClick,
+    handleGenerateAllClick,
     handleHeightChange,
     handleQualityChange,
     handleResizeModeChange,
     handleWidthChange,
+    isBatchMode,
     isConverting,
     isResultStale,
+    isZipping,
+    items,
     outputFormat,
     outputFormatContent,
     quality,
     qualityEnabled,
     resizeMode,
-    resultImage,
     setCropAnchor,
-    sourceImage,
+    staleCount,
     targetHeight,
     targetWidth,
   } = controller;
 
+  const isSingleMode = items.length === 1 && Boolean(firstItem);
+  const doneCount = items.filter((item) => item.status === "done").length;
+
+  const staleBadge = isSingleMode ? (
+    isResultStale ? (
+      <Badge variant="warning">{content.client.badges.stale}</Badge>
+    ) : null
+  ) : staleCount > 0 ? (
+    <Badge variant="warning">
+      {content.client.badges.staleCount.replace("{count}", String(staleCount))}
+    </Badge>
+  ) : null;
+
   return (
     <Card className="h-fit border-2 border-ink shadow-press-ink lg:sticky lg:top-24">
       <CardHeader className="border-b border-rule bg-paper-deep/50">
-        <div className="flex items-center gap-2">
-          <Badge variant="secondary">
-            {content.client.badges.firstVersion}
-          </Badge>
-          {isResultStale ? (
-            <Badge variant="warning">{content.client.badges.stale}</Badge>
-          ) : null}
-        </div>
+        {staleBadge ? (
+          <div className="flex items-center gap-2">{staleBadge}</div>
+        ) : null}
         <div className="space-y-2">
           <CardTitle>{content.client.settings.title}</CardTitle>
           <CardDescription>
@@ -145,8 +157,8 @@ export function ImageConverterSettingsCard({
                 inputMode="numeric"
                 onChange={handleWidthChange}
                 placeholder={
-                  sourceImage
-                    ? String(sourceImage.width)
+                  isSingleMode && firstItem
+                    ? String(firstItem.width)
                     : content.client.settings.widthPlaceholder
                 }
                 value={targetWidth}
@@ -159,8 +171,8 @@ export function ImageConverterSettingsCard({
                 inputMode="numeric"
                 onChange={handleHeightChange}
                 placeholder={
-                  sourceImage
-                    ? String(sourceImage.height)
+                  isSingleMode && firstItem
+                    ? String(firstItem.height)
                     : content.client.settings.heightPlaceholder
                 }
                 value={targetHeight}
@@ -249,22 +261,36 @@ export function ImageConverterSettingsCard({
         <div className="grid gap-3 sm:grid-cols-2">
           <Button
             loading={isConverting}
-            onClick={handleGenerateClick}
+            onClick={handleGenerateAllClick}
             variant="press"
           >
             <SparklesIcon />
-            {resultImage
-              ? content.client.settings.regenerate
-              : content.client.settings.generate}
+            {isBatchMode
+              ? content.client.settings.generateAll
+              : firstItem?.result
+                ? content.client.settings.regenerate
+                : content.client.settings.generate}
           </Button>
-          <Button
-            disabled={!resultImage}
-            onClick={handleDownloadClick}
-            variant="press-ink"
-          >
-            <DownloadIcon />
-            {content.client.settings.download}
-          </Button>
+          {isBatchMode ? (
+            <Button
+              disabled={doneCount === 0}
+              loading={isZipping}
+              onClick={handleDownloadAllClick}
+              variant="press-ink"
+            >
+              <PackageIcon />
+              {content.client.settings.downloadAll}
+            </Button>
+          ) : (
+            <Button
+              disabled={!firstItem?.result}
+              onClick={() => firstItem && handleDownloadItem(firstItem.id)}
+              variant="press-ink"
+            >
+              <DownloadIcon />
+              {content.client.settings.download}
+            </Button>
+          )}
         </div>
       </CardPanel>
     </Card>

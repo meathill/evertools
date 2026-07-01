@@ -85,6 +85,19 @@ export type CropSourceRect = {
   sy: number;
 };
 
+export type ResultImage = {
+  blob: Blob;
+  cropAnchor: CropAnchor | null;
+  fileName: string;
+  format: OutputFormat;
+  height: number;
+  previewUrl: string;
+  quality: number;
+  resizeMode: ResizeMode;
+  size: number;
+  width: number;
+};
+
 const acceptedImageTypeSet = new Set<string>(ACCEPTED_IMAGE_TYPES);
 
 export function isAcceptedImageType(type: string): boolean {

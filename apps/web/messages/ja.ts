@@ -106,7 +106,7 @@ export const jaMessages: LocaleContent = {
       badges: {
         category: "画像ツール",
         localProcessing: "ブラウザ内処理",
-        singleImage: "単一画像",
+        singleImage: "一括変換対応",
       },
       description:
         "iPhone の HEIC 写真を JPG/PNG/WebP に変換でき、PNG、JPG、WebP の相互変換やリサイズもブラウザ内で行えます。ファイルはサーバーへアップロードされません。",
@@ -183,7 +183,7 @@ export const jaMessages: LocaleContent = {
       privacyItems: [
         "画像はサーバーにアップロードされず、変換はすべてブラウザ内で行われます。",
         "JPEG は透明背景に対応していないため、透明部分は白で補完されます。",
-        "アニメーション GIF、SVG 書き出し、複数画像の一括変換には未対応です。",
+        "アニメーション GIF と SVG 書き出しには未対応です。",
       ],
       privacyTitle: "利用上の注意",
       stepsDescription: "次の手順で変換できます。",
@@ -194,24 +194,41 @@ export const jaMessages: LocaleContent = {
     },
     client: {
       badges: {
-        firstVersion: "単一画像",
         localProcessing: "ブラウザ内処理",
         stale: "設定が変更されました",
+        staleCount: "{count} 件が再生成待ち",
         stalePreview: "再生成が必要",
         supportedFormats: "対応形式: {formats}",
       },
+      batch: {
+        downloadAria: "{name} をダウンロード",
+        overCapRejected:
+          "一度に処理できるのは最大 {max} 枚までです。{rejected} 枚をスキップしました。",
+        partiallyRejected:
+          "{accepted} 枚を追加しました。{rejected} 枚は非対応形式のためスキップしました。",
+        progressLabel: "{total} 枚中 {done} 枚を変換中",
+        removeAria: "{name} を削除",
+        statusConverting: "変換中",
+        statusDone: "完了",
+        statusError: "失敗",
+        statusPending: "待機中",
+        zipEmpty: "まだ ZIP でダウンロードできる画像がありません。",
+      },
       upload: {
+        addMore: "さらに追加",
         chooseImage: "画像を選択",
         clear: "クリア",
+        clearAll: "すべてクリア",
         decoding: "HEIC 写真をデコード中…",
         description:
-          "下のエリアに画像をドラッグするか、ボタンから画像を 1 枚選択してください。現在は単一画像のみ対応し、サーバーへはアップロードしません。",
+          "下のエリアに画像をドラッグするか、ボタンから 1 枚以上の画像を選択してください。すべてブラウザ内で処理され、サーバーへはアップロードしません。",
         emptyDescription:
           "PNG、JPG/JPEG、WebP、HEIC（iPhone 写真）に対応しています。リサイズ、出力形式の切り替え、品質調整が行えます。",
         emptyTitle: "画像をドロップして開始",
         pendingResult: "設定を調整して結果を生成してください",
         reselect: "別の画像を選ぶ",
         resultLabel: "結果画像",
+        selectedCount: "{count} 枚の画像を選択中",
         sourceLabel: "元画像",
         title: "元画像をアップロード",
       },
@@ -233,7 +250,9 @@ export const jaMessages: LocaleContent = {
         description:
           "まず出力形式を選び、その後でサイズを変更するか決めます。JPEG と WebP では品質も調整できます。",
         download: "画像をダウンロード",
+        downloadAll: "ZIP でまとめてダウンロード",
         generate: "結果を生成",
+        generateAll: "すべて生成",
         height: "高さ (px)",
         heightPlaceholder: "例: 800",
         modeCrop: "切り抜いて合わせる",

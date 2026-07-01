@@ -100,7 +100,7 @@ export const thMessages: LocaleContent = {
       badges: {
         category: "เครื่องมือรูปภาพ",
         localProcessing: "ประมวลผลในเบราว์เซอร์",
-        singleImage: "รูปเดียว",
+        singleImage: "แปลงหลายรูปพร้อมกัน",
       },
       description:
         "แปลงรูป HEIC จาก iPhone เป็น JPG/PNG/WebP และสลับฟอร์แมตระหว่าง PNG, JPG และ WebP ปรับขนาดรูป และส่งออกผลลัพธ์ได้ทันทีในเบราว์เซอร์ โดยไม่ต้องอัปโหลดไฟล์ไปยังเซิร์ฟเวอร์",
@@ -176,7 +176,7 @@ export const thMessages: LocaleContent = {
       privacyItems: [
         "รูปภาพจะไม่ถูกอัปโหลด ทุกการแปลงเกิดขึ้นในเบราว์เซอร์ของคุณ",
         "JPEG ไม่รองรับความโปร่งใส ดังนั้นพื้นที่โปร่งใสจะถูกเติมด้วยสีขาว",
-        "ยังไม่รองรับ GIF แบบเคลื่อนไหว, การส่งออก SVG หรือการแปลงหลายไฟล์พร้อมกัน",
+        "ยังไม่รองรับ GIF แบบเคลื่อนไหวและการส่งออก SVG",
       ],
       privacyTitle: "ข้อจำกัดและหมายเหตุ",
       stepsDescription: "ทำตามขั้นตอนด้านล่างเพื่อแปลงรูปภาพ",
@@ -187,24 +187,40 @@ export const thMessages: LocaleContent = {
     },
     client: {
       badges: {
-        firstVersion: "รูปเดียว",
         localProcessing: "ประมวลผลในเบราว์เซอร์",
         stale: "ตั้งค่ามีการเปลี่ยนแปลง",
+        staleCount: "{count} รายการต้องสร้างใหม่",
         stalePreview: "ต้องสร้างใหม่",
         supportedFormats: "รองรับ {formats}",
       },
+      batch: {
+        downloadAria: "ดาวน์โหลด {name}",
+        overCapRejected: "ประมวลผลได้สูงสุด {max} รูปต่อครั้ง ข้าม {rejected} รูป",
+        partiallyRejected:
+          "เพิ่มแล้ว {accepted} รูป ข้าม {rejected} รูปเพราะฟอร์แมตไม่รองรับ",
+        progressLabel: "กำลังแปลงรูปที่ {done} จาก {total}",
+        removeAria: "ลบ {name}",
+        statusConverting: "กำลังแปลง",
+        statusDone: "เสร็จแล้ว",
+        statusError: "ล้มเหลว",
+        statusPending: "รอดำเนินการ",
+        zipEmpty: "ยังไม่มีรูปที่แปลงเสร็จให้ดาวน์โหลดเป็น ZIP",
+      },
       upload: {
+        addMore: "เพิ่มรูปอีก",
         chooseImage: "เลือกรูปภาพ",
         clear: "ล้าง",
+        clearAll: "ล้างทั้งหมด",
         decoding: "กำลังถอดรหัสรูป HEIC…",
         description:
-          "ลากรูปภาพมาวางในพื้นที่ด้านล่าง หรือกดปุ่มเพื่อเลือกหนึ่งรูป ตอนนี้รองรับรูปเดียวและจะไม่อัปโหลดไปยังเซิร์ฟเวอร์",
+          "ลากรูปภาพมาวางในพื้นที่ด้านล่าง หรือกดปุ่มเพื่อเลือกได้หลายรูป ทุกอย่างประมวลผลในเบราว์เซอร์และจะไม่อัปโหลดไปยังเซิร์ฟเวอร์",
         emptyDescription:
           "รองรับ PNG, JPG/JPEG, WebP และ HEIC (รูปจาก iPhone) คุณสามารถปรับขนาด เปลี่ยนฟอร์แมตปลายทาง และปรับคุณภาพได้",
         emptyTitle: "วางรูปภาพเพื่อเริ่มต้น",
         pendingResult: "ปรับค่าก่อนแล้วจึงสร้างผลลัพธ์",
         reselect: "เลือกใหม่",
         resultLabel: "ผลลัพธ์",
+        selectedCount: "เลือกไว้ {count} รูป",
         sourceLabel: "ต้นฉบับ",
         title: "อัปโหลดรูปภาพ",
       },
@@ -225,7 +241,9 @@ export const thMessages: LocaleContent = {
         description:
           "เลือกฟอร์แมตปลายทางก่อน แล้วค่อยตัดสินใจว่าจะเปลี่ยนขนาดหรือไม่ JPEG และ WebP ยังสามารถปรับคุณภาพได้",
         download: "ดาวน์โหลดรูปภาพ",
+        downloadAll: "ดาวน์โหลดทั้งหมดเป็น ZIP",
         generate: "สร้างผลลัพธ์",
+        generateAll: "สร้างผลลัพธ์ทั้งหมด",
         height: "ความสูง (px)",
         heightPlaceholder: "เช่น 800",
         modeCrop: "ครอปให้เต็ม",

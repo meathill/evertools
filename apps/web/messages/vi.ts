@@ -106,7 +106,7 @@ export const viMessages: LocaleContent = {
       badges: {
         category: "Cong cu anh",
         localProcessing: "Xu ly trong trinh duyet",
-        singleImage: "Mot anh",
+        singleImage: "Chuyen doi hang loat",
       },
       description:
         "Chuyen anh HEIC tu iPhone sang JPG, PNG hoac WebP, chuyen doi giua PNG, JPG va WebP va thay doi kich thuoc anh truc tiep trong trinh duyet ma khong can tai tep len may chu.",
@@ -185,7 +185,7 @@ export const viMessages: LocaleContent = {
       privacyItems: [
         "Anh khong bao gio duoc tai len. Moi qua trinh chuyen doi dien ra trong trinh duyet cua ban.",
         "JPEG khong ho tro trong suot, vi vay cac vung trong suot se duoc dien bang mau trang.",
-        "GIF dong, xuat SVG va chuyen doi hang loat hien chua duoc ho tro.",
+        "GIF dong va xuat SVG hien chua duoc ho tro.",
       ],
       privacyTitle: "Ghi chu va gioi han",
       stepsDescription: "Lam theo cac buoc sau de chuyen doi anh.",
@@ -196,24 +196,41 @@ export const viMessages: LocaleContent = {
     },
     client: {
       badges: {
-        firstVersion: "Mot anh",
         localProcessing: "Xu ly trong trinh duyet",
         stale: "Thiet lap da thay doi",
+        staleCount: "{count} anh can tao lai",
         stalePreview: "Can tao lai",
         supportedFormats: "Ho tro {formats}",
       },
+      batch: {
+        downloadAria: "Tai xuong {name}",
+        overCapRejected:
+          "Chi xu ly toi da {max} anh moi luot; da bo qua {rejected} anh.",
+        partiallyRejected:
+          "Da them {accepted} anh; da bo qua {rejected} anh do dinh dang khong ho tro.",
+        progressLabel: "Dang chuyen doi anh {done}/{total}",
+        removeAria: "Xoa {name}",
+        statusConverting: "Dang chuyen doi",
+        statusDone: "Xong",
+        statusError: "That bai",
+        statusPending: "Dang cho",
+        zipEmpty: "Chua co anh nao da tao xong de tai xuong dang ZIP.",
+      },
       upload: {
+        addMore: "Them anh",
         chooseImage: "Chon anh",
         clear: "Xoa",
+        clearAll: "Xoa tat ca",
         decoding: "Dang giai ma anh HEIC…",
         description:
-          "Keo tha anh vao vung ben duoi hoac bam nut de chon mot anh. Hien tai cong cu xu ly tung anh mot va khong bao gio tai len.",
+          "Keo tha anh vao vung ben duoi hoac bam nut de chon mot hoac nhieu anh. Moi thu xu ly trong trinh duyet va khong bao gio tai len.",
         emptyDescription:
           "Ho tro PNG, JPG/JPEG, WebP va HEIC (anh iPhone). Ban co the doi kich thuoc, doi dinh dang dau ra va dieu chinh chat luong.",
         emptyTitle: "Tha anh vao de bat dau",
         pendingResult: "Dieu chinh thiet lap va tao ket qua",
         reselect: "Chon anh khac",
         resultLabel: "Ket qua",
+        selectedCount: "Da chon {count} anh",
         sourceLabel: "Anh goc",
         title: "Tai anh len",
       },
@@ -235,7 +252,9 @@ export const viMessages: LocaleContent = {
         description:
           "Chon dinh dang dau ra truoc, sau do quyet dinh co doi chieu rong va chieu cao hay khong. JPEG va WebP cung ho tro dieu chinh chat luong.",
         download: "Tai anh xuong",
+        downloadAll: "Tai tat ca dang ZIP",
         generate: "Tao ket qua",
+        generateAll: "Tao tat ca",
         height: "Chieu cao (px)",
         heightPlaceholder: "vi du 800",
         modeCrop: "Cat de lap day",

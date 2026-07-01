@@ -106,7 +106,7 @@ export const esMessages: LocaleContent = {
       badges: {
         category: "Herramienta de imagen",
         localProcessing: "Procesamiento en el navegador",
-        singleImage: "Imagen única",
+        singleImage: "Conversión por lotes",
       },
       description:
         "Convierte fotos HEIC del iPhone a JPG, PNG o WebP, convierte entre PNG, JPG y WebP y cambia el tamaño de las imágenes directamente en el navegador sin subir archivos al servidor.",
@@ -186,7 +186,7 @@ export const esMessages: LocaleContent = {
       privacyItems: [
         "Las imágenes nunca se suben. Toda la conversión ocurre en tu navegador.",
         "JPEG no admite transparencia, así que las áreas transparentes se rellenarán con blanco.",
-        "GIF animado, exportación SVG y conversión por lotes aún no están disponibles.",
+        "GIF animado y exportación SVG aún no están disponibles.",
       ],
       privacyTitle: "Notas y limitaciones",
       stepsDescription: "Sigue estos pasos para convertir tu imagen.",
@@ -197,24 +197,41 @@ export const esMessages: LocaleContent = {
     },
     client: {
       badges: {
-        firstVersion: "Imagen única",
         localProcessing: "Procesamiento en el navegador",
         stale: "La configuración cambió",
+        staleCount: "{count} necesitan regenerarse",
         stalePreview: "Hay que regenerar",
         supportedFormats: "Admite {formats}",
       },
+      batch: {
+        downloadAria: "Descargar {name}",
+        overCapRejected:
+          "Se admiten hasta {max} imágenes a la vez; se omitieron {rejected}.",
+        partiallyRejected:
+          "Se añadieron {accepted} imágenes; se omitieron {rejected} (formato no admitido).",
+        progressLabel: "Convirtiendo {done} de {total}",
+        removeAria: "Quitar {name}",
+        statusConverting: "Convirtiendo",
+        statusDone: "Lista",
+        statusError: "Fallida",
+        statusPending: "Pendiente",
+        zipEmpty: "Todavía no hay imágenes generadas para descargar en ZIP.",
+      },
       upload: {
+        addMore: "Añadir más",
         chooseImage: "Elegir imagen",
         clear: "Limpiar",
+        clearAll: "Limpiar todo",
         decoding: "Decodificando foto HEIC…",
         description:
-          "Arrastra una imagen al área inferior o haz clic en el botón para elegir una. Por ahora procesa una sola imagen cada vez y nunca la sube.",
+          "Arrastra imágenes al área inferior o haz clic en el botón para elegir uno o varios archivos. Todo se procesa en el navegador y nunca se sube.",
         emptyDescription:
           "Admite PNG, JPG/JPEG, WebP y HEIC (fotos del iPhone). Puedes cambiar el tamaño, el formato de salida y ajustar la calidad.",
         emptyTitle: "Suelta una imagen para empezar",
         pendingResult: "Ajusta la configuración y genera el resultado",
         reselect: "Elegir otra",
         resultLabel: "Resultado",
+        selectedCount: "{count} imágenes seleccionadas",
         sourceLabel: "Original",
         title: "Subir imagen",
       },
@@ -236,7 +253,9 @@ export const esMessages: LocaleContent = {
         description:
           "Elige primero el formato de salida y luego decide si quieres cambiar el ancho y la altura. JPEG y WebP también permiten controlar la calidad.",
         download: "Descargar imagen",
+        downloadAll: "Descargar todo en ZIP",
         generate: "Generar resultado",
+        generateAll: "Generar todo",
         height: "Alto (px)",
         heightPlaceholder: "p. ej. 800",
         modeCrop: "Recortar para llenar",

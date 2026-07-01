@@ -103,7 +103,7 @@ export const zhMessages = {
       badges: {
         category: "图片工具",
         localProcessing: "浏览器本地处理",
-        singleImage: "单图转换",
+        singleImage: "支持批量转换",
       },
       description:
         "把 iPhone 拍的 HEIC 照片转成 JPG/PNG/WebP，也能在 PNG、JPG、WebP 之间互转并缩放尺寸。图片在浏览器本地处理，不上传服务器，适合临时换格式、改尺寸和快速导出结果图。",
@@ -177,7 +177,7 @@ export const zhMessages = {
       privacyItems: [
         "图片不会上传到服务器，所有转换都在你的浏览器里完成。",
         "JPEG 不支持透明背景，导出时会自动补成白底。",
-        "暂不支持 GIF 动图、SVG 导出和批量转换。",
+        "暂不支持 GIF 动图和 SVG 导出。",
       ],
       privacyTitle: "使用说明",
       stepsDescription: "按下面的步骤即可完成转换。",
@@ -188,24 +188,41 @@ export const zhMessages = {
     },
     client: {
       badges: {
-        firstVersion: "单图处理",
         localProcessing: "浏览器本地处理",
         stale: "参数已变化",
+        staleCount: "{count} 项需重新生成",
         stalePreview: "需重新生成",
         supportedFormats: "支持 {formats}",
       },
+      batch: {
+        downloadAria: "下载 {name}",
+        overCapRejected:
+          "最多支持一次处理 {max} 张图片，已跳过 {rejected} 张。",
+        partiallyRejected:
+          "已添加 {accepted} 张；{rejected} 张因格式不支持被跳过。",
+        progressLabel: "正在转换第 {done} / {total} 张",
+        removeAria: "移除 {name}",
+        statusConverting: "转换中",
+        statusDone: "已完成",
+        statusError: "失败",
+        statusPending: "等待中",
+        zipEmpty: "还没有已生成的图片可以打包下载。",
+      },
       upload: {
+        addMore: "添加更多",
         chooseImage: "选择图片",
         clear: "清空",
+        clearAll: "清空全部",
         decoding: "正在解码 HEIC 照片…",
         description:
-          "拖拽图片到下方区域，或点击按钮选择图片。当前支持处理单张图片，不会上传到服务器。",
+          "拖拽图片到下方区域，或点击按钮选择图片，可一次选择多张。全程在本地处理，不会上传到服务器。",
         emptyDescription:
           "支持 PNG、JPG/JPEG、WebP 和 HEIC（iPhone 照片）。你可以直接改尺寸，也可以切换输出格式并调节质量。",
         emptyTitle: "拖入图片开始转换",
         pendingResult: "调整参数后点击生成结果",
         reselect: "重新选择",
         resultLabel: "结果图",
+        selectedCount: "已选择 {count} 张图片",
         sourceLabel: "原图",
         title: "上传原图",
       },
@@ -226,7 +243,9 @@ export const zhMessages = {
         description:
           "先选目标格式，再决定是否改宽高。JPEG 与 WebP 可以额外设置压缩质量。",
         download: "下载图片",
+        downloadAll: "打包下载 ZIP",
         generate: "生成结果",
+        generateAll: "全部生成",
         height: "高度（px）",
         heightPlaceholder: "例如 800",
         modeCrop: "裁切填充",

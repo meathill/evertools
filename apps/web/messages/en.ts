@@ -105,7 +105,7 @@ export const enMessages: LocaleContent = {
       badges: {
         category: "Image tool",
         localProcessing: "Browser-side processing",
-        singleImage: "Single image",
+        singleImage: "Batch conversion",
       },
       description:
         "Convert iPhone HEIC photos to JPG, PNG or WebP, switch between PNG, JPG and WebP, and resize images directly in the browser without uploading files to a server.",
@@ -185,7 +185,7 @@ export const enMessages: LocaleContent = {
       privacyItems: [
         "Images are never uploaded. All conversion happens in your browser.",
         "JPEG does not support transparency, so transparent areas will be filled with white.",
-        "Animated GIF, SVG export and batch conversion are not supported yet.",
+        "Animated GIF and SVG export are not supported yet.",
       ],
       privacyTitle: "Notes and limitations",
       stepsDescription: "Follow these steps to convert your image.",
@@ -196,24 +196,41 @@ export const enMessages: LocaleContent = {
     },
     client: {
       badges: {
-        firstVersion: "Single image",
         localProcessing: "Browser-side processing",
         stale: "Settings changed",
+        staleCount: "{count} need regeneration",
         stalePreview: "Regenerate needed",
         supportedFormats: "Supports {formats}",
       },
+      batch: {
+        downloadAria: "Download {name}",
+        overCapRejected:
+          "You can process up to {max} images at once; {rejected} were skipped.",
+        partiallyRejected:
+          "Added {accepted} images; {rejected} were skipped (unsupported format).",
+        progressLabel: "Converting {done} of {total}",
+        removeAria: "Remove {name}",
+        statusConverting: "Converting",
+        statusDone: "Done",
+        statusError: "Failed",
+        statusPending: "Pending",
+        zipEmpty: "No converted images yet to download as a ZIP.",
+      },
       upload: {
+        addMore: "Add more",
         chooseImage: "Choose image",
         clear: "Clear",
+        clearAll: "Clear all",
         decoding: "Decoding HEIC photo…",
         description:
-          "Drag an image into the area below or click the button to choose one. It currently handles one image at a time and never uploads it.",
+          "Drag images into the area below, or click the button to choose one or more files. Everything runs locally and is never uploaded.",
         emptyDescription:
           "Supports PNG, JPG/JPEG, WebP and HEIC (iPhone photos). You can resize the image, switch output format and adjust quality.",
         emptyTitle: "Drop an image to begin",
         pendingResult: "Adjust settings and generate a result",
         reselect: "Choose another",
         resultLabel: "Result",
+        selectedCount: "{count} images selected",
         sourceLabel: "Source",
         title: "Upload image",
       },
@@ -235,7 +252,9 @@ export const enMessages: LocaleContent = {
         description:
           "Choose the output format first, then decide whether to change width and height. JPEG and WebP also support quality control.",
         download: "Download image",
+        downloadAll: "Download all as ZIP",
         generate: "Generate result",
+        generateAll: "Generate all",
         height: "Height (px)",
         heightPlaceholder: "e.g. 800",
         modeCrop: "Crop to fill",
