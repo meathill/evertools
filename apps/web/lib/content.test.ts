@@ -4,6 +4,7 @@ import {
   getJsonViewerTool,
   getOgImageValidatorTool,
   getPdfTextEditorTool,
+  getSitemapValidatorTool,
   getTools,
 } from "@/lib/content";
 import { getLocaleContent } from "@/messages";
@@ -56,14 +57,26 @@ describe("getOgImageValidatorTool", () => {
   });
 });
 
+describe("getSitemapValidatorTool", () => {
+  it("builds the sitemap-validator definition", () => {
+    const tool = getSitemapValidatorTool(zh);
+    expect(tool.slug).toBe("sitemap-validator");
+    expect(tool.href).toBe("/tools/sitemap-validator");
+    expect(tool.applicationCategory).toBe("DeveloperApplication");
+    expect(tool.totalTime).toBe("PT1M");
+    expect(tool.stepsTitle).toBe(zh.sitemapValidator.content.stepsTitle);
+  });
+});
+
 describe("getTools", () => {
-  it("returns the five tools in registration order", () => {
+  it("returns the six tools in registration order", () => {
     expect(getTools(zh).map((tool) => tool.slug)).toEqual([
       "image-converter",
       "pdf-text-editor",
       "json-viewer",
       "og-image-validator",
       "markdown-to-pdf",
+      "sitemap-validator",
     ]);
   });
 

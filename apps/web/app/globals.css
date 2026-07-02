@@ -281,7 +281,7 @@
   --text-2xl: 30px;
   --text-3xl: 36px;
   --text-4xl: 48px;
-  --text-hero: clamp(2.5rem, 6vw, 4.5rem);
+  --text-hero: clamp(2.25rem, 5vw, 3.5rem);
 
   /* ---------- Line height -------------------------------- */
   --leading-tight: 1.15;

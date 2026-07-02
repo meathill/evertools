@@ -12,8 +12,6 @@ export const viMessages: LocaleContent = {
     localProcessing: "Xu ly cuc bo",
     nav: {
       home: "Trang chu",
-      imageConverter: "Chuyen doi anh",
-      pdfTextEditor: "Sua van ban PDF",
     },
     tagline: "Cong cu truc tuyen thuc dung",
     theme: {
@@ -26,11 +24,6 @@ export const viMessages: LocaleContent = {
     description:
       "Cong cu truc tuyen chay ngay trong trinh duyet. Khong can cai dat, khong can dang ky.",
     toolsTitle: "Cong cu san co",
-  },
-  toolCard: {
-    firstBatch: "Pho bien",
-    footerHint: "Phu hop de xu ly nhanh mot anh",
-    openTool: "Mo cong cu",
   },
   home: {
     metadata: {
@@ -167,7 +160,7 @@ export const viMessages: LocaleContent = {
         "heic to jpg",
         "chuyen doi anh iphone",
       ],
-      name: "Chuyen doi dinh dang va kich thuoc anh — HEIC sang JPG",
+      name: "Chuyen doi dinh dang va kich thuoc anh — Ho tro HEIC",
       steps: [
         "Tai len mot anh PNG, JPG, WebP hoac HEIC.",
         "Chon dinh dang dau ra va nhap kich thuoc neu can.",
@@ -982,6 +975,168 @@ export const viMessages: LocaleContent = {
           "Cua so boc bi chan. Nhan bieu tuong cua so boc trong thanh dia chi trinh duyet de cho phep cua so boc tu trang nay, sau do thu lai.",
         print: "Tai xuong PDF",
         wordCount: "{count} ky tu",
+      },
+    },
+  },
+  sitemapValidator: {
+    hero: {
+      badges: {
+        category: "Cong cu SEO",
+        instant: "Co ket qua sau mot lan tai",
+        protocol: "Kiem tra tuan thu giao thuc",
+      },
+      description:
+        "Nhap URL cua sitemap.xml, chung toi se tai ve va kiem tra theo giao thuc sitemaps.org: phan tu goc co hop le khong, moi URL co <loc> hop le khong, dinh dang cua lastmod, priority va changefreq co dung khong, dong thoi canh bao neu so luong muc hoac dung luong file vuot gioi han giao thuc.",
+      title: "Cong cu kiem tra Sitemap",
+    },
+    scenarios: {
+      description:
+        "Phu hop de kiem tra nhanh su tuan thu cua sitemap, khong kiem tra tung lien ket co truy cap duoc hay khong.",
+      audit:
+        "Kiem tra dinh ky sitemap dang hoat dong sau khi thiet ke lai hoac di chuyen website.",
+      launch:
+        "Truoc khi ra mat website moi hoac thiet ke lai, muon xac nhan sitemap.xml khong bi loi dinh dang.",
+      seo: "Truoc khi gui sitemap cho cong cu tim kiem, muon phat hien cac muc co the bi tu choi hoac bo qua.",
+      title: "Phu hop voi cac tinh huong sau",
+    },
+    tool: {
+      category: "Cong cu SEO",
+      description:
+        "Tai sitemap.xml truc tuyen va kiem tra cau truc theo giao thuc sitemaps.org: loai phan tu goc, moi <loc> co hop le khong, lastmod/priority/changefreq co dung dac ta khong, cung voi URL trung lap va gioi han so luong muc/dung luong file. Ho tro ca file chi muc sitemap.",
+      faq: [
+        {
+          answer:
+            "May chu se tai noi dung cua URL do thay ban de phan tich (trinh duyet khong doc duoc du lieu khac nguon), chi doc mot lan va khong luu tru. Cac dia chi private, loopback hoac noi bo se bi chinh sach an toan chan lai.",
+          question: "Noi dung sitemap cua toi duoc xu ly the nao khi kiem tra?",
+        },
+        {
+          answer:
+            "Chung toi liet ke ket qua kiem tra cua chinh file chi muc, va <loc> cua tung sitemap con co hop le khong. De tranh viec tai du lieu khong gioi han, chung toi chua kiem tra de quy cac muc ben trong sitemap con.",
+          question:
+            "File chi muc sitemap (sitemapindex) duoc kiem tra the nao?",
+        },
+        {
+          answer:
+            "Cong cu nay chi kiem tra cau truc va su tuan thu giao thuc, khong truy cap cac trang duoc liet ke trong sitemap, nen khong phat hien lien ket hong.",
+          question: "Co kiem tra xem cac lien ket ben trong co mo duoc khong?",
+        },
+        {
+          answer:
+            "Theo giao thuc sitemaps.org, moi sitemap toi da 50.000 URL va dung luong file khong nen vuot qua 50MB khi chua nen; vuot qua bat ky gioi han nao deu bi danh dau la loi.",
+          question: "So luong muc hoac dung luong file co gioi han khong?",
+        },
+      ],
+      features: [
+        "Tai bat ky URL sitemap.xml nao va phan tich cau truc",
+        "Nhan dien sitemap thong thuong (urlset) va chi muc sitemap (sitemapindex)",
+        "Kiem tra moi <loc> co phai la URL tuyet doi hop le khong",
+        "Kiem tra lastmod, priority va changefreq theo dinh dang giao thuc",
+        "Phat hien URL trung lap, canh bao khi vuot gioi han so luong muc hoac dung luong",
+        "Cac muc co van de duoc hien thi theo mau gioi han de trang khong bi treo voi sitemap qua lon",
+      ],
+      keywords: [
+        "kiem tra sitemap",
+        "sitemap validator",
+        "kiem tra sitemap.xml",
+        "tuan thu sitemap",
+        "chi muc sitemap",
+        "sitemapindex",
+        "cong cu seo sitemap",
+        "kiem tra sitemap truoc khi gui",
+      ],
+      name: "Cong cu kiem tra Sitemap",
+      steps: [
+        "Dan URL day du cua sitemap.xml can kiem tra.",
+        "Nhan Kiem tra va cho may chu tai ve va phan tich file.",
+        "Xem cac ket qua kiem tra chung: loai phan tu goc, so luong muc, dung luong, URL trung lap va nhieu hon.",
+        "Voi tung muc co van de, xem la thieu <loc> hay dinh dang truong khong hop le.",
+      ],
+      summary:
+        "Tai sitemap.xml va kiem tra cau truc, cac truong trong tung muc va gioi han dung luong theo giao thuc.",
+    },
+    content: {
+      faqDescription: "Mot vai cau hoi thuong gap truoc khi bat dau.",
+      faqTitle: "Cau hoi thuong gap",
+      privacyDescription:
+        "Mot vai gioi han va luu y nen biet truoc khi dung cong cu nay.",
+      privacyItems: [
+        "Viec kiem tra can may chu tai sitemap muc tieu thay ban (de vuot qua gioi han khac nguon cua trinh duyet); chi doc mot lan va khong bao gio luu tru.",
+        "Cac dia chi private, loopback hoac noi bo se bi chinh sach an toan chan lai, khong the tai duoc.",
+        "Chi kiem tra cau truc va su tuan thu giao thuc, khong truy cap cac trang trong sitemap nen khong phat hien lien ket hong.",
+      ],
+      privacyTitle: "Luu y",
+      stepsDescription: "Lam theo cac buoc sau de kiem tra mot sitemap.",
+      stepsTitle: "Cach hoat dong",
+      supportDescription:
+        "Bao phu cac quy tac chinh cua giao thuc sitemaps.org: cau truc goc, dinh dang truong URL, gioi han so luong muc va dung luong.",
+      supportTitle: "Pham vi kiem tra",
+    },
+    client: {
+      url: {
+        emptyDescription:
+          "Dan URL cua mot sitemap.xml co the truy cap cong khai, chung toi se tai va kiem tra cau truc theo giao thuc.",
+        emptyTitle: "Nhap URL de bat dau kiem tra",
+        hint: "Nhap URL day du cua sitemap.xml (bao gom https://).",
+        label: "URL Sitemap",
+        placeholder: "https://example.com/sitemap.xml",
+        resubmit: "Kiem tra lai",
+        submit: "Kiem tra",
+      },
+      result: {
+        entryCount: "Tim thay {count} URL",
+        generalTitle: "Kiem tra chung",
+        issuesTitle: "Van de theo muc",
+        noIssues: "Khong tim thay van de o cap do muc.",
+        overallFail: "Co van de",
+        overallPass: "Tat ca deu dat",
+        overallWarn: "Co mot so de xuat cai thien",
+        rootTypeSitemapindex: "Chi muc sitemap (sitemapindex)",
+        rootTypeUnknown: "Phan tu goc khong nhan dien duoc",
+        rootTypeUrlset: "Sitemap thong thuong (urlset)",
+        showingSample: "Hien thi {shown} trong tong so {total} muc co van de",
+      },
+      status: {
+        fail: "Khong dat",
+        pass: "Dat",
+        warn: "De xuat",
+      },
+      checks: {
+        "byte-size-limit": "Gioi han dung luong file (50MB)",
+        "changefreq-invalid": "Gia tri <changefreq> khong hop le",
+        "content-truncated": "Noi dung bi cat bot",
+        "duplicate-locs": "URL trung lap",
+        "entry-count-limit": "Gioi han so luong muc (50.000)",
+        "entry-count-zero": "Co it nhat mot muc hop le khong",
+        "gzip-unsupported": "Sitemap nen bang Gzip",
+        "lastmod-invalid": "Dinh dang <lastmod> khong hop le",
+        "loc-invalid": "<loc> khong phai URL hop le",
+        "loc-missing": "Thieu <loc>",
+        "priority-invalid": "<priority> nam ngoai khoang 0.0-1.0",
+        "root-element": "Phan tu goc co hop le khong",
+      },
+      details: {
+        "byte-size-limit": "{bytes} / gioi han {maxBytes}",
+        "changefreq-invalid": "Gia tri: {changefreq}",
+        "content-truncated": "Da doc {bytes}; noi dung co the chua day du",
+        "duplicate-locs": "Tim thay {count} muc trung lap",
+        "entry-count-limit": "{count} muc / gioi han {maxEntries}",
+        "lastmod-invalid": "Gia tri: {lastmod}",
+        "loc-invalid": "Gia tri: {loc}",
+        "priority-invalid": "Gia tri: {priority}",
+      },
+      errors: {
+        BLOCKED_HOST:
+          "Dia chi nay bi chinh sach an toan chan lai (khong the tai dia chi private / local / noi bo).",
+        FETCH_FAILED:
+          "Khong the ket noi den trang web muc tieu. Vui long kiem tra URL co truy cap duoc khong.",
+        FETCH_TIMEOUT:
+          "Qua thoi gian tai vi trang web muc tieu phan hoi qua cham. Vui long thu lai sau.",
+        INVALID_URL: "URL khong hop le. Vui long nhap URL http(s) day du.",
+        TOO_MANY_REDIRECTS:
+          "Qua nhieu lan chuyen huong, khong the tai URL nay.",
+        UNKNOWN: "Kiem tra that bai. Vui long thu lai sau.",
+        UPSTREAM_ERROR:
+          "Trang web muc tieu tra ve loi; file co the khong ton tai hoac tam thoi khong kha dung.",
       },
     },
   },

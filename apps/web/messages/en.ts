@@ -12,8 +12,6 @@ export const enMessages: LocaleContent = {
     localProcessing: "Local processing",
     nav: {
       home: "Home",
-      imageConverter: "Image Converter",
-      pdfTextEditor: "PDF Text Editor",
     },
     tagline: "Practical online tools",
     theme: {
@@ -26,11 +24,6 @@ export const enMessages: LocaleContent = {
     description:
       "Online tools that run directly in your browser. No install, no sign-up.",
     toolsTitle: "Available tools",
-  },
-  toolCard: {
-    firstBatch: "Popular",
-    footerHint: "Best for quick single-image edits",
-    openTool: "Open tool",
   },
   home: {
     metadata: {
@@ -167,7 +160,7 @@ export const enMessages: LocaleContent = {
         "convert heic",
         "iphone photo converter",
       ],
-      name: "Image Format and Size Converter — HEIC to JPG",
+      name: "Image Format & Size Converter — HEIC Supported",
       steps: [
         "Upload a PNG, JPG, WebP or HEIC image.",
         "Choose the output format and enter target dimensions if needed.",
@@ -988,6 +981,166 @@ export const enMessages: LocaleContent = {
           "Popup blocked. Click the popup icon in your browser's address bar to allow popups from this site, then try again.",
         print: "Download PDF",
         wordCount: "{count} characters",
+      },
+    },
+  },
+  sitemapValidator: {
+    hero: {
+      badges: {
+        category: "SEO tool",
+        instant: "Results in one fetch",
+        protocol: "Protocol compliance check",
+      },
+      description:
+        "Enter a sitemap.xml URL and we'll fetch it and validate it against the sitemaps.org protocol: whether the root element is valid, whether every URL has a valid <loc>, and whether lastmod, priority and changefreq are formatted correctly — plus whether the entry count or file size exceed the protocol limits.",
+      title: "Sitemap Validator",
+    },
+    scenarios: {
+      description:
+        "Great for a quick sitemap compliance check, not for checking whether every listed link is reachable.",
+      audit:
+        "Periodically health-check a live sitemap after redesigns or migrations.",
+      launch:
+        "Before launching a new site or redesign, confirm sitemap.xml itself is well-formed.",
+      seo: "Before submitting a sitemap to search engines, catch entries that would get rejected or ignored.",
+      title: "Good for these situations",
+    },
+    tool: {
+      category: "SEO tool",
+      description:
+        "Fetch a sitemap.xml online and validate its structure against the sitemaps.org protocol: root element type, whether every URL's <loc> is valid, whether lastmod/priority/changefreq follow the spec, plus duplicate URLs, entry count and file size limits. Sitemap index files are supported.",
+      faq: [
+        {
+          answer:
+            "The server fetches that URL's content on your behalf to parse it (browsers can't read cross-origin), reads it once, and doesn't store it. Private, loopback and internal addresses are blocked by the safety policy and can't be fetched.",
+          question: "What happens to my sitemap content during validation?",
+        },
+        {
+          answer:
+            "We list two things: the validation result for the index file itself, and whether each child sitemap's <loc> is valid. To avoid unbounded fan-out fetches, we don't recursively validate the entries inside child sitemaps yet.",
+          question: "How are sitemap index files (sitemapindex) validated?",
+        },
+        {
+          answer:
+            "This tool only checks structure and spec compliance — it doesn't visit the pages listed in the sitemap, so it won't catch broken links.",
+          question: "Does it check whether the listed links actually work?",
+        },
+        {
+          answer:
+            "Per the sitemaps.org protocol, a single sitemap can list at most 50,000 URLs and must not exceed 50MB uncompressed; going over either limit is flagged as a failure.",
+          question: "Are there limits on entry count or file size?",
+        },
+      ],
+      features: [
+        "Fetch any sitemap.xml URL and parse its structure",
+        "Detect a regular sitemap (urlset) vs. a sitemap index (sitemapindex)",
+        "Validate that every <loc> is a valid absolute URL",
+        "Validate lastmod, priority and changefreq against the protocol format",
+        "Detect duplicate URLs and flag entry count / file size limit overruns",
+        "Problem entries are shown as a capped sample so huge sitemaps won't stall the page",
+      ],
+      keywords: [
+        "sitemap validator",
+        "sitemap.xml checker",
+        "sitemap compliance",
+        "sitemap index",
+        "sitemapindex",
+        "seo sitemap tool",
+        "validate sitemap",
+        "sitemap check before submit",
+      ],
+      name: "Sitemap Validator",
+      steps: [
+        "Paste the full sitemap.xml URL you want to check.",
+        "Click Validate and wait for the server to fetch and parse the file.",
+        "Review the general checks: root element type, entry count, size, duplicate URLs and more.",
+        "For any problem entries, see whether it's a missing <loc> or an invalid field format.",
+      ],
+      summary:
+        "Fetch sitemap.xml and validate its structure, entry fields and size limits against the protocol.",
+    },
+    content: {
+      faqDescription: "A few common questions before you start.",
+      faqTitle: "FAQ",
+      privacyDescription:
+        "A few limitations and notes worth knowing before you use the tool.",
+      privacyItems: [
+        "Validation requires the server to fetch the target sitemap on your behalf (to bypass browser cross-origin limits); it's read once and never stored.",
+        "Private, loopback and internal addresses are blocked by the safety policy and can't be fetched.",
+        "This only checks structure and spec compliance — it doesn't visit the pages in the sitemap, so it won't catch broken links.",
+      ],
+      privacyTitle: "Notes",
+      stepsDescription: "Follow these steps to validate a sitemap.",
+      stepsTitle: "How it works",
+      supportDescription:
+        "Covers the core sitemaps.org protocol rules: root structure, URL field formats, entry count and size limits.",
+      supportTitle: "What gets checked",
+    },
+    client: {
+      url: {
+        emptyDescription:
+          "Paste a publicly accessible sitemap.xml URL and we'll fetch it and validate its structure against the protocol.",
+        emptyTitle: "Enter a URL to start validating",
+        hint: "Enter the full sitemap.xml URL (including https://).",
+        label: "Sitemap URL",
+        placeholder: "https://example.com/sitemap.xml",
+        resubmit: "Re-validate",
+        submit: "Validate",
+      },
+      result: {
+        entryCount: "{count} URL(s) found",
+        generalTitle: "General checks",
+        issuesTitle: "Entry issues",
+        noIssues: "No entry-level issues found.",
+        overallFail: "Issues found",
+        overallPass: "All checks passed",
+        overallWarn: "Some improvements suggested",
+        rootTypeSitemapindex: "Sitemap index (sitemapindex)",
+        rootTypeUnknown: "Unrecognized root element",
+        rootTypeUrlset: "Regular sitemap (urlset)",
+        showingSample: "Showing the first {shown} of {total} problem entries",
+      },
+      status: {
+        fail: "Fail",
+        pass: "Pass",
+        warn: "Suggestion",
+      },
+      checks: {
+        "byte-size-limit": "File size limit (50MB)",
+        "changefreq-invalid": "<changefreq> value is invalid",
+        "content-truncated": "Content was truncated",
+        "duplicate-locs": "Duplicate URLs",
+        "entry-count-limit": "Entry count limit (50,000)",
+        "entry-count-zero": "Has at least one valid entry",
+        "gzip-unsupported": "Gzip-compressed sitemap",
+        "lastmod-invalid": "<lastmod> format is invalid",
+        "loc-invalid": "<loc> is not a valid URL",
+        "loc-missing": "Missing <loc>",
+        "priority-invalid": "<priority> is outside 0.0–1.0",
+        "root-element": "Root element is valid",
+      },
+      details: {
+        "byte-size-limit": "{bytes} / limit {maxBytes}",
+        "changefreq-invalid": "Value is {changefreq}",
+        "content-truncated": "Read {bytes}; content may be incomplete",
+        "duplicate-locs": "Found {count} duplicate(s)",
+        "entry-count-limit": "{count} entries / limit {maxEntries}",
+        "lastmod-invalid": "Value is {lastmod}",
+        "loc-invalid": "Value is {loc}",
+        "priority-invalid": "Value is {priority}",
+      },
+      errors: {
+        BLOCKED_HOST:
+          "That address is blocked by the safety policy (private/local/internal addresses can't be fetched).",
+        FETCH_FAILED:
+          "Couldn't connect to the target site — check that the URL is reachable.",
+        FETCH_TIMEOUT:
+          "The fetch timed out because the target site responded too slowly. Try again later.",
+        INVALID_URL: "Invalid URL. Please enter a full http(s) URL.",
+        TOO_MANY_REDIRECTS: "Too many redirects — couldn't fetch that URL.",
+        UNKNOWN: "Validation failed. Please try again later.",
+        UPSTREAM_ERROR:
+          "The target site returned an error — the file may not exist or may be temporarily unavailable.",
       },
     },
   },

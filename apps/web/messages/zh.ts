@@ -10,8 +10,6 @@ export const zhMessages = {
     localProcessing: "本地处理",
     nav: {
       home: "首页",
-      imageConverter: "图片转换",
-      pdfTextEditor: "PDF 文本编辑",
     },
     tagline: "在线常用工具集合",
     theme: {
@@ -23,11 +21,6 @@ export const zhMessages = {
   footer: {
     description: "提供可直接在浏览器中使用的在线工具，无需安装、无需注册。",
     toolsTitle: "可用工具",
-  },
-  toolCard: {
-    firstBatch: "推荐",
-    footerHint: "适合快速处理单张图片",
-    openTool: "打开工具",
   },
   home: {
     metadata: {
@@ -160,7 +153,7 @@ export const zhMessages = {
         "heic to jpg",
         "iPhone 照片转换",
       ],
-      name: "图片格式与尺寸转换 — HEIC 转 JPG",
+      name: "图片格式与尺寸转换（支持 HEIC）",
       steps: [
         "上传一张 PNG、JPG、WebP 或 HEIC 图片。",
         "选择目标格式，并按需填写宽高。",
@@ -938,6 +931,159 @@ export const zhMessages = {
           "弹窗被浏览器拦截，请点击地址栏右侧的弹窗图标，允许此网站打开弹窗后重试。",
         print: "下载 PDF",
         wordCount: "{count} 字符",
+      },
+    },
+  },
+  sitemapValidator: {
+    hero: {
+      badges: {
+        category: "SEO 工具",
+        instant: "单次抓取秒出结果",
+        protocol: "协议规范校验",
+      },
+      description:
+        "输入一个 sitemap.xml 网址，抓取后按 sitemaps.org 协议校验：根节点是否合法、每条 URL 是否有合法的 <loc>，以及 lastmod、priority、changefreq 格式是否正确，同时提示条目数与文件体积是否超出协议上限。",
+      title: "Sitemap 校验工具",
+    },
+    scenarios: {
+      description: "适合快速自查 sitemap 是否合规，不做逐条链接可访问性检测。",
+      audit: "定期给已上线的 sitemap 做体检，确认结构没有随着改版跑偏。",
+      launch: "新站或改版上线前，想确认 sitemap.xml 本身没有格式错误。",
+      seo: "提交 sitemap 给搜索引擎前，先排查会被拒收或忽略的条目。",
+      title: "适合这些情况",
+    },
+    tool: {
+      category: "SEO 工具",
+      description:
+        "在线抓取 sitemap.xml 并按 sitemaps.org 协议校验结构：根节点类型、每条 URL 的 <loc> 是否合法、lastmod/priority/changefreq 是否符合规范，并检查重复 URL、条目数与文件体积上限。支持 sitemap 索引文件。",
+      faq: [
+        {
+          answer:
+            "服务器会代为抓取该网址的内容用于解析（浏览器无法跨域读取），只读取这一次，不做存储。私有地址、内网地址会被安全策略拦截，无法抓取。",
+          question: "校验时我的 sitemap 内容会被怎么处理？",
+        },
+        {
+          answer:
+            "会分别列出：sitemap 索引本身的校验结果，以及每个子 sitemap 的 <loc> 是否合法。为避免无限展开抓取，暂不会递归校验子 sitemap 内部的条目。",
+          question: "sitemap 索引文件（sitemapindex）怎么校验？",
+        },
+        {
+          answer:
+            "本工具只做结构与规范校验，不会逐条访问 sitemap 里列出的页面，所以不检测死链。",
+          question: "会检测里面的链接是否能打开吗？",
+        },
+        {
+          answer:
+            "按 sitemaps.org 协议，单个 sitemap 最多 50,000 条 URL、文件体积（未压缩）不超过 50MB，超出会被标记为不通过。",
+          question: "sitemap 的条目数或体积有限制吗？",
+        },
+      ],
+      features: [
+        "抓取任意 sitemap.xml 网址并解析结构",
+        "识别普通 sitemap（urlset）与 sitemap 索引（sitemapindex）",
+        "校验每条 <loc> 是否是合法的绝对网址",
+        "校验 lastmod、priority、changefreq 是否符合协议格式",
+        "检测重复 URL，提示条目数与文件体积是否超出协议上限",
+        "问题条目按样本展示，避免超大 sitemap 卡住页面",
+      ],
+      keywords: [
+        "sitemap 校验",
+        "sitemap validator",
+        "sitemap.xml 检查",
+        "sitemap 规范",
+        "sitemap 索引",
+        "sitemapindex",
+        "seo sitemap 工具",
+        "sitemap 提交前检查",
+      ],
+      name: "Sitemap 校验工具",
+      steps: [
+        "粘贴要检查的 sitemap.xml 完整网址。",
+        "点击校验，等待服务器抓取并解析该文件。",
+        "查看总体检查结果：根节点类型、条目数、体积、重复 URL 等。",
+        "如有问题条目，逐条查看具体是缺失 <loc> 还是格式不合法。",
+      ],
+      summary:
+        "抓取 sitemap.xml 并按协议校验结构、条目字段与体积上限，快速定位问题。",
+    },
+    content: {
+      faqDescription: "开始前常见的几个问题。",
+      faqTitle: "常见问题",
+      privacyDescription: "使用前先了解这些说明。",
+      privacyItems: [
+        "校验需要由服务器代为抓取目标 sitemap（绕过浏览器跨域限制），只读取一次，不保存内容。",
+        "私有地址、本地回环、内网地址会被安全策略拦截，无法抓取。",
+        "仅做结构与规范校验，不会逐条访问 sitemap 里的页面，不检测死链。",
+      ],
+      privacyTitle: "使用说明",
+      stepsDescription: "按下面的步骤即可完成校验。",
+      stepsTitle: "使用方法",
+      supportDescription:
+        "覆盖 sitemaps.org 协议的核心规则：根节点结构、URL 字段格式、条目数与体积上限。",
+      supportTitle: "校验范围",
+    },
+    client: {
+      url: {
+        emptyDescription:
+          "粘贴一个可公开访问的 sitemap.xml 网址，我们会抓取并按协议校验它的结构。",
+        emptyTitle: "输入网址开始校验",
+        hint: "输入完整的 sitemap.xml 网址（含 https://）。",
+        label: "Sitemap 网址",
+        placeholder: "https://example.com/sitemap.xml",
+        resubmit: "重新校验",
+        submit: "校验",
+      },
+      result: {
+        entryCount: "共 {count} 条 URL",
+        generalTitle: "总体检查",
+        issuesTitle: "条目问题",
+        noIssues: "未发现条目级问题。",
+        overallFail: "存在问题",
+        overallPass: "整体通过",
+        overallWarn: "有可优化项",
+        rootTypeSitemapindex: "sitemap 索引（sitemapindex）",
+        rootTypeUnknown: "未识别的根节点",
+        rootTypeUrlset: "普通 sitemap（urlset）",
+        showingSample: "仅展示前 {shown} 条，共 {total} 条问题条目",
+      },
+      status: {
+        fail: "不通过",
+        pass: "通过",
+        warn: "建议",
+      },
+      checks: {
+        "byte-size-limit": "文件体积上限（50MB）",
+        "changefreq-invalid": "<changefreq> 取值不合法",
+        "content-truncated": "内容被截断",
+        "duplicate-locs": "重复 URL",
+        "entry-count-limit": "条目数上限（50,000）",
+        "entry-count-zero": "是否存在有效条目",
+        "gzip-unsupported": "Gzip 压缩的 sitemap",
+        "lastmod-invalid": "<lastmod> 格式不合法",
+        "loc-invalid": "<loc> 不是合法网址",
+        "loc-missing": "缺少 <loc>",
+        "priority-invalid": "<priority> 超出 0.0–1.0",
+        "root-element": "根节点是否合法",
+      },
+      details: {
+        "byte-size-limit": "{bytes} / 上限 {maxBytes}",
+        "changefreq-invalid": "取值为 {changefreq}",
+        "content-truncated": "已读取 {bytes}，可能未包含完整内容",
+        "duplicate-locs": "发现 {count} 条重复",
+        "entry-count-limit": "{count} 条 / 上限 {maxEntries}",
+        "lastmod-invalid": "取值为 {lastmod}",
+        "loc-invalid": "取值为 {loc}",
+        "priority-invalid": "取值为 {priority}",
+      },
+      errors: {
+        BLOCKED_HOST:
+          "该地址被安全策略拦截（私有 / 本地 / 内网地址无法抓取）。",
+        FETCH_FAILED: "无法连接到目标网站，请检查网址是否可访问。",
+        FETCH_TIMEOUT: "抓取超时，目标网站响应过慢，请稍后重试。",
+        INVALID_URL: "网址无效，请输入完整的 http(s) 网址。",
+        TOO_MANY_REDIRECTS: "重定向次数过多，无法抓取该网址。",
+        UNKNOWN: "校验失败，请稍后重试。",
+        UPSTREAM_ERROR: "目标网站返回了错误，可能文件不存在或暂时不可用。",
       },
     },
   },

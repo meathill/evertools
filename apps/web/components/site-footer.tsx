@@ -21,6 +21,9 @@ export function SiteFooter({ content, locale }: SiteFooterProps) {
           <p className="max-w-xl text-ink-soft leading-relaxed">
             {content.description}
           </p>
+          <p className="text-mute text-xs">
+            © {new Date().getFullYear()} Meathill LLC. All rights reserved.
+          </p>
         </div>
 
         <div className="grid gap-2 text-ink-soft">

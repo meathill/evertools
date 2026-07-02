@@ -12,8 +12,6 @@ export const ptMessages: LocaleContent = {
     localProcessing: "Processamento local",
     nav: {
       home: "Inicio",
-      imageConverter: "Conversor de imagens",
-      pdfTextEditor: "Editor de texto PDF",
     },
     tagline: "Ferramentas praticas online",
     theme: {
@@ -26,11 +24,6 @@ export const ptMessages: LocaleContent = {
     description:
       "Ferramentas online que funcionam diretamente no navegador. Sem instalacao, sem cadastro.",
     toolsTitle: "Ferramentas disponiveis",
-  },
-  toolCard: {
-    firstBatch: "Popular",
-    footerHint: "Ideal para editar uma unica imagem rapidamente",
-    openTool: "Abrir ferramenta",
   },
   home: {
     metadata: {
@@ -168,7 +161,7 @@ export const ptMessages: LocaleContent = {
         "converter heic",
         "conversor de fotos iphone",
       ],
-      name: "Conversor de formato e tamanho de imagens — HEIC para JPG",
+      name: "Conversor de formato e tamanho de imagens — Compativel com HEIC",
       steps: [
         "Envie uma imagem PNG, JPG, WebP ou HEIC.",
         "Escolha o formato de saida e informe as dimensoes desejadas se precisar.",
@@ -996,6 +989,172 @@ export const ptMessages: LocaleContent = {
           "Pop-up bloqueado. Clique no icone de pop-up na barra de endereco do navegador para permitir pop-ups deste site e tente novamente.",
         print: "Baixar PDF",
         wordCount: "{count} caracteres",
+      },
+    },
+  },
+  sitemapValidator: {
+    hero: {
+      badges: {
+        category: "Ferramenta SEO",
+        instant: "Resultado em uma unica busca",
+        protocol: "Verificacao de conformidade com o protocolo",
+      },
+      description:
+        "Informe a URL de um sitemap.xml e nos vamos buscar e validar de acordo com o protocolo sitemaps.org: se o elemento raiz e valido, se cada URL tem um <loc> valido, e se lastmod, priority e changefreq estao no formato correto, alem de avisar se o numero de entradas ou o tamanho do arquivo ultrapassam os limites do protocolo.",
+      title: "Validador de Sitemap",
+    },
+    scenarios: {
+      description:
+        "Ideal para uma verificacao rapida de conformidade do sitemap; nao verifica se cada link listado esta acessivel.",
+      audit:
+        "Fazer uma checagem periodica de um sitemap em producao apos redesenhos ou migracoes.",
+      launch:
+        "Antes de lancar um site novo ou um redesenho, confirmar que o sitemap.xml em si esta bem formado.",
+      seo: "Antes de enviar um sitemap para os motores de busca, encontrar entradas que seriam rejeitadas ou ignoradas.",
+      title: "Util nestas situacoes",
+    },
+    tool: {
+      category: "Ferramenta SEO",
+      description:
+        "Busca um sitemap.xml online e valida sua estrutura de acordo com o protocolo sitemaps.org: tipo do elemento raiz, se cada <loc> e valido, se lastmod/priority/changefreq seguem a especificacao, alem de URLs duplicadas e limites de numero de entradas e tamanho de arquivo. Suporta arquivos de indice de sitemap.",
+      faq: [
+        {
+          answer:
+            "O servidor busca essa URL em seu nome para analisa-la (o navegador nao consegue ler conteudo de outra origem), le uma unica vez e nao armazena. Enderecos privados, de loopback ou internos sao bloqueados pela politica de seguranca.",
+          question:
+            "O que acontece com o conteudo do meu sitemap durante a validacao?",
+        },
+        {
+          answer:
+            "Mostramos o resultado da validacao do proprio arquivo de indice e se o <loc> de cada sitemap filho e valido. Para evitar buscas ilimitadas, ainda nao validamos recursivamente as entradas dentro dos sitemaps filhos.",
+          question:
+            "Como os arquivos de indice de sitemap (sitemapindex) sao validados?",
+        },
+        {
+          answer:
+            "Esta ferramenta verifica apenas estrutura e conformidade com o protocolo; nao visita as paginas listadas no sitemap, entao nao detecta links quebrados.",
+          question: "Ela verifica se os links listados realmente funcionam?",
+        },
+        {
+          answer:
+            "Pelo protocolo sitemaps.org, um sitemap admite no maximo 50.000 URLs e nao deve ultrapassar 50MB sem compressao; ultrapassar qualquer um dos limites e marcado como erro.",
+          question:
+            "Existe limite de numero de entradas ou tamanho de arquivo?",
+        },
+      ],
+      features: [
+        "Busca qualquer URL de sitemap.xml e analisa sua estrutura",
+        "Detecta um sitemap comum (urlset) versus um indice de sitemap (sitemapindex)",
+        "Valida se cada <loc> e uma URL absoluta valida",
+        "Valida lastmod, priority e changefreq de acordo com o formato do protocolo",
+        "Detecta URLs duplicadas e avisa quando os limites de entradas ou tamanho sao ultrapassados",
+        "Entradas com problema sao mostradas como uma amostra limitada para nao travar a pagina em sitemaps enormes",
+      ],
+      keywords: [
+        "validador de sitemap",
+        "sitemap validator",
+        "verificar sitemap.xml",
+        "conformidade de sitemap",
+        "indice de sitemap",
+        "sitemapindex",
+        "ferramenta seo sitemap",
+        "checar sitemap antes de enviar",
+      ],
+      name: "Validador de Sitemap",
+      steps: [
+        "Cole a URL completa do sitemap.xml que voce quer verificar.",
+        "Clique em Validar e aguarde o servidor buscar e analisar o arquivo.",
+        "Revise as verificacoes gerais: tipo do elemento raiz, numero de entradas, tamanho, URLs duplicadas e mais.",
+        "Para cada entrada com problema, veja se falta o <loc> ou se algum campo tem formato invalido.",
+      ],
+      summary:
+        "Busca o sitemap.xml e valida sua estrutura, campos das entradas e limites de tamanho de acordo com o protocolo.",
+    },
+    content: {
+      faqDescription: "Algumas perguntas comuns antes de comecar.",
+      faqTitle: "Perguntas frequentes",
+      privacyDescription:
+        "Algumas limitacoes e observacoes importantes antes de usar a ferramenta.",
+      privacyItems: [
+        "A validacao exige que o servidor busque o sitemap alvo em seu nome (para contornar as restricoes de origem cruzada do navegador); a leitura e feita uma unica vez e nunca e armazenada.",
+        "Enderecos privados, de loopback ou internos sao bloqueados pela politica de seguranca e nao podem ser buscados.",
+        "Verifica apenas estrutura e conformidade com o protocolo; nao visita as paginas do sitemap, entao nao detecta links quebrados.",
+      ],
+      privacyTitle: "Observacoes",
+      stepsDescription: "Siga estes passos para validar um sitemap.",
+      stepsTitle: "Como funciona",
+      supportDescription:
+        "Cobre as regras principais do protocolo sitemaps.org: estrutura raiz, formato dos campos de URL, limites de entradas e tamanho.",
+      supportTitle: "O que e verificado",
+    },
+    client: {
+      url: {
+        emptyDescription:
+          "Cole a URL de um sitemap.xml de acesso publico e vamos buscar e validar sua estrutura de acordo com o protocolo.",
+        emptyTitle: "Informe uma URL para comecar a validar",
+        hint: "Informe a URL completa do sitemap.xml (incluindo https://).",
+        label: "URL do sitemap",
+        placeholder: "https://example.com/sitemap.xml",
+        resubmit: "Validar novamente",
+        submit: "Validar",
+      },
+      result: {
+        entryCount: "{count} URL(s) encontradas",
+        generalTitle: "Verificacoes gerais",
+        issuesTitle: "Problemas por entrada",
+        noIssues: "Nenhum problema encontrado no nivel das entradas.",
+        overallFail: "Problemas encontrados",
+        overallPass: "Todas as verificacoes passaram",
+        overallWarn: "Algumas melhorias sugeridas",
+        rootTypeSitemapindex: "Indice de sitemap (sitemapindex)",
+        rootTypeUnknown: "Elemento raiz nao reconhecido",
+        rootTypeUrlset: "Sitemap comum (urlset)",
+        showingSample:
+          "Mostrando as primeiras {shown} de {total} entradas com problema",
+      },
+      status: {
+        fail: "Falhou",
+        pass: "Passou",
+        warn: "Sugestao",
+      },
+      checks: {
+        "byte-size-limit": "Limite de tamanho de arquivo (50MB)",
+        "changefreq-invalid": "Valor de <changefreq> invalido",
+        "content-truncated": "Conteudo foi truncado",
+        "duplicate-locs": "URLs duplicadas",
+        "entry-count-limit": "Limite de entradas (50.000)",
+        "entry-count-zero": "Existe ao menos uma entrada valida",
+        "gzip-unsupported": "Sitemap comprimido com Gzip",
+        "lastmod-invalid": "Formato de <lastmod> invalido",
+        "loc-invalid": "<loc> nao e uma URL valida",
+        "loc-missing": "Falta <loc>",
+        "priority-invalid": "<priority> fora do intervalo 0.0-1.0",
+        "root-element": "Elemento raiz e valido",
+      },
+      details: {
+        "byte-size-limit": "{bytes} / limite {maxBytes}",
+        "changefreq-invalid": "Valor: {changefreq}",
+        "content-truncated":
+          "Foram lidos {bytes}; o conteudo pode estar incompleto",
+        "duplicate-locs": "Encontrada(s) {count} duplicata(s)",
+        "entry-count-limit": "{count} entradas / limite {maxEntries}",
+        "lastmod-invalid": "Valor: {lastmod}",
+        "loc-invalid": "Valor: {loc}",
+        "priority-invalid": "Valor: {priority}",
+      },
+      errors: {
+        BLOCKED_HOST:
+          "Esse endereco foi bloqueado pela politica de seguranca (enderecos privados, locais ou internos nao podem ser buscados).",
+        FETCH_FAILED:
+          "Nao foi possivel conectar ao site de destino. Verifique se a URL esta acessivel.",
+        FETCH_TIMEOUT:
+          "A busca expirou porque o site de destino demorou demais para responder. Tente novamente mais tarde.",
+        INVALID_URL: "URL invalida. Informe uma URL http(s) completa.",
+        TOO_MANY_REDIRECTS:
+          "Redirecionamentos demais; nao foi possivel buscar essa URL.",
+        UNKNOWN: "A validacao falhou. Tente novamente mais tarde.",
+        UPSTREAM_ERROR:
+          "O site de destino retornou um erro; o arquivo pode nao existir ou estar temporariamente indisponivel.",
       },
     },
   },

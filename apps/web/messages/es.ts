@@ -12,8 +12,6 @@ export const esMessages: LocaleContent = {
     localProcessing: "Procesamiento local",
     nav: {
       home: "Inicio",
-      imageConverter: "Convertidor de imágenes",
-      pdfTextEditor: "Editor de texto PDF",
     },
     tagline: "Herramientas prácticas en línea",
     theme: {
@@ -26,11 +24,6 @@ export const esMessages: LocaleContent = {
     description:
       "Herramientas en línea que funcionan directamente en tu navegador. Sin instalación, sin registro.",
     toolsTitle: "Herramientas disponibles",
-  },
-  toolCard: {
-    firstBatch: "Popular",
-    footerHint: "Ideal para editar una sola imagen rápidamente",
-    openTool: "Abrir herramienta",
   },
   home: {
     metadata: {
@@ -168,7 +161,7 @@ export const esMessages: LocaleContent = {
         "convertir heic",
         "convertidor de fotos iphone",
       ],
-      name: "Convertidor de formato y tamaño de imágenes — HEIC a JPG",
+      name: "Convertidor de formato y tamaño de imágenes — Compatible con HEIC",
       steps: [
         "Sube una imagen PNG, JPG, WebP o HEIC.",
         "Elige el formato de salida e introduce las dimensiones si lo necesitas.",
@@ -998,6 +991,171 @@ export const esMessages: LocaleContent = {
           "Ventana emergente bloqueada. Haz clic en el icono de ventana emergente en la barra de direcciones del navegador para permitir ventanas emergentes de este sitio y vuelve a intentarlo.",
         print: "Descargar PDF",
         wordCount: "{count} caracteres",
+      },
+    },
+  },
+  sitemapValidator: {
+    hero: {
+      badges: {
+        category: "Herramienta SEO",
+        instant: "Resultados en una sola solicitud",
+        protocol: "Verificación de cumplimiento del protocolo",
+      },
+      description:
+        "Introduce la URL de un sitemap.xml y lo descargaremos para validarlo según el protocolo de sitemaps.org: si el elemento raíz es válido, si cada URL tiene un <loc> válido, y si lastmod, priority y changefreq tienen el formato correcto, además de si el número de entradas o el tamaño del archivo superan los límites del protocolo.",
+      title: "Validador de Sitemap",
+    },
+    scenarios: {
+      description:
+        "Ideal para una verificación rápida de cumplimiento del sitemap; no comprueba si cada enlace listado es accesible.",
+      audit:
+        "Revisar periódicamente un sitemap en producción tras rediseños o migraciones.",
+      launch:
+        "Antes de lanzar un sitio nuevo o un rediseño, confirmar que el sitemap.xml está bien formado.",
+      seo: "Antes de enviar un sitemap a los motores de búsqueda, detectar entradas que podrían ser rechazadas o ignoradas.",
+      title: "Útil en estas situaciones",
+    },
+    tool: {
+      category: "Herramienta SEO",
+      description:
+        "Descarga un sitemap.xml en línea y valida su estructura según el protocolo de sitemaps.org: tipo de elemento raíz, si cada <loc> es válido, si lastmod/priority/changefreq siguen la especificación, además de URLs duplicadas y límites de número de entradas y tamaño de archivo. Compatible con archivos de índice de sitemap.",
+      faq: [
+        {
+          answer:
+            "El servidor descarga esa URL en tu nombre para analizarla (el navegador no puede leer contenido de otro origen), la lee una sola vez y no la almacena. Las direcciones privadas, de loopback o internas se bloquean por la política de seguridad.",
+          question:
+            "¿Qué pasa con el contenido de mi sitemap durante la validación?",
+        },
+        {
+          answer:
+            "Mostramos el resultado de validar el propio archivo de índice y si el <loc> de cada sitemap hijo es válido. Para evitar solicitudes ilimitadas, aún no validamos de forma recursiva las entradas dentro de los sitemaps hijos.",
+          question:
+            "¿Cómo se validan los archivos de índice de sitemap (sitemapindex)?",
+        },
+        {
+          answer:
+            "Esta herramienta solo verifica la estructura y el cumplimiento del protocolo; no visita las páginas listadas en el sitemap, por lo que no detecta enlaces rotos.",
+          question: "¿Comprueba si los enlaces listados realmente funcionan?",
+        },
+        {
+          answer:
+            "Según el protocolo de sitemaps.org, un solo sitemap admite como máximo 50.000 URLs y no debe superar los 50MB sin comprimir; superar cualquiera de los dos límites se marca como error.",
+          question: "¿Hay límites de número de entradas o tamaño de archivo?",
+        },
+      ],
+      features: [
+        "Descarga cualquier URL de sitemap.xml y analiza su estructura",
+        "Detecta un sitemap normal (urlset) frente a un índice de sitemap (sitemapindex)",
+        "Valida que cada <loc> sea una URL absoluta válida",
+        "Valida lastmod, priority y changefreq según el formato del protocolo",
+        "Detecta URLs duplicadas y señala si se superan los límites de entradas o tamaño",
+        "Las entradas problemáticas se muestran como una muestra limitada para no bloquear la página con sitemaps enormes",
+      ],
+      keywords: [
+        "validador de sitemap",
+        "sitemap validator",
+        "verificar sitemap.xml",
+        "cumplimiento de sitemap",
+        "índice de sitemap",
+        "sitemapindex",
+        "herramienta seo sitemap",
+        "revisar sitemap antes de enviar",
+      ],
+      name: "Validador de Sitemap",
+      steps: [
+        "Pega la URL completa del sitemap.xml que quieres revisar.",
+        "Haz clic en Validar y espera a que el servidor descargue y analice el archivo.",
+        "Revisa las verificaciones generales: tipo de elemento raíz, número de entradas, tamaño, URLs duplicadas y más.",
+        "Para cada entrada con problemas, comprueba si falta el <loc> o si un campo tiene un formato inválido.",
+      ],
+      summary:
+        "Descarga sitemap.xml y valida su estructura, campos de entrada y límites de tamaño según el protocolo.",
+    },
+    content: {
+      faqDescription: "Algunas preguntas frecuentes antes de empezar.",
+      faqTitle: "Preguntas frecuentes",
+      privacyDescription:
+        "Algunas limitaciones y notas que conviene conocer antes de usar la herramienta.",
+      privacyItems: [
+        "La validación requiere que el servidor descargue el sitemap objetivo en tu nombre (para evitar las restricciones de origen cruzado del navegador); se lee una sola vez y nunca se almacena.",
+        "Las direcciones privadas, de loopback o internas se bloquean por la política de seguridad y no se pueden descargar.",
+        "Solo verifica estructura y cumplimiento del protocolo; no visita las páginas del sitemap, así que no detecta enlaces rotos.",
+      ],
+      privacyTitle: "Notas",
+      stepsDescription: "Sigue estos pasos para validar un sitemap.",
+      stepsTitle: "Cómo funciona",
+      supportDescription:
+        "Cubre las reglas principales del protocolo de sitemaps.org: estructura raíz, formato de los campos de URL, límites de entradas y tamaño.",
+      supportTitle: "Qué se verifica",
+    },
+    client: {
+      url: {
+        emptyDescription:
+          "Pega la URL de un sitemap.xml de acceso público y lo descargaremos para validar su estructura según el protocolo.",
+        emptyTitle: "Introduce una URL para empezar a validar",
+        hint: "Introduce la URL completa del sitemap.xml (incluyendo https://).",
+        label: "URL del sitemap",
+        placeholder: "https://example.com/sitemap.xml",
+        resubmit: "Volver a validar",
+        submit: "Validar",
+      },
+      result: {
+        entryCount: "{count} URL(s) encontradas",
+        generalTitle: "Verificaciones generales",
+        issuesTitle: "Problemas por entrada",
+        noIssues: "No se encontraron problemas a nivel de entrada.",
+        overallFail: "Se encontraron problemas",
+        overallPass: "Todas las verificaciones pasaron",
+        overallWarn: "Se sugieren algunas mejoras",
+        rootTypeSitemapindex: "Índice de sitemap (sitemapindex)",
+        rootTypeUnknown: "Elemento raíz no reconocido",
+        rootTypeUrlset: "Sitemap normal (urlset)",
+        showingSample:
+          "Mostrando las primeras {shown} de {total} entradas con problemas",
+      },
+      status: {
+        fail: "Error",
+        pass: "Correcto",
+        warn: "Sugerencia",
+      },
+      checks: {
+        "byte-size-limit": "Límite de tamaño de archivo (50MB)",
+        "changefreq-invalid": "El valor de <changefreq> no es válido",
+        "content-truncated": "El contenido se truncó",
+        "duplicate-locs": "URLs duplicadas",
+        "entry-count-limit": "Límite de entradas (50.000)",
+        "entry-count-zero": "Existe al menos una entrada válida",
+        "gzip-unsupported": "Sitemap comprimido con Gzip",
+        "lastmod-invalid": "El formato de <lastmod> no es válido",
+        "loc-invalid": "<loc> no es una URL válida",
+        "loc-missing": "Falta <loc>",
+        "priority-invalid": "<priority> está fuera de 0.0–1.0",
+        "root-element": "El elemento raíz es válido",
+      },
+      details: {
+        "byte-size-limit": "{bytes} / límite {maxBytes}",
+        "changefreq-invalid": "Valor: {changefreq}",
+        "content-truncated":
+          "Se leyeron {bytes}; el contenido puede estar incompleto",
+        "duplicate-locs": "Se encontraron {count} duplicado(s)",
+        "entry-count-limit": "{count} entradas / límite {maxEntries}",
+        "lastmod-invalid": "Valor: {lastmod}",
+        "loc-invalid": "Valor: {loc}",
+        "priority-invalid": "Valor: {priority}",
+      },
+      errors: {
+        BLOCKED_HOST:
+          "Esa dirección está bloqueada por la política de seguridad (no se pueden descargar direcciones privadas, locales o internas).",
+        FETCH_FAILED:
+          "No se pudo conectar con el sitio de destino. Comprueba que la URL sea accesible.",
+        FETCH_TIMEOUT:
+          "La descarga superó el tiempo de espera porque el sitio de destino respondió muy lento. Vuelve a intentarlo más tarde.",
+        INVALID_URL: "URL no válida. Introduce una URL http(s) completa.",
+        TOO_MANY_REDIRECTS:
+          "Demasiadas redirecciones; no se pudo descargar esa URL.",
+        UNKNOWN: "La validación falló. Vuelve a intentarlo más tarde.",
+        UPSTREAM_ERROR:
+          "El sitio de destino devolvió un error; puede que el archivo no exista o no esté disponible temporalmente.",
       },
     },
   },

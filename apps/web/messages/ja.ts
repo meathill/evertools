@@ -12,8 +12,6 @@ export const jaMessages: LocaleContent = {
     localProcessing: "ローカル処理",
     nav: {
       home: "ホーム",
-      imageConverter: "画像変換",
-      pdfTextEditor: "PDF テキスト編集",
     },
     tagline: "日常向けオンラインツール",
     theme: {
@@ -26,11 +24,6 @@ export const jaMessages: LocaleContent = {
     description:
       "ブラウザですぐ使えるオンラインツールです。インストール不要、登録不要。",
     toolsTitle: "公開中のツール",
-  },
-  toolCard: {
-    firstBatch: "おすすめ",
-    footerHint: "単一画像の素早い処理向け",
-    openTool: "ツールを開く",
   },
   home: {
     metadata: {
@@ -166,7 +159,7 @@ export const jaMessages: LocaleContent = {
         "heic to jpg",
         "iPhone 写真 変換",
       ],
-      name: "画像形式とサイズの変換 — HEIC を JPG に変換",
+      name: "画像形式とサイズの変換 — HEIC 対応",
       steps: [
         "PNG、JPG、WebP、または HEIC の画像を 1 枚アップロードします。",
         "出力形式を選び、必要ならサイズを入力します。",
@@ -987,6 +980,167 @@ export const jaMessages: LocaleContent = {
           "ポップアップがブロックされています。ブラウザのアドレスバーのポップアップアイコンをクリックしてサイトのポップアップを許可し、再試行してください。",
         print: "PDFをダウンロード",
         wordCount: "{count}文字",
+      },
+    },
+  },
+  sitemapValidator: {
+    hero: {
+      badges: {
+        category: "SEOツール",
+        instant: "1回の取得で結果表示",
+        protocol: "プロトコル準拠チェック",
+      },
+      description:
+        "sitemap.xml のURLを入力すると取得して sitemaps.org プロトコルに沿って検証します。ルート要素が正しいか、各URLに正しい <loc> があるか、lastmod / priority / changefreq の書式が正しいか、件数やファイルサイズが上限を超えていないかをまとめて確認できます。",
+      title: "Sitemap 検証ツール",
+    },
+    scenarios: {
+      description:
+        "sitemap が仕様に沿っているかの簡易チェックに向いています。個々のリンクの生死確認はしません。",
+      audit:
+        "公開済みの sitemap を定期的に点検し、改修で構造が崩れていないか確認したいとき。",
+      launch:
+        "サイトの新規公開やリニューアル前に、sitemap.xml 自体の書式に問題がないか確認したいとき。",
+      seo: "検索エンジンに sitemap を送信する前に、除外・無視されそうな項目を洗い出したいとき。",
+      title: "こんなときに便利",
+    },
+    tool: {
+      category: "SEOツール",
+      description:
+        "sitemap.xml をオンラインで取得し、sitemaps.org プロトコルに沿って構造を検証します。ルート要素の種類、各URLの <loc> の妥当性、lastmod / priority / changefreq の書式、重複URL、件数とファイルサイズの上限をチェック。sitemap インデックスにも対応しています。",
+      faq: [
+        {
+          answer:
+            "サーバーが代わりに対象URLを取得して解析します（ブラウザはクロスオリジンで読み取れないため）。取得は1回だけで保存はしません。プライベート / ループバック / 内部アドレスは安全ポリシーによりブロックされます。",
+          question: "検証中、sitemap の内容はどう扱われますか？",
+        },
+        {
+          answer:
+            "インデックスファイル自体の検証結果と、各子 sitemap の <loc> が正しいかどうかを一覧表示します。取得が際限なく広がらないよう、子 sitemap 内部の項目までは再帰的に検証していません。",
+          question:
+            "sitemap インデックス（sitemapindex）はどう検証されますか？",
+        },
+        {
+          answer:
+            "本ツールは構造と仕様準拠のチェックのみを行い、sitemap に載っているページへはアクセスしません。そのためリンク切れの検出はできません。",
+          question: "中のリンクが開けるかどうかもチェックされますか？",
+        },
+        {
+          answer:
+            "sitemaps.org プロトコルでは1つの sitemap につき最大50,000件のURL、非圧縮で50MBまでと定められています。超過している場合は不合格として表示します。",
+          question: "件数やファイルサイズに上限はありますか？",
+        },
+      ],
+      features: [
+        "任意の sitemap.xml のURLを取得して構造を解析",
+        "通常の sitemap（urlset）と sitemap インデックス（sitemapindex）を判別",
+        "各 <loc> が正しい絶対URLかどうかを検証",
+        "lastmod / priority / changefreq がプロトコルの書式に沿っているか検証",
+        "重複URLを検出し、件数・ファイルサイズの上限超過を警告",
+        "問題のある項目はサンプル表示なので、大規模な sitemap でも固まらない",
+      ],
+      keywords: [
+        "sitemap 検証",
+        "sitemap validator",
+        "sitemap.xml チェック",
+        "sitemap 仕様",
+        "sitemap インデックス",
+        "sitemapindex",
+        "seo sitemap ツール",
+        "sitemap 送信前チェック",
+      ],
+      name: "Sitemap 検証ツール",
+      steps: [
+        "確認したい sitemap.xml の完全なURLを貼り付けます。",
+        "「検証」をクリックし、サーバーが取得・解析するのを待ちます。",
+        "ルート要素の種類、件数、サイズ、重複URLなど総合チェック結果を確認します。",
+        "問題のある項目があれば、<loc> の欠落か書式エラーかを1件ずつ確認します。",
+      ],
+      summary:
+        "sitemap.xml を取得し、構造・各項目のフィールド・サイズ上限をプロトコルに沿って検証します。",
+    },
+    content: {
+      faqDescription: "はじめる前によくある質問です。",
+      faqTitle: "よくある質問",
+      privacyDescription: "使用前に知っておきたい注意点です。",
+      privacyItems: [
+        "検証にはサーバーによる代理取得が必要です（ブラウザのクロスオリジン制限を回避するため）。取得は1回のみで内容は保存されません。",
+        "プライベート / ループバック / 内部アドレスは安全ポリシーによりブロックされ、取得できません。",
+        "構造と仕様準拠のチェックのみで、sitemap 内のページにはアクセスしないためリンク切れは検出できません。",
+      ],
+      privacyTitle: "使用上の注意",
+      stepsDescription: "以下の手順で検証できます。",
+      stepsTitle: "使い方",
+      supportDescription:
+        "sitemaps.org プロトコルの主要ルール（ルート構造、URLフィールドの書式、件数とサイズ上限）をカバーします。",
+      supportTitle: "検証範囲",
+    },
+    client: {
+      url: {
+        emptyDescription:
+          "公開されている sitemap.xml のURLを貼り付けると、取得してプロトコルに沿って構造を検証します。",
+        emptyTitle: "URLを入力して検証を開始",
+        hint: "sitemap.xml の完全なURL（https:// を含む）を入力してください。",
+        label: "Sitemap のURL",
+        placeholder: "https://example.com/sitemap.xml",
+        resubmit: "再検証",
+        submit: "検証",
+      },
+      result: {
+        entryCount: "{count} 件のURLが見つかりました",
+        generalTitle: "総合チェック",
+        issuesTitle: "項目の問題",
+        noIssues: "項目レベルの問題は見つかりませんでした。",
+        overallFail: "問題があります",
+        overallPass: "すべて合格",
+        overallWarn: "改善余地あり",
+        rootTypeSitemapindex: "sitemap インデックス（sitemapindex）",
+        rootTypeUnknown: "認識できないルート要素",
+        rootTypeUrlset: "通常の sitemap（urlset）",
+        showingSample: "問題のある項目 {total} 件中、先頭 {shown} 件を表示",
+      },
+      status: {
+        fail: "不合格",
+        pass: "合格",
+        warn: "要検討",
+      },
+      checks: {
+        "byte-size-limit": "ファイルサイズ上限（50MB）",
+        "changefreq-invalid": "<changefreq> の値が不正",
+        "content-truncated": "内容が途中で切り詰められた",
+        "duplicate-locs": "重複するURL",
+        "entry-count-limit": "件数の上限（50,000）",
+        "entry-count-zero": "有効な項目が存在するか",
+        "gzip-unsupported": "Gzip圧縮された sitemap",
+        "lastmod-invalid": "<lastmod> の書式が不正",
+        "loc-invalid": "<loc> が正しいURLでない",
+        "loc-missing": "<loc> がない",
+        "priority-invalid": "<priority> が 0.0〜1.0 の範囲外",
+        "root-element": "ルート要素が正しいか",
+      },
+      details: {
+        "byte-size-limit": "{bytes} / 上限 {maxBytes}",
+        "changefreq-invalid": "値: {changefreq}",
+        "content-truncated":
+          "{bytes} まで読み込み済み。内容が不完全な可能性あり",
+        "duplicate-locs": "{count} 件の重複を検出",
+        "entry-count-limit": "{count} 件 / 上限 {maxEntries}",
+        "lastmod-invalid": "値: {lastmod}",
+        "loc-invalid": "値: {loc}",
+        "priority-invalid": "値: {priority}",
+      },
+      errors: {
+        BLOCKED_HOST:
+          "このアドレスは安全ポリシーによりブロックされています（プライベート / ローカル / 内部アドレスは取得できません）。",
+        FETCH_FAILED:
+          "対象サイトに接続できませんでした。URLが正しいか確認してください。",
+        FETCH_TIMEOUT:
+          "取得がタイムアウトしました。対象サイトの応答が遅いようです。しばらくして再試行してください。",
+        INVALID_URL: "URLが無効です。完全な http(s) のURLを入力してください。",
+        TOO_MANY_REDIRECTS: "リダイレクトが多すぎるため取得できませんでした。",
+        UNKNOWN: "検証に失敗しました。しばらくして再試行してください。",
+        UPSTREAM_ERROR:
+          "対象サイトがエラーを返しました。ファイルが存在しないか、一時的に利用できない可能性があります。",
       },
     },
   },

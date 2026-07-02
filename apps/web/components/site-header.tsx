@@ -22,11 +22,6 @@ import type { AppLocale } from "@/i18n/routing";
 import type { LocaleContent } from "@/messages/types";
 import { getLocalizedPathname, localeMetadata } from "@/lib/site";
 
-const navItems = [
-  { href: "/tools/image-converter", key: "imageConverter" },
-  { href: "/tools/pdf-text-editor", key: "pdfTextEditor" },
-] as const;
-
 type ThemeMode = "light" | "dark" | "system";
 
 type SiteHeaderProps = {
@@ -74,7 +69,7 @@ export function SiteHeader({ content, locale }: SiteHeaderProps) {
 
   return (
     <header className="sticky top-0 z-40 border-b border-rule bg-cream/88 backdrop-blur">
-      <div className="mx-auto flex max-w-6xl items-center justify-between gap-4 px-4 py-3 sm:px-6">
+      <div className="mx-auto flex max-w-6xl flex-wrap items-center justify-between gap-x-4 gap-y-2 px-4 py-3 sm:px-6">
         <Link
           className="flex min-w-0 items-center gap-3"
           href={getLocalizedPathname(locale, "/")}
@@ -101,15 +96,6 @@ export function SiteHeader({ content, locale }: SiteHeaderProps) {
 
         <div className="flex items-center gap-3">
           <nav className="flex items-center gap-1 overflow-x-auto">
-            {navItems.map((item) => (
-              <Link
-                className="whitespace-nowrap rounded-sm px-2 py-1 text-ink-soft transition-colors hover:bg-fluff hover:text-ink"
-                href={getLocalizedPathname(locale, item.href)}
-                key={item.href}
-              >
-                {content.nav[item.key]}
-              </Link>
-            ))}
             <a
               className="flex items-center gap-1 whitespace-nowrap rounded-sm px-2 py-1 text-ink-soft transition-colors hover:bg-fluff hover:text-ink"
               href="https://meathill.com"

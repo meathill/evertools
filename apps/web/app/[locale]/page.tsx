@@ -75,8 +75,8 @@ export default async function HomePage({
       <section className="relative overflow-hidden border-b border-rule">
         <div className="absolute inset-0 bg-sun" />
         <div className="absolute inset-0 bg-grid opacity-50" />
-        <div className="relative mx-auto grid max-w-6xl gap-10 px-4 py-16 sm:px-6 lg:grid-cols-[minmax(0,1.1fr)_minmax(320px,0.9fr)] lg:py-24">
-          <div className="space-y-6">
+        <div className="relative mx-auto grid max-w-6xl gap-8 px-4 py-10 sm:px-6 lg:grid-cols-[minmax(0,1.1fr)_minmax(320px,0.9fr)] lg:py-14">
+          <div className="space-y-5">
             <div className="flex flex-wrap gap-2">
               <Badge variant="yellow">{content.home.hero.badges.stack}</Badge>
               <Badge variant="info">{content.home.hero.badges.seo}</Badge>
@@ -85,7 +85,7 @@ export default async function HomePage({
               </Badge>
             </div>
 
-            <div className="space-y-4">
+            <div className="space-y-3">
               <h1 className="h-hero max-w-3xl text-balance text-ink">
                 {content.home.hero.title}
               </h1>
@@ -158,12 +158,7 @@ export default async function HomePage({
 
         <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
           {tools.map((tool) => (
-            <ToolCard
-              content={content.toolCard}
-              key={tool.slug}
-              locale={locale}
-              tool={tool}
-            />
+            <ToolCard key={tool.slug} locale={locale} tool={tool} />
           ))}
         </div>
       </section>

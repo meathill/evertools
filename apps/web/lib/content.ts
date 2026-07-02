@@ -149,6 +149,26 @@ export function getMarkdownToPdfTool(content: LocaleContent): ToolDefinition {
   };
 }
 
+export function getSitemapValidatorTool(
+  content: LocaleContent,
+): ToolDefinition {
+  return {
+    applicationCategory: "DeveloperApplication",
+    category: content.sitemapValidator.tool.category,
+    description: content.sitemapValidator.tool.description,
+    faq: content.sitemapValidator.tool.faq,
+    features: content.sitemapValidator.tool.features,
+    href: "/tools/sitemap-validator",
+    keywords: content.sitemapValidator.tool.keywords,
+    name: content.sitemapValidator.tool.name,
+    slug: "sitemap-validator",
+    steps: content.sitemapValidator.tool.steps,
+    stepsTitle: content.sitemapValidator.content.stepsTitle,
+    summary: content.sitemapValidator.tool.summary,
+    totalTime: "PT1M",
+  };
+}
+
 export function getTools(content: LocaleContent): ToolDefinition[] {
   return [
     getImageConverterTool(content),
@@ -156,5 +176,6 @@ export function getTools(content: LocaleContent): ToolDefinition[] {
     getJsonViewerTool(content),
     getOgImageValidatorTool(content),
     getMarkdownToPdfTool(content),
+    getSitemapValidatorTool(content),
   ];
 }
