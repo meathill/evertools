@@ -8,7 +8,6 @@ import {
   buildBlockKey,
   buildOutputFilename,
   containsCjk,
-  formatBytes,
   isAcceptedFontName,
   isAcceptedPdfType,
 } from "@/lib/pdf-editor/pdf-types";
@@ -49,12 +48,6 @@ describe("pdf editor helpers", () => {
       "nested.report-edited.pdf",
     );
     expect(buildOutputFilename("")).toBe("document-edited.pdf");
-  });
-
-  it("formats bytes for the size hint", () => {
-    expect(formatBytes(512)).toBe("512 B");
-    expect(formatBytes(1024 * 1024)).toBe("1.0 MB");
-    expect(formatBytes(50 * 1024 * 1024)).toBe("50 MB");
   });
 
   it("detects CJK characters", () => {

@@ -1,15 +1,14 @@
 import { describe, expect, it, vi } from "vitest";
 import {
-  FILE_INPUT_ACCEPT,
-  IMAGE_CONVERTER_ERROR_CODES,
   buildOutputFilename,
   clampQuality,
   computeCropSourceRect,
-  formatBytes,
+  FILE_INPUT_ACCEPT,
   getCurrentTargetDimensions,
   getDefaultOutputFormat,
   getImageConverterErrorMessage,
   getSyncedDimensionValue,
+  IMAGE_CONVERTER_ERROR_CODES,
   isAcceptedImageFile,
   isHeicFile,
   normalizeSourceFile,
@@ -76,12 +75,6 @@ describe("image converter helpers", () => {
         originalWidth: 2000,
       }),
     ).toBe("300");
-  });
-
-  it("formats bytes for human reading", () => {
-    expect(formatBytes(512)).toBe("512 B");
-    expect(formatBytes(1_536)).toBe("1.5 KB");
-    expect(formatBytes(12 * 1024 * 1024)).toBe("12 MB");
   });
 
   it("builds output filenames with new extension", () => {

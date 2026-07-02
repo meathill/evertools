@@ -1,12 +1,16 @@
 import {
   type CropAnchor,
   getCurrentTargetDimensions,
+  getImageConverterErrorMessage,
   isAcceptedImageFile,
+  normalizeSourceFile,
   type OutputFormat,
   type ResizeMode,
   type ResultImage,
+  readImageFile,
   supportsQuality,
 } from "@/lib/image-converter";
+import type { LocaleContent } from "@/messages/types";
 
 export const MAX_BATCH_SIZE = 30;
 
@@ -32,6 +36,56 @@ export type BatchItem = {
   type: string;
   width: number;
 };
+
+// 把一个原始 File 归一化并读出预览信息，包成一条待转换的批量项；
+// 失败时返回 status: "error" 而不是抛出，方便调用方按项展示各自的错误。
+export async function prepareBatchItem(input: {
+  acceptedFormatsText: string;
+  content: LocaleContent["imageConverter"];
+  originalFile: File;
+}): Promise<BatchItem> {
+  const { acceptedFormatsText, content, originalFile } = input;
+  const id = crypto.randomUUID();
+
+  try {
+    // HEIC 先解码成标准 JPEG；非 HEIC 原样返回。之后下游全部按普通图片处理。
+    const file = await normalizeSourceFile(originalFile);
+    const image = await readImageFile(file);
+
+    return {
+      errorMessage: null,
+      file,
+      height: image.height,
+      id,
+      originalName: originalFile.name,
+      previewUrl: image.previewUrl,
+      result: null,
+      size: originalFile.size,
+      status: "pending",
+      type: originalFile.type || file.type,
+      width: image.width,
+    };
+  } catch (error) {
+    return {
+      errorMessage: getImageConverterErrorMessage(
+        error,
+        content,
+        acceptedFormatsText,
+        content.client.errors.readFailed,
+      ),
+      file: originalFile,
+      height: 0,
+      id,
+      originalName: originalFile.name,
+      previewUrl: "",
+      result: null,
+      size: originalFile.size,
+      status: "error",
+      type: originalFile.type,
+      width: 0,
+    };
+  }
+}
 
 export type BatchConversionSettings = {
   cropAnchor: CropAnchor;

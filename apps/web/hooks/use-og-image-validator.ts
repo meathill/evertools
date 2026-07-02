@@ -1,18 +1,12 @@
-import {
-  type ChangeEvent,
-  type DragEvent,
-  type FormEvent,
-  useId,
-  useRef,
-  useState,
-} from "react";
+import { type ChangeEvent, type FormEvent, useRef, useState } from "react";
+import { useFileDropInput } from "@/hooks/use-file-drop-input";
 import { useRevocableObjectUrl } from "@/hooks/use-revocable-object-url";
 import {
   type ImageFacts,
   type ParsedTags,
   resolveEffectiveTags,
-  validateUploadedImage,
   type ValidationReport,
+  validateUploadedImage,
 } from "@/lib/og/validator";
 
 export type ValidatorMode = "url" | "upload";
@@ -79,8 +73,6 @@ async function readImageSize(
 }
 
 export function useOgImageValidator() {
-  const inputId = useId();
-  const inputRef = useRef<HTMLInputElement | null>(null);
   const freshCounter = useRef(0);
   const replacePreviewUrl = useRevocableObjectUrl();
 
@@ -88,9 +80,26 @@ export function useOgImageValidator() {
   const [urlInput, setUrlInput] = useState("");
   const [isFetching, setIsFetching] = useState(false);
   const [isPreparing, setIsPreparing] = useState(false);
-  const [isDragging, setIsDragging] = useState(false);
   const [errorCode, setErrorCode] = useState<string | null>(null);
   const [result, setResult] = useState<ValidatorResult | null>(null);
+
+  const {
+    handleBrowseClick,
+    handleDragLeave,
+    handleDragOver,
+    handleDrop,
+    handleFileInputChange,
+    inputId,
+    inputRef,
+    isDragging,
+    stopDragging,
+  } = useFileDropInput((files) => {
+    const file = files[0];
+
+    if (file) {
+      void handleSelectedFile(file);
+    }
+  });
 
   function resetState() {
     setErrorCode(null);
@@ -101,7 +110,7 @@ export function useOgImageValidator() {
   function handleModeChange(nextMode: ValidatorMode) {
     if (nextMode === mode) return;
     setMode(nextMode);
-    setIsDragging(false);
+    stopDragging();
     resetState();
   }
 
@@ -191,37 +200,6 @@ export function useOgImageValidator() {
       });
     } finally {
       setIsPreparing(false);
-    }
-  }
-
-  function handleBrowseClick() {
-    inputRef.current?.click();
-  }
-
-  function handleFileInputChange(event: ChangeEvent<HTMLInputElement>) {
-    const file = event.target.files?.[0];
-    if (file) {
-      void handleSelectedFile(file);
-    }
-    event.currentTarget.value = "";
-  }
-
-  function handleDragOver(event: DragEvent<HTMLDivElement>) {
-    event.preventDefault();
-    setIsDragging(true);
-  }
-
-  function handleDragLeave(event: DragEvent<HTMLDivElement>) {
-    event.preventDefault();
-    setIsDragging(false);
-  }
-
-  function handleDrop(event: DragEvent<HTMLDivElement>) {
-    event.preventDefault();
-    setIsDragging(false);
-    const file = event.dataTransfer.files?.[0];
-    if (file) {
-      void handleSelectedFile(file);
     }
   }
 
