@@ -312,14 +312,12 @@ describe("ensureCjkFallbackFont", () => {
     vi.stubGlobal("indexedDB", fakeDb);
     vi.stubGlobal(
       "fetch",
-      vi
-        .fn()
-        .mockResolvedValue(
-          buildFakeResponse({
-            chunks: [new Uint8Array([1])],
-            contentLength: 1,
-          }),
-        ),
+      vi.fn().mockResolvedValue(
+        buildFakeResponse({
+          chunks: [new Uint8Array([1])],
+          contentLength: 1,
+        }),
+      ),
     );
 
     await expect(ensureCjkFallbackFont()).resolves.toBeInstanceOf(Uint8Array);
@@ -342,14 +340,12 @@ describe("ensureCjkFallbackFont", () => {
   it("registers the CJK font face with the fixed CSS family constant after a download", async () => {
     vi.stubGlobal(
       "fetch",
-      vi
-        .fn()
-        .mockResolvedValue(
-          buildFakeResponse({
-            chunks: [new Uint8Array([1])],
-            contentLength: 1,
-          }),
-        ),
+      vi.fn().mockResolvedValue(
+        buildFakeResponse({
+          chunks: [new Uint8Array([1])],
+          contentLength: 1,
+        }),
+      ),
     );
 
     await ensureCjkFallbackFont();
