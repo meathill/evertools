@@ -79,4 +79,24 @@ describe("pdf editor helpers", () => {
   it("builds stable block keys", () => {
     expect(buildBlockKey(2, "p2-i7")).toBe("2::p2-i7");
   });
+
+  it("normalizes a whitespace-only base name to the document fallback", () => {
+    expect(buildOutputFilename("   .pdf")).toBe("document-edited.pdf");
+  });
+
+  it("detects Hangul characters as CJK", () => {
+    expect(containsCjk("안녕")).toBe(true);
+  });
+
+  it("treats a trailing '::' with no detail as an undefined detail, not an empty string", () => {
+    expect(parsePdfEditorError(new Error("EXPORT_FAILED::"))).toEqual({
+      code: PDF_EDITOR_ERROR_CODES.EXPORT_FAILED,
+      detail: undefined,
+    });
+  });
+
+  it("accepts font names with multiple dots or no base name before the extension", () => {
+    expect(isAcceptedFontName("archive.tar.ttf")).toBe(true);
+    expect(isAcceptedFontName(".ttf")).toBe(true);
+  });
 });
