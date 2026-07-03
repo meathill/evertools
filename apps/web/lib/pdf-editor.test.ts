@@ -1,5 +1,6 @@
 import { describe, expect, it } from "vitest";
 import {
+  createPdfEditorError,
   PDF_EDITOR_ERROR_CODES,
   parsePdfEditorError,
 } from "@/lib/pdf-editor/pdf-errors";
@@ -8,7 +9,6 @@ import {
   buildBlockKey,
   buildOutputFilename,
   containsCjk,
-  formatBytes,
   isAcceptedFontName,
   isAcceptedPdfType,
 } from "@/lib/pdf-editor/pdf-types";
@@ -43,18 +43,23 @@ describe("pdf editor helpers", () => {
     expect(parsePdfEditorError("not an error")).toEqual({ code: null });
   });
 
+  it("round-trips an error created without a detail", () => {
+    const error = createPdfEditorError(
+      PDF_EDITOR_ERROR_CODES.ENCRYPTED_NOT_SUPPORTED,
+    );
+    expect(error.message).toBe("ENCRYPTED_NOT_SUPPORTED");
+    expect(parsePdfEditorError(error)).toEqual({
+      code: PDF_EDITOR_ERROR_CODES.ENCRYPTED_NOT_SUPPORTED,
+      detail: undefined,
+    });
+  });
+
   it("builds output filenames with the edited suffix", () => {
     expect(buildOutputFilename("contract.pdf")).toBe("contract-edited.pdf");
     expect(buildOutputFilename("nested.report.PDF")).toBe(
       "nested.report-edited.pdf",
     );
     expect(buildOutputFilename("")).toBe("document-edited.pdf");
-  });
-
-  it("formats bytes for the size hint", () => {
-    expect(formatBytes(512)).toBe("512 B");
-    expect(formatBytes(1024 * 1024)).toBe("1.0 MB");
-    expect(formatBytes(50 * 1024 * 1024)).toBe("50 MB");
   });
 
   it("detects CJK characters", () => {

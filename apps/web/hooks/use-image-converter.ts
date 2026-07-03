@@ -1,11 +1,5 @@
-import {
-  type ChangeEvent,
-  type DragEvent,
-  useEffect,
-  useId,
-  useRef,
-  useState,
-} from "react";
+import { type ChangeEvent, useEffect, useRef, useState } from "react";
+import { useFileDropInput } from "@/hooks/use-file-drop-input";
 import {
   ACCEPTED_IMAGE_TYPES,
   buildOutputFilename,
@@ -13,12 +7,10 @@ import {
   getCurrentTargetDimensions,
   getImageConverterErrorMessage,
   getSyncedDimensionValue,
-  normalizeSourceFile,
   OUTPUT_FORMATS,
   type OutputFormat,
   type ResizeMode,
   type ResultImage,
-  readImageFile,
   resolveTargetDimensions,
   supportsQuality,
 } from "@/lib/image-converter";
@@ -27,6 +19,7 @@ import {
   type BatchItem,
   buildBatchZip,
   MAX_BATCH_SIZE,
+  prepareBatchItem,
   selectItemsNeedingConversion,
   splitAcceptedBatchFiles,
 } from "@/lib/image-converter-batch";
@@ -43,11 +36,8 @@ export function useImageConverter(
     ),
     "HEIC",
   ].join(" / ");
-  const inputId = useId();
-  const inputRef = useRef<HTMLInputElement | null>(null);
 
   const [items, setItems] = useState<BatchItem[]>([]);
-  const [isDragging, setIsDragging] = useState(false);
   const [isConverting, setIsConverting] = useState(false);
   const [isPreparing, setIsPreparing] = useState(false);
   const [isZipping, setIsZipping] = useState(false);
@@ -76,6 +66,18 @@ export function useImageConverter(
     targetHeight,
     targetWidth,
   } = useImageConverterStore();
+
+  const {
+    handleBrowseClick,
+    handleDragLeave,
+    handleDragOver,
+    handleDrop,
+    handleFileInputChange,
+    inputId,
+    inputRef,
+    isDragging,
+    stopDragging,
+  } = useFileDropInput(handleAddFiles);
 
   // 卸载时释放所有还没被清理的预览地址，避免 object URL 泄漏。用 ref 拿最新值，
   // 避免这个只在卸载时运行一次的 effect 因为 items 变化而重复挂载。
@@ -136,49 +138,6 @@ export function useImageConverter(
     settings: currentSettings,
   }).length;
 
-  async function prepareBatchItem(originalFile: File): Promise<BatchItem> {
-    const id = crypto.randomUUID();
-
-    try {
-      // HEIC 先解码成标准 JPEG；非 HEIC 原样返回。之后下游全部按普通图片处理。
-      const file = await normalizeSourceFile(originalFile);
-      const image = await readImageFile(file);
-
-      return {
-        errorMessage: null,
-        file,
-        height: image.height,
-        id,
-        originalName: originalFile.name,
-        previewUrl: image.previewUrl,
-        result: null,
-        size: originalFile.size,
-        status: "pending",
-        type: originalFile.type || file.type,
-        width: image.width,
-      };
-    } catch (error) {
-      return {
-        errorMessage: getImageConverterErrorMessage(
-          error,
-          content,
-          acceptedFormatsText,
-          content.client.errors.readFailed,
-        ),
-        file: originalFile,
-        height: 0,
-        id,
-        originalName: originalFile.name,
-        previewUrl: "",
-        result: null,
-        size: originalFile.size,
-        status: "error",
-        type: originalFile.type,
-        width: 0,
-      };
-    }
-  }
-
   async function handleAddFiles(files: File[]) {
     if (files.length === 0) {
       return;
@@ -216,7 +175,11 @@ export function useImageConverter(
     const wasEmpty = items.length === 0;
 
     setIsPreparing(true);
-    const prepared = await Promise.all(accepted.map(prepareBatchItem));
+    const prepared = await Promise.all(
+      accepted.map((originalFile) =>
+        prepareBatchItem({ acceptedFormatsText, content, originalFile }),
+      ),
+    );
     setIsPreparing(false);
 
     setItems((current) => [...current, ...prepared]);
@@ -235,41 +198,6 @@ export function useImageConverter(
         // 单图模式下没有逐行错误文案可看，沿用之前“整卡报错”的体验。
         setErrorMessage(prepared[0].errorMessage);
       }
-    }
-  }
-
-  function handleBrowseClick() {
-    inputRef.current?.click();
-  }
-
-  function handleFileInputChange(event: ChangeEvent<HTMLInputElement>) {
-    const files = Array.from(event.target.files ?? []);
-
-    if (files.length > 0) {
-      void handleAddFiles(files);
-    }
-
-    event.currentTarget.value = "";
-  }
-
-  function handleDragOver(event: DragEvent<HTMLDivElement>) {
-    event.preventDefault();
-    setIsDragging(true);
-  }
-
-  function handleDragLeave(event: DragEvent<HTMLDivElement>) {
-    event.preventDefault();
-    setIsDragging(false);
-  }
-
-  function handleDrop(event: DragEvent<HTMLDivElement>) {
-    event.preventDefault();
-    setIsDragging(false);
-
-    const files = Array.from(event.dataTransfer.files ?? []);
-
-    if (files.length > 0) {
-      void handleAddFiles(files);
     }
   }
 
@@ -551,7 +479,7 @@ export function useImageConverter(
     setItems([]);
     setBatchProgress(null);
     setErrorMessage(null);
-    setIsDragging(false);
+    stopDragging();
     reset();
   }
 

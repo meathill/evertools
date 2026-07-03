@@ -16,7 +16,7 @@ import {
 import { Spinner } from "@/components/ui/spinner";
 import { Table, TableBody, TableCell, TableRow } from "@/components/ui/table";
 import type { ImageConverterController } from "@/hooks/use-image-converter";
-import { formatBytes } from "@/lib/image-converter";
+import { formatBytes } from "@/lib/format";
 import type { BatchItemStatus } from "@/lib/image-converter-batch";
 import type { LocaleContent } from "@/messages/types";
 

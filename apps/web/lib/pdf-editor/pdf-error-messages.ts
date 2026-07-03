@@ -1,8 +1,9 @@
+import { formatBytes } from "@/lib/format";
 import {
   PDF_EDITOR_ERROR_CODES,
   type PdfEditorErrorCode,
 } from "@/lib/pdf-editor/pdf-errors";
-import { formatBytes, MAX_PDF_FILE_SIZE } from "@/lib/pdf-editor/pdf-types";
+import { MAX_PDF_FILE_SIZE } from "@/lib/pdf-editor/pdf-types";
 import type { LocaleContent } from "@/messages/types";
 
 export function getPdfEditorErrorMessage(

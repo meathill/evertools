@@ -16,7 +16,8 @@ import {
   CardPanel,
   CardTitle,
 } from "@/components/ui/card";
-import { formatBytes, MAX_PDF_FILE_SIZE } from "@/lib/pdf-editor/pdf-types";
+import { formatBytes } from "@/lib/format";
+import { MAX_PDF_FILE_SIZE } from "@/lib/pdf-editor/pdf-types";
 import type { LocaleContent } from "@/messages/types";
 
 type PdfUploadCardProps = {

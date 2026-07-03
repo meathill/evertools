@@ -34,6 +34,9 @@ export function parsePdfEditorError(error: unknown): {
 
   const separatorIndex = error.message.indexOf("::");
   if (separatorIndex === -1) {
+    if (errorCodeSet.has(error.message)) {
+      return { code: error.message as PdfEditorErrorCode, detail: undefined };
+    }
     return { code: null, detail: error.message || undefined };
   }
 

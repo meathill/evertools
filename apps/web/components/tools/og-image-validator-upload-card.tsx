@@ -8,7 +8,7 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import type { OgImageValidatorController } from "@/hooks/use-og-image-validator";
-import { formatBytes } from "@/lib/image-converter";
+import { formatBytes } from "@/lib/format";
 import type { LocaleContent } from "@/messages/types";
 
 type UploadCardProps = {

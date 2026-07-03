@@ -16,7 +16,8 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import type { ImageConverterController } from "@/hooks/use-image-converter";
-import { FILE_INPUT_ACCEPT, formatBytes } from "@/lib/image-converter";
+import { formatBytes } from "@/lib/format";
+import { FILE_INPUT_ACCEPT } from "@/lib/image-converter";
 import type { LocaleContent } from "@/messages/types";
 
 type ImageConverterUploadCardProps = {

@@ -1,7 +1,7 @@
 import { CircleCheckIcon, CircleXIcon, TriangleAlertIcon } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardHeader, CardPanel, CardTitle } from "@/components/ui/card";
-import { formatBytes } from "@/lib/image-converter";
+import { formatBytes } from "@/lib/format";
 import type {
   CheckResult,
   CheckStatus,
