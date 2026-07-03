@@ -4,7 +4,8 @@ import {
   type PdfEditorErrorCode,
 } from "@/lib/pdf-editor/pdf-errors";
 import { getPdfEditorErrorMessage } from "@/lib/pdf-editor/pdf-error-messages";
-import { formatBytes, MAX_PDF_FILE_SIZE } from "@/lib/pdf-editor/pdf-types";
+import { MAX_PDF_FILE_SIZE } from "@/lib/pdf-editor/pdf-types";
+import { formatBytes } from "@/lib/format";
 import { getLocaleContent } from "@/messages";
 
 const content = getLocaleContent("zh").pdfTextEditor;
