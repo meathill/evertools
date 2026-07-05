@@ -2,27 +2,25 @@ import { type ChangeEvent, useEffect, useRef, useState } from "react";
 import { useFileDropInput } from "@/hooks/use-file-drop-input";
 import {
   ACCEPTED_IMAGE_TYPES,
-  buildOutputFilename,
-  convertImageFile,
   getCurrentTargetDimensions,
   getImageConverterErrorMessage,
   getSyncedDimensionValue,
   OUTPUT_FORMATS,
   type OutputFormat,
   type ResizeMode,
-  type ResultImage,
-  resolveTargetDimensions,
   supportsQuality,
 } from "@/lib/image-converter";
 import {
   type BatchConversionSettings,
   type BatchItem,
   buildBatchZip,
+  convertBatchItem,
   MAX_BATCH_SIZE,
   prepareBatchItem,
   selectItemsNeedingConversion,
   splitAcceptedBatchFiles,
 } from "@/lib/image-converter-batch";
+import { getDimensionPreset } from "@/lib/image-converter-presets";
 import type { LocaleContent } from "@/messages/types";
 import { useImageConverterStore } from "@/stores/image-converter-store";
 
@@ -39,8 +37,8 @@ export function useImageConverter(
 
   const [items, setItems] = useState<BatchItem[]>([]);
   const [isConverting, setIsConverting] = useState(false);
+  const [isDownloading, setIsDownloading] = useState(false);
   const [isPreparing, setIsPreparing] = useState(false);
-  const [isZipping, setIsZipping] = useState(false);
   const [batchProgress, setBatchProgress] = useState<{
     done: number;
     total: number;
@@ -294,19 +292,15 @@ export function useImageConverter(
     setQuality(value[0] ?? quality);
   }
 
-  async function handleGenerateAllClick() {
-    if (items.length === 0) {
-      setErrorMessage(content.client.errors.uploadFirst);
-      return;
-    }
-
-    const itemsToConvert = selectItemsNeedingConversion({
-      items,
-      settings: currentSettings,
-    });
+  // 转换指定项，逐项写入 state，同时返回 id -> 新鲜 BatchItem 的 Map，
+  // 供“下载时自动生成”直接拿到最新结果，不必等待 state 更新落地。
+  async function runConversion(
+    itemsToConvert: BatchItem[],
+  ): Promise<Map<string, BatchItem>> {
+    const freshItems = new Map<string, BatchItem>();
 
     if (itemsToConvert.length === 0) {
-      return;
+      return freshItems;
     }
 
     setIsConverting(true);
@@ -323,36 +317,17 @@ export function useImageConverter(
       );
 
       try {
-        const targetDimensions = resolveTargetDimensions({
-          heightInput: targetHeight,
-          isAspectLocked,
-          originalHeight: target.height,
-          originalWidth: target.width,
-          widthInput: targetWidth,
+        const result = await convertBatchItem({
+          item: target,
+          settings: currentSettings,
         });
 
-        const blob = await convertImageFile({
-          crop: resizeMode === "crop" ? { anchor: cropAnchor } : undefined,
-          file: target.file,
-          format: outputFormat,
-          height: targetDimensions.height,
-          quality,
-          width: targetDimensions.width,
+        freshItems.set(target.id, {
+          ...target,
+          errorMessage: null,
+          result,
+          status: "done",
         });
-
-        const previewUrl = URL.createObjectURL(blob);
-        const result: ResultImage = {
-          blob,
-          cropAnchor: resizeMode === "crop" ? cropAnchor : null,
-          fileName: buildOutputFilename(target.originalName, outputFormat),
-          format: outputFormat,
-          height: targetDimensions.height,
-          previewUrl,
-          quality,
-          resizeMode,
-          size: blob.size,
-          width: targetDimensions.width,
-        };
 
         setItems((current) =>
           current.map((item) => {
@@ -368,19 +343,23 @@ export function useImageConverter(
           }),
         );
       } catch (error) {
+        const message = getImageConverterErrorMessage(
+          error,
+          content,
+          acceptedFormatsText,
+          content.client.errors.convertFailed,
+        );
+
+        freshItems.set(target.id, {
+          ...target,
+          errorMessage: message,
+          status: "error",
+        });
+
         setItems((current) =>
           current.map((item) =>
             item.id === target.id
-              ? {
-                  ...item,
-                  errorMessage: getImageConverterErrorMessage(
-                    error,
-                    content,
-                    acceptedFormatsText,
-                    content.client.errors.convertFailed,
-                  ),
-                  status: "error",
-                }
+              ? { ...item, errorMessage: message, status: "error" }
               : item,
           ),
         );
@@ -406,31 +385,82 @@ export function useImageConverter(
 
     setIsConverting(false);
     setBatchProgress(null);
+
+    return freshItems;
   }
 
-  function handleDownloadItem(id: string) {
-    const item = items.find((entry) => entry.id === id);
-
-    if (!item?.result) {
+  async function handleGenerateAllClick() {
+    if (items.length === 0) {
+      setErrorMessage(content.client.errors.uploadFirst);
       return;
     }
 
-    const anchor = document.createElement("a");
-    anchor.href = item.result.previewUrl;
-    anchor.download = item.result.fileName;
-    anchor.click();
+    await runConversion(
+      selectItemsNeedingConversion({ items, settings: currentSettings }),
+    );
   }
 
-  async function handleDownloadAllClick() {
-    const readyItems = items.filter((item) => item.result);
+  // 下载前若该项还没生成过、或设置改动后已过期，先自动生成再下载。
+  async function handleDownloadItem(id: string) {
+    let item = items.find((entry) => entry.id === id);
 
-    if (readyItems.length === 0) {
+    // width 为 0 说明原图解码失败，没有可转换的源。
+    if (!item || item.width <= 0) {
+      return;
+    }
+
+    try {
+      setIsDownloading(true);
+
+      const needsConversion =
+        selectItemsNeedingConversion({
+          items: [item],
+          settings: currentSettings,
+        }).length > 0;
+
+      if (needsConversion) {
+        const fresh = await runConversion([item]);
+        item = fresh.get(id) ?? item;
+      }
+
+      if (item.status !== "done" || !item.result) {
+        // 自动生成失败，错误信息已在对应位置展示。
+        return;
+      }
+
+      const anchor = document.createElement("a");
+      anchor.href = item.result.previewUrl;
+      anchor.download = item.result.fileName;
+      anchor.click();
+    } finally {
+      setIsDownloading(false);
+    }
+  }
+
+  // 打包下载前先把待生成/已过期的项全部自动生成，再用最新结果打 ZIP。
+  async function handleDownloadAllClick() {
+    if (items.length === 0) {
       setErrorMessage(content.client.batch.zipEmpty);
       return;
     }
 
     try {
-      setIsZipping(true);
+      setIsDownloading(true);
+
+      const itemsToConvert = selectItemsNeedingConversion({
+        items,
+        settings: currentSettings,
+      });
+      const fresh = await runConversion(itemsToConvert);
+      const latestItems = itemsRef.current.map(
+        (item) => fresh.get(item.id) ?? item,
+      );
+      const readyItems = latestItems.filter((item) => item.result);
+
+      if (readyItems.length === 0) {
+        setErrorMessage(content.client.batch.zipEmpty);
+        return;
+      }
 
       const zipBlob = await buildBatchZip(readyItems);
       const zipUrl = URL.createObjectURL(zipBlob);
@@ -445,7 +475,26 @@ export function useImageConverter(
         URL.revokeObjectURL(zipUrl);
       }, 1000);
     } finally {
-      setIsZipping(false);
+      setIsDownloading(false);
+    }
+  }
+
+  // 应用尺寸预设：填入宽高；锁定比例模式下无法同时精确满足宽高，自动切到裁切填充。
+  function handlePresetSelect(key: string | null) {
+    if (!key) {
+      return;
+    }
+
+    const preset = getDimensionPreset(key);
+
+    if (!preset) {
+      return;
+    }
+
+    setTargetDimensions(String(preset.width), String(preset.height));
+
+    if (resizeMode === "lock") {
+      setResizeMode("crop");
     }
   }
 
@@ -499,6 +548,7 @@ export function useImageConverter(
     handleFormatChange,
     handleGenerateAllClick,
     handleHeightChange,
+    handlePresetSelect,
     handleQualityChange,
     handleRemoveItem,
     handleResetClick,
@@ -508,10 +558,10 @@ export function useImageConverter(
     inputRef,
     isBatchMode,
     isConverting,
+    isDownloading,
     isDragging,
     isPreparing,
     isResultStale,
-    isZipping,
     items,
     outputFormat,
     outputFormatContent,

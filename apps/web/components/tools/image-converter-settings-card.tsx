@@ -12,6 +12,8 @@ import { Field, FieldDescription, FieldLabel } from "@/components/ui/field";
 import { Input } from "@/components/ui/input";
 import {
   Select,
+  SelectGroup,
+  SelectGroupLabel,
   SelectItem,
   SelectPopup,
   SelectTrigger,
@@ -27,6 +29,11 @@ import {
   RESIZE_MODES,
   type ResizeMode,
 } from "@/lib/image-converter";
+import {
+  DIMENSION_PRESET_GROUPS,
+  DIMENSION_PRESETS,
+  findMatchingPreset,
+} from "@/lib/image-converter-presets";
 import type { LocaleContent } from "@/messages/types";
 
 const RESIZE_MODE_LABEL_KEYS = {
@@ -53,13 +60,14 @@ export function ImageConverterSettingsCard({
     handleFormatChange,
     handleGenerateAllClick,
     handleHeightChange,
+    handlePresetSelect,
     handleQualityChange,
     handleResizeModeChange,
     handleWidthChange,
     isBatchMode,
     isConverting,
+    isDownloading,
     isResultStale,
-    isZipping,
     items,
     outputFormat,
     outputFormatContent,
@@ -73,7 +81,7 @@ export function ImageConverterSettingsCard({
   } = controller;
 
   const isSingleMode = items.length === 1 && Boolean(firstItem);
-  const doneCount = items.filter((item) => item.status === "done").length;
+  const matchedPreset = findMatchingPreset(targetWidth, targetHeight);
 
   const staleBadge = isSingleMode ? (
     isResultStale ? (
@@ -149,6 +157,45 @@ export function ImageConverterSettingsCard({
               ))}
             </div>
           </div>
+
+          <Field>
+            <FieldLabel>{content.client.settings.preset}</FieldLabel>
+            <Select
+              onValueChange={handlePresetSelect}
+              value={matchedPreset?.key ?? null}
+            >
+              <SelectTrigger>
+                <SelectValue>
+                  {matchedPreset
+                    ? `${content.client.settings.presetNames[matchedPreset.key]} · ${matchedPreset.width} x ${matchedPreset.height}`
+                    : content.client.settings.presetCustom}
+                </SelectValue>
+              </SelectTrigger>
+              <SelectPopup>
+                {DIMENSION_PRESET_GROUPS.map((group) => (
+                  <SelectGroup key={group}>
+                    <SelectGroupLabel>
+                      {content.client.settings.presetGroups[group]}
+                    </SelectGroupLabel>
+                    {DIMENSION_PRESETS.filter(
+                      (preset) => preset.group === group,
+                    ).map((preset) => (
+                      <SelectItem key={preset.key} value={preset.key}>
+                        <div className="flex flex-col gap-0.5">
+                          <span>
+                            {content.client.settings.presetNames[preset.key]}
+                          </span>
+                          <span className="text-mute text-xs">
+                            {preset.width} x {preset.height} px
+                          </span>
+                        </div>
+                      </SelectItem>
+                    ))}
+                  </SelectGroup>
+                ))}
+              </SelectPopup>
+            </Select>
+          </Field>
 
           <div className="grid gap-4 sm:grid-cols-2">
             <Field>
@@ -273,8 +320,7 @@ export function ImageConverterSettingsCard({
           </Button>
           {isBatchMode ? (
             <Button
-              disabled={doneCount === 0}
-              loading={isZipping}
+              loading={isDownloading}
               onClick={handleDownloadAllClick}
               variant="press-ink"
             >
@@ -283,7 +329,8 @@ export function ImageConverterSettingsCard({
             </Button>
           ) : (
             <Button
-              disabled={!firstItem?.result}
+              disabled={!firstItem || firstItem.width <= 0}
+              loading={isDownloading}
               onClick={() => firstItem && handleDownloadItem(firstItem.id)}
               variant="press-ink"
             >

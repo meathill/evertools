@@ -1,5 +1,7 @@
 import {
+  buildOutputFilename,
   type CropAnchor,
+  convertImageFile,
   getCurrentTargetDimensions,
   getImageConverterErrorMessage,
   isAcceptedImageFile,
@@ -8,6 +10,7 @@ import {
   type ResizeMode,
   type ResultImage,
   readImageFile,
+  resolveTargetDimensions,
   supportsQuality,
 } from "@/lib/image-converter";
 import type { LocaleContent } from "@/messages/types";
@@ -203,6 +206,48 @@ export function selectItemsNeedingConversion(input: {
   settings: BatchConversionSettings;
 }): BatchItem[] {
   return input.items.filter((item) => isBatchItemStale(item, input.settings));
+}
+
+// 按共享设置转换单个批量项，返回带预览地址的结果对象；失败时抛出，
+// 由调用方统一转成本地化错误信息。目标尺寸按这张图自己的原始宽高解析。
+export async function convertBatchItem(input: {
+  item: BatchItem;
+  settings: BatchConversionSettings;
+}): Promise<ResultImage> {
+  const { item, settings } = input;
+
+  const targetDimensions = resolveTargetDimensions({
+    heightInput: settings.heightInput,
+    isAspectLocked: settings.isAspectLocked,
+    originalHeight: item.height,
+    originalWidth: item.width,
+    widthInput: settings.widthInput,
+  });
+
+  const blob = await convertImageFile({
+    crop:
+      settings.resizeMode === "crop"
+        ? { anchor: settings.cropAnchor }
+        : undefined,
+    file: item.file,
+    format: settings.outputFormat,
+    height: targetDimensions.height,
+    quality: settings.quality,
+    width: targetDimensions.width,
+  });
+
+  return {
+    blob,
+    cropAnchor: settings.resizeMode === "crop" ? settings.cropAnchor : null,
+    fileName: buildOutputFilename(item.originalName, settings.outputFormat),
+    format: settings.outputFormat,
+    height: targetDimensions.height,
+    previewUrl: URL.createObjectURL(blob),
+    quality: settings.quality,
+    resizeMode: settings.resizeMode,
+    size: blob.size,
+    width: targetDimensions.width,
+  };
 }
 
 // jszip 只在用户点击“打包下载”时才会用到，动态 import 避免所有用户都加载这部分体积

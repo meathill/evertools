@@ -1,11 +1,5 @@
 import type { VariantProps } from "class-variance-authority";
-import {
-  DownloadIcon,
-  PackageIcon,
-  SparklesIcon,
-  TriangleAlertIcon,
-  XIcon,
-} from "lucide-react";
+import { DownloadIcon, TriangleAlertIcon, XIcon } from "lucide-react";
 import { Badge, type badgeVariants } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import {
@@ -39,16 +33,8 @@ export function ImageConverterBatchList({
   content,
   controller,
 }: ImageConverterBatchListProps) {
-  const {
-    batchProgress,
-    handleDownloadAllClick,
-    handleDownloadItem,
-    handleGenerateAllClick,
-    handleRemoveItem,
-    isConverting,
-    isZipping,
-    items,
-  } = controller;
+  const { batchProgress, handleDownloadItem, handleRemoveItem, items } =
+    controller;
 
   const statusLabels: Record<BatchItemStatus, string> = {
     converting: content.client.batch.statusConverting,
@@ -56,8 +42,6 @@ export function ImageConverterBatchList({
     error: content.client.batch.statusError,
     pending: content.client.batch.statusPending,
   };
-  const doneCount = items.filter((item) => item.status === "done").length;
-
   return (
     <div className="space-y-4">
       {batchProgress ? (
@@ -124,7 +108,7 @@ export function ImageConverterBatchList({
                         "{name}",
                         item.originalName,
                       )}
-                      disabled={item.status !== "done"}
+                      disabled={item.width <= 0}
                       onClick={() => handleDownloadItem(item.id)}
                       size="icon-sm"
                       variant="outline"
@@ -148,26 +132,6 @@ export function ImageConverterBatchList({
             ))}
           </TableBody>
         </Table>
-      </div>
-
-      <div className="grid gap-3 sm:grid-cols-2">
-        <Button
-          loading={isConverting}
-          onClick={handleGenerateAllClick}
-          variant="press"
-        >
-          <SparklesIcon />
-          {content.client.settings.generateAll}
-        </Button>
-        <Button
-          disabled={doneCount === 0}
-          loading={isZipping}
-          onClick={handleDownloadAllClick}
-          variant="press-ink"
-        >
-          <PackageIcon />
-          {content.client.settings.downloadAll}
-        </Button>
       </div>
     </div>
   );
