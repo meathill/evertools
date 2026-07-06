@@ -370,7 +370,8 @@ export const esMessages: LocaleContent = {
       title: "Recortar imágenes en línea",
     },
     scenarios: {
-      cover: "Quieres recortar la imagen a una proporción fija, como un avatar o una portada, sin calcular píxeles a mano.",
+      cover:
+        "Quieres recortar la imagen a una proporción fija, como un avatar o una portada, sin calcular píxeles a mano.",
       description:
         "Ideal para quitar rápidamente lo que sobra y exportar con la proporción adecuada; no está pensada para retoques complejos.",
       precise:
@@ -437,7 +438,8 @@ export const esMessages: LocaleContent = {
     content: {
       faqDescription: "Algunas preguntas frecuentes antes de empezar.",
       faqTitle: "Preguntas frecuentes",
-      privacyDescription: "Conviene conocer estas notas antes de usar la herramienta.",
+      privacyDescription:
+        "Conviene conocer estas notas antes de usar la herramienta.",
       privacyItems: [
         "Las imágenes nunca se suben a un servidor; todo el recorte ocurre en tu navegador.",
         "El tamaño exportado es exactamente el tamaño en píxeles de la selección sobre la imagen original, sin escalado adicional.",

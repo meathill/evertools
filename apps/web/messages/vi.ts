@@ -341,6 +341,194 @@ export const viMessages: LocaleContent = {
       title: "Cong cu chuyen {from} sang {to}",
     },
   },
+  imageCropper: {
+    metadata: {
+      description:
+        "Cat anh truc tuyen tu do: keo khung chon ngay tren anh de cat PNG, JPG, WebP va HEIC chinh xac, ho tro cac ti le pho bien nhu 1:1 va 16:9. Moi xu ly dien ra trong trinh duyet, khong tai anh len.",
+      keywords: [
+        "cat anh online",
+        "crop anh",
+        "cat anh truc tuyen",
+        "image cropper",
+        "crop image online",
+        "cat anh 16:9",
+      ],
+      title: "Cat anh truc tuyen",
+    },
+    hero: {
+      badges: {
+        category: "Cong cu anh",
+        freeCrop: "Cat bang khung chon tu do",
+        localProcessing: "Xu ly trong trinh duyet",
+      },
+      description:
+        "Tai anh len roi keo khung chon ngay tren anh, cat tu do bat ky vung nao, hoac khoa nhanh cac ti le pho bien nhu 1:1, 4:3, 16:9 chi voi mot cu bam. Ho tro PNG, JPG, WebP va anh HEIC tu iPhone. Moi thu xu ly trong trinh duyet, khong tai len may chu.",
+      title: "Cat anh truc tuyen",
+    },
+    scenarios: {
+      cover:
+        "Ban muon cat anh theo ti le co dinh nhu anh dai dien hay anh bia ma khong phai tu tinh pixel.",
+      description:
+        "Phu hop de cat bo phan thua nhanh chong va xuat anh theo ti le, khong danh cho chinh sua anh phuc tap.",
+      precise:
+        "Anh chup man hinh co noi dung thua va ban can khoanh vung giu lai that chinh xac.",
+      privacy:
+        "Ban quan tam den quyen rieng tu va khong muon tai anh len dich vu ben thu ba.",
+      title: "Phu hop cho nhung tinh huong nhu",
+    },
+    tool: {
+      category: "Cong cu anh",
+      description:
+        "Cat anh truc tuyen tu do: keo khung chon ngay tren anh de cat chinh xac, ho tro cac ti le co san nhu 1:1, 4:3, 16:9 va xuat PNG, JPG hoac WebP. Moi xu ly dien ra trong trinh duyet, khong tai anh len.",
+      faq: [
+        {
+          answer:
+            "Khong. Qua trinh xu ly dien ra hoan toan trong trinh duyet va tep khong duoc gui len may chu.",
+          question: "Anh cua toi co bi tai len may chu khong?",
+        },
+        {
+          answer:
+            "Nhap ho tro PNG, JPG/JPEG, WebP va HEIC/HEIF (anh iPhone); xuat ho tro PNG, JPG va WebP.",
+          question: "Cong cu ho tro nhung dinh dang nao?",
+        },
+        {
+          answer:
+            'Chon mot ti le co san (nhu 1:1, 16:9), khung chon se tu dong khoa theo ti le do va khong bi meo khi keo cac diem dieu chinh; chon "Tu do" de dieu chinh tuy y.',
+          question: "Lam sao de cat theo ti le co dinh?",
+        },
+        {
+          answer:
+            "JPEG khong ho tro trong suot. Neu anh goc co nen trong, khi xuat sang JPG nen se duoc tu dong dien mau trang.",
+          question: "Nen trong suot se ra sao khi xuat JPG?",
+        },
+      ],
+      features: [
+        "Keo khung chon ngay tren anh, cat tu do bat ky vung nao",
+        "Ti le co san pho bien: 1:1, 4:3, 3:2, 16:9, 9:16",
+        "Hien thi kich thuoc pixel goc cua vung chon theo thoi gian thuc",
+        "Xuat PNG, JPG, WebP kem tuy chinh chat luong",
+        "Ho tro anh HEIC/HEIF tu iPhone lam dau vao",
+        "Xu ly cuc bo, khong tai anh goc len",
+      ],
+      keywords: [
+        "cat anh online",
+        "crop anh",
+        "cat anh truc tuyen",
+        "image cropper",
+        "crop image online",
+        "cat anh 16:9",
+        "cat anh 1:1",
+        "cat anh dai dien",
+        "cong cu cat anh",
+      ],
+      name: "Cat anh (khung chon tu do)",
+      steps: [
+        "Tai len mot anh PNG, JPG, WebP hoac HEIC.",
+        "Keo khung chon tren anh hoac chon mot ti le co san.",
+        "Chon dinh dang xuat va dieu chinh chat luong neu can.",
+        "Bam tao ket qua, xem truoc va tai xuong anh da cat.",
+      ],
+      summary:
+        "Keo khung chon de cat anh tu do ngay trong trinh duyet, ho tro cac ti le pho bien va xuat PNG/JPG/WebP.",
+    },
+    content: {
+      faqDescription: "Mot vai cau hoi thuong gap truoc khi bat dau.",
+      faqTitle: "Cau hoi thuong gap",
+      privacyDescription: "Nhung dieu nen biet truoc khi su dung.",
+      privacyItems: [
+        "Anh khong duoc tai len may chu; moi thao tac cat dien ra trong trinh duyet cua ban.",
+        "Kich thuoc xuat ra chinh la kich thuoc pixel goc cua vung chon, khong phong to hay thu nho them.",
+        "JPEG khong ho tro nen trong suot, khi xuat nen se duoc tu dong dien mau trang.",
+      ],
+      privacyTitle: "Luu y khi su dung",
+      stepsDescription: "Lam theo cac buoc sau de hoan tat viec cat anh.",
+      stepsTitle: "Cach su dung",
+      supportDescription:
+        "Co the nhap PNG, JPG/JPEG, WebP va HEIC/HEIF; xuat ho tro PNG, JPG/JPEG va WebP (HEIC chi dung lam dau vao).",
+      supportTitle: "Dinh dang duoc ho tro",
+    },
+    client: {
+      badges: {
+        localProcessing: "Xu ly trong trinh duyet",
+        supportedFormats: "Ho tro {formats}",
+      },
+      upload: {
+        chooseImage: "Chon anh",
+        clear: "Xoa",
+        decoding: "Dang giai ma anh HEIC…",
+        description:
+          "Keo tha anh vao vung ben duoi hoac bam nut de chon anh. Moi thu xu ly cuc bo va khong bao gio tai len may chu.",
+        emptyDescription:
+          "Ho tro PNG, JPG/JPEG, WebP va HEIC (anh iPhone). Sau khi tai len, keo khung chon ngay tren anh de cat.",
+        emptyTitle: "Tha anh vao de bat dau cat",
+        reselect: "Chon anh khac",
+        sourceLabel: "Anh goc",
+        title: "Tai len va cat",
+      },
+      crop: {
+        aspects: {
+          fourThree: "4:3",
+          free: "Tu do",
+          nineSixteen: "9:16",
+          sixteenNine: "16:9",
+          square: "1:1",
+          threeTwo: "3:2",
+        },
+        aspectTitle: "Ti le cat",
+        originalLabel: "Anh goc {width} x {height} px",
+        selectionLabel: "Vung chon {width} x {height} px",
+      },
+      settings: {
+        description:
+          "Keo khung chon o ben trai truoc, sau do chon dinh dang xuat. JPEG va WebP con co the dieu chinh chat luong nen.",
+        download: "Tai anh xuong",
+        generate: "Tao ket qua",
+        pendingResult: "Dieu chinh khung chon roi bam tao ket qua",
+        quality: "Chat luong dau ra",
+        qualityAria: "Chat luong dau ra",
+        qualityDescription:
+          "Chat luong cao hon thuong dong nghia tep lon hon. Bat dau quanh 82 la mot lua chon hop ly.",
+        regenerate: "Tao lai ket qua",
+        resultLabel: "Anh ket qua",
+        targetFormat: "Dinh dang xuat",
+        title: "Thiet lap xuat anh",
+      },
+      preview: {
+        alt: "Xem truoc {label}",
+        emptyDescription:
+          "Anh ket qua se hien o day sau khi tao, ban co the xem truoc va tai xuong truc tiep.",
+      },
+      errors: {
+        blobFailed: "Trinh duyet khong tao duoc anh ket qua. Vui long thu lai.",
+        canvasUnsupported:
+          "Trinh duyet nay khong ho tro Canvas nen chua the cat anh.",
+        cropFailed: "Cat anh that bai. Vui long thu lai sau.",
+        imageBroken: "Khong the doc anh. Hay dam bao tep khong bi hong.",
+        invalidSelection: "Hay khoanh mot vung cat hop le tren anh truoc.",
+        readFailed: "Khong the doc anh. Hay thu tep khac.",
+        unsupportedFormat:
+          "Dinh dang nay chua duoc ho tro. Hay tai len anh {formats}.",
+        unsupportedOutput: "Trinh duyet nay khong the xuat {format} luc nay.",
+        uploadFirst: "Hay tai anh len truoc.",
+      },
+    },
+    formats: {
+      jpg: {
+        description:
+          "Nen mat du lieu, phu hop cho anh chup; vung trong suot se thanh mau trang",
+        label: "JPG",
+      },
+      png: {
+        description:
+          "Khong mat du lieu, phu hop cho anh chup man hinh, bieu tuong va nen trong suot",
+        label: "PNG",
+      },
+      webp: {
+        description: "Nen tot hon, phu hop cho anh web",
+        label: "WebP",
+      },
+    },
+  },
   pdfTextEditor: {
     metadata: {
       description:

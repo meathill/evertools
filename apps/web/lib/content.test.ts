@@ -1,6 +1,7 @@
 import { describe, expect, it } from "vitest";
 import {
   getImageConverterTool,
+  getImageCropperTool,
   getJsonViewerTool,
   getOgImageValidatorTool,
   getPdfTextEditorTool,
@@ -21,6 +22,19 @@ describe("getImageConverterTool", () => {
     expect(tool.stepsTitle).toBe(zh.imageConverter.content.stepsTitle);
     expect(tool.name).toBe(zh.imageConverter.tool.name);
     expect(tool.faq).toEqual(zh.imageConverter.tool.faq);
+  });
+});
+
+describe("getImageCropperTool", () => {
+  it("builds the image-cropper definition", () => {
+    const tool = getImageCropperTool(zh);
+    expect(tool.slug).toBe("image-cropper");
+    expect(tool.href).toBe("/tools/image-cropper");
+    expect(tool.applicationCategory).toBe("MultimediaApplication");
+    expect(tool.totalTime).toBe("PT1M");
+    expect(tool.stepsTitle).toBe(zh.imageCropper.content.stepsTitle);
+    expect(tool.name).toBe(zh.imageCropper.tool.name);
+    expect(tool.faq).toEqual(zh.imageCropper.tool.faq);
   });
 });
 
@@ -69,9 +83,10 @@ describe("getSitemapValidatorTool", () => {
 });
 
 describe("getTools", () => {
-  it("returns the six tools in registration order", () => {
+  it("returns the seven tools in registration order", () => {
     expect(getTools(zh).map((tool) => tool.slug)).toEqual([
       "image-converter",
+      "image-cropper",
       "pdf-text-editor",
       "json-viewer",
       "og-image-validator",

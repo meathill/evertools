@@ -345,6 +345,200 @@ export const ptMessages: LocaleContent = {
       title: "Conversor de {from} para {to}",
     },
   },
+  imageCropper: {
+    metadata: {
+      description:
+        "Corte imagens online com total liberdade: arraste a area de selecao para recortar PNG, JPG, WebP e HEIC com precisao, com proporcoes comuns como 1:1 e 16:9. Todo o processamento acontece no navegador, sem enviar a imagem.",
+      keywords: [
+        "cortar imagem online",
+        "recortar foto",
+        "image cropper",
+        "crop image online",
+        "corte livre",
+        "cortar 16:9",
+      ],
+      title: "Cortar imagens online",
+    },
+    hero: {
+      badges: {
+        category: "Ferramenta de imagem",
+        freeCrop: "Corte com selecao livre",
+        localProcessing: "Processamento no navegador",
+      },
+      description:
+        "Envie uma imagem e arraste a area de selecao diretamente sobre ela para cortar qualquer regiao, ou trave com um clique proporcoes comuns como 1:1, 4:3 ou 16:9. Suporta PNG, JPG, WebP e fotos HEIC do iPhone; tudo e processado no navegador, sem enviar nada ao servidor.",
+      title: "Cortar imagens online",
+    },
+    scenarios: {
+      cover:
+        "Voce quer cortar a imagem em uma proporcao fixa, como avatar ou capa, sem calcular pixels manualmente.",
+      description:
+        "Ideal para remover rapidamente o excesso e exportar na proporcao certa; nao serve para edicoes complexas.",
+      precise:
+        "Uma captura de tela tem conteudo a mais e voce precisa selecionar com precisao a area que quer manter.",
+      privacy:
+        "Voce se importa com privacidade e nao quer enviar imagens para um servico de terceiros.",
+      title: "Boa para tarefas como estas",
+    },
+    tool: {
+      category: "Ferramenta de imagem",
+      description:
+        "Corte imagens online com liberdade: arraste a area de selecao sobre a imagem para recortar com precisao, use proporcoes predefinidas como 1:1, 4:3 ou 16:9 e exporte para PNG, JPG ou WebP. Todo o processamento acontece no navegador, sem enviar a imagem.",
+      faq: [
+        {
+          answer:
+            "Nao. O processamento acontece totalmente no seu navegador e os arquivos nao sao enviados ao servidor.",
+          question: "Minha imagem sera enviada para um servidor?",
+        },
+        {
+          answer:
+            "PNG, JPG/JPEG, WebP e HEIC/HEIF (fotos do iPhone) podem ser importados; para exportar estao disponiveis PNG, JPG e WebP.",
+          question: "Quais formatos de imagem sao suportados?",
+        },
+        {
+          answer:
+            'Escolha uma proporcao predefinida (como 1:1 ou 16:9) e a area de selecao ficara travada nessa proporcao, sem deformar ao arrastar as alcas; com "Livre" voce pode ajustar como quiser.',
+          question: "Como corto com uma proporcao fixa?",
+        },
+        {
+          answer:
+            "JPEG nao suporta transparencia. Se a imagem original tiver fundo transparente, ao exportar para JPG ele sera preenchido automaticamente com fundo branco.",
+          question:
+            "O que acontece com fundos transparentes ao exportar para JPG?",
+        },
+      ],
+      features: [
+        "Arraste a area de selecao diretamente sobre a imagem para cortar qualquer regiao",
+        "Proporcoes predefinidas comuns: 1:1, 4:3, 3:2, 16:9 e 9:16",
+        "Mostra em tempo real as dimensoes em pixels da selecao na imagem original",
+        "Exporte para PNG, JPG ou WebP com qualidade ajustavel",
+        "Suporta fotos HEIC/HEIF do iPhone como entrada",
+        "Processamento local, sem enviar a imagem original",
+      ],
+      keywords: [
+        "cortar imagem online",
+        "recortar foto",
+        "image cropper",
+        "crop image online",
+        "corte livre",
+        "cortar 16:9",
+        "cortar 1:1",
+        "cortar avatar",
+        "ferramenta para cortar imagem",
+      ],
+      name: "Corte de imagens (selecao livre)",
+      steps: [
+        "Envie uma imagem PNG, JPG, WebP ou HEIC.",
+        "Arraste a area de selecao sobre a imagem ou escolha uma proporcao predefinida.",
+        "Escolha o formato de exportacao e ajuste a qualidade se precisar.",
+        "Gere o resultado, visualize e baixe a imagem cortada.",
+      ],
+      summary:
+        "Corte imagens arrastando uma area de selecao diretamente no navegador, com proporcoes predefinidas e exportacao para PNG/JPG/WebP.",
+    },
+    content: {
+      faqDescription: "Algumas perguntas comuns antes de comecar.",
+      faqTitle: "Perguntas frequentes",
+      privacyDescription:
+        "Vale conhecer estas observacoes antes de usar a ferramenta.",
+      privacyItems: [
+        "As imagens nunca sao enviadas a um servidor; todo o corte acontece no seu navegador.",
+        "O tamanho exportado e exatamente o tamanho em pixels da selecao na imagem original, sem redimensionamento extra.",
+        "JPEG nao suporta fundo transparente, entao na exportacao ele sera preenchido automaticamente com branco.",
+      ],
+      privacyTitle: "Observacoes de uso",
+      stepsDescription: "Siga estes passos para concluir o corte.",
+      stepsTitle: "Como usar",
+      supportDescription:
+        "PNG, JPG/JPEG, WebP e HEIC/HEIF podem ser importados; para exportar estao disponiveis PNG, JPG/JPEG e WebP (HEIC apenas como entrada).",
+      supportTitle: "Formatos suportados",
+    },
+    client: {
+      badges: {
+        localProcessing: "Processamento no navegador",
+        supportedFormats: "Suporta {formats}",
+      },
+      upload: {
+        chooseImage: "Escolher imagem",
+        clear: "Limpar",
+        decoding: "Decodificando foto HEIC…",
+        description:
+          "Arraste uma imagem para a area abaixo ou clique no botao para escolher. Tudo e processado localmente e nunca e enviado ao servidor.",
+        emptyDescription:
+          "Suporta PNG, JPG/JPEG, WebP e HEIC (fotos do iPhone). Depois de enviar, arraste a area de selecao diretamente sobre a imagem para cortar.",
+        emptyTitle: "Solte uma imagem para comecar a cortar",
+        reselect: "Escolher outra",
+        sourceLabel: "Original",
+        title: "Enviar e cortar",
+      },
+      crop: {
+        aspects: {
+          fourThree: "4:3",
+          free: "Livre",
+          nineSixteen: "9:16",
+          sixteenNine: "16:9",
+          square: "1:1",
+          threeTwo: "3:2",
+        },
+        aspectTitle: "Proporcao do corte",
+        originalLabel: "Original {width} x {height} px",
+        selectionLabel: "Selecao {width} x {height} px",
+      },
+      settings: {
+        description:
+          "Ajuste primeiro a area de selecao a esquerda e depois escolha o formato de exportacao. JPEG e WebP tambem permitem controlar a qualidade de compressao.",
+        download: "Baixar imagem",
+        generate: "Gerar resultado",
+        pendingResult: "Ajuste a selecao e gere o resultado",
+        quality: "Qualidade de saida",
+        qualityAria: "Qualidade de saida",
+        qualityDescription:
+          "Maior qualidade normalmente significa arquivo maior. Comecar perto de 82 costuma ser uma boa escolha.",
+        regenerate: "Gerar novamente",
+        resultLabel: "Resultado",
+        targetFormat: "Formato de exportacao",
+        title: "Configuracoes de exportacao",
+      },
+      preview: {
+        alt: "Previa de {label}",
+        emptyDescription:
+          "A imagem gerada aparecera aqui para que voce possa visualizar e baixar diretamente.",
+      },
+      errors: {
+        blobFailed:
+          "O navegador nao conseguiu gerar a imagem de saida. Tente novamente.",
+        canvasUnsupported:
+          "Este navegador nao suporta Canvas, entao o corte de imagem nao esta disponivel.",
+        cropFailed: "O corte falhou. Tente novamente mais tarde.",
+        imageBroken:
+          "Nao foi possivel ler a imagem. Verifique se o arquivo nao esta corrompido.",
+        invalidSelection:
+          "Primeiro selecione uma area de corte valida sobre a imagem.",
+        readFailed: "Falha ao ler a imagem. Tente outro arquivo.",
+        unsupportedFormat:
+          "Este formato ainda nao e suportado. Envie uma imagem {formats}.",
+        unsupportedOutput:
+          "Este navegador nao consegue exportar {format} agora.",
+        uploadFirst: "Envie uma imagem primeiro.",
+      },
+    },
+    formats: {
+      jpg: {
+        description:
+          "Com perdas, ideal para fotos; fundos transparentes ficam brancos",
+        label: "JPG",
+      },
+      png: {
+        description:
+          "Sem perdas, ideal para capturas de tela, icones e transparencia",
+        label: "PNG",
+      },
+      webp: {
+        description: "Maior compressao, ideal para imagens web",
+        label: "WebP",
+      },
+    },
+  },
   pdfTextEditor: {
     metadata: {
       description:

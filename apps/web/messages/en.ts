@@ -365,7 +365,8 @@ export const enMessages: LocaleContent = {
       title: "Online Image Cropper",
     },
     scenarios: {
-      cover: "You want to crop an image to a fixed ratio for an avatar or cover and do not want to calculate pixels by hand.",
+      cover:
+        "You want to crop an image to a fixed ratio for an avatar or cover and do not want to calculate pixels by hand.",
       description:
         "Good for quickly trimming excess areas and exporting at a fixed ratio — not for complex photo editing.",
       precise:
