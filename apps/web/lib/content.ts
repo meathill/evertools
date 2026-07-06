@@ -44,6 +44,24 @@ export function getImageConverterTool(content: LocaleContent): ToolDefinition {
   };
 }
 
+export function getImageCropperTool(content: LocaleContent): ToolDefinition {
+  return {
+    applicationCategory: "MultimediaApplication",
+    category: content.imageCropper.tool.category,
+    description: content.imageCropper.tool.description,
+    faq: content.imageCropper.tool.faq,
+    features: content.imageCropper.tool.features,
+    href: "/tools/image-cropper",
+    keywords: content.imageCropper.tool.keywords,
+    name: content.imageCropper.tool.name,
+    slug: "image-cropper",
+    steps: content.imageCropper.tool.steps,
+    stepsTitle: content.imageCropper.content.stepsTitle,
+    summary: content.imageCropper.tool.summary,
+    totalTime: "PT1M",
+  };
+}
+
 // 转换落地页（如 heic-to-jpg）：唯一字段用模板插值生成强 SEO 信号，
 // features/steps/faq 等正文直接复用图片转换器内容，避免重写 9×7 份文案。
 export function getConversionTool(
@@ -172,6 +190,7 @@ export function getSitemapValidatorTool(
 export function getTools(content: LocaleContent): ToolDefinition[] {
   return [
     getImageConverterTool(content),
+    getImageCropperTool(content),
     getPdfTextEditorTool(content),
     getJsonViewerTool(content),
     getOgImageValidatorTool(content),

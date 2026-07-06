@@ -340,6 +340,194 @@ export const enMessages: LocaleContent = {
       title: "{from} to {to} Converter",
     },
   },
+  imageCropper: {
+    metadata: {
+      description:
+        "Crop images online with a free-form selection: drag to crop PNG, JPG, WebP and HEIC precisely, with common presets like 1:1 and 16:9. Everything runs locally in your browser — no uploads.",
+      keywords: [
+        "crop image online",
+        "image cropper",
+        "free crop tool",
+        "crop photo",
+        "16:9 crop",
+        "crop png jpg webp",
+      ],
+      title: "Online Image Cropper",
+    },
+    hero: {
+      badges: {
+        category: "Image tool",
+        freeCrop: "Free-form cropping",
+        localProcessing: "Browser-side processing",
+      },
+      description:
+        "Upload an image and drag a selection right on top of it to crop any area, or lock a common aspect ratio like 1:1, 4:3 or 16:9 with one click. Supports PNG, JPG, WebP and iPhone HEIC photos, all processed locally in your browser with no server uploads.",
+      title: "Online Image Cropper",
+    },
+    scenarios: {
+      cover: "You want to crop an image to a fixed ratio for an avatar or cover and do not want to calculate pixels by hand.",
+      description:
+        "Good for quickly trimming excess areas and exporting at a fixed ratio — not for complex photo editing.",
+      precise:
+        "A screenshot contains extra content and you need to precisely select the area to keep.",
+      privacy:
+        "You care about privacy and do not want to upload images to a third-party service.",
+      title: "Good for tasks like these",
+    },
+    tool: {
+      category: "Image tool",
+      description:
+        "Crop images online with a free-form selection: drag directly on the image for precise cropping, use presets like 1:1, 4:3 and 16:9, and export as PNG, JPG or WebP. Everything runs in your browser with no uploads.",
+      faq: [
+        {
+          answer:
+            "No. All processing happens in your browser and files are never sent to the server.",
+          question: "Will my image be uploaded to a server?",
+        },
+        {
+          answer:
+            "PNG, JPG/JPEG, WebP and HEIC/HEIF (iPhone photos) can be imported; PNG, JPG and WebP are available for export.",
+          question: "Which image formats are supported?",
+        },
+        {
+          answer:
+            "Pick an aspect ratio preset (such as 1:1 or 16:9) and the selection locks to that ratio, so dragging the handles never distorts it. Choose Free to resize the selection however you like.",
+          question: "How do I crop to a fixed aspect ratio?",
+        },
+        {
+          answer:
+            "JPEG does not support transparency. If the source image has a transparent background, it will be filled with white when exported as JPG.",
+          question: "What happens to transparent backgrounds exported as JPG?",
+        },
+      ],
+      features: [
+        "Drag a selection directly on the image to crop any area",
+        "Aspect ratio presets: 1:1, 4:3, 3:2, 16:9 and 9:16",
+        "Live readout of the selection size in original-image pixels",
+        "Export as PNG, JPG or WebP with adjustable quality",
+        "Accepts iPhone HEIC/HEIF photos as input",
+        "Local processing with no uploads",
+      ],
+      keywords: [
+        "crop image online",
+        "image cropper",
+        "free crop tool",
+        "crop photo",
+        "16:9 crop",
+        "1:1 crop",
+        "avatar crop",
+        "crop screenshot",
+        "image crop tool",
+      ],
+      name: "Image Cropper (Free-Form Selection)",
+      steps: [
+        "Upload a PNG, JPG, WebP or HEIC image.",
+        "Drag a selection on the image, or pick an aspect ratio preset.",
+        "Choose the export format and adjust quality if needed.",
+        "Generate the result, preview it and download the cropped image.",
+      ],
+      summary:
+        "Crop images with a drag-to-select box right in your browser, with common aspect ratio presets and PNG/JPG/WebP export.",
+    },
+    content: {
+      faqDescription: "A few common questions before you start.",
+      faqTitle: "FAQ",
+      privacyDescription: "A few notes worth knowing before you use the tool.",
+      privacyItems: [
+        "Images are never uploaded. All cropping happens in your browser.",
+        "The export size equals the selection size in original-image pixels, with no extra scaling.",
+        "JPEG does not support transparency, so transparent areas will be filled with white.",
+      ],
+      privacyTitle: "Notes",
+      stepsDescription: "Follow these steps to crop your image.",
+      stepsTitle: "How to use it",
+      supportDescription:
+        "PNG, JPG/JPEG, WebP and HEIC/HEIF can be imported; PNG, JPG/JPEG and WebP are available for export (HEIC is input only).",
+      supportTitle: "Supported formats",
+    },
+    client: {
+      badges: {
+        localProcessing: "Browser-side processing",
+        supportedFormats: "Supports {formats}",
+      },
+      upload: {
+        chooseImage: "Choose image",
+        clear: "Clear",
+        decoding: "Decoding HEIC photo…",
+        description:
+          "Drag an image into the area below, or click the button to choose one. Everything runs locally and is never uploaded.",
+        emptyDescription:
+          "Supports PNG, JPG/JPEG, WebP and HEIC (iPhone photos). After uploading, drag a selection right on the image to crop.",
+        emptyTitle: "Drop an image to start cropping",
+        reselect: "Choose another",
+        sourceLabel: "Source",
+        title: "Upload and crop",
+      },
+      crop: {
+        aspects: {
+          fourThree: "4:3",
+          free: "Free",
+          nineSixteen: "9:16",
+          sixteenNine: "16:9",
+          square: "1:1",
+          threeTwo: "3:2",
+        },
+        aspectTitle: "Aspect ratio",
+        originalLabel: "Original {width} x {height} px",
+        selectionLabel: "Selection {width} x {height} px",
+      },
+      settings: {
+        description:
+          "Adjust the selection on the left first, then choose the export format. JPEG and WebP also support quality control.",
+        download: "Download image",
+        generate: "Generate result",
+        pendingResult: "Adjust the selection, then generate a result",
+        quality: "Output quality",
+        qualityAria: "Output quality",
+        qualityDescription:
+          "Higher quality usually means a larger file. Starting around 82 is a practical default.",
+        regenerate: "Regenerate result",
+        resultLabel: "Result",
+        targetFormat: "Export format",
+        title: "Export settings",
+      },
+      preview: {
+        alt: "{label} preview",
+        emptyDescription:
+          "The cropped image will appear here so you can preview and download it directly.",
+      },
+      errors: {
+        blobFailed:
+          "The browser did not generate an output image. Please try again.",
+        canvasUnsupported:
+          "This browser does not support Canvas, so image cropping is not available.",
+        cropFailed: "Cropping failed. Please try again later.",
+        imageBroken:
+          "The image could not be read. Please make sure the file is not corrupted.",
+        invalidSelection:
+          "Please drag a valid crop selection on the image first.",
+        readFailed: "Failed to read the image. Please try another file.",
+        unsupportedFormat:
+          "This format is not supported yet. Please upload a {formats} image.",
+        unsupportedOutput: "This browser cannot export {format} right now.",
+        uploadFirst: "Please upload an image first.",
+      },
+    },
+    formats: {
+      jpg: {
+        description: "Lossy, good for photos; transparent areas become white",
+        label: "JPG",
+      },
+      png: {
+        description: "Lossless, good for screenshots, icons and transparency",
+        label: "PNG",
+      },
+      webp: {
+        description: "Higher compression, good for web images",
+        label: "WebP",
+      },
+    },
+  },
   pdfTextEditor: {
     metadata: {
       description:

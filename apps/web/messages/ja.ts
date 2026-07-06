@@ -340,6 +340,196 @@ export const jaMessages: LocaleContent = {
       title: "{from} を {to} に変換",
     },
   },
+  imageCropper: {
+    metadata: {
+      description:
+        "画像をオンラインで自由に切り抜き：選択範囲をドラッグして PNG、JPG、WebP、HEIC を正確にトリミングできます。1:1 や 16:9 などの比率プリセットにも対応。処理はすべてブラウザ内で完結し、画像はアップロードされません。",
+      keywords: [
+        "画像 切り抜き",
+        "画像 トリミング オンライン",
+        "写真 切り抜き",
+        "トリミング 無料",
+        "16:9 切り抜き",
+        "画像 クロップ",
+      ],
+      title: "オンライン画像切り抜き",
+    },
+    hero: {
+      badges: {
+        category: "画像ツール",
+        freeCrop: "自由範囲の切り抜き",
+        localProcessing: "ブラウザ内処理",
+      },
+      description:
+        "画像をアップロードしたら、画像の上で選択範囲をドラッグして好きな部分を切り抜けます。1:1、4:3、16:9 などのよく使う比率もワンクリックで固定できます。PNG、JPG、WebP、iPhone の HEIC 写真に対応し、すべてブラウザ内で処理され、サーバーへはアップロードされません。",
+      title: "オンライン画像切り抜き",
+    },
+    scenarios: {
+      cover: "アイコンやカバー画像など決まった比率に切り抜きたいが、ピクセルを手計算したくない場合。",
+      description:
+        "余計な部分を素早く切り取ったり、比率を固定して書き出したい場面向けです。複雑なレタッチには向きません。",
+      precise:
+        "スクリーンショットに不要な部分があり、残したい範囲を正確に選択したい場合。",
+      privacy:
+        "プライバシーを重視し、第三者サービスに画像をアップロードしたくない場合。",
+      title: "こんなときに便利",
+    },
+    tool: {
+      category: "画像ツール",
+      description:
+        "画像をオンラインで自由に切り抜き：画像の上で選択範囲をドラッグして正確にトリミングでき、1:1、4:3、16:9 などの比率プリセットにも対応。PNG、JPG、WebP で書き出せます。処理はすべてブラウザ内で完結し、画像はアップロードされません。",
+      faq: [
+        {
+          answer:
+            "いいえ。すべての処理はブラウザ内で行われ、ファイルがサーバーへ送信されることはありません。",
+          question: "画像はサーバーにアップロードされますか？",
+        },
+        {
+          answer:
+            "入力は PNG、JPG/JPEG、WebP、HEIC/HEIF（iPhone 写真）に対応し、出力は PNG、JPG、WebP に対応しています。",
+          question: "対応している画像形式は何ですか？",
+        },
+        {
+          answer:
+            "比率プリセット（1:1 や 16:9 など）を選ぶと選択範囲がその比率に固定され、ハンドルをドラッグしても崩れません。「自由」を選べば好きな形に調整できます。",
+          question: "決まった比率で切り抜くには？",
+        },
+        {
+          answer:
+            "JPEG は透明度をサポートしていません。元画像に透明背景がある場合、JPG で書き出すと自動的に白背景で補完されます。",
+          question: "透明背景を JPG で書き出すとどうなりますか？",
+        },
+      ],
+      features: [
+        "画像の上で直接ドラッグして、好きな範囲を自由に切り抜き",
+        "1:1、4:3、3:2、16:9、9:16 のよく使う比率プリセット",
+        "選択範囲に対応する元画像のピクセルサイズをリアルタイム表示",
+        "PNG、JPG、WebP で書き出し可能、品質調整にも対応",
+        "iPhone の HEIC/HEIF 写真を入力として利用可能",
+        "ローカル処理でアップロード不要",
+      ],
+      keywords: [
+        "画像 切り抜き",
+        "画像 トリミング オンライン",
+        "写真 切り抜き",
+        "トリミング 無料",
+        "16:9 切り抜き",
+        "1:1 切り抜き",
+        "アイコン 切り抜き",
+        "画像 クロップ",
+        "トリミング ツール",
+      ],
+      name: "画像切り抜き（自由選択）",
+      steps: [
+        "PNG、JPG、WebP、または HEIC の画像を 1 枚アップロードします。",
+        "画像の上で選択範囲をドラッグするか、比率プリセットを選びます。",
+        "書き出し形式を選び、必要に応じて品質を調整します。",
+        "結果を生成し、プレビューして切り抜いた画像をダウンロードします。",
+      ],
+      summary:
+        "ブラウザ内で選択範囲をドラッグして画像を自由に切り抜き。比率プリセットと PNG/JPG/WebP 書き出しに対応。",
+    },
+    content: {
+      faqDescription: "使う前によく気になるポイントをまとめています。",
+      faqTitle: "よくある質問",
+      privacyDescription: "使い始める前に知っておきたい点です。",
+      privacyItems: [
+        "画像はサーバーにアップロードされず、切り抜きはすべてブラウザ内で行われます。",
+        "書き出しサイズは選択範囲に対応する元画像のピクセルサイズで、追加の拡大縮小は行いません。",
+        "JPEG は透明背景に対応していないため、透明部分は白で補完されます。",
+      ],
+      privacyTitle: "利用上の注意",
+      stepsDescription: "次の手順で切り抜きできます。",
+      stepsTitle: "使い方",
+      supportDescription:
+        "入力は PNG、JPG/JPEG、WebP、HEIC/HEIF に対応。出力は PNG、JPG/JPEG、WebP です（HEIC は入力のみ）。",
+      supportTitle: "対応形式",
+    },
+    client: {
+      badges: {
+        localProcessing: "ブラウザ内処理",
+        supportedFormats: "対応形式: {formats}",
+      },
+      upload: {
+        chooseImage: "画像を選択",
+        clear: "クリア",
+        decoding: "HEIC 写真をデコード中…",
+        description:
+          "下のエリアに画像をドラッグするか、ボタンから画像を選択してください。すべてブラウザ内で処理され、サーバーへはアップロードしません。",
+        emptyDescription:
+          "PNG、JPG/JPEG、WebP、HEIC（iPhone 写真）に対応しています。アップロード後、画像の上でドラッグするだけで切り抜けます。",
+        emptyTitle: "画像をドロップして切り抜き開始",
+        reselect: "別の画像を選ぶ",
+        sourceLabel: "元画像",
+        title: "アップロードして切り抜き",
+      },
+      crop: {
+        aspects: {
+          fourThree: "4:3",
+          free: "自由",
+          nineSixteen: "9:16",
+          sixteenNine: "16:9",
+          square: "1:1",
+          threeTwo: "3:2",
+        },
+        aspectTitle: "切り抜き比率",
+        originalLabel: "元画像 {width} x {height} px",
+        selectionLabel: "選択範囲 {width} x {height} px",
+      },
+      settings: {
+        description:
+          "まず左側で選択範囲を調整し、その後で書き出し形式を選びます。JPEG と WebP では品質も調整できます。",
+        download: "画像をダウンロード",
+        generate: "結果を生成",
+        pendingResult: "選択範囲を調整してから結果を生成してください",
+        quality: "出力品質",
+        qualityAria: "出力品質",
+        qualityDescription:
+          "品質を上げるほど通常はファイルサイズも大きくなります。まずは 82 前後から試すのがおすすめです。",
+        regenerate: "結果を再生成",
+        resultLabel: "結果画像",
+        targetFormat: "書き出し形式",
+        title: "書き出し設定",
+      },
+      preview: {
+        alt: "{label} のプレビュー",
+        emptyDescription:
+          "生成後、ここに結果画像が表示され、そのままプレビューとダウンロードができます。",
+      },
+      errors: {
+        blobFailed:
+          "ブラウザで結果画像を生成できませんでした。もう一度お試しください。",
+        canvasUnsupported:
+          "このブラウザは Canvas に対応していないため、画像の切り抜きを利用できません。",
+        cropFailed:
+          "切り抜きに失敗しました。しばらくしてから再度お試しください。",
+        imageBroken:
+          "画像を読み込めませんでした。ファイルが壊れていないか確認してください。",
+        invalidSelection:
+          "先に画像の上で有効な切り抜き範囲を選択してください。",
+        readFailed:
+          "画像の読み込みに失敗しました。別のファイルでお試しください。",
+        unsupportedFormat:
+          "この形式はまだ対応していません。{formats} の画像をアップロードしてください。",
+        unsupportedOutput: "このブラウザでは現在 {format} を書き出せません。",
+        uploadFirst: "先に画像をアップロードしてください。",
+      },
+    },
+    formats: {
+      jpg: {
+        description: "非可逆圧縮。写真向け。透明部分は白背景になります",
+        label: "JPG",
+      },
+      png: {
+        description: "可逆圧縮。スクリーンショット、アイコン、透明背景向け",
+        label: "PNG",
+      },
+      webp: {
+        description: "圧縮率が高く、Web 画像向け",
+        label: "WebP",
+      },
+    },
+  },
   pdfTextEditor: {
     metadata: {
       description:

@@ -326,6 +326,184 @@ export const zhMessages = {
       title: "{from} 转 {to} 在线转换器",
     },
   },
+  imageCropper: {
+    metadata: {
+      description:
+        "在线自由裁切图片：拖拽选框精确裁剪 PNG、JPG、WebP、HEIC，支持 1:1、16:9 等常用比例。所有处理都在浏览器本地完成，不上传图片。",
+      keywords: [
+        "在线裁剪图片",
+        "图片裁切",
+        "image cropper",
+        "crop image online",
+        "自由裁剪",
+        "16:9 裁剪",
+      ],
+      title: "在线图片裁切",
+    },
+    hero: {
+      badges: {
+        category: "图片工具",
+        freeCrop: "自由选框裁切",
+        localProcessing: "浏览器本地处理",
+      },
+      description:
+        "上传图片后直接在图上拖拽选框，自由裁切任意区域，也可以一键锁定 1:1、4:3、16:9 等常用比例。支持 PNG、JPG、WebP 和 iPhone 的 HEIC 照片，全程在浏览器本地处理，不上传服务器。",
+      title: "在线图片裁切",
+    },
+    scenarios: {
+      cover: "想把图片裁成头像、封面等固定比例，不想手动算像素。",
+      description: "适合快速裁掉多余画面、按比例出图，不适合复杂修图。",
+      precise: "截图里有多余内容，需要精确框选保留区域。",
+      privacy: "对隐私敏感，不想把图片上传到第三方服务。",
+      title: "适合这些情况",
+    },
+    tool: {
+      category: "图片工具",
+      description:
+        "在线自由裁切图片：在图上拖拽选框精确裁剪，支持 1:1、4:3、16:9 等常用比例预设，导出 PNG、JPG 或 WebP。所有处理都在浏览器本地完成，不上传图片。",
+      faq: [
+        {
+          answer: "不会。所有处理都在浏览器本地完成，文件不会发送到服务器。",
+          question: "图片会上传到服务器吗？",
+        },
+        {
+          answer:
+            "导入支持 PNG、JPG/JPEG、WebP 和 HEIC/HEIF（iPhone 照片），导出支持 PNG、JPG、WebP。",
+          question: "支持哪些图片格式？",
+        },
+        {
+          answer:
+            "选择一个比例预设（如 1:1、16:9）后，选框会自动锁定该比例，拖动手柄时不会变形；选「自由」则可以任意调整。",
+          question: "如何按固定比例裁切？",
+        },
+        {
+          answer:
+            "JPEG 不支持透明通道。若原图包含透明背景，导出为 JPG 时会自动填充为白色背景。",
+          question: "透明背景导出为 JPG 会怎样？",
+        },
+      ],
+      features: [
+        "在图上直接拖拽选框，自由裁切任意区域",
+        "1:1、4:3、3:2、16:9、9:16 常用比例预设",
+        "实时显示选区对应的原图像素尺寸",
+        "导出 PNG、JPG、WebP，支持质量调节",
+        "支持 iPhone 的 HEIC/HEIF 照片作为输入",
+        "本地处理，不上传原图",
+      ],
+      keywords: [
+        "在线裁剪图片",
+        "图片裁切",
+        "image cropper",
+        "crop image online",
+        "自由裁剪",
+        "16:9 裁剪",
+        "1:1 裁剪",
+        "头像裁剪",
+        "图片裁剪工具",
+      ],
+      name: "图片裁切（自由选框）",
+      steps: [
+        "上传一张 PNG、JPG、WebP 或 HEIC 图片。",
+        "在图上拖拽选框，或选择一个比例预设。",
+        "选择导出格式，按需调整质量。",
+        "点击生成结果，预览并下载裁切后的图片。",
+      ],
+      summary:
+        "在浏览器本地拖拽选框自由裁切图片，支持常用比例预设与 PNG/JPG/WebP 导出。",
+    },
+    content: {
+      faqDescription: "开始前常见的几个问题。",
+      faqTitle: "常见问题",
+      privacyDescription: "使用前先了解这些说明。",
+      privacyItems: [
+        "图片不会上传到服务器，所有裁切都在你的浏览器里完成。",
+        "导出尺寸即选区对应的原图像素尺寸，不做额外缩放。",
+        "JPEG 不支持透明背景，导出时会自动补成白底。",
+      ],
+      privacyTitle: "使用说明",
+      stepsDescription: "按下面的步骤即可完成裁切。",
+      stepsTitle: "使用方法",
+      supportDescription:
+        "导入支持 PNG、JPG/JPEG、WebP 和 HEIC/HEIF；导出支持 PNG、JPG/JPEG、WebP（HEIC 仅作为输入）。",
+      supportTitle: "支持的格式",
+    },
+    client: {
+      badges: {
+        localProcessing: "浏览器本地处理",
+        supportedFormats: "支持 {formats}",
+      },
+      upload: {
+        chooseImage: "选择图片",
+        clear: "清空",
+        decoding: "正在解码 HEIC 照片…",
+        description:
+          "拖拽图片到下方区域，或点击按钮选择图片。全程在本地处理，不会上传到服务器。",
+        emptyDescription:
+          "支持 PNG、JPG/JPEG、WebP 和 HEIC（iPhone 照片）。上传后直接在图上拖拽选框即可裁切。",
+        emptyTitle: "拖入图片开始裁切",
+        reselect: "重新选择",
+        sourceLabel: "原图",
+        title: "上传并裁切",
+      },
+      crop: {
+        aspects: {
+          fourThree: "4:3",
+          free: "自由",
+          nineSixteen: "9:16",
+          sixteenNine: "16:9",
+          square: "1:1",
+          threeTwo: "3:2",
+        },
+        aspectTitle: "裁切比例",
+        originalLabel: "原图 {width} x {height} px",
+        selectionLabel: "选区 {width} x {height} px",
+      },
+      settings: {
+        description:
+          "先在左侧拖好选框，再选导出格式。JPEG 与 WebP 可以额外设置压缩质量。",
+        download: "下载图片",
+        generate: "生成结果",
+        pendingResult: "调整选框后点击生成结果",
+        quality: "输出质量",
+        qualityAria: "输出质量",
+        qualityDescription:
+          "质量越高，文件通常越大。建议先从 82 左右开始尝试。",
+        regenerate: "重新生成结果",
+        resultLabel: "结果图",
+        targetFormat: "导出格式",
+        title: "导出设置",
+      },
+      preview: {
+        alt: "{label}预览",
+        emptyDescription: "生成后会在这里显示结果图，你可以直接预览并下载。",
+      },
+      errors: {
+        blobFailed: "浏览器没有生成结果图片，请稍后重试。",
+        canvasUnsupported: "当前浏览器不支持 Canvas，暂时无法裁切图片。",
+        cropFailed: "裁切失败，请稍后重试。",
+        imageBroken: "图片读取失败，请确认文件没有损坏。",
+        invalidSelection: "请先在图片上框选一个有效的裁切区域。",
+        readFailed: "图片读取失败，请换一张图片再试。",
+        unsupportedFormat: "暂不支持该格式，请上传 {formats} 图片。",
+        unsupportedOutput: "当前浏览器暂不支持导出 {format}。",
+        uploadFirst: "请先上传一张图片。",
+      },
+    },
+    formats: {
+      jpg: {
+        description: "有损，适合照片；透明背景会转为白底",
+        label: "JPG",
+      },
+      png: {
+        description: "无损，适合截图、图标和透明背景",
+        label: "PNG",
+      },
+      webp: {
+        description: "压缩率更高，适合网页图片",
+        label: "WebP",
+      },
+    },
+  },
   pdfTextEditor: {
     metadata: {
       description:

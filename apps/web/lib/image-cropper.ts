@@ -1,6 +1,6 @@
 import {
-  clampQuality,
   canvasToBlob,
+  clampQuality,
   createImageConverterError,
   getOutputExtension,
   IMAGE_CONVERTER_ERROR_CODES,
@@ -84,10 +84,12 @@ export function getCenteredCrop(input: {
   if (aspect >= sourceAspect) {
     // 目标比例比原图更宽：宽度方向占满，按比例反推高度。
     widthPercent = 90;
-    heightPercent = (((widthPercent / 100) * naturalWidth) / aspect / naturalHeight) * 100;
+    heightPercent =
+      (((widthPercent / 100) * naturalWidth) / aspect / naturalHeight) * 100;
   } else {
     heightPercent = 90;
-    widthPercent = (((heightPercent / 100) * naturalHeight) * aspect / naturalWidth) * 100;
+    widthPercent =
+      (((heightPercent / 100) * naturalHeight * aspect) / naturalWidth) * 100;
   }
 
   return {
