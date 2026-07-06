@@ -412,7 +412,7 @@ export async function convertImageFile(
   }
 }
 
-function loadImage(sourceUrl: string): Promise<HTMLImageElement> {
+export function loadImage(sourceUrl: string): Promise<HTMLImageElement> {
   return new Promise((resolve, reject) => {
     const image = new Image();
 
@@ -431,7 +431,7 @@ function loadImage(sourceUrl: string): Promise<HTMLImageElement> {
   });
 }
 
-function canvasToBlob(
+export function canvasToBlob(
   canvas: HTMLCanvasElement,
   type: OutputFormat,
   quality?: number,
@@ -454,7 +454,7 @@ function canvasToBlob(
   });
 }
 
-function createImageConverterError(
+export function createImageConverterError(
   code: ImageConverterErrorCode,
   detail?: string,
 ): Error {
