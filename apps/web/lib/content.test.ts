@@ -1,5 +1,6 @@
 import { describe, expect, it } from "vitest";
 import {
+  getHtmlToMarkdownTool,
   getImageConverterTool,
   getImageCropperTool,
   getJsonViewerTool,
@@ -82,8 +83,21 @@ describe("getSitemapValidatorTool", () => {
   });
 });
 
+describe("getHtmlToMarkdownTool", () => {
+  it("builds the html-to-markdown definition", () => {
+    const tool = getHtmlToMarkdownTool(zh);
+    expect(tool.slug).toBe("html-to-markdown");
+    expect(tool.href).toBe("/tools/html-to-markdown");
+    expect(tool.applicationCategory).toBe("UtilitiesApplication");
+    expect(tool.totalTime).toBe("PT1M");
+    expect(tool.stepsTitle).toBe(zh.htmlToMarkdown.content.stepsTitle);
+    expect(tool.name).toBe(zh.htmlToMarkdown.tool.name);
+    expect(tool.faq).toEqual(zh.htmlToMarkdown.tool.faq);
+  });
+});
+
 describe("getTools", () => {
-  it("returns the seven tools in registration order", () => {
+  it("returns the eight tools in registration order", () => {
     expect(getTools(zh).map((tool) => tool.slug)).toEqual([
       "image-converter",
       "image-cropper",
@@ -92,6 +106,7 @@ describe("getTools", () => {
       "og-image-validator",
       "markdown-to-pdf",
       "sitemap-validator",
+      "html-to-markdown",
     ]);
   });
 

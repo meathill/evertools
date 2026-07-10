@@ -1378,4 +1378,134 @@ export const esMessages: LocaleContent = {
       },
     },
   },
+  htmlToMarkdown: {
+    metadata: {
+      description:
+        "Pega contenido copiado de una página web, o código HTML, y conviértelo en Markdown limpio con un clic. Conserva títulos, negritas, enlaces, listas, tablas y bloques de código — todo se procesa localmente en tu navegador, sin subir nada.",
+      keywords: [
+        "html a markdown",
+        "página web a markdown",
+        "pegar a markdown",
+        "convertidor html a md",
+        "convertir html a markdown online",
+      ],
+      title: "Página web a Markdown",
+    },
+    hero: {
+      badges: {
+        category: "Herramienta de contenido",
+        localProcessing: "Procesamiento local en navegador",
+        pasteReady: "Pega y convierte",
+      },
+      description:
+        "Selecciona y copia contenido de cualquier página web, luego pégalo aquí — o pega directamente código HTML. Se convierte al instante en Markdown limpio, conservando títulos, negritas, cursivas, enlaces, listas, tablas y bloques de código. Todo se procesa localmente en tu navegador; no se sube nada.",
+      title: "Página web a Markdown",
+    },
+    scenarios: {
+      description:
+        "Ideal para convertir contenido web en notas o documentos Markdown, no para reproducir maquetaciones complejas.",
+      dev: "Necesitas convertir rápidamente un fragmento HTML a Markdown mientras desarrollas.",
+      migrate:
+        "Estás migrando contenido HTML de un sitio antiguo o CMS a documentos Markdown.",
+      notes:
+        "Encontraste un buen artículo y quieres guardar lo esencial como notas en Markdown.",
+      title: "Ideal para",
+    },
+    tool: {
+      category: "Herramienta de contenido",
+      description:
+        "Convierte contenido web o código HTML a Markdown online: admite títulos, negritas, cursivas, tachado, enlaces, imágenes, listas ordenadas/desordenadas, citas, tablas y bloques de código. Al pegar contenido enriquecido se lee automáticamente la estructura HTML del portapapeles; pegar código HTML directamente funciona igual. Todo el procesamiento es local en tu navegador — no se sube nada.",
+      faq: [
+        {
+          answer:
+            "No. Pegar, analizar y convertir ocurre todo localmente en tu navegador; nada se envía a un servidor.",
+          question: "¿Se sube mi contenido a un servidor?",
+        },
+        {
+          answer:
+            "Selecciona el contenido que quieres en la página web, cópialo y pégalo en el cuadro de entrada — la herramienta lee automáticamente la estructura HTML enriquecida del portapapeles y la convierte.",
+          question: "¿Cómo convierto un artículo de una página web a Markdown?",
+        },
+        {
+          answer:
+            "Sí. Pega o escribe directamente código HTML como texto — funciona igual que pegar contenido enriquecido.",
+          question: "¿Puedo pegar código HTML directamente?",
+        },
+        {
+          answer:
+            "Sí, se admiten tablas estilo GFM y bloques de código con delimitadores, y los bloques de código intentan detectar la anotación de lenguaje original.",
+          question: "¿Las tablas y los bloques de código se convierten bien?",
+        },
+        {
+          answer:
+            "No exactamente. Solo se conserva el formato habitual que Markdown puede expresar (títulos, listas, enlaces, etc.) — la maquetación, los estilos y el diseño complejos no se conservan.",
+          question: "¿El resultado se verá igual que la página web original?",
+        },
+      ],
+      features: [
+        "Lee automáticamente la estructura HTML del portapapeles al pegar contenido enriquecido; también admite pegar código HTML directamente",
+        "Admite títulos, negritas, cursivas, tachado, enlaces e imágenes",
+        "Admite listas ordenadas/desordenadas (incluso anidadas) y citas (incluso anidadas)",
+        "Admite tablas GFM y bloques de código con delimitadores, con detección automática de lenguaje",
+        "Procesamiento local en tu navegador — no se sube nada",
+        "Copia el resultado con un clic",
+      ],
+      keywords: [
+        "html a markdown",
+        "página web a markdown",
+        "pegar a markdown",
+        "convertidor html a md",
+        "convertir html a markdown online",
+      ],
+      name: "Página web a Markdown",
+      steps: [
+        "Selecciona y copia contenido de cualquier página web, o prepara un fragmento de código HTML.",
+        "Pégalo en el cuadro de entrada de la izquierda — la derecha lo convierte a Markdown al instante.",
+        "Haz clic en copiar y pega el resultado en tus notas, documentos o CMS.",
+      ],
+      summary:
+        "Convierte contenido web pegado o código HTML en Markdown, localmente en tu navegador.",
+    },
+    content: {
+      faqDescription: "Algunas preguntas frecuentes antes de empezar.",
+      faqTitle: "Preguntas frecuentes",
+      privacyDescription: "Algunas cosas que conviene saber antes de usarlo.",
+      privacyItems: [
+        "No se sube nada — la conversión ocurre por completo en tu navegador.",
+        "Al pegar contenido enriquecido se lee automáticamente la estructura HTML del portapapeles; también puedes pegar o editar código HTML directamente.",
+        "La maquetación, los estilos y el diseño complejos no se conservan — solo se convierte el formato habitual que Markdown puede expresar.",
+      ],
+      privacyTitle: "Antes de usarlo",
+      stepsDescription: "Sigue estos pasos para convertir tu contenido.",
+      stepsTitle: "Cómo usarlo",
+      supportDescription:
+        "Cubre el formato más usado en la escritura y documentación cotidianas.",
+      supportTitle: "Formato compatible",
+    },
+    client: {
+      empty: {
+        description:
+          "Pega contenido web o código HTML a la izquierda, y aquí aparecerá el Markdown convertido.",
+        title: "Pega contenido para empezar",
+      },
+      error:
+        "Este contenido no se pudo convertir por ahora — intenta pegar algo más simple, o usa directamente el código HTML.",
+      input: {
+        clear: "Limpiar",
+        placeholder:
+          "Pega aquí contenido copiado de una página web, o pega directamente código HTML…",
+        title: "Contenido web",
+      },
+      output: {
+        title: "Resultado en Markdown",
+      },
+      status: {
+        characters: "{count} caracteres",
+      },
+      toolbar: {
+        copied: "Copiado",
+        copy: "Copiar",
+      },
+    },
+  },
 };

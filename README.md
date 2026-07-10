@@ -5,11 +5,13 @@
 ## 已上线工具
 
 - [图片格式与尺寸转换](https://tools.meathill.com/tools/image-converter) —— 在浏览器本地把 HEIC 等照片转成 JPG/PNG/WebP，并完成尺寸缩放与质量调整
+- [在线图片裁切](https://tools.meathill.com/tools/image-cropper) —— 在浏览器本地拖拽选框自由裁切图片，支持常见比例预设
 - [PDF 文字编辑器](https://tools.meathill.com/tools/pdf-text-editor) —— 在浏览器本地完成 PDF 文本替换，并尽量保留原字体外观
 - [JSON 查看器](https://tools.meathill.com/tools/json-viewer) —— 在浏览器本地把 JSON 格式化成可折叠的树，支持搜索和展开嵌套 JSON
 - [OG 图片校验](https://tools.meathill.com/tools/og-image-validator) —— 抓取网址的 Open Graph / Twitter 标签，预览多平台分享卡片并校验配图
 - [Markdown 转 PDF](https://tools.meathill.com/tools/markdown-to-pdf) —— 在浏览器里把 Markdown 渲染成格式化预览，再通过打印导出为手机友好的 PDF
 - [Sitemap 校验器](https://tools.meathill.com/tools/sitemap-validator) —— 抓取 sitemap.xml 并按协议校验结构、条目字段与体积上限，快速定位问题
+- [网页内容转 Markdown](https://tools.meathill.com/tools/html-to-markdown) —— 在浏览器本地把粘贴的网页内容或 HTML 源码转换成 Markdown
 
 ## 技术栈
 

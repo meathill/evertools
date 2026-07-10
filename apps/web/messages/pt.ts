@@ -1378,4 +1378,134 @@ export const ptMessages: LocaleContent = {
       },
     },
   },
+  htmlToMarkdown: {
+    metadata: {
+      description:
+        "Cole conteudo copiado de uma pagina web, ou codigo HTML, e converta em Markdown limpo com um clique. Mantem titulos, negrito, links, listas, tabelas e blocos de codigo — tudo roda localmente no seu navegador, nada e enviado.",
+      keywords: [
+        "html para markdown",
+        "pagina web para markdown",
+        "colar para markdown",
+        "html to markdown",
+        "conversor html para markdown online",
+      ],
+      title: "Pagina web para Markdown",
+    },
+    hero: {
+      badges: {
+        category: "Ferramenta de conteudo",
+        localProcessing: "Roda no seu navegador",
+        pasteReady: "Cole e converta",
+      },
+      description:
+        "Selecione e copie conteudo de qualquer pagina web, depois cole aqui — ou cole o codigo HTML diretamente. A conversao para Markdown limpo acontece na hora, mantendo titulos, negrito, italico, links, listas, tabelas e blocos de codigo. Tudo roda localmente no seu navegador; nada e enviado.",
+      title: "Pagina web para Markdown",
+    },
+    scenarios: {
+      description:
+        "Otimo para transformar conteudo de paginas web em notas ou documentos Markdown, nao para reproduzir layouts complexos.",
+      dev: "Voce precisa converter rapidamente um trecho de HTML para Markdown durante o desenvolvimento.",
+      migrate:
+        "Voce esta migrando conteudo HTML de um site antigo ou CMS para documentos Markdown.",
+      notes:
+        "Voce encontrou um bom artigo e quer guardar os pontos principais como notas em Markdown.",
+      title: "Otimo para",
+    },
+    tool: {
+      category: "Ferramenta de conteudo",
+      description:
+        "Converta conteudo de paginas web ou codigo HTML em Markdown online: suporta titulos, negrito, italico, tachado, links, imagens, listas ordenadas/nao ordenadas, citacoes, tabelas e blocos de codigo. Ao colar conteudo rico, a estrutura HTML da area de transferencia e lida automaticamente; colar codigo HTML diretamente funciona da mesma forma. Tudo roda localmente no seu navegador — nada e enviado.",
+      faq: [
+        {
+          answer:
+            "Nao. Colar, analisar e converter acontece tudo localmente no seu navegador; nada e enviado a um servidor.",
+          question: "Meu conteudo e enviado para um servidor?",
+        },
+        {
+          answer:
+            "Selecione o conteudo desejado na pagina web, copie e cole na caixa de entrada — a ferramenta le automaticamente a estrutura HTML rica da area de transferencia e converte.",
+          question: "Como converto um artigo de uma pagina web para Markdown?",
+        },
+        {
+          answer:
+            "Sim. Cole ou digite o texto do codigo HTML diretamente — funciona igual a colar conteudo rico.",
+          question: "Posso colar o codigo HTML diretamente?",
+        },
+        {
+          answer:
+            "Sim, tabelas no estilo GFM e blocos de codigo com cercas sao suportados, e os blocos de codigo tentam detectar a anotacao de linguagem original.",
+          question: "Tabelas e blocos de codigo sao convertidos corretamente?",
+        },
+        {
+          answer:
+            "Nao exatamente. So e mantida a formatacao comum que o Markdown consegue expressar (titulos, listas, links etc.) — layout, estilos e design complexos nao sao preservados.",
+          question: "O resultado ficara identico a pagina web original?",
+        },
+      ],
+      features: [
+        "Le automaticamente a estrutura HTML da area de transferencia ao colar conteudo rico; tambem suporta colar codigo HTML diretamente",
+        "Suporta titulos, negrito, italico, tachado, links e imagens",
+        "Suporta listas ordenadas/nao ordenadas (incluindo aninhadas) e citacoes (incluindo aninhadas)",
+        "Suporta tabelas GFM e blocos de codigo com cercas, com deteccao automatica de linguagem",
+        "Roda localmente no seu navegador — nada e enviado",
+        "Copia o resultado com um clique",
+      ],
+      keywords: [
+        "html para markdown",
+        "pagina web para markdown",
+        "colar para markdown",
+        "html to markdown",
+        "conversor html para markdown online",
+      ],
+      name: "Pagina web para Markdown",
+      steps: [
+        "Selecione e copie conteudo de qualquer pagina web, ou prepare um trecho de codigo HTML.",
+        "Cole na caixa de entrada a esquerda — o lado direito converte para Markdown na hora.",
+        "Clique em copiar e cole o resultado nas suas notas, documentos ou CMS.",
+      ],
+      summary:
+        "Converte conteudo de paginas web ou codigo HTML colado em Markdown, localmente no seu navegador.",
+    },
+    content: {
+      faqDescription: "Algumas perguntas comuns antes de comecar.",
+      faqTitle: "Perguntas frequentes",
+      privacyDescription: "Algumas coisas uteis de saber antes de usar.",
+      privacyItems: [
+        "Nada e enviado — a conversao acontece inteiramente no seu navegador.",
+        "Colar conteudo rico le automaticamente a estrutura HTML da area de transferencia; tambem e possivel colar ou editar o codigo HTML diretamente.",
+        "Layout, estilos e design complexos nao sao preservados — so e convertida a formatacao comum que o Markdown consegue expressar.",
+      ],
+      privacyTitle: "Bom saber",
+      stepsDescription: "Siga estes passos para converter seu conteudo.",
+      stepsTitle: "Como usar",
+      supportDescription:
+        "Cobre a formatacao mais usada na escrita e documentacao do dia a dia.",
+      supportTitle: "Formatacao suportada",
+    },
+    client: {
+      empty: {
+        description:
+          "Cole conteudo de pagina web ou codigo HTML a esquerda, e o Markdown convertido aparecera aqui.",
+        title: "Cole conteudo para comecar",
+      },
+      error:
+        "Nao foi possivel converter esse conteudo agora — tente colar algo mais simples, ou use o codigo HTML diretamente.",
+      input: {
+        clear: "Limpar",
+        placeholder:
+          "Cole aqui conteudo copiado de uma pagina web, ou cole o codigo HTML diretamente…",
+        title: "Conteudo da pagina web",
+      },
+      output: {
+        title: "Resultado em Markdown",
+      },
+      status: {
+        characters: "{count} caracteres",
+      },
+      toolbar: {
+        copied: "Copiado",
+        copy: "Copiar",
+      },
+    },
+  },
 };

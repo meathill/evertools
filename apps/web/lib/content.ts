@@ -187,6 +187,24 @@ export function getSitemapValidatorTool(
   };
 }
 
+export function getHtmlToMarkdownTool(content: LocaleContent): ToolDefinition {
+  return {
+    applicationCategory: "UtilitiesApplication",
+    category: content.htmlToMarkdown.tool.category,
+    description: content.htmlToMarkdown.tool.description,
+    faq: content.htmlToMarkdown.tool.faq,
+    features: content.htmlToMarkdown.tool.features,
+    href: "/tools/html-to-markdown",
+    keywords: content.htmlToMarkdown.tool.keywords,
+    name: content.htmlToMarkdown.tool.name,
+    slug: "html-to-markdown",
+    steps: content.htmlToMarkdown.tool.steps,
+    stepsTitle: content.htmlToMarkdown.content.stepsTitle,
+    summary: content.htmlToMarkdown.tool.summary,
+    totalTime: "PT1M",
+  };
+}
+
 export function getTools(content: LocaleContent): ToolDefinition[] {
   return [
     getImageConverterTool(content),
@@ -196,5 +214,6 @@ export function getTools(content: LocaleContent): ToolDefinition[] {
     getOgImageValidatorTool(content),
     getMarkdownToPdfTool(content),
     getSitemapValidatorTool(content),
+    getHtmlToMarkdownTool(content),
   ];
 }

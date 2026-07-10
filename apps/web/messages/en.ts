@@ -1359,4 +1359,134 @@ export const enMessages: LocaleContent = {
       },
     },
   },
+  htmlToMarkdown: {
+    metadata: {
+      description:
+        "Paste content copied from a webpage, or raw HTML source, and convert it to clean Markdown in one click. Keeps headings, bold text, links, lists, tables, and code blocks — everything runs locally in your browser, nothing is uploaded.",
+      keywords: [
+        "html to markdown",
+        "webpage to markdown",
+        "paste to markdown",
+        "html to md converter",
+        "convert html to markdown online",
+      ],
+      title: "Webpage to Markdown",
+    },
+    hero: {
+      badges: {
+        category: "Content tool",
+        localProcessing: "Runs in your browser",
+        pasteReady: "Paste and convert",
+      },
+      description:
+        "Select and copy content from any webpage, then paste it here — or paste raw HTML source directly. It converts instantly into clean Markdown, keeping headings, bold, italics, links, lists, tables, and code blocks. Everything runs locally in your browser; nothing is uploaded.",
+      title: "Webpage to Markdown",
+    },
+    scenarios: {
+      description:
+        "Great for turning webpage content into Markdown notes or docs — not for reproducing complex page layouts.",
+      dev: "You need to quickly convert an HTML snippet to Markdown while developing.",
+      migrate:
+        "You're migrating HTML content from an old site or CMS into Markdown documents.",
+      notes:
+        "You found a great article and want to save the key parts as Markdown notes.",
+      title: "Good for",
+    },
+    tool: {
+      category: "Content tool",
+      description:
+        "Convert webpage content or raw HTML source to Markdown online: supports headings, bold, italics, strikethrough, links, images, ordered/unordered lists, blockquotes, tables, and code blocks. Pasting rich content automatically reads the HTML structure from your clipboard; pasting raw HTML source works the same way. Everything runs locally in your browser — nothing is uploaded.",
+      faq: [
+        {
+          answer:
+            "No. Pasting, parsing, and conversion all happen locally in your browser; nothing is sent to a server.",
+          question: "Is my content uploaded to a server?",
+        },
+        {
+          answer:
+            "Select the content you want on the webpage, copy it, then paste it into the input box — the tool automatically reads the rich HTML structure from your clipboard and converts it.",
+          question: "How do I convert a webpage article to Markdown?",
+        },
+        {
+          answer:
+            "Yes. Paste or type raw HTML source text directly — it works the same as pasting rich content.",
+          question: "Can I paste raw HTML source instead?",
+        },
+        {
+          answer:
+            "Yes, GFM-style tables and fenced code blocks are supported, and code blocks try to detect the original language annotation.",
+          question: "Do tables and code blocks convert correctly?",
+        },
+        {
+          answer:
+            "Not exactly. Only the common formatting Markdown can express (headings, lists, links, etc.) is kept — complex layout, styling, and page design are not preserved.",
+          question: "Will the result look exactly like the original webpage?",
+        },
+      ],
+      features: [
+        "Automatically reads the clipboard's HTML structure when pasting rich content; also supports pasting raw HTML source",
+        "Supports headings, bold, italics, strikethrough, links, and images",
+        "Supports ordered/unordered lists (including nesting) and blockquotes (including nesting)",
+        "Supports GFM tables and fenced code blocks, with automatic language detection",
+        "Runs locally in your browser — nothing is uploaded",
+        "One-click copy of the converted result",
+      ],
+      keywords: [
+        "html to markdown",
+        "webpage to markdown",
+        "paste to markdown",
+        "html to md converter",
+        "convert html to markdown online",
+      ],
+      name: "Webpage to Markdown",
+      steps: [
+        "Select and copy content from any webpage, or prepare a snippet of HTML source.",
+        "Paste it into the input box on the left — the right side converts it to Markdown instantly.",
+        "Click copy and paste the result into your notes, docs, or CMS.",
+      ],
+      summary:
+        "Convert pasted webpage content or raw HTML source into Markdown, locally in your browser.",
+    },
+    content: {
+      faqDescription: "A few common questions before you start.",
+      faqTitle: "FAQ",
+      privacyDescription: "A few things worth knowing before you use this.",
+      privacyItems: [
+        "Nothing is uploaded — conversion happens entirely in your browser.",
+        "Pasting rich content automatically reads the HTML structure from your clipboard; you can also paste or edit HTML source directly.",
+        "Complex layout, styling, and page design are not preserved — only the common formatting Markdown can express is converted.",
+      ],
+      privacyTitle: "Good to know",
+      stepsDescription: "Follow these steps to convert your content.",
+      stepsTitle: "How to use",
+      supportDescription:
+        "Covers the formatting used most often in everyday writing and documentation.",
+      supportTitle: "Supported formatting",
+    },
+    client: {
+      empty: {
+        description:
+          "Paste webpage content or HTML source on the left, and the converted Markdown will show up here.",
+        title: "Paste content to get started",
+      },
+      error:
+        "This content couldn't be converted right now — try pasting something simpler, or use the raw HTML source instead.",
+      input: {
+        clear: "Clear",
+        placeholder:
+          "Paste content copied from a webpage here, or paste raw HTML source directly…",
+        title: "Webpage content",
+      },
+      output: {
+        title: "Markdown output",
+      },
+      status: {
+        characters: "{count} characters",
+      },
+      toolbar: {
+        copied: "Copied",
+        copy: "Copy",
+      },
+    },
+  },
 };

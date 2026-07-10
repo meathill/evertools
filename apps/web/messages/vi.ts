@@ -1354,4 +1354,136 @@ export const viMessages: LocaleContent = {
       },
     },
   },
+  htmlToMarkdown: {
+    metadata: {
+      description:
+        "Dan noi dung sao chep tu trang web, hoac ma nguon HTML, va chuyen doi thanh Markdown sach chi trong mot cu nhap. Giu nguyen tieu de, chu dam, lien ket, danh sach, bang va khoi ma — moi thu chay cuc bo trong trinh duyet, khong tai len bat cu thu gi.",
+      keywords: [
+        "html sang markdown",
+        "trang web sang markdown",
+        "dan sang markdown",
+        "html to markdown",
+        "cong cu chuyen html sang markdown",
+      ],
+      title: "Chuyen trang web sang Markdown",
+    },
+    hero: {
+      badges: {
+        category: "Cong cu noi dung",
+        localProcessing: "Chay trong trinh duyet",
+        pasteReady: "Dan la chuyen doi",
+      },
+      description:
+        "Chon va sao chep noi dung tu bat ky trang web nao, roi dan vao day — hoac dan truc tiep ma nguon HTML. Noi dung se duoc chuyen doi ngay thanh Markdown sach, giu nguyen tieu de, chu dam, chu nghieng, lien ket, danh sach, bang va khoi ma. Moi thu chay cuc bo trong trinh duyet; khong co gi duoc tai len.",
+      title: "Chuyen trang web sang Markdown",
+    },
+    scenarios: {
+      description:
+        "Phu hop de bien noi dung trang web thanh ghi chu hoac tai lieu Markdown, khong phu hop de tai tao bo cuc trang phuc tap.",
+      dev: "Ban can chuyen nhanh mot doan HTML sang Markdown trong luc phat trien.",
+      migrate:
+        "Ban dang chuyen noi dung HTML tu trang web cu hoac CMS sang tai lieu Markdown.",
+      notes:
+        "Ban tim thay mot bai viet hay va muon luu lai phan quan trong thanh ghi chu Markdown.",
+      title: "Phu hop khi",
+    },
+    tool: {
+      category: "Cong cu noi dung",
+      description:
+        "Chuyen doi noi dung trang web hoac ma nguon HTML sang Markdown truc tuyen: ho tro tieu de, chu dam, chu nghieng, gach ngang, lien ket, hinh anh, danh sach co thu tu/khong thu tu, trich dan, bang va khoi ma. Khi dan noi dung dinh dang, cong cu tu dong doc cau truc HTML tu clipboard; dan truc tiep ma nguon HTML cung hoat dong tuong tu. Moi thu chay cuc bo trong trinh duyet — khong tai len bat cu thu gi.",
+      faq: [
+        {
+          answer:
+            "Khong. Viec dan, phan tich va chuyen doi deu dien ra cuc bo trong trinh duyet; khong co gi duoc gui den may chu.",
+          question: "Noi dung cua toi co bi tai len may chu khong?",
+        },
+        {
+          answer:
+            "Chon noi dung ban muon tren trang web, sao chep roi dan vao o nhap — cong cu se tu dong doc cau truc HTML dinh dang tu clipboard va chuyen doi no.",
+          question:
+            "Lam sao de chuyen mot bai viet tren trang web sang Markdown?",
+        },
+        {
+          answer:
+            "Duoc. Dan hoac go truc tiep van ban ma nguon HTML — ket qua giong het nhu khi dan noi dung dinh dang.",
+          question: "Toi co the dan truc tiep ma nguon HTML khong?",
+        },
+        {
+          answer:
+            "Co, ho tro bang kieu GFM va khoi ma co hang rao, khoi ma se co gang nhan dien ngon ngu tu chu thich goc.",
+          question: "Bang va khoi ma co duoc chuyen doi dung khong?",
+        },
+        {
+          answer:
+            "Khong hoan toan giong. Chi giu lai nhung dinh dang pho bien ma Markdown the hien duoc (tieu de, danh sach, lien ket...) — bo cuc, kieu dang va thiet ke phuc tap se khong duoc giu lai.",
+          question: "Ket qua co giong het trang web goc khong?",
+        },
+      ],
+      features: [
+        "Tu dong doc cau truc HTML tu clipboard khi dan noi dung dinh dang; cung ho tro dan truc tiep ma nguon HTML",
+        "Ho tro tieu de, chu dam, chu nghieng, gach ngang, lien ket va hinh anh",
+        "Ho tro danh sach co thu tu/khong thu tu (ke ca long nhau) va trich dan (ke ca long nhau)",
+        "Ho tro bang GFM va khoi ma co hang rao, tu dong nhan dien ngon ngu",
+        "Chay cuc bo trong trinh duyet — khong tai len bat cu thu gi",
+        "Sao chep ket qua chi voi mot cu nhap",
+      ],
+      keywords: [
+        "html sang markdown",
+        "trang web sang markdown",
+        "dan sang markdown",
+        "html to markdown",
+        "cong cu chuyen html sang markdown",
+      ],
+      name: "Chuyen trang web sang Markdown",
+      steps: [
+        "Chon va sao chep noi dung tu bat ky trang web nao, hoac chuan bi mot doan ma nguon HTML.",
+        "Dan vao o nhap ben trai — ben phai se chuyen doi thanh Markdown ngay lap tuc.",
+        "Nhan sao chep va dan ket qua vao ghi chu, tai lieu hoac CMS cua ban.",
+      ],
+      summary:
+        "Chuyen doi noi dung trang web hoac ma nguon HTML da dan thanh Markdown, ngay trong trinh duyet.",
+    },
+    content: {
+      faqDescription: "Mot vai cau hoi thuong gap truoc khi bat dau.",
+      faqTitle: "Cau hoi thuong gap",
+      privacyDescription: "Mot vai dieu nen biet truoc khi su dung.",
+      privacyItems: [
+        "Khong co gi duoc tai len — viec chuyen doi dien ra hoan toan trong trinh duyet cua ban.",
+        "Dan noi dung dinh dang se tu dong doc cau truc HTML tu clipboard; ban cung co the dan hoac chinh sua ma nguon HTML truc tiep.",
+        "Bo cuc, kieu dang va thiet ke phuc tap se khong duoc giu lai — chi chuyen doi nhung dinh dang pho bien ma Markdown the hien duoc.",
+      ],
+      privacyTitle: "Dieu can biet",
+      stepsDescription:
+        "Lam theo cac buoc duoi day de chuyen doi noi dung cua ban.",
+      stepsTitle: "Cach su dung",
+      supportDescription:
+        "Bao gom cac dinh dang thuong dung nhat trong viet lach va soan tai lieu hang ngay.",
+      supportTitle: "Dinh dang duoc ho tro",
+    },
+    client: {
+      empty: {
+        description:
+          "Dan noi dung trang web hoac ma nguon HTML ben trai, Markdown sau khi chuyen doi se hien o day.",
+        title: "Dan noi dung de bat dau",
+      },
+      error:
+        "Noi dung nay hien khong the chuyen doi — hay thu dan noi dung don gian hon, hoac dung truc tiep ma nguon HTML.",
+      input: {
+        clear: "Xoa",
+        placeholder:
+          "Dan noi dung sao chep tu trang web vao day, hoac dan truc tiep ma nguon HTML…",
+        title: "Noi dung trang web",
+      },
+      output: {
+        title: "Ket qua Markdown",
+      },
+      status: {
+        characters: "{count} ky tu",
+      },
+      toolbar: {
+        copied: "Da sao chep",
+        copy: "Sao chep",
+      },
+    },
+  },
 };

@@ -1291,4 +1291,130 @@ export const zhMessages = {
       },
     },
   },
+  htmlToMarkdown: {
+    metadata: {
+      description:
+        "把从网页复制的内容或 HTML 源码粘贴进来，一键转换成干净的 Markdown。保留标题、加粗、链接、列表、表格、代码块等格式，全程在浏览器本地处理，不上传内容。",
+      keywords: [
+        "网页转 markdown",
+        "html 转 markdown",
+        "html to markdown",
+        "网页内容转 markdown",
+        "粘贴转 markdown",
+        "在线 html 转换器",
+      ],
+      title: "网页内容转 Markdown",
+    },
+    hero: {
+      badges: {
+        category: "内容工具",
+        localProcessing: "浏览器本地处理",
+        pasteReady: "粘贴即转换",
+      },
+      description:
+        "在任意网页选中内容后复制粘贴进来，或直接粘贴 HTML 源码，立即转换成干净的 Markdown。保留标题、加粗、斜体、链接、列表、表格、代码块等格式，全程在浏览器本地处理，内容不会上传。",
+      title: "网页内容转 Markdown",
+    },
+    scenarios: {
+      description:
+        "适合把网页内容整理成 Markdown 笔记或文档，不适合还原复杂的页面排版。",
+      dev: "开发时需要把一段 HTML 片段快速转成 Markdown 使用。",
+      migrate: "把旧站或 CMS 里的网页内容迁移成 Markdown 格式的文档。",
+      notes: "看到一篇好文章，想摘录核心内容整理成 Markdown 笔记。",
+      title: "适合这些情况",
+    },
+    tool: {
+      category: "内容工具",
+      description:
+        "在线把网页内容或 HTML 源码转换成 Markdown：支持标题、加粗、斜体、删除线、链接、图片、有序/无序列表、引用、表格和代码块。粘贴富文本时自动读取剪贴板里的 HTML 结构，也支持直接粘贴 HTML 源码。全程在浏览器本地处理，内容不上传。",
+      faq: [
+        {
+          answer:
+            "不会。粘贴、解析和转换都在你的浏览器本地完成，内容不会发送到服务器。",
+          question: "我的内容会上传服务器吗？",
+        },
+        {
+          answer:
+            "在网页上选中想要的内容，复制后粘贴进左侧输入框即可；工具会自动读取剪贴板里的富文本结构并转换。",
+          question: "怎么把一篇网页文章转成 Markdown？",
+        },
+        {
+          answer: "可以。直接粘贴或输入 HTML 源码文本，效果和粘贴富文本一样。",
+          question: "可以直接粘贴 HTML 源码吗？",
+        },
+        {
+          answer:
+            "支持 GFM 格式的表格和围栏代码块，代码块会尝试从原有标注中识别编程语言。",
+          question: "表格和代码块能正确转换吗？",
+        },
+        {
+          answer:
+            "不会完全一致。转换只保留 Markdown 能表达的常见格式（标题、列表、链接等），复杂的排版、样式和布局不会保留。",
+          question: "转换结果和原网页排版完全一致吗？",
+        },
+      ],
+      features: [
+        "粘贴网页富文本时自动读取剪贴板 HTML 结构，也支持直接粘贴 HTML 源码",
+        "支持标题、加粗、斜体、删除线、链接、图片",
+        "支持有序/无序列表（含嵌套）、引用（含嵌套）",
+        "支持 GFM 表格与围栏代码块，代码块自动识别语言标注",
+        "浏览器本地处理，内容不上传",
+        "一键复制转换结果",
+      ],
+      keywords: [
+        "网页转 markdown",
+        "html 转 markdown",
+        "html to markdown",
+        "网页内容转 markdown",
+        "粘贴转 markdown",
+        "在线 html 转换器",
+      ],
+      name: "网页内容转 Markdown",
+      steps: [
+        "在任意网页选中内容并复制，或直接准备好一段 HTML 源码。",
+        "粘贴到左侧输入框，右侧会立即转换成 Markdown。",
+        "点击复制，把结果粘贴到你的笔记、文档或 CMS 里。",
+      ],
+      summary: "在浏览器本地把粘贴的网页内容或 HTML 源码转换成 Markdown。",
+    },
+    content: {
+      faqDescription: "开始前常见的几个问题。",
+      faqTitle: "常见问题",
+      privacyDescription: "使用前先了解这些说明。",
+      privacyItems: [
+        "内容不会上传，转换完全在你的浏览器本地完成。",
+        "粘贴富文本时会自动读取剪贴板里的 HTML 结构；也可以直接粘贴或编辑 HTML 源码。",
+        "复杂的排版、样式和布局不会保留，只转换 Markdown 能表达的常见格式。",
+      ],
+      privacyTitle: "使用说明",
+      stepsDescription: "按下面的步骤即可完成转换。",
+      stepsTitle: "使用方法",
+      supportDescription: "覆盖日常写作和文档整理最常用的格式。",
+      supportTitle: "支持的格式",
+    },
+    client: {
+      empty: {
+        description:
+          "在左侧粘贴网页内容或 HTML 源码，这里会显示转换后的 Markdown。",
+        title: "粘贴内容开始转换",
+      },
+      error:
+        "这段内容暂时无法转换，请尝试粘贴更简单的内容，或直接使用 HTML 源码。",
+      input: {
+        clear: "清空",
+        placeholder: "在这里粘贴从网页复制的内容，或直接粘贴 HTML 源码…",
+        title: "输入网页内容",
+      },
+      output: {
+        title: "Markdown 输出",
+      },
+      status: {
+        characters: "{count} 字符",
+      },
+      toolbar: {
+        copied: "已复制",
+        copy: "复制",
+      },
+    },
+  },
 } as const;
