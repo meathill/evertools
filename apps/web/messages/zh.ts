@@ -51,7 +51,8 @@ export const zhMessages = {
       title: "在线工具，打开即用。",
     },
     strategy: {
-      description: "专注于解决日常小问题，减少不必要的操作步骤。",
+      description:
+        "专注于解决高频、小规模的日常问题，用最少的步骤做完，不做多余设计。",
       indexedPagesDescription:
         "选择文件后即可直接设置参数、预览结果，不用安装软件。",
       indexedPagesTitle: "打开就能用",
@@ -66,16 +67,6 @@ export const zhMessages = {
     tools: {
       description: "当前可直接使用的工具。点击进入后即可开始处理文件。",
       title: "可用工具",
-    },
-    info: {
-      expansionMatrixDescription: "每个工具都支持多种常用格式，满足日常需求。",
-      expansionMatrixTitle: "常用格式够用",
-      highFrequencyDescription:
-        "专注于解决高频、小规模的日常问题，避免过度设计。",
-      highFrequencyTitle: "小而精",
-      substantialPagesDescription:
-        "无需注册账号，打开页面就能开始处理，结果直接下载。",
-      substantialPagesTitle: "零门槛",
     },
   },
   imageConverter: {

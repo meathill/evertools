@@ -162,23 +162,6 @@ export default async function HomePage({
           ))}
         </div>
       </section>
-
-      <section className="border-t border-rule bg-fluff/30">
-        <div className="mx-auto grid max-w-6xl gap-8 px-4 py-16 sm:px-6 lg:grid-cols-3">
-          <InfoBlock
-            description={content.home.info.substantialPagesDescription}
-            title={content.home.info.substantialPagesTitle}
-          />
-          <InfoBlock
-            description={content.home.info.highFrequencyDescription}
-            title={content.home.info.highFrequencyTitle}
-          />
-          <InfoBlock
-            description={content.home.info.expansionMatrixDescription}
-            title={content.home.info.expansionMatrixTitle}
-          />
-        </div>
-      </section>
     </>
   );
 }
@@ -199,20 +182,6 @@ function FeatureStat({ description, icon, title }: FeatureStatProps) {
         <div className="font-bold text-ink">{title}</div>
         <p className="text-ink-soft text-sm leading-relaxed">{description}</p>
       </div>
-    </div>
-  );
-}
-
-type InfoBlockProps = {
-  description: string;
-  title: string;
-};
-
-function InfoBlock({ description, title }: InfoBlockProps) {
-  return (
-    <div className="space-y-2">
-      <h3 className="font-display font-bold text-lg text-ink">{title}</h3>
-      <p className="text-ink-soft leading-relaxed">{description}</p>
     </div>
   );
 }

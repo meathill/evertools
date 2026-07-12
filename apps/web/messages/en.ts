@@ -53,7 +53,8 @@ export const enMessages: LocaleContent = {
       title: "Online tools, open and use.",
     },
     strategy: {
-      description: "Focused on solving everyday problems with minimal steps.",
+      description:
+        "Focused on solving frequent, small-scale problems with minimal steps and no over-engineering.",
       indexedPagesDescription:
         "Select a file, adjust settings, preview results — all on one page.",
       indexedPagesTitle: "Start immediately",
@@ -68,17 +69,6 @@ export const enMessages: LocaleContent = {
     tools: {
       description: "Tools currently available for direct use.",
       title: "Available tools",
-    },
-    info: {
-      expansionMatrixDescription:
-        "Each tool supports common formats for everyday needs.",
-      expansionMatrixTitle: "Common formats",
-      highFrequencyDescription:
-        "Focused on solving frequent, small-scale problems without over-engineering.",
-      highFrequencyTitle: "Small and focused",
-      substantialPagesDescription:
-        "No sign-up required. Open the page, process your file, and download the result.",
-      substantialPagesTitle: "Zero barrier",
     },
   },
   imageConverter: {

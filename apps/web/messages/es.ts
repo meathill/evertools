@@ -54,7 +54,7 @@ export const esMessages: LocaleContent = {
     },
     strategy: {
       description:
-        "Enfocado en resolver problemas cotidianos con los menos pasos posibles.",
+        "Enfocado en resolver problemas cotidianos frecuentes y pequeños, con los menos pasos posibles y sin sobrediseñar.",
       indexedPagesDescription:
         "Selecciona un archivo, ajusta configuración, previsualiza resultados — todo en una página.",
       indexedPagesTitle: "Empieza enseguida",
@@ -69,17 +69,6 @@ export const esMessages: LocaleContent = {
     tools: {
       description: "Herramientas disponibles para usar directamente.",
       title: "Herramientas disponibles",
-    },
-    info: {
-      expansionMatrixDescription:
-        "Cada herramienta soporta formatos comunes para necesidades cotidianas.",
-      expansionMatrixTitle: "Formatos habituales",
-      highFrequencyDescription:
-        "Enfocado en resolver problemas frecuentes y pequeños sin sobrediseñar.",
-      highFrequencyTitle: "Pequeño y enfocado",
-      substantialPagesDescription:
-        "Sin registro ni instalación: abre la página, procesa tu archivo y descarga el resultado.",
-      substantialPagesTitle: "Sin barreras",
     },
   },
   imageConverter: {

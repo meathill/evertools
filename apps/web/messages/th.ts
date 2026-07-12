@@ -52,7 +52,8 @@ export const thMessages: LocaleContent = {
       title: "เครื่องมือออนไลน์ เปิดก็ใช้ได้เลย",
     },
     strategy: {
-      description: "มุ่งเน้นแก้ปัญหาเล็กๆ ในชีวิตประจำวัน ด้วยขั้นตอนน้อยที่สุด",
+      description:
+        "มุ่งเน้นแก้ปัญหาเล็กๆ ที่เกิดขึ้นบ่อยในชีวิตประจำวัน ด้วยขั้นตอนน้อยที่สุด โดยไม่ออกแบบเกินจำเป็น",
       indexedPagesDescription: "เลือกไฟล์ ตั้งค่า ดูตัวอย่างผลลัพธ์ — ทั้งหมดในหน้าเดียว",
       indexedPagesTitle: "เริ่มใช้งานได้ทันที",
       lightweightExpansionDescription: "ดูตัวอย่างผลลัพธ์ก่อนตัดสินใจดาวน์โหลด",
@@ -65,15 +66,6 @@ export const thMessages: LocaleContent = {
     tools: {
       description: "เครื่องมือที่ใช้งานได้ตอนนี้",
       title: "เครื่องมือที่เปิดใช้แล้ว",
-    },
-    info: {
-      expansionMatrixDescription: "แต่ละเครื่องมือรองรับรูปแบบที่ใช้บ่อยในชีวิตประจำวัน",
-      expansionMatrixTitle: "รองรับรูปแบบทั่วไป",
-      highFrequencyDescription: "มุ่งเน้นแก้ปัญหาเล็กๆ ที่เกิดขึ้นบ่อย โดยไม่ออกแบบเกินจำเป็น",
-      highFrequencyTitle: "เล็กและเน้น",
-      substantialPagesDescription:
-        "ไม่ต้องสมัครสมาชิก ไม่ต้องติดตั้ง เปิดหน้าเว็บก็เริ่มใช้ได้เลย",
-      substantialPagesTitle: "ไม่มีอุปสรรค",
     },
   },
   imageConverter: {

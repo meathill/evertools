@@ -54,7 +54,7 @@ export const viMessages: LocaleContent = {
     },
     strategy: {
       description:
-        "Tap trung giai quyet van de hang ngay voi it buoc nhat co the.",
+        "Tap trung giai quyet van de nho, xay ra thuong xuyen, voi it buoc nhat co the va khong qua thiet ke.",
       indexedPagesDescription:
         "Chon tep, dieu chinh cau hinh, xem truoc ket qua — tat ca trong mot trang.",
       indexedPagesTitle: "Bat dau ngay",
@@ -69,17 +69,6 @@ export const viMessages: LocaleContent = {
     tools: {
       description: "Nhung cong cu hien dang san sang de su dung.",
       title: "Cong cu san co",
-    },
-    info: {
-      expansionMatrixDescription:
-        "Moi cong cu ho tro cac dinh dang pho bien cho nhu cau hang ngay.",
-      expansionMatrixTitle: "Dinh dang pho bien",
-      highFrequencyDescription:
-        "Tap trung giai quyet van de nho, xay ra thuong xuyen ma khong qua thiet ke.",
-      highFrequencyTitle: "Nho va tap trung",
-      substantialPagesDescription:
-        "Khong can dang ky hay cai dat, chi can mo trang va xu ly tep.",
-      substantialPagesTitle: "Khong can dang ky",
     },
   },
   imageConverter: {

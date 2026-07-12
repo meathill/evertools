@@ -54,7 +54,7 @@ export const jaMessages: LocaleContent = {
     },
     strategy: {
       description:
-        "日常の小さな問題を、できるだけ少ない手順で解決することに特化しています。",
+        "頻繁に発生する小規模な問題を、できるだけ少ない手順で、過剰な設計をせずに解決することに特化しています。",
       indexedPagesDescription:
         "ファイルを選択して設定を調整し、結果をプレビュー — すべて1ページで完結します。",
       indexedPagesTitle: "すぐ使える",
@@ -69,17 +69,6 @@ export const jaMessages: LocaleContent = {
     tools: {
       description: "現在利用可能なツールです。",
       title: "公開中のツール",
-    },
-    info: {
-      expansionMatrixDescription:
-        "各ツールは日常的なニーズに対応する一般的な形式をサポートしています。",
-      expansionMatrixTitle: "一般的な形式に対応",
-      highFrequencyDescription:
-        "過度な設計を避け、頻繁に発生する小規模な問題の解決に特化しています。",
-      highFrequencyTitle: "小さく集中",
-      substantialPagesDescription:
-        "登録不要、インストール不要。ページを開いてファイルを処理し、結果をダウンロードできます。",
-      substantialPagesTitle: "ゼロバリア",
     },
   },
   imageConverter: {
