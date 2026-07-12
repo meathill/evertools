@@ -191,8 +191,8 @@ type FeatureStatProps = {
 
 function FeatureStat({ description, icon, title }: FeatureStatProps) {
   return (
-    <div className="rounded-lg border border-rule-strong bg-cream p-4 transition-transform hover:-translate-y-0.5">
-      <div className="mb-3 flex size-10 items-center justify-center rounded-md bg-yellow text-ink shadow-press-yellow">
+    <div className="flex gap-3">
+      <div className="flex size-10 shrink-0 items-center justify-center rounded-md bg-yellow text-ink shadow-press-yellow">
         {icon}
       </div>
       <div className="space-y-1.5">
