@@ -94,7 +94,7 @@ export function SiteHeader({ content, locale }: SiteHeaderProps) {
           </div>
         </Link>
 
-        <div className="flex items-center gap-3">
+        <div className="flex flex-wrap items-center justify-end gap-3">
           <nav className="flex items-center gap-1 overflow-x-auto">
             <a
               className="flex items-center gap-1 whitespace-nowrap rounded-sm px-2 py-1 text-ink-soft transition-colors hover:bg-fluff hover:text-ink"
