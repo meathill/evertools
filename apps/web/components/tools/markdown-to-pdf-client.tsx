@@ -14,9 +14,10 @@ import {
 } from "@/components/ui/select";
 import { Textarea } from "@/components/ui/textarea";
 import {
-  type PageWidth,
   buildPrintableHtml,
   estimatePageCount,
+  type MarkdownStyle,
+  type PageWidth,
   renderMarkdown,
 } from "@/lib/markdown-to-pdf";
 import type { LocaleContent } from "@/messages/types";
@@ -25,10 +26,17 @@ type MarkdownToPdfClientProps = {
   content: LocaleContent["markdownToPdf"];
 };
 
+const PREVIEW_CLASS_NAME: Record<MarkdownStyle, string> = {
+  classic: "md-preview text-sm",
+  "tailwind-typography": "prose prose-sm dark:prose-invert max-w-none",
+  "shadcn-typeset": "typeset typeset-md-pdf",
+};
+
 export function MarkdownToPdfClient({ content }: MarkdownToPdfClientProps) {
   const t = content.client;
   const [markdown, setMarkdown] = useState("");
   const [pageWidth, setPageWidth] = useState<PageWidth>("phone");
+  const [style, setStyle] = useState<MarkdownStyle>("shadcn-typeset");
   const [popupBlocked, setPopupBlocked] = useState(false);
 
   const deferredMarkdown = useDeferredValue(markdown);
@@ -44,6 +52,15 @@ export function MarkdownToPdfClient({ content }: MarkdownToPdfClientProps) {
     { label: t.toolbar.pageWidthOptions.a4, value: "a4" },
   ];
 
+  const styleOptions: { label: string; value: MarkdownStyle }[] = [
+    { label: t.toolbar.styleOptions.shadcnTypeset, value: "shadcn-typeset" },
+    {
+      label: t.toolbar.styleOptions.tailwindTypography,
+      value: "tailwind-typography",
+    },
+    { label: t.toolbar.styleOptions.classic, value: "classic" },
+  ];
+
   function handleClear() {
     setMarkdown("");
     setPopupBlocked(false);
@@ -51,7 +68,7 @@ export function MarkdownToPdfClient({ content }: MarkdownToPdfClientProps) {
 
   function handlePrint() {
     setPopupBlocked(false);
-    const html = buildPrintableHtml(markdown, pageWidth);
+    const html = buildPrintableHtml(markdown, pageWidth, style);
     const win = window.open("", "_blank");
     if (!win) {
       setPopupBlocked(true);
@@ -106,12 +123,29 @@ export function MarkdownToPdfClient({ content }: MarkdownToPdfClientProps) {
       <Card className="border-2 border-ink shadow-press-ink">
         <CardHeader className="flex flex-wrap items-center justify-between gap-2 border-rule border-b bg-paper-deep/50">
           <CardTitle className="text-base">{t.preview.title}</CardTitle>
-          <div className="ml-auto flex items-center gap-2">
+          <div className="ml-auto flex flex-wrap items-center gap-2">
+            <Select
+              onValueChange={(value) => setStyle(value as MarkdownStyle)}
+              value={style}
+            >
+              <SelectTrigger aria-label={t.toolbar.style} size="sm">
+                <SelectValue>
+                  {styleOptions.find((o) => o.value === style)?.label}
+                </SelectValue>
+              </SelectTrigger>
+              <SelectPopup>
+                {styleOptions.map((option) => (
+                  <SelectItem key={option.value} value={option.value}>
+                    {option.label}
+                  </SelectItem>
+                ))}
+              </SelectPopup>
+            </Select>
             <Select
               onValueChange={(value) => setPageWidth(value as PageWidth)}
               value={pageWidth}
             >
-              <SelectTrigger size="sm">
+              <SelectTrigger aria-label={t.toolbar.pageWidth} size="sm">
                 <SelectValue>
                   {pageWidthOptions.find((o) => o.value === pageWidth)?.label}
                 </SelectValue>
@@ -149,7 +183,7 @@ export function MarkdownToPdfClient({ content }: MarkdownToPdfClientProps) {
             </div>
           ) : (
             <div
-              className="md-preview text-sm"
+              className={PREVIEW_CLASS_NAME[style]}
               // eslint-disable-next-line react/no-danger
               dangerouslySetInnerHTML={{ __html: previewHtml ?? "" }}
             />

@@ -1177,6 +1177,12 @@ export const viMessages: LocaleContent = {
         popupBlockedWarning:
           "Cua so boc bi chan. Nhan bieu tuong cua so boc trong thanh dia chi trinh duyet de cho phep cua so boc tu trang nay, sau do thu lai.",
         print: "Tai xuong PDF",
+        style: "Kieu dang",
+        styleOptions: {
+          classic: "Co dien",
+          shadcnTypeset: "Typeset",
+          tailwindTypography: "Tailwind Typography",
+        },
         wordCount: "{count} ky tu",
       },
     },

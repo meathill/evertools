@@ -1185,6 +1185,12 @@ export const enMessages: LocaleContent = {
         popupBlockedWarning:
           "Popup blocked. Click the popup icon in your browser's address bar to allow popups from this site, then try again.",
         print: "Download PDF",
+        style: "Style",
+        styleOptions: {
+          classic: "Classic",
+          shadcnTypeset: "Typeset",
+          tailwindTypography: "Tailwind Typography",
+        },
         wordCount: "{count} characters",
       },
     },

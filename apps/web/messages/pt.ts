@@ -1197,6 +1197,12 @@ export const ptMessages: LocaleContent = {
         popupBlockedWarning:
           "Pop-up bloqueado. Clique no icone de pop-up na barra de endereco do navegador para permitir pop-ups deste site e tente novamente.",
         print: "Baixar PDF",
+        style: "Estilo",
+        styleOptions: {
+          classic: "Classico",
+          shadcnTypeset: "Typeset",
+          tailwindTypography: "Tailwind Typography",
+        },
         wordCount: "{count} caracteres",
       },
     },

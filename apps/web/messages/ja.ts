@@ -1185,6 +1185,12 @@ export const jaMessages: LocaleContent = {
         popupBlockedWarning:
           "ポップアップがブロックされています。ブラウザのアドレスバーのポップアップアイコンをクリックしてサイトのポップアップを許可し、再試行してください。",
         print: "PDFをダウンロード",
+        style: "スタイル",
+        styleOptions: {
+          classic: "クラシック",
+          shadcnTypeset: "Typeset",
+          tailwindTypography: "Tailwind Typography",
+        },
         wordCount: "{count}文字",
       },
     },

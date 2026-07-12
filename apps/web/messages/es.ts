@@ -1198,6 +1198,12 @@ export const esMessages: LocaleContent = {
         popupBlockedWarning:
           "Ventana emergente bloqueada. Haz clic en el icono de ventana emergente en la barra de direcciones del navegador para permitir ventanas emergentes de este sitio y vuelve a intentarlo.",
         print: "Descargar PDF",
+        style: "Estilo",
+        styleOptions: {
+          classic: "Clasico",
+          shadcnTypeset: "Typeset",
+          tailwindTypography: "Tailwind Typography",
+        },
         wordCount: "{count} caracteres",
       },
     },

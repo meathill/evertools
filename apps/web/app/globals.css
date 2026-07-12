@@ -1,4 +1,6 @@
 @import "tailwindcss";
+@import "./typeset.css";
+@plugin "@tailwindcss/typography";
 
 @custom-variant dark (&:is(.dark *));
 
@@ -815,4 +817,10 @@ a:hover {
   & img {
     max-width: 100%;
   }
+}
+
+/* shadcn/typeset 桥接:本项目标题字体变量叫 --font-display,
+   不是 typeset.css 默认读取的 --font-heading。 */
+.typeset-md-pdf {
+  --typeset-font-heading: var(--font-display);
 }

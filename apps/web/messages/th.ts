@@ -1141,6 +1141,12 @@ export const thMessages: LocaleContent = {
         popupBlockedWarning:
           "ป๊อปอัปถูกบล็อก คลิกไอคอนป๊อปอัปในแถบที่อยู่เบราว์เซอร์เพื่ออนุญาตป๊อปอัปจากไซต์นี้ แล้วลองอีกครั้ง",
         print: "ดาวน์โหลด PDF",
+        style: "สไตล์",
+        styleOptions: {
+          classic: "คลาสสิก",
+          shadcnTypeset: "Typeset",
+          tailwindTypography: "Tailwind Typography",
+        },
         wordCount: "{count} ตัวอักษร",
       },
     },

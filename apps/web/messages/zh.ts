@@ -1125,6 +1125,12 @@ export const zhMessages = {
         popupBlockedWarning:
           "弹窗被浏览器拦截，请点击地址栏右侧的弹窗图标，允许此网站打开弹窗后重试。",
         print: "下载 PDF",
+        style: "样式",
+        styleOptions: {
+          classic: "经典",
+          shadcnTypeset: "Typeset",
+          tailwindTypography: "Tailwind Typography",
+        },
         wordCount: "{count} 字符",
       },
     },

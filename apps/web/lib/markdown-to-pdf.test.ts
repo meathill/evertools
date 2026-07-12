@@ -48,23 +48,42 @@ describe("renderMarkdown", () => {
 
 describe("buildPrintableHtml", () => {
   it("includes @page size 105mm for phone", () => {
-    const html = buildPrintableHtml("# test", "phone");
+    const html = buildPrintableHtml("# test", "phone", "classic");
     expect(html).toContain("size: 105mm auto");
   });
 
   it("includes @page size 148mm for a5", () => {
-    const html = buildPrintableHtml("# test", "a5");
+    const html = buildPrintableHtml("# test", "a5", "classic");
     expect(html).toContain("size: 148mm auto");
   });
 
   it("includes @page size 210mm for a4", () => {
-    const html = buildPrintableHtml("# test", "a4");
+    const html = buildPrintableHtml("# test", "a4", "classic");
     expect(html).toContain("size: 210mm auto");
   });
 
   it("renders markdown content in body", () => {
-    const html = buildPrintableHtml("# Hello", "phone");
+    const html = buildPrintableHtml("# Hello", "phone", "classic");
     expect(html).toContain("<h1>Hello</h1>");
+  });
+
+  it("classic style renders body content unwrapped", () => {
+    const html = buildPrintableHtml("# Hello", "phone", "classic");
+    expect(html).toMatch(/<body><h1>Hello<\/h1>\s*<\/body>/);
+  });
+
+  it("shadcn-typeset style wraps content and includes typeset CSS", () => {
+    const html = buildPrintableHtml("# Hello", "phone", "shadcn-typeset");
+    expect(html).toContain('<body><div class="typeset typeset-md-pdf">');
+    expect(html).toContain("<h1>Hello</h1>");
+    expect(html).toContain(".typeset-md-pdf");
+  });
+
+  it("tailwind-typography style wraps content and includes prose-scale CSS", () => {
+    const html = buildPrintableHtml("# Hello", "phone", "tailwind-typography");
+    expect(html).toContain('<body><div class="tw-typography-print">');
+    expect(html).toContain("<h1>Hello</h1>");
+    expect(html).toContain(".tw-typography-print");
   });
 });
 
