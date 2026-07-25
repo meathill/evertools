@@ -63,7 +63,7 @@ export default async function PdfTextEditorPage({
       )}
       title={page.hero.title}
     >
-      <PdfTextEditorClient content={page} />
+      <PdfTextEditorClient content={page} locale={locale} />
     </ToolPageLayout>
   );
 }

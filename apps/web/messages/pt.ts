@@ -620,7 +620,7 @@ export const ptMessages: LocaleContent = {
       limitsItems: [
         "PDFs escaneados (imagem) sem camada de texto sao detectados e ignorados.",
         "Adicionar caixas de texto, editar imagens, reordenar ou excluir paginas virao em versoes futuras.",
-        "PDFs protegidos por senha ainda nao podem ser desbloqueados.",
+        "PDFs protegidos por senha não são desbloqueados aqui: remova a senha antes com a nossa ferramenta.",
         "Texto colorido e exportado em preto por enquanto; selecao manual de cor esta planejada.",
       ],
       limitsTitle: "Limitacoes conhecidas",
@@ -703,7 +703,9 @@ export const ptMessages: LocaleContent = {
       errors: {
         cjkFontLoadFailed:
           "Nao foi possivel baixar Noto Sans SC. Verifique sua rede ou envie uma fonte.",
-        encryptedNotSupported: "PDFs com senha ainda nao sao suportados.",
+        encryptedNotSupported:
+          "Este PDF está protegido por senha e não pode ser editado diretamente. Remova a senha antes e volte.",
+        encryptedNotSupportedCta: "Abrir o removedor de senha de PDF",
         exportFailed: "A exportacao falhou. Tente novamente mais tarde.",
         fileTooLarge: "Arquivo muito grande. Maximo {size}.",
         fontEmbedFailed:

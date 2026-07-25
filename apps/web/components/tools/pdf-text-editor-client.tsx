@@ -1,6 +1,7 @@
 "use client";
 
-import { RefreshCcwIcon } from "lucide-react";
+import { ArrowRightIcon, RefreshCcwIcon } from "lucide-react";
+import Link from "next/link";
 import { useEffect, useMemo, useRef, useState } from "react";
 import { PdfEditorToolbar } from "@/components/tools/pdf-editor-toolbar";
 import { PdfUploadCard } from "@/components/tools/pdf-upload-card";
@@ -13,6 +14,7 @@ import {
   CardPanel,
   CardTitle,
 } from "@/components/ui/card";
+import type { AppLocale } from "@/i18n/routing";
 import { ensureCjkFallbackFont } from "@/lib/pdf-editor/pdf-cjk-fallback";
 import { getPdfEditorErrorMessage } from "@/lib/pdf-editor/pdf-error-messages";
 import {
@@ -28,6 +30,7 @@ import {
   takeOriginalBytes,
 } from "@/lib/pdf-editor/pdf-fonts";
 import { parsePdfFile } from "@/lib/pdf-editor/pdf-parser";
+import { getLocalizedPathname } from "@/lib/site";
 import {
   buildOutputFilename,
   containsCjk,
@@ -40,11 +43,15 @@ import { usePdfEditorStore } from "@/stores/pdf-editor-store";
 
 type PdfTextEditorClientProps = {
   content: LocaleContent["pdfTextEditor"];
+  locale: AppLocale;
 };
 
 const USER_FONT_CSS_FAMILY = "PDF-Editor-User-Font";
 
-export function PdfTextEditorClient({ content }: PdfTextEditorClientProps) {
+export function PdfTextEditorClient({
+  content,
+  locale,
+}: PdfTextEditorClientProps) {
   const pdfInputRef = useRef<HTMLInputElement | null>(null);
   const fontInputRef = useRef<HTMLInputElement | null>(null);
 
@@ -352,6 +359,21 @@ export function PdfTextEditorClient({ content }: PdfTextEditorClientProps) {
           <div className="flex min-h-[calc(100vh-4rem)] items-center justify-center p-6">
             <PdfUploadCard
               content={content}
+              errorAction={
+                errorCode === PDF_EDITOR_ERROR_CODES.ENCRYPTED_NOT_SUPPORTED ? (
+                  <Link
+                    className="inline-flex items-center gap-1 font-medium underline underline-offset-2"
+                    href={getLocalizedPathname(
+                      locale,
+                      "/tools/pdf-password-remover",
+                    )}
+                  >
+                    {content.client.errors.encryptedNotSupportedCta}
+                    <ArrowRightIcon className="size-3" />
+                  </Link>
+                ) : null
+              }
+              errorMessage={errorMessage}
               fileName={fileName}
               fileSize={fileSize}
               inputRef={pdfInputRef}

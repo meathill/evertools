@@ -611,7 +611,7 @@ export const enMessages: LocaleContent = {
       limitsItems: [
         "Scanned (image-only) PDFs without a text layer are detected and skipped.",
         "Adding new text boxes, editing images, reordering or deleting pages will arrive in later versions.",
-        "Password-protected PDFs cannot be unlocked yet.",
+        "Password-protected PDFs are not unlocked here — remove the password first with our PDF password remover.",
         "Color text is exported in black for now. A manual color picker is planned.",
       ],
       limitsTitle: "Known limitations",
@@ -693,7 +693,9 @@ export const enMessages: LocaleContent = {
       errors: {
         cjkFontLoadFailed:
           "Failed to download Noto Sans SC. Please check your network or upload a font.",
-        encryptedNotSupported: "Password-protected PDFs are not supported yet.",
+        encryptedNotSupported:
+          "This PDF is password-protected and cannot be edited directly. Remove the password first, then come back.",
+        encryptedNotSupportedCta: "Open the PDF password remover",
         exportFailed: "Export failed. Please try again later.",
         fileTooLarge: "File is too large. Maximum is {size}.",
         fontEmbedFailed:

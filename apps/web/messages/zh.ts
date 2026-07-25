@@ -583,7 +583,7 @@ export const zhMessages = {
       limitsItems: [
         "扫描版（图片型）PDF：没有文字层，工具会提示并跳过。",
         "新增文本框、修改图片、调整页面顺序、删除页面：会在后续版本逐步加入。",
-        "加密保护的 PDF：暂不支持密码解锁。",
+        "加密保护的 PDF：本工具不解锁密码，可先用「在线 PDF 去密码」工具处理。",
         "彩色文字：导出时统一使用黑色，可以手动选择颜色后再下载（计划中）。",
       ],
       limitsTitle: "已知限制",
@@ -658,7 +658,9 @@ export const zhMessages = {
       },
       errors: {
         cjkFontLoadFailed: "思源黑体下载失败，请检查网络或上传一份字体。",
-        encryptedNotSupported: "暂不支持有密码保护的 PDF。",
+        encryptedNotSupported:
+          "这份 PDF 有密码保护，无法直接编辑。请先去除密码再回来编辑。",
+        encryptedNotSupportedCta: "用 PDF 去密码工具处理",
         exportFailed: "导出失败，请稍后重试。",
         fileTooLarge: "文件过大，最大支持 {size}。",
         fontEmbedFailed: "字体嵌入失败，已使用兜底字体重绘。",

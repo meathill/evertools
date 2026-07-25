@@ -612,7 +612,7 @@ export const jaMessages: LocaleContent = {
       limitsItems: [
         "スキャン（画像）PDF：テキストレイヤがないため検出して案内します。",
         "新規テキストボックス追加・画像編集・ページ並び替え／削除は今後対応予定です。",
-        "パスワード保護された PDF：現時点では解除できません。",
+        "パスワード保護された PDF：本ツールでは解除できません。先に「PDF パスワード解除」ツールをご利用ください。",
         "カラーテキスト：書き出し時は黒色で出力されます（色選択は計画中）。",
       ],
       limitsTitle: "既知の制限",
@@ -694,7 +694,9 @@ export const jaMessages: LocaleContent = {
       errors: {
         cjkFontLoadFailed:
           "Noto Sans SC の取得に失敗しました。回線確認またはフォントをアップロードしてください。",
-        encryptedNotSupported: "パスワード保護された PDF は未対応です。",
+        encryptedNotSupported:
+          "この PDF はパスワードで保護されているため、直接編集できません。先にパスワードを解除してください。",
+        encryptedNotSupportedCta: "PDF パスワード解除ツールを開く",
         exportFailed: "書き出しに失敗しました。後でもう一度お試しください。",
         fileTooLarge: "ファイルが大きすぎます（最大 {size}）。",
         fontEmbedFailed:

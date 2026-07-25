@@ -619,7 +619,7 @@ export const esMessages: LocaleContent = {
       limitsItems: [
         "PDF escaneados (imagen) sin capa de texto: se detectan y se omiten.",
         "Añadir cuadros de texto, editar imágenes o reordenar/eliminar páginas llegará en versiones futuras.",
-        "Los PDF protegidos con contraseña aún no pueden desbloquearse.",
+        "Los PDF protegidos con contraseña no se desbloquean aquí: quita antes la contraseña con nuestra herramienta.",
         "El texto en color se exporta en negro por ahora; el selector manual de color está planificado.",
       ],
       limitsTitle: "Limitaciones conocidas",
@@ -702,7 +702,9 @@ export const esMessages: LocaleContent = {
       errors: {
         cjkFontLoadFailed:
           "No se pudo descargar Noto Sans SC. Revisa tu red o sube una fuente.",
-        encryptedNotSupported: "Los PDF con contraseña aún no son compatibles.",
+        encryptedNotSupported:
+          "Este PDF está protegido con contraseña y no se puede editar directamente. Quita antes la contraseña y vuelve.",
+        encryptedNotSupportedCta: "Abrir el eliminador de contraseñas PDF",
         exportFailed: "Falló la exportación. Inténtalo más tarde.",
         fileTooLarge: "El archivo es demasiado grande. Máximo {size}.",
         fontEmbedFailed:

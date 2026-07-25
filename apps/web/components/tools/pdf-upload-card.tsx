@@ -6,6 +6,7 @@ import {
   ShieldCheckIcon,
   UploadIcon,
 } from "lucide-react";
+import type React from "react";
 import { type RefObject, useId } from "react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -22,6 +23,8 @@ import type { LocaleContent } from "@/messages/types";
 
 type PdfUploadCardProps = {
   content: LocaleContent["pdfTextEditor"];
+  errorAction?: React.ReactNode;
+  errorMessage: string | null;
   fileName: string | null;
   fileSize: number;
   inputRef: RefObject<HTMLInputElement | null>;
@@ -38,6 +41,8 @@ type PdfUploadCardProps = {
 
 export function PdfUploadCard({
   content,
+  errorAction,
+  errorMessage,
   fileName,
   fileSize,
   inputRef,
@@ -152,6 +157,12 @@ export function PdfUploadCard({
             </div>
           )}
         </div>
+        {errorMessage ? (
+          <div className="mt-3 space-y-2 rounded-lg border border-danger/30 bg-danger-bg px-3 py-2 text-danger text-xs">
+            <p>{errorMessage}</p>
+            {errorAction}
+          </div>
+        ) : null}
       </CardPanel>
     </Card>
   );

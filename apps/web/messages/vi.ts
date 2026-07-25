@@ -610,7 +610,7 @@ export const viMessages: LocaleContent = {
       limitsItems: [
         "PDF dang quet (anh) khong co lop van ban se duoc phat hien va bo qua.",
         "Them hop van ban moi, sua anh, sap xep lai hoac xoa trang se den trong phien ban sau.",
-        "PDF co mat khau chua duoc mo khoa.",
+        "PDF có mật khẩu: công cụ này không mở khóa, hãy dùng công cụ gỡ mật khẩu PDF trước.",
         "Van ban mau hien xuat sang den; chon mau thu cong dang trong ke hoach.",
       ],
       limitsTitle: "Han che da biet",
@@ -691,7 +691,9 @@ export const viMessages: LocaleContent = {
       errors: {
         cjkFontLoadFailed:
           "Khong tai duoc Noto Sans SC. Kiem tra mang hoac tai len font.",
-        encryptedNotSupported: "Chua ho tro PDF co mat khau.",
+        encryptedNotSupported:
+          "PDF này được bảo vệ bằng mật khẩu nên không thể chỉnh sửa trực tiếp. Hãy gỡ mật khẩu trước rồi quay lại.",
+        encryptedNotSupportedCta: "Mở công cụ gỡ mật khẩu PDF",
         exportFailed: "Xuat that bai. Hay thu lai sau.",
         fileTooLarge: "Tep qua lon. Toi da {size}.",
         fontEmbedFailed: "Khong nhung duoc font. Da dung font du phong.",
