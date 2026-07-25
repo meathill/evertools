@@ -2,6 +2,7 @@ import { describe, expect, it } from "vitest";
 import {
   getImageConverterTool,
   getJsonViewerTool,
+  getPdfPasswordRemoverTool,
   getPdfTextEditorTool,
 } from "@/lib/content";
 import { createLocalizedUrl, getLanguageAlternates } from "@/lib/site";
@@ -26,6 +27,12 @@ const cases = [
     label: "pdf-text-editor",
     tool: getPdfTextEditorTool(zh),
     totalTime: "PT3M",
+  },
+  {
+    applicationCategory: "BusinessApplication",
+    label: "pdf-password-remover",
+    tool: getPdfPasswordRemoverTool(zh),
+    totalTime: "PT1M",
   },
   {
     applicationCategory: "DeveloperApplication",

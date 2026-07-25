@@ -673,6 +673,160 @@ export const zhMessages = {
       },
     },
   },
+  pdfPasswordRemover: {
+    metadata: {
+      description:
+        "上传带密码的 PDF、输入密码，即可下载去除密码、内容完全一致的 PDF。整个过程在浏览器本地完成，文件不会上传到服务器。",
+      keywords: [
+        "PDF 去密码",
+        "PDF 解除密码",
+        "PDF 解密",
+        "remove pdf password",
+        "unlock pdf online",
+        "decrypt pdf",
+      ],
+      title: "在线 PDF 去密码",
+    },
+    hero: {
+      badges: {
+        category: "文档工具",
+        localProcessing: "浏览器本地处理",
+        noUpload: "文件不出本机",
+      },
+      description:
+        "上传带密码的 PDF，输入你知道的密码，即可得到一份去除密码、内容完全一致的新文件。解密全程在浏览器中完成，文件不会离开你的设备。",
+      title: "在线去除 PDF 密码",
+    },
+    scenarios: {
+      description: "适合手上有密码、只想去掉每次打开都要输入密码的麻烦。",
+      knownPassword: "你知道 PDF 的密码，但不想每次打开都重新输入。",
+      permission: "PDF 被设了打印、复制、编辑限制，想解除这些权限限制。",
+      privacy: "PDF 涉及合同、账单等敏感信息，不愿上传到第三方服务器解密。",
+      title: "适合这些情况",
+    },
+    tool: {
+      category: "文档工具",
+      description:
+        "上传带密码的 PDF、输入密码，即可下载去除密码、内容完全一致的 PDF。整个过程在浏览器本地完成，不会把文件上传到服务器。",
+      faq: [
+        {
+          answer:
+            "不会。PDF 全程在你的浏览器中解密和导出，不会发送到任何服务器。",
+          question: "我的 PDF 会上传到服务器吗？",
+        },
+        {
+          answer:
+            "不能。本工具不做密码暴力破解，你需要知道正确的密码才能解密。忘记密码的 PDF 无法解开。",
+          question: "忘记密码可以帮我破解吗？",
+        },
+        {
+          answer:
+            "可以。如果 PDF 只设置了打印、复制、编辑等权限限制（所有者密码），无需输入密码即可自动解除限制。",
+          question: "只有打印/复制限制的 PDF 能处理吗？",
+        },
+        {
+          answer:
+            "会保持一致。解密只去除加密信息，页面内容、文字、图片和排版都原样保留。",
+          question: "解密后内容会变化吗？",
+        },
+      ],
+      features: [
+        "输入正确密码即可去除 PDF 打开密码",
+        "自动解除仅有的打印、复制、编辑权限限制",
+        "解密后内容、排版与原文件完全一致",
+        "首次使用时才按需加载解密引擎",
+        "全程浏览器本地处理，文件不出本机",
+      ],
+      keywords: [
+        "PDF 去密码",
+        "PDF 解除密码",
+        "PDF 解密",
+        "remove pdf password",
+        "unlock pdf online",
+        "decrypt pdf",
+      ],
+      name: "在线 PDF 去密码",
+      steps: [
+        "上传一份带密码的 PDF。",
+        "如提示需要密码，输入你知道的正确密码。",
+        "等待浏览器本地完成解密。",
+        "点击下载，保存去除密码后的 PDF。",
+      ],
+      summary: "在浏览器本地去除 PDF 密码，得到内容完全一致的新文件。",
+    },
+    content: {
+      faqDescription: "开始前常见的几个问题。",
+      faqTitle: "常见问题",
+      limitsDescription: "以下情况暂不覆盖。",
+      limitsItems: [
+        "忘记密码的 PDF：本工具不做暴力破解，必须知道正确密码。",
+        "损坏或非标准的 PDF：可能无法正常解析。",
+        "超过 {size} 的文件：请先拆分或压缩后再处理。",
+      ],
+      limitsTitle: "已知限制",
+      stepsDescription: "按下面的步骤即可完成去密码。",
+      stepsTitle: "使用方法",
+      supportDescription:
+        "工具会自动识别 PDF 的加密类型：需要密码的会提示你输入，仅有权限限制的会自动解除。",
+      supportTitle: "工具能力",
+    },
+    client: {
+      badges: {
+        localProcessing: "浏览器本地处理",
+        noUpload: "文件不出本机",
+        supportedFormats: "支持 PDF",
+      },
+      upload: {
+        choosePdf: "选择 PDF",
+        clear: "清空",
+        description:
+          "拖拽 PDF 到下方区域，或点击按钮选择文件。整个过程不会离开浏览器。",
+        emptyDescription: "支持带密码或有权限限制的 PDF。",
+        emptyTitle: "拖入 PDF 开始去密码",
+        maxSizeHint: "单个文件不超过 {size}。",
+        reselect: "重新选择",
+        title: "上传 PDF",
+      },
+      loading: {
+        description:
+          "首次使用需下载约 1.3MB 的解密组件，之后会缓存在浏览器中，无需重复下载。",
+        failed: "解密引擎加载失败，请检查网络后重试。",
+        progress: "已下载 {percent}%",
+        retry: "重试",
+        title: "正在加载解密引擎",
+      },
+      password: {
+        description: "这份 PDF 需要密码才能打开，请输入你知道的密码。",
+        label: "PDF 密码",
+        placeholder: "输入打开密码",
+        submit: "解密",
+        submitting: "正在解密",
+        title: "输入 PDF 密码",
+        wrongPassword: "密码不正确，请重试。",
+      },
+      status: {
+        decrypting: "正在解密…",
+        detecting: "正在检测 PDF 加密情况…",
+      },
+      result: {
+        downloadButton: "下载去密码的 PDF",
+        notEncryptedSuccess:
+          "这份 PDF 本身没有加密，可直接下载原文件，无需处理。",
+        ownerOnlySuccess: "已解除这份 PDF 的打印、复制、编辑限制，可直接下载。",
+        privacyNote: "解密全程在本地完成，文件从未离开你的设备。",
+        title: "处理完成",
+        userPasswordSuccess: "已去除密码，可直接下载内容一致的新文件。",
+      },
+      errors: {
+        decryptFailed: "解密失败，请确认文件未损坏后重试。",
+        decryptFailedDetail: "解密失败：{detail}",
+        fileTooLarge: "文件过大，最大支持 {size}。",
+        invalidPassword: "密码不正确，请重试。",
+        loadFailed: "解密引擎加载失败，请检查网络后重试。",
+        unsupportedFormat: "暂不支持该文件类型，请上传 PDF。",
+      },
+    },
+  },
   ogImageValidator: {
     metadata: {
       description:

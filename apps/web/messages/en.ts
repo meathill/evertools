@@ -713,6 +713,175 @@ export const enMessages: LocaleContent = {
       },
     },
   },
+  pdfPasswordRemover: {
+    metadata: {
+      description:
+        "Upload a password-protected PDF, enter the password, and download a decrypted PDF with identical content. Everything runs locally in your browser, and your file is never uploaded to a server.",
+      keywords: [
+        "pdf password remover",
+        "remove password from pdf",
+        "unlock encrypted pdf",
+        "remove pdf password",
+        "unlock pdf online",
+        "decrypt pdf",
+      ],
+      title: "PDF Password Remover Online",
+    },
+    hero: {
+      badges: {
+        category: "Document tools",
+        localProcessing: "Processed in your browser",
+        noUpload: "Files never leave your device",
+      },
+      description:
+        "Upload a password-protected PDF, enter the password you know, and get a new file with the password removed and the content unchanged. Decryption happens entirely in your browser, so your file never leaves your device.",
+      title: "Remove PDF Password Online",
+    },
+    scenarios: {
+      description:
+        "Perfect when you already have the password and just want to stop typing it every time you open the file.",
+      knownPassword:
+        "You know the PDF password but don't want to re-enter it every time you open the file.",
+      permission:
+        "The PDF has printing, copying, or editing restrictions you want to lift.",
+      privacy:
+        "The PDF contains sensitive information like contracts or bills, and you'd rather not upload it to a third-party server to decrypt.",
+      title: "Great for these situations",
+    },
+    tool: {
+      category: "Document tools",
+      description:
+        "Upload a password-protected PDF, enter the password, and download a decrypted PDF with identical content. Everything runs locally in your browser and your file is never uploaded to a server.",
+      faq: [
+        {
+          answer:
+            "No. Your PDF is decrypted and exported entirely in your browser and is never sent to any server.",
+          question: "Will my PDF be uploaded to a server?",
+        },
+        {
+          answer:
+            "No. This tool doesn't brute-force passwords. You need to know the correct password to decrypt the file. PDFs whose password you've forgotten can't be unlocked.",
+          question: "Can you crack a password I've forgotten?",
+        },
+        {
+          answer:
+            "Yes. If the PDF only has printing, copying, or editing restrictions (an owner password), those restrictions are removed automatically without entering any password.",
+          question: "Can it handle PDFs with only print/copy restrictions?",
+        },
+        {
+          answer:
+            "It stays identical. Decryption only removes the encryption. The page content, text, images, and layout are all preserved exactly.",
+          question: "Will the content change after decryption?",
+        },
+      ],
+      features: [
+        "Remove a PDF's open password by entering the correct password",
+        "Automatically lift print, copy, and edit restrictions when that's all that's set",
+        "Content and layout stay identical to the original file",
+        "The decryption engine loads on demand only the first time you use it",
+        "Everything is processed locally in your browser and files never leave your device",
+      ],
+      keywords: [
+        "pdf password remover",
+        "remove password from pdf",
+        "unlock encrypted pdf",
+        "remove pdf password",
+        "unlock pdf online",
+        "decrypt pdf",
+      ],
+      name: "PDF Password Remover Online",
+      steps: [
+        "Upload a password-protected PDF.",
+        "If prompted for a password, enter the correct one you know.",
+        "Wait for your browser to finish decrypting locally.",
+        "Click download to save the password-free PDF.",
+      ],
+      summary:
+        "Remove PDF passwords locally in your browser and get a new file with identical content.",
+    },
+    content: {
+      faqDescription: "A few common questions before you start.",
+      faqTitle: "Frequently asked questions",
+      limitsDescription: "The following cases aren't covered yet.",
+      limitsItems: [
+        "PDFs with forgotten passwords: this tool doesn't brute-force, so you must know the correct password.",
+        "Corrupted or non-standard PDFs: these may fail to parse correctly.",
+        "Files larger than {size}: please split or compress them first.",
+      ],
+      limitsTitle: "Known limitations",
+      stepsDescription: "Follow the steps below to remove the password.",
+      stepsTitle: "How to use it",
+      supportDescription:
+        "The tool automatically detects the PDF's encryption type: it prompts you for a password when one is needed, and lifts permission restrictions automatically when that's all there is.",
+      supportTitle: "What it can do",
+    },
+    client: {
+      badges: {
+        localProcessing: "Processed in your browser",
+        noUpload: "Files never leave your device",
+        supportedFormats: "Supports PDF",
+      },
+      upload: {
+        choosePdf: "Choose PDF",
+        clear: "Clear",
+        description:
+          "Drag a PDF into the area below, or click the button to select a file. Nothing ever leaves your browser.",
+        emptyDescription:
+          "Supports PDFs with passwords or permission restrictions.",
+        emptyTitle: "Drop a PDF to start removing its password",
+        maxSizeHint: "Each file must be no larger than {size}.",
+        reselect: "Choose another",
+        title: "Upload PDF",
+      },
+      loading: {
+        description:
+          "The first time you use it, a decryption component of about 1.3MB is downloaded, then cached in your browser so you never have to download it again.",
+        failed:
+          "Failed to load the decryption engine. Check your connection and try again.",
+        progress: "{percent}% downloaded",
+        retry: "Retry",
+        title: "Loading the decryption engine",
+      },
+      password: {
+        description:
+          "This PDF needs a password to open. Please enter the password you know.",
+        label: "PDF password",
+        placeholder: "Enter the open password",
+        submit: "Decrypt",
+        submitting: "Decrypting",
+        title: "Enter the PDF password",
+        wrongPassword: "Incorrect password. Please try again.",
+      },
+      status: {
+        decrypting: "Decrypting…",
+        detecting: "Checking the PDF's encryption…",
+      },
+      result: {
+        downloadButton: "Download password-free PDF",
+        notEncryptedSuccess:
+          "This PDF isn't encrypted, so you can download the original file directly with no processing needed.",
+        ownerOnlySuccess:
+          "The print, copy, and edit restrictions on this PDF have been removed. It's ready to download.",
+        privacyNote:
+          "Decryption happens entirely on your device, and your file never left it.",
+        title: "Done",
+        userPasswordSuccess:
+          "The password has been removed. You can download a new file with identical content.",
+      },
+      errors: {
+        decryptFailed:
+          "Decryption failed. Make sure the file isn't corrupted and try again.",
+        decryptFailedDetail: "Decryption failed: {detail}",
+        fileTooLarge:
+          "The file is too large. The maximum supported size is {size}.",
+        invalidPassword: "Incorrect password. Please try again.",
+        loadFailed:
+          "Failed to load the decryption engine. Check your connection and try again.",
+        unsupportedFormat:
+          "This file type isn't supported yet. Please upload a PDF.",
+      },
+    },
+  },
   ogImageValidator: {
     metadata: {
       description:

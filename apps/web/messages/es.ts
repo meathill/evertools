@@ -721,6 +721,176 @@ export const esMessages: LocaleContent = {
       },
     },
   },
+  pdfPasswordRemover: {
+    metadata: {
+      description:
+        "Sube un PDF con contraseña, introdúcela y descarga un PDF sin contraseña con el contenido idéntico. Todo el proceso ocurre localmente en tu navegador; los archivos nunca se suben a ningún servidor.",
+      keywords: [
+        "quitar contraseña pdf",
+        "eliminar contraseña pdf",
+        "desbloquear pdf",
+        "remove pdf password",
+        "unlock pdf online",
+        "decrypt pdf",
+      ],
+      title: "Quitar contraseña de PDF en línea",
+    },
+    hero: {
+      badges: {
+        category: "Herramientas de documentos",
+        localProcessing: "Procesamiento local en el navegador",
+        noUpload: "El archivo no sale de tu equipo",
+      },
+      description:
+        "Sube un PDF con contraseña, introduce la contraseña que conoces y obtén un archivo nuevo sin contraseña con el contenido idéntico. El descifrado se realiza por completo en el navegador y el archivo nunca sale de tu dispositivo.",
+      title: "Quitar la contraseña de un PDF en línea",
+    },
+    scenarios: {
+      description:
+        "Ideal si ya tienes la contraseña y solo quieres evitar la molestia de escribirla cada vez que abres el archivo.",
+      knownPassword:
+        "Conoces la contraseña del PDF, pero no quieres volver a escribirla cada vez que lo abres.",
+      permission:
+        "El PDF tiene restricciones de impresión, copia o edición y quieres eliminar esas limitaciones de permisos.",
+      privacy:
+        "El PDF contiene información sensible como contratos o facturas y no quieres subirlo a un servidor externo para descifrarlo.",
+      title: "Ideal para estos casos",
+    },
+    tool: {
+      category: "Herramientas de documentos",
+      description:
+        "Sube un PDF con contraseña, introdúcela y descarga un PDF sin contraseña con el contenido idéntico. Todo el proceso ocurre localmente en el navegador y el archivo no se sube a ningún servidor.",
+      faq: [
+        {
+          answer:
+            "No. El PDF se descifra y se exporta por completo en tu navegador; nunca se envía a ningún servidor.",
+          question: "¿Se subirá mi PDF a un servidor?",
+        },
+        {
+          answer:
+            "No. Esta herramienta no fuerza contraseñas por fuerza bruta: necesitas conocer la contraseña correcta para descifrar el archivo. Un PDF con la contraseña olvidada no se puede abrir.",
+          question: "¿Pueden descifrarlo si olvidé la contraseña?",
+        },
+        {
+          answer:
+            "Sí. Si el PDF solo tiene restricciones de permisos como impresión, copia o edición (contraseña de propietario), las limitaciones se eliminan automáticamente sin necesidad de introducir ninguna contraseña.",
+          question:
+            "¿Puede procesar un PDF con solo restricciones de impresión o copia?",
+        },
+        {
+          answer:
+            "Se mantiene idéntico. El descifrado solo elimina la información de cifrado; el contenido de las páginas, el texto, las imágenes y la maquetación se conservan tal cual.",
+          question: "¿Cambiará el contenido tras descifrarlo?",
+        },
+      ],
+      features: [
+        "Quita la contraseña de apertura del PDF introduciendo la contraseña correcta",
+        "Elimina automáticamente las restricciones de impresión, copia y edición cuando solo existen esas limitaciones",
+        "El contenido y la maquetación quedan idénticos al archivo original tras el descifrado",
+        "El motor de descifrado se carga bajo demanda solo la primera vez que lo usas",
+        "Todo el proceso es local en el navegador; el archivo no sale de tu equipo",
+      ],
+      keywords: [
+        "quitar contraseña pdf",
+        "eliminar contraseña pdf",
+        "desbloquear pdf",
+        "remove pdf password",
+        "unlock pdf online",
+        "decrypt pdf",
+      ],
+      name: "Quitar contraseña de PDF en línea",
+      steps: [
+        "Sube un PDF con contraseña.",
+        "Si se solicita, introduce la contraseña correcta que conoces.",
+        "Espera a que el navegador complete el descifrado localmente.",
+        "Haz clic en descargar y guarda el PDF sin contraseña.",
+      ],
+      summary:
+        "Quita la contraseña de un PDF localmente en el navegador y obtén un archivo nuevo con el contenido idéntico.",
+    },
+    content: {
+      faqDescription: "Algunas dudas frecuentes antes de empezar.",
+      faqTitle: "Preguntas frecuentes",
+      limitsDescription: "Los siguientes casos no están cubiertos por ahora.",
+      limitsItems: [
+        "PDF con la contraseña olvidada: esta herramienta no usa fuerza bruta, debes conocer la contraseña correcta.",
+        "PDF dañados o no estándar: es posible que no se puedan analizar correctamente.",
+        "Archivos de más de {size}: divídelos o comprímelos antes de procesarlos.",
+      ],
+      limitsTitle: "Limitaciones conocidas",
+      stepsDescription: "Sigue estos pasos para quitar la contraseña.",
+      stepsTitle: "Cómo usarlo",
+      supportDescription:
+        "La herramienta detecta automáticamente el tipo de cifrado del PDF: si necesita contraseña, te pedirá que la introduzcas; si solo tiene restricciones de permisos, las eliminará automáticamente.",
+      supportTitle: "Qué puede hacer la herramienta",
+    },
+    client: {
+      badges: {
+        localProcessing: "Procesamiento local en el navegador",
+        noUpload: "El archivo no sale de tu equipo",
+        supportedFormats: "Compatible con PDF",
+      },
+      upload: {
+        choosePdf: "Elegir PDF",
+        clear: "Limpiar",
+        description:
+          "Arrastra el PDF al área de abajo o haz clic en el botón para seleccionar un archivo. Todo el proceso ocurre dentro del navegador.",
+        emptyDescription:
+          "Compatible con PDF con contraseña o con restricciones de permisos.",
+        emptyTitle: "Arrastra un PDF para empezar a quitar la contraseña",
+        maxSizeHint: "Cada archivo no debe superar {size}.",
+        reselect: "Volver a seleccionar",
+        title: "Subir PDF",
+      },
+      loading: {
+        description:
+          "La primera vez es necesario descargar el componente de descifrado de unos 1,3 MB; después queda en la caché del navegador y no hay que volver a descargarlo.",
+        failed:
+          "No se pudo cargar el motor de descifrado; comprueba tu conexión e inténtalo de nuevo.",
+        progress: "Descargado {percent}%",
+        retry: "Reintentar",
+        title: "Cargando el motor de descifrado",
+      },
+      password: {
+        description:
+          "Este PDF necesita una contraseña para abrirse; introduce la contraseña que conoces.",
+        label: "Contraseña del PDF",
+        placeholder: "Introduce la contraseña de apertura",
+        submit: "Descifrar",
+        submitting: "Descifrando",
+        title: "Introduce la contraseña del PDF",
+        wrongPassword: "La contraseña es incorrecta; inténtalo de nuevo.",
+      },
+      status: {
+        decrypting: "Descifrando…",
+        detecting: "Comprobando el cifrado del PDF…",
+      },
+      result: {
+        downloadButton: "Descargar el PDF sin contraseña",
+        notEncryptedSuccess:
+          "Este PDF no está cifrado; puedes descargar el archivo original directamente, sin procesarlo.",
+        ownerOnlySuccess:
+          "Se han eliminado las restricciones de impresión, copia y edición de este PDF; ya puedes descargarlo.",
+        privacyNote:
+          "El descifrado se realiza por completo en local; el archivo nunca sale de tu dispositivo.",
+        title: "Proceso completado",
+        userPasswordSuccess:
+          "Se ha quitado la contraseña; ya puedes descargar el archivo nuevo con el contenido idéntico.",
+      },
+      errors: {
+        decryptFailed:
+          "El descifrado falló; comprueba que el archivo no esté dañado e inténtalo de nuevo.",
+        decryptFailedDetail: "El descifrado falló: {detail}",
+        fileTooLarge:
+          "El archivo es demasiado grande; el tamaño máximo admitido es {size}.",
+        invalidPassword: "La contraseña es incorrecta; inténtalo de nuevo.",
+        loadFailed:
+          "No se pudo cargar el motor de descifrado; comprueba tu conexión e inténtalo de nuevo.",
+        unsupportedFormat:
+          "Este tipo de archivo no es compatible por ahora; sube un PDF.",
+      },
+    },
+  },
   ogImageValidator: {
     metadata: {
       description:

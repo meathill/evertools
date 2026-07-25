@@ -707,6 +707,171 @@ export const viMessages: LocaleContent = {
       },
     },
   },
+  pdfPasswordRemover: {
+    metadata: {
+      description:
+        "Tải lên PDF có mật khẩu, nhập mật khẩu và tải về file PDF đã gỡ mật khẩu với nội dung y hệt. Toàn bộ quá trình diễn ra ngay trên trình duyệt, file không được tải lên máy chủ.",
+      keywords: [
+        "gỡ mật khẩu PDF",
+        "xóa mật khẩu PDF",
+        "giải mã PDF",
+        "remove pdf password",
+        "unlock pdf online",
+        "decrypt pdf",
+      ],
+      title: "Gỡ mật khẩu PDF trực tuyến",
+    },
+    hero: {
+      badges: {
+        category: "Công cụ tài liệu",
+        localProcessing: "Xử lý cục bộ trên trình duyệt",
+        noUpload: "File không rời khỏi máy bạn",
+      },
+      description:
+        "Tải lên PDF có mật khẩu, nhập mật khẩu bạn biết và nhận về một file mới đã gỡ mật khẩu với nội dung y hệt. Toàn bộ quá trình giải mã diễn ra trong trình duyệt, file không rời khỏi thiết bị của bạn.",
+      title: "Gỡ mật khẩu PDF trực tuyến",
+    },
+    scenarios: {
+      description:
+        "Phù hợp khi bạn đã có mật khẩu và chỉ muốn khỏi phải nhập lại mỗi lần mở file.",
+      knownPassword:
+        "Bạn biết mật khẩu của PDF nhưng không muốn nhập lại mỗi lần mở.",
+      permission:
+        "PDF bị đặt giới hạn in, sao chép, chỉnh sửa và bạn muốn gỡ bỏ các giới hạn đó.",
+      privacy:
+        "PDF chứa thông tin nhạy cảm như hợp đồng, hóa đơn và bạn không muốn tải lên máy chủ bên thứ ba để giải mã.",
+      title: "Phù hợp với các trường hợp sau",
+    },
+    tool: {
+      category: "Công cụ tài liệu",
+      description:
+        "Tải lên PDF có mật khẩu, nhập mật khẩu và tải về file PDF đã gỡ mật khẩu với nội dung y hệt. Toàn bộ quá trình diễn ra ngay trên trình duyệt, file không bị tải lên máy chủ.",
+      faq: [
+        {
+          answer:
+            "Không. PDF được giải mã và xuất file hoàn toàn trong trình duyệt của bạn, không gửi tới bất kỳ máy chủ nào.",
+          question: "PDF của tôi có bị tải lên máy chủ không?",
+        },
+        {
+          answer:
+            "Không. Công cụ này không bẻ khóa mật khẩu; bạn cần biết đúng mật khẩu mới giải mã được. PDF quên mật khẩu sẽ không thể mở.",
+          question: "Quên mật khẩu thì có bẻ khóa giúp được không?",
+        },
+        {
+          answer:
+            "Được. Nếu PDF chỉ bị đặt giới hạn in, sao chép, chỉnh sửa (mật khẩu chủ sở hữu), công cụ sẽ tự động gỡ giới hạn mà không cần nhập mật khẩu.",
+          question: "PDF chỉ có giới hạn in/sao chép có xử lý được không?",
+        },
+        {
+          answer:
+            "Nội dung được giữ nguyên. Việc giải mã chỉ gỡ bỏ thông tin mã hóa, còn nội dung trang, chữ, hình ảnh và bố cục đều được giữ y hệt.",
+          question: "Sau khi giải mã nội dung có bị thay đổi không?",
+        },
+      ],
+      features: [
+        "Nhập đúng mật khẩu là gỡ được mật khẩu mở PDF",
+        "Tự động gỡ các giới hạn in, sao chép, chỉnh sửa nếu chỉ có giới hạn quyền",
+        "Sau khi giải mã, nội dung và bố cục giống hệt file gốc",
+        "Chỉ tải bộ máy giải mã khi bạn dùng lần đầu",
+        "Toàn bộ xử lý cục bộ trên trình duyệt, file không rời khỏi máy bạn",
+      ],
+      keywords: [
+        "gỡ mật khẩu PDF",
+        "xóa mật khẩu PDF",
+        "giải mã PDF",
+        "remove pdf password",
+        "unlock pdf online",
+        "decrypt pdf",
+      ],
+      name: "Gỡ mật khẩu PDF trực tuyến",
+      steps: [
+        "Tải lên một file PDF có mật khẩu.",
+        "Nếu được yêu cầu mật khẩu, hãy nhập đúng mật khẩu bạn biết.",
+        "Chờ trình duyệt giải mã xong ngay trên máy.",
+        "Nhấn tải về để lưu file PDF đã gỡ mật khẩu.",
+      ],
+      summary:
+        "Gỡ mật khẩu PDF ngay trên trình duyệt và nhận file mới có nội dung y hệt.",
+    },
+    content: {
+      faqDescription: "Vài câu hỏi thường gặp trước khi bắt đầu.",
+      faqTitle: "Câu hỏi thường gặp",
+      limitsDescription: "Các trường hợp sau hiện chưa được hỗ trợ.",
+      limitsItems: [
+        "PDF quên mật khẩu: công cụ không bẻ khóa, bạn phải biết đúng mật khẩu.",
+        "PDF hỏng hoặc không đúng chuẩn: có thể không phân tích được.",
+        "File vượt quá {size}: hãy tách nhỏ hoặc nén trước khi xử lý.",
+      ],
+      limitsTitle: "Giới hạn đã biết",
+      stepsDescription: "Làm theo các bước dưới đây để gỡ mật khẩu.",
+      stepsTitle: "Cách sử dụng",
+      supportDescription:
+        "Công cụ tự động nhận diện kiểu mã hóa của PDF: loại cần mật khẩu sẽ nhắc bạn nhập, loại chỉ có giới hạn quyền sẽ được gỡ tự động.",
+      supportTitle: "Khả năng của công cụ",
+    },
+    client: {
+      badges: {
+        localProcessing: "Xử lý cục bộ trên trình duyệt",
+        noUpload: "File không rời khỏi máy bạn",
+        supportedFormats: "Hỗ trợ PDF",
+      },
+      upload: {
+        choosePdf: "Chọn PDF",
+        clear: "Xóa hết",
+        description:
+          "Kéo PDF vào vùng bên dưới hoặc nhấn nút để chọn file. Toàn bộ quá trình không rời khỏi trình duyệt.",
+        emptyDescription: "Hỗ trợ PDF có mật khẩu hoặc bị giới hạn quyền.",
+        emptyTitle: "Kéo PDF vào để bắt đầu gỡ mật khẩu",
+        maxSizeHint: "Mỗi file không quá {size}.",
+        reselect: "Chọn lại",
+        title: "Tải lên PDF",
+      },
+      loading: {
+        description:
+          "Lần đầu sử dụng cần tải khoảng 1.3MB thành phần giải mã, sau đó sẽ được lưu trong trình duyệt nên không phải tải lại.",
+        failed:
+          "Không tải được bộ máy giải mã, hãy kiểm tra kết nối mạng rồi thử lại.",
+        progress: "Đã tải {percent}%",
+        retry: "Thử lại",
+        title: "Đang tải bộ máy giải mã",
+      },
+      password: {
+        description: "PDF này cần mật khẩu để mở, hãy nhập mật khẩu bạn biết.",
+        label: "Mật khẩu PDF",
+        placeholder: "Nhập mật khẩu mở file",
+        submit: "Giải mã",
+        submitting: "Đang giải mã",
+        title: "Nhập mật khẩu PDF",
+        wrongPassword: "Mật khẩu không đúng, hãy thử lại.",
+      },
+      status: {
+        decrypting: "Đang giải mã…",
+        detecting: "Đang kiểm tra tình trạng mã hóa của PDF…",
+      },
+      result: {
+        downloadButton: "Tải PDF đã gỡ mật khẩu",
+        notEncryptedSuccess:
+          "PDF này vốn không được mã hóa, bạn có thể tải file gốc trực tiếp mà không cần xử lý.",
+        ownerOnlySuccess:
+          "Đã gỡ các giới hạn in, sao chép, chỉnh sửa của PDF này, bạn có thể tải về ngay.",
+        privacyNote:
+          "Toàn bộ quá trình giải mã diễn ra cục bộ, file chưa từng rời khỏi thiết bị của bạn.",
+        title: "Đã xử lý xong",
+        userPasswordSuccess:
+          "Đã gỡ mật khẩu, bạn có thể tải về file mới với nội dung y hệt.",
+      },
+      errors: {
+        decryptFailed:
+          "Giải mã thất bại, hãy kiểm tra file không bị hỏng rồi thử lại.",
+        decryptFailedDetail: "Giải mã thất bại: {detail}",
+        fileTooLarge: "File quá lớn, tối đa hỗ trợ {size}.",
+        invalidPassword: "Mật khẩu không đúng, hãy thử lại.",
+        loadFailed:
+          "Không tải được bộ máy giải mã, hãy kiểm tra kết nối mạng rồi thử lại.",
+        unsupportedFormat: "Chưa hỗ trợ loại file này, hãy tải lên PDF.",
+      },
+    },
+  },
   ogImageValidator: {
     metadata: {
       description:

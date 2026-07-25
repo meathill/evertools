@@ -139,3 +139,25 @@ worker 文件由 `pnpm copy:pdf-worker` 拷到 `public/pdf/`，`dev` / `build` �
 - 抓取上限设 10MB（`FETCH_MAX_BYTES`），比协议允许的 50MB 保守很多；命中上限不是静默截断，report
   里会带 `content-truncated` 提示。gzip 压缩的 sitemap（`.xml.gz`）**暂不支持**，用响应体前两字节
   的 gzip magic number（`0x1f 0x8b`）识别后直接在报告里标 `gzip-unsupported`，不强行当文本解析。
+
+### PDF 去密码（`lib/pdf-password-remover/*` + `/tools/pdf-password-remover`）
+
+- **解密引擎选 `@neslinesli93/qpdf-wasm@0.3.0`**：qpdf `--decrypt` 是字节级保真的标准解密，包为
+  ISC + qpdf 本体 Apache-2.0（无 AGPL 风险，mupdf 因此被排除）。仅作 devDependency 装，供集成
+  测试在 Node 里跑真 wasm；**运行时不打包、走 CDN 懒加载**。
+- **懒加载走 CDN、不自托管**：只在用户选文件后才拉 `qpdf.js`(43KB)+`qpdf.wasm`(1.3MB)，主
+  jsDelivr / 备 unpkg，版本锁定 URL 带 `immutable` 一年强缓存，用户只下一次。加载期间弹进度
+  Dialog。这样工具页首屏零额外负载。
+- **glue 是 UMD，用 `new Function` 求值取工厂，别用 `<script>`+`window.Module`**：后者依赖 onload
+  时序且要清理全局，在 React 严格模式并发挂载下不可靠（实测卡死）。fetch 源码 → `new Function(
+  'module','exports',src)` → 取 `module.exports.default`，确定性强，无 CSP 问题（Next 默认允许）。
+- **qpdf 12.2.0 wasm 构建的退出码与官方文档不符，务必以实测为准**：所有 "invalid password" 都直接
+  `exit 2`，不走文档里的特殊码。实测矩阵：`--decrypt` 空密码→无密码文件 0 / 仅权限密码 0 / 需要密码 2；
+  `--is-encrypted`（仅文件可打开时可靠）→加密 0 / 未加密 2；`--requires-password` 带密码→正确 3 / 错误或未加密 2。
+  据此 `detectAndUnlock` 用「空密码试解 + `--is-encrypted` 二次判别」区分 未加密 / 仅权限密码 / 需要密码。
+- **抑制 qpdf 的 console.error 噪声**：此 glue 不支持 `printErr` 选项，qpdf 把 "invalid password"
+  写到 `console.error`，且 Emscripten 在**实例化时**就绑定了当时的 `console.error` 引用——所以要
+  从 `factory()` 到 `callMain()` 全程临时接管 `console.error`（只包 callMain 无效），否则检测阶段的
+  预期报错会污染控制台并触发 Next 报错浮层。
+- **content-length 是 gzip 压缩后大小**：CDN 对 wasm 开了 gzip，流式下载统计的是解压后字节
+  (1.33MB)，而 `content-length` 是压缩后 (~441KB)，故进度百分比要 `Math.min(100, …)` 封顶。

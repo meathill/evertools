@@ -111,6 +111,26 @@ export function getPdfTextEditorTool(content: LocaleContent): ToolDefinition {
   };
 }
 
+export function getPdfPasswordRemoverTool(
+  content: LocaleContent,
+): ToolDefinition {
+  return {
+    applicationCategory: "BusinessApplication",
+    category: content.pdfPasswordRemover.tool.category,
+    description: content.pdfPasswordRemover.tool.description,
+    faq: content.pdfPasswordRemover.tool.faq,
+    features: content.pdfPasswordRemover.tool.features,
+    href: "/tools/pdf-password-remover",
+    keywords: content.pdfPasswordRemover.tool.keywords,
+    name: content.pdfPasswordRemover.tool.name,
+    slug: "pdf-password-remover",
+    steps: content.pdfPasswordRemover.tool.steps,
+    stepsTitle: content.pdfPasswordRemover.content.stepsTitle,
+    summary: content.pdfPasswordRemover.tool.summary,
+    totalTime: "PT1M",
+  };
+}
+
 export function getJsonViewerTool(content: LocaleContent): ToolDefinition {
   return {
     applicationCategory: "DeveloperApplication",
@@ -210,6 +230,7 @@ export function getTools(content: LocaleContent): ToolDefinition[] {
     getImageConverterTool(content),
     getImageCropperTool(content),
     getPdfTextEditorTool(content),
+    getPdfPasswordRemoverTool(content),
     getJsonViewerTool(content),
     getOgImageValidatorTool(content),
     getMarkdownToPdfTool(content),

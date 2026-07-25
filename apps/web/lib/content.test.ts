@@ -97,11 +97,12 @@ describe("getHtmlToMarkdownTool", () => {
 });
 
 describe("getTools", () => {
-  it("returns the eight tools in registration order", () => {
+  it("returns the nine tools in registration order", () => {
     expect(getTools(zh).map((tool) => tool.slug)).toEqual([
       "image-converter",
       "image-cropper",
       "pdf-text-editor",
+      "pdf-password-remover",
       "json-viewer",
       "og-image-validator",
       "markdown-to-pdf",

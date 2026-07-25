@@ -722,6 +722,175 @@ export const ptMessages: LocaleContent = {
       },
     },
   },
+  pdfPasswordRemover: {
+    metadata: {
+      description:
+        "Envie um PDF protegido por senha, digite a senha e baixe um PDF sem senha, com conteúdo idêntico. Todo o processo acontece localmente no navegador e o arquivo não é enviado para nenhum servidor.",
+      keywords: [
+        "remover senha de PDF",
+        "tirar senha de PDF",
+        "descriptografar PDF",
+        "remove pdf password",
+        "unlock pdf online",
+        "decrypt pdf",
+      ],
+      title: "Remover senha de PDF online",
+    },
+    hero: {
+      badges: {
+        category: "Ferramenta de documentos",
+        localProcessing: "Processado localmente no navegador",
+        noUpload: "O arquivo não sai do seu dispositivo",
+      },
+      description:
+        "Envie um PDF protegido por senha, digite a senha que você conhece e receba um novo arquivo sem senha, com conteúdo idêntico. Toda a descriptografia é feita no navegador e o arquivo não sai do seu dispositivo.",
+      title: "Remova a senha do seu PDF online",
+    },
+    scenarios: {
+      description:
+        "Ideal para quem já tem a senha e só quer acabar com o incômodo de digitá-la toda vez que abre o arquivo.",
+      knownPassword:
+        "Você sabe a senha do PDF, mas não quer digitá-la sempre que precisa abri-lo.",
+      permission:
+        "O PDF tem restrições de impressão, cópia ou edição e você quer liberar essas permissões.",
+      privacy:
+        "O PDF contém informações sensíveis, como contratos e faturas, e você não quer enviá-lo a servidores de terceiros para descriptografar.",
+      title: "Ideal para estas situações",
+    },
+    tool: {
+      category: "Ferramenta de documentos",
+      description:
+        "Envie um PDF protegido por senha, digite a senha e baixe um PDF sem senha, com conteúdo idêntico. Todo o processo acontece localmente no navegador, sem enviar o arquivo para nenhum servidor.",
+      faq: [
+        {
+          answer:
+            "Não. O PDF é descriptografado e exportado inteiramente no seu navegador e não é enviado a nenhum servidor.",
+          question: "Meu PDF será enviado para um servidor?",
+        },
+        {
+          answer:
+            "Não. Esta ferramenta não faz quebra de senha por força bruta; você precisa saber a senha correta para descriptografar. PDFs cuja senha você esqueceu não podem ser abertos.",
+          question: "Se eu esqueci a senha, dá para quebrá-la?",
+        },
+        {
+          answer:
+            "Sim. Se o PDF tiver apenas restrições de impressão, cópia ou edição (senha de proprietário), as restrições são removidas automaticamente, sem precisar digitar senha.",
+          question:
+            "Dá para tratar um PDF só com restrições de impressão/cópia?",
+        },
+        {
+          answer:
+            "O conteúdo permanece igual. A descriptografia remove apenas as informações de criptografia; o conteúdo das páginas, o texto, as imagens e a diagramação são preservados exatamente.",
+          question: "O conteúdo muda depois de descriptografar?",
+        },
+      ],
+      features: [
+        "Digite a senha correta para remover a senha de abertura do PDF",
+        "Remove automaticamente restrições de impressão, cópia e edição quando são as únicas presentes",
+        "O conteúdo e a diagramação ficam idênticos ao arquivo original após a descriptografia",
+        "O mecanismo de descriptografia é carregado sob demanda apenas no primeiro uso",
+        "Processado localmente no navegador do início ao fim; o arquivo não sai do seu dispositivo",
+      ],
+      keywords: [
+        "remover senha de PDF",
+        "tirar senha de PDF",
+        "descriptografar PDF",
+        "remove pdf password",
+        "unlock pdf online",
+        "decrypt pdf",
+      ],
+      name: "Remover senha de PDF online",
+      steps: [
+        "Envie um PDF protegido por senha.",
+        "Se for solicitada uma senha, digite a senha correta que você conhece.",
+        "Aguarde o navegador concluir a descriptografia localmente.",
+        "Clique em baixar e salve o PDF sem senha.",
+      ],
+      summary:
+        "Remova a senha do PDF localmente no navegador e obtenha um novo arquivo com conteúdo idêntico.",
+    },
+    content: {
+      faqDescription: "Algumas dúvidas comuns antes de começar.",
+      faqTitle: "Perguntas frequentes",
+      limitsDescription: "As situações a seguir ainda não são cobertas.",
+      limitsItems: [
+        "PDFs cuja senha foi esquecida: esta ferramenta não faz força bruta, é preciso saber a senha correta.",
+        "PDFs corrompidos ou fora do padrão: podem não ser processados corretamente.",
+        "Arquivos maiores que {size}: divida ou compacte antes de processar.",
+      ],
+      limitsTitle: "Limitações conhecidas",
+      stepsDescription: "Siga os passos abaixo para remover a senha.",
+      stepsTitle: "Como usar",
+      supportDescription:
+        "A ferramenta identifica automaticamente o tipo de criptografia do PDF: se precisar de senha, você será solicitado a digitá-la; se houver apenas restrições de permissão, elas são removidas automaticamente.",
+      supportTitle: "O que a ferramenta faz",
+    },
+    client: {
+      badges: {
+        localProcessing: "Processado localmente no navegador",
+        noUpload: "O arquivo não sai do seu dispositivo",
+        supportedFormats: "Compatível com PDF",
+      },
+      upload: {
+        choosePdf: "Escolher PDF",
+        clear: "Limpar",
+        description:
+          "Arraste o PDF para a área abaixo ou clique no botão para selecionar o arquivo. Nada sai do navegador durante o processo.",
+        emptyDescription:
+          "Compatível com PDFs protegidos por senha ou com restrições de permissão.",
+        emptyTitle: "Arraste um PDF para começar a remover a senha",
+        maxSizeHint: "Cada arquivo deve ter no máximo {size}.",
+        reselect: "Selecionar novamente",
+        title: "Enviar PDF",
+      },
+      loading: {
+        description:
+          "No primeiro uso é necessário baixar cerca de 1,3 MB do componente de descriptografia, que fica em cache no navegador e não precisa ser baixado de novo.",
+        failed:
+          "Falha ao carregar o mecanismo de descriptografia. Verifique sua conexão e tente novamente.",
+        progress: "{percent}% baixado",
+        retry: "Tentar novamente",
+        title: "Carregando o mecanismo de descriptografia",
+      },
+      password: {
+        description:
+          "Este PDF precisa de senha para ser aberto. Digite a senha que você conhece.",
+        label: "Senha do PDF",
+        placeholder: "Digite a senha de abertura",
+        submit: "Descriptografar",
+        submitting: "Descriptografando",
+        title: "Digite a senha do PDF",
+        wrongPassword: "Senha incorreta. Tente novamente.",
+      },
+      status: {
+        decrypting: "Descriptografando…",
+        detecting: "Verificando a criptografia do PDF…",
+      },
+      result: {
+        downloadButton: "Baixar PDF sem senha",
+        notEncryptedSuccess:
+          "Este PDF não tem criptografia; você pode baixar o arquivo original diretamente, sem precisar processar.",
+        ownerOnlySuccess:
+          "As restrições de impressão, cópia e edição deste PDF foram removidas. Já pode baixar.",
+        privacyNote:
+          "A descriptografia é feita localmente do início ao fim; o arquivo nunca sai do seu dispositivo.",
+        title: "Processamento concluído",
+        userPasswordSuccess:
+          "A senha foi removida. Você já pode baixar o novo arquivo com conteúdo idêntico.",
+      },
+      errors: {
+        decryptFailed:
+          "Falha na descriptografia. Confirme que o arquivo não está corrompido e tente novamente.",
+        decryptFailedDetail: "Falha na descriptografia: {detail}",
+        fileTooLarge: "Arquivo muito grande. O tamanho máximo é {size}.",
+        invalidPassword: "Senha incorreta. Tente novamente.",
+        loadFailed:
+          "Falha ao carregar o mecanismo de descriptografia. Verifique sua conexão e tente novamente.",
+        unsupportedFormat:
+          "Este tipo de arquivo ainda não é compatível. Envie um PDF.",
+      },
+    },
+  },
   ogImageValidator: {
     metadata: {
       description:
