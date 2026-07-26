@@ -161,3 +161,25 @@ worker 文件由 `pnpm copy:pdf-worker` 拷到 `public/pdf/`，`dev` / `build` �
   预期报错会污染控制台并触发 Next 报错浮层。
 - **content-length 是 gzip 压缩后大小**：CDN 对 wasm 开了 gzip，流式下载统计的是解压后字节
   (1.33MB)，而 `content-length` 是压缩后 (~441KB)，故进度百分比要 `Math.min(100, …)` 封顶。
+
+## 简繁转换（`lib/chinese-converter.ts` + `/tools/chinese-converter`）
+
+- **转换引擎选 `opencc-js`**：纯 JS 实现，无需 WASM，MIT + Apache-2.0 双协议。词典数据体积不小
+  （单方向未压缩约 1MB），走**动态 `import("opencc-js")` 懒加载**——本地依赖走 bundler 自动分包，
+  不是 qpdf 那种 CDN 方案（opencc-js 是纯 JS，Next.js/Turbopack 能直接对动态 import 分包，没有
+  WASM 那样需要外部托管的理由）。`getConverter()` 按 `from:to` 缓存已构建的 converter，避免每次
+  转换都重新加载词典。
+- **务必用顶层 `Converter({from,to})`，不要用 `opencc-js/core`+`opencc-js/preset` 手搓**：
+  官方 README 建议树摇用法（`import * as OpenCC from "opencc-js/core"` 手动拼
+  `ConverterFactory(...)`），但实测发现地区变体（`twp`/`hkp`）的高质量转换依赖内部
+  `configs` 表里预先算好的 `segmentation`（分词边界）+ `conversionChain` 组合——`opencc-js/preset`
+  导出的 `from`/`to` 只是原始字典分片，**不含 `configs`**，手搓等于重新实现分词逻辑，容易在
+  地区惯用词转换上出细节偏差。顶层 `Converter()` 内部按 `{from,to}` 自动映射到正确的具名
+  config（如 `cn→twp` 映射到 `s2twp`，`twp→cn` 映射到 `tw2sp`）并应用完整的
+  normalization/segmentation/conversion 链，正确性优先于分包体积，就用它。
+- **方向+地区 → locale 对照**：`cn`（简体）↔ `t`（标准繁体，OpenCC 中间形式）/ `twp`（台湾正体，
+  含地区惯用词）/ `hkp`（港澳繁体，含地区惯用词）。`t` 不建议作为最终展示用的"任意繁体"，但作为
+  "不带地区倾向的标准繁体"选项对用户是合理的。
+- **繁体→简体也要传对应的地区 locale（而非统一用 `t`）**：`twp→cn`/`hkp→cn` 会把台湾/港澳惯用词
+  （如"軟體"）正确转换回对应简体词（"软件"），而不是走字符级直译；UI 上的"繁体地区"选择器对两个
+  方向都生效，不只是"简→繁"时才有意义。

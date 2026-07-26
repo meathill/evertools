@@ -12,6 +12,7 @@
 - [Markdown 转 PDF](https://tools.meathill.com/tools/markdown-to-pdf) —— 在浏览器里把 Markdown 渲染成格式化预览，再通过打印导出为手机友好的 PDF
 - [Sitemap 校验器](https://tools.meathill.com/tools/sitemap-validator) —— 抓取 sitemap.xml 并按协议校验结构、条目字段与体积上限，快速定位问题
 - [网页内容转 Markdown](https://tools.meathill.com/tools/html-to-markdown) —— 在浏览器本地把粘贴的网页内容或 HTML 源码转换成 Markdown
+- [简繁转换](https://tools.meathill.com/tools/chinese-converter) —— 在浏览器本地转换简体与繁体中文，繁体侧支持标准/台湾/港澳三种地区惯用词
 
 ## 技术栈
 
