@@ -3,9 +3,7 @@ import { convertChineseText } from "@/lib/chinese-converter";
 
 describe("convertChineseText", () => {
   it("空字符串返回空字符串", async () => {
-    expect(await convertChineseText("", "toTraditional", "standard")).toBe(
-      "",
-    );
+    expect(await convertChineseText("", "toTraditional", "standard")).toBe("");
     expect(await convertChineseText("", "toSimplified", "taiwan")).toBe("");
   });
 
@@ -35,15 +33,15 @@ describe("convertChineseText", () => {
 
   describe("简体转台湾正体", () => {
     it("地区惯用词转换", async () => {
-      expect(
-        await convertChineseText("软件", "toTraditional", "taiwan"),
-      ).toBe("軟體");
-      expect(
-        await convertChineseText("网络", "toTraditional", "taiwan"),
-      ).toBe("網路");
-      expect(
-        await convertChineseText("鼠标", "toTraditional", "taiwan"),
-      ).toBe("滑鼠");
+      expect(await convertChineseText("软件", "toTraditional", "taiwan")).toBe(
+        "軟體",
+      );
+      expect(await convertChineseText("网络", "toTraditional", "taiwan")).toBe(
+        "網路",
+      );
+      expect(await convertChineseText("鼠标", "toTraditional", "taiwan")).toBe(
+        "滑鼠",
+      );
     });
   });
 
@@ -66,18 +64,18 @@ describe("convertChineseText", () => {
     });
 
     it("台湾正体转回简体", async () => {
-      expect(
-        await convertChineseText("軟體", "toSimplified", "taiwan"),
-      ).toBe("软件");
-      expect(
-        await convertChineseText("滑鼠", "toSimplified", "taiwan"),
-      ).toBe("鼠标");
+      expect(await convertChineseText("軟體", "toSimplified", "taiwan")).toBe(
+        "软件",
+      );
+      expect(await convertChineseText("滑鼠", "toSimplified", "taiwan")).toBe(
+        "鼠标",
+      );
     });
 
     it("港澳繁体转回简体", async () => {
-      expect(
-        await convertChineseText("硬碟", "toSimplified", "hongkong"),
-      ).toBe("硬盘");
+      expect(await convertChineseText("硬碟", "toSimplified", "hongkong")).toBe(
+        "硬盘",
+      );
     });
   });
 

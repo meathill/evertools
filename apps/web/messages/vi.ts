@@ -1649,4 +1649,144 @@ export const viMessages: LocaleContent = {
       },
     },
   },
+  chineseConverter: {
+    metadata: {
+      description:
+        "Chuyển đổi qua lại giữa tiếng Trung Giản thể và Phồn thể trực tuyến, hỗ trợ cách dùng từ theo vùng: Phồn thể chuẩn, Đài Loan, Hồng Kông/Ma Cao. Toàn bộ quá trình chuyển đổi diễn ra ngay trên trình duyệt, không tải nội dung lên máy chủ.",
+      keywords: [
+        "chuyển đổi giản thể phồn thể",
+        "giản thể sang phồn thể",
+        "phồn thể sang giản thể",
+        "chuyển đổi tiếng Trung trực tuyến",
+        "phồn thể Đài Loan",
+        "phồn thể Hồng Kông",
+      ],
+      title: "Chuyển đổi Hán tự Giản thể - Phồn thể trực tuyến",
+    },
+    hero: {
+      badges: {
+        category: "Công cụ văn bản",
+        localProcessing: "Xử lý cục bộ trên trình duyệt",
+        regionalAware: "Hỗ trợ từ vựng Đài Loan/Hồng Kông",
+      },
+      description:
+        "Chuyển đổi qua lại giữa tiếng Trung Giản thể và Phồn thể. Với Phồn thể, bạn có thể chọn chuẩn, Đài Loan hoặc Hồng Kông/Ma Cao để tự động áp dụng từ vựng theo vùng (ví dụ: 软件 ↔ 軟體). Toàn bộ quá trình diễn ra ngay trên trình duyệt, không tải nội dung lên máy chủ.",
+      title: "Chuyển đổi Giản thể - Phồn thể trực tuyến",
+    },
+    scenarios: {
+      description:
+        "Phù hợp để chuyển đổi văn bản hàng ngày và bản địa hóa, không dành cho nghiên cứu cổ văn hay dị thể tự chuyên sâu.",
+      localize:
+        "Bản địa hóa nội dung cho người dùng Đài Loan hoặc Hồng Kông, cần dùng đúng từ vựng quen thuộc ở địa phương (ví dụ: 軟體 thay vì 軟件).",
+      publish:
+        "Bạn đã viết nội dung bằng Giản thể và cần bản Phồn thể để phục vụ độc giả ở Hồng Kông, Ma Cao hoặc Đài Loan.",
+      read: "Bạn có một tài liệu tiếng Trung Phồn thể và muốn chuyển nhanh sang Giản thể để đọc dễ dàng hơn.",
+      title: "Phù hợp với những trường hợp sau",
+    },
+    tool: {
+      category: "Công cụ văn bản",
+      description:
+        "Chuyển đổi tiếng Trung Giản thể và Phồn thể trực tuyến: chọn Phồn thể chuẩn, Phồn thể Đài Loan (kèm từ vựng theo vùng), hoặc Phồn thể Hồng Kông/Ma Cao (kèm từ vựng theo vùng), đổi chiều chuyển đổi chỉ với một cú nhấp. Toàn bộ xử lý diễn ra trên trình duyệt, không tải nội dung lên máy chủ.",
+      faq: [
+        {
+          answer:
+            "Không. Toàn bộ quá trình chuyển đổi diễn ra cục bộ ngay trên trình duyệt của bạn, nội dung không được gửi đến máy chủ.",
+          question: "Nội dung của tôi có bị tải lên máy chủ không?",
+        },
+        {
+          answer:
+            "Phồn thể chuẩn chỉ chuyển đổi ở cấp độ chữ (ví dụ: 汉 thành 漢). Phồn thể Đài Loan và Hồng Kông/Ma Cao còn chuyển đổi thêm từ vựng theo vùng (ví dụ: 软件 thành 軟體 hoặc 軟件), sát hơn với cách diễn đạt của độc giả địa phương.",
+          question:
+            "Phồn thể chuẩn khác gì với Phồn thể Đài Loan và Phồn thể Hồng Kông/Ma Cao?",
+        },
+        {
+          answer:
+            "Công cụ chuyển đổi dựa trên quy tắc từ điển, bao phủ phần lớn từ ngữ thông dụng, nhưng không thể bao phủ hết mọi danh từ riêng, tên người hay từ mới. Nên nhờ người bản ngữ kiểm tra lại trước khi dùng cho mục đích xuất bản chính thức.",
+          question: "Kết quả chuyển đổi có luôn chính xác không?",
+        },
+        {
+          answer:
+            "Có. Chỉ cần chọn chiều 'Phồn thể → Giản thể', từ vựng theo vùng của Phồn thể Đài Loan hay Hồng Kông/Ma Cao cũng sẽ được chuyển đúng về từ Giản thể tương ứng.",
+          question: "Có hỗ trợ chuyển từ Phồn thể sang Giản thể không?",
+        },
+      ],
+      features: [
+        "Chuyển đổi hai chiều: Giản thể sang Phồn thể và Phồn thể sang Giản thể",
+        "Phồn thể hỗ trợ ba vùng từ vựng: chuẩn, Đài Loan và Hồng Kông/Ma Cao",
+        "Chuyển đổi từ vựng theo vùng (ví dụ: 软件 → 軟體, 网络 → 網路), không chỉ đơn thuần thay chữ",
+        "Đổi chiều chuyển đổi chỉ với một cú nhấp, có thể hoán đổi nội dung nhập và kết quả",
+        "Xử lý cục bộ trên trình duyệt, không tải nội dung lên máy chủ",
+        "Sao chép kết quả chỉ với một cú nhấp",
+      ],
+      keywords: [
+        "chuyển đổi giản thể phồn thể",
+        "giản thể sang phồn thể",
+        "phồn thể sang giản thể",
+        "chuyển đổi tiếng Trung trực tuyến",
+        "phồn thể Đài Loan",
+        "phồn thể Hồng Kông",
+      ],
+      name: "Chuyển đổi Giản thể - Phồn thể trực tuyến",
+      steps: [
+        "Dán hoặc nhập văn bản tiếng Trung cần chuyển đổi.",
+        "Chọn chiều chuyển đổi (Giản thể → Phồn thể hoặc Phồn thể → Giản thể), và chọn vùng nếu chuyển sang Phồn thể.",
+        "Kết quả hiển thị ngay lập tức ở bên phải, nhấn Sao chép để sử dụng.",
+      ],
+      summary:
+        "Chuyển đổi Giản thể và Phồn thể tiếng Trung ngay trên trình duyệt, hỗ trợ từ vựng theo vùng chuẩn, Đài Loan và Hồng Kông/Ma Cao.",
+    },
+    content: {
+      faqDescription: "Một vài câu hỏi thường gặp trước khi bắt đầu.",
+      faqTitle: "Câu hỏi thường gặp",
+      privacyDescription: "Hãy đọc qua những lưu ý sau trước khi bắt đầu.",
+      privacyItems: [
+        "Toàn bộ quá trình chuyển đổi diễn ra trên trình duyệt của bạn, không tải nội dung lên máy chủ.",
+        "Việc chuyển đổi từ vựng theo vùng dựa trên quy tắc từ điển, không thể bao phủ hết mọi danh từ riêng, tên người hay từ mới.",
+        "Nên nhờ người bản ngữ kiểm tra lại kết quả trước khi dùng cho mục đích xuất bản chính thức.",
+      ],
+      privacyTitle: "Lưu ý khi sử dụng",
+      stepsDescription:
+        "Làm theo các bước dưới đây để chuyển đổi văn bản của bạn.",
+      stepsTitle: "Cách sử dụng",
+      supportDescription:
+        "Bao phủ những tình huống thường gặp nhất khi viết, xuất bản và bản địa hóa nội dung hàng ngày.",
+      supportTitle: "Các kiểu chuyển đổi được hỗ trợ",
+    },
+    client: {
+      direction: {
+        toSimplified: "Phồn thể → Giản thể",
+        toTraditional: "Giản thể → Phồn thể",
+      },
+      empty: {
+        description:
+          "Nhập hoặc dán văn bản tiếng Trung ở bên trái, kết quả chuyển đổi sẽ hiển thị ở đây.",
+        title: "Nhập văn bản để bắt đầu chuyển đổi",
+      },
+      error: "Chuyển đổi thất bại, vui lòng thử lại hoặc tải lại trang.",
+      input: {
+        clear: "Xóa",
+        placeholder:
+          "Nhập hoặc dán văn bản tiếng Trung cần chuyển đổi vào đây…",
+        title: "Nội dung nhập",
+      },
+      output: {
+        title: "Kết quả",
+      },
+      status: {
+        characters: "{count} ký tự",
+        converting: "Đang tải từ điển cho lần chuyển đổi đầu tiên…",
+      },
+      toolbar: {
+        copied: "Đã sao chép",
+        copy: "Sao chép",
+        swap: "Hoán đổi",
+      },
+      variant: {
+        hongkong: "Hồng Kông/Ma Cao",
+        label: "Vùng Phồn thể",
+        standard: "Chuẩn",
+        taiwan: "Đài Loan",
+      },
+    },
+  },
 };

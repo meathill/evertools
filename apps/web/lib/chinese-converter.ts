@@ -24,7 +24,10 @@ function resolveLocalePair(
 // 按 from:to 缓存已构建的 converter，避免每次转换都重新加载词典/构建 Trie。
 const converterCache = new Map<string, ConverterFunction>();
 
-async function getConverter(from: string, to: string): Promise<ConverterFunction> {
+async function getConverter(
+  from: string,
+  to: string,
+): Promise<ConverterFunction> {
   const cacheKey = `${from}:${to}`;
   const cached = converterCache.get(cacheKey);
   if (cached) {

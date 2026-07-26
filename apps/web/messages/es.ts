@@ -1675,4 +1675,143 @@ export const esMessages: LocaleContent = {
       },
     },
   },
+  chineseConverter: {
+    metadata: {
+      description:
+        "Convierte chino simplificado y tradicional en línea, con variantes regionales estándar, de Taiwán y de Hong Kong/Macao. La conversión se realiza completamente en tu navegador, sin subir contenido.",
+      keywords: [
+        "conversor de chino",
+        "simplificado a tradicional",
+        "tradicional a simplificado",
+        "convertir chino en línea",
+        "chino tradicional de Taiwán",
+        "chino tradicional de Hong Kong",
+      ],
+      title: "Conversor de chino simplificado y tradicional en línea",
+    },
+    hero: {
+      badges: {
+        category: "Herramienta de texto",
+        localProcessing: "Procesamiento local en el navegador",
+        regionalAware: "Vocabulario de Taiwán y Hong Kong",
+      },
+      description:
+        "Convierte entre chino simplificado y tradicional. Para el tradicional, elige estándar, Taiwán u Hong Kong/Macao para aplicar automáticamente el vocabulario regional (por ejemplo, 软件 ↔ 軟體). Todo se procesa localmente en tu navegador, sin subir contenido.",
+      title: "Conversor de chino en línea",
+    },
+    scenarios: {
+      description:
+        "Ideal para convertir texto cotidiano y localizar contenido; no está pensado para textos clásicos ni estudios de variantes de caracteres.",
+      localize:
+        "Localizas textos para usuarios de Taiwán o Hong Kong y necesitas usar el vocabulario local (por ejemplo, 軟體 en vez de 軟件).",
+      publish:
+        "Escribiste contenido en simplificado y necesitas una versión en tradicional para lectores de Hong Kong, Macao o Taiwán.",
+      read: "Tienes un documento en chino tradicional y quieres convertirlo rápidamente a simplificado para leerlo con más facilidad.",
+      title: "Ideal para estas situaciones",
+    },
+    tool: {
+      category: "Herramienta de texto",
+      description:
+        "Convierte chino simplificado y tradicional en línea: elige tradicional estándar, de Taiwán (con vocabulario regional) o de Hong Kong/Macao (con vocabulario regional), y cambia de dirección con un clic. Todo se procesa en tu navegador, sin subir contenido.",
+      faq: [
+        {
+          answer:
+            "No. Toda la conversión se realiza localmente en tu navegador; el contenido no se envía a ningún servidor.",
+          question: "¿Se sube mi contenido a un servidor?",
+        },
+        {
+          answer:
+            "El tradicional estándar solo convierte caracteres (por ejemplo, 汉 a 漢). El de Taiwán y el de Hong Kong/Macao además convierten vocabulario regional (por ejemplo, 软件 a 軟體 o 軟件), más cercano a cómo escriben los lectores locales.",
+          question:
+            "¿Cuál es la diferencia entre tradicional estándar, de Taiwán y de Hong Kong/Macao?",
+        },
+        {
+          answer:
+            "La herramienta convierte según reglas de diccionario, lo que cubre la gran mayoría de palabras cotidianas, pero no puede cubrir todos los nombres propios ni términos nuevos. Te recomendamos que un hablante nativo revise el resultado antes de publicarlo.",
+          question: "¿El resultado de la conversión siempre es preciso?",
+        },
+        {
+          answer:
+            "Sí. Elige la dirección 'Tradicional → Simplificado' y el vocabulario regional de Taiwán u Hong Kong/Macao también se convertirá correctamente al simplificado correspondiente.",
+          question: "¿Admite convertir de tradicional a simplificado?",
+        },
+      ],
+      features: [
+        "Conversión en ambos sentidos: de simplificado a tradicional y de tradicional a simplificado",
+        "El tradicional admite tres variantes regionales: estándar, Taiwán y Hong Kong/Macao",
+        "Convierte vocabulario regional (por ejemplo, 软件 → 軟體, 网络 → 網路), no solo caracteres",
+        "Cambia de dirección con un clic, o intercambia el texto de entrada y salida",
+        "Procesamiento local en el navegador, sin subir contenido",
+        "Copia el resultado con un clic",
+      ],
+      keywords: [
+        "conversor de chino",
+        "simplificado a tradicional",
+        "tradicional a simplificado",
+        "convertir chino en línea",
+        "chino tradicional de Taiwán",
+        "chino tradicional de Hong Kong",
+      ],
+      name: "Conversor de chino en línea",
+      steps: [
+        "Pega o escribe el texto en chino que quieras convertir.",
+        "Elige una dirección (simplificado → tradicional o tradicional → simplificado) y, si conviertes a tradicional, elige la región de destino.",
+        "El resultado aparece al instante a la derecha; haz clic en Copiar para usarlo.",
+      ],
+      summary:
+        "Convierte chino simplificado y tradicional localmente en tu navegador, con vocabulario regional estándar, de Taiwán y de Hong Kong/Macao.",
+    },
+    content: {
+      faqDescription: "Algunas preguntas frecuentes antes de empezar.",
+      faqTitle: "Preguntas frecuentes",
+      privacyDescription: "Ten en cuenta lo siguiente antes de empezar.",
+      privacyItems: [
+        "La conversión se realiza completamente en tu navegador; no se sube contenido a ningún servidor.",
+        "El vocabulario regional se convierte según reglas de diccionario, que no pueden cubrir todos los nombres propios, nombres de personas o términos nuevos.",
+        "Te recomendamos que un hablante nativo revise el resultado antes de usarlo para una publicación oficial.",
+      ],
+      privacyTitle: "Antes de empezar",
+      stepsDescription: "Sigue estos pasos para convertir tu texto.",
+      stepsTitle: "Cómo usarlo",
+      supportDescription:
+        "Cubre los escenarios más comunes de escritura, publicación y localización cotidianas.",
+      supportTitle: "Conversiones admitidas",
+    },
+    client: {
+      direction: {
+        toSimplified: "Tradicional → Simplificado",
+        toTraditional: "Simplificado → Tradicional",
+      },
+      empty: {
+        description:
+          "Escribe o pega texto en chino a la izquierda; aquí aparecerá el resultado convertido.",
+        title: "Escribe texto para empezar a convertir",
+      },
+      error: "Error al convertir. Inténtalo de nuevo o recarga la página.",
+      input: {
+        clear: "Limpiar",
+        placeholder:
+          "Escribe o pega aquí el texto en chino que quieras convertir…",
+        title: "Entrada",
+      },
+      output: {
+        title: "Resultado",
+      },
+      status: {
+        characters: "{count} caracteres",
+        converting: "Cargando el diccionario para la primera conversión…",
+      },
+      toolbar: {
+        copied: "Copiado",
+        copy: "Copiar",
+        swap: "Intercambiar",
+      },
+      variant: {
+        hongkong: "Hong Kong/Macao",
+        label: "Región del tradicional",
+        standard: "Estándar",
+        taiwan: "Taiwán",
+      },
+    },
+  },
 };

@@ -1,5 +1,6 @@
 import { describe, expect, it } from "vitest";
 import {
+  getChineseConverterTool,
   getHtmlToMarkdownTool,
   getImageConverterTool,
   getImageCropperTool,
@@ -96,8 +97,21 @@ describe("getHtmlToMarkdownTool", () => {
   });
 });
 
+describe("getChineseConverterTool", () => {
+  it("builds the chinese-converter definition", () => {
+    const tool = getChineseConverterTool(zh);
+    expect(tool.slug).toBe("chinese-converter");
+    expect(tool.href).toBe("/tools/chinese-converter");
+    expect(tool.applicationCategory).toBe("UtilitiesApplication");
+    expect(tool.totalTime).toBe("PT1M");
+    expect(tool.stepsTitle).toBe(zh.chineseConverter.content.stepsTitle);
+    expect(tool.name).toBe(zh.chineseConverter.tool.name);
+    expect(tool.faq).toEqual(zh.chineseConverter.tool.faq);
+  });
+});
+
 describe("getTools", () => {
-  it("returns the nine tools in registration order", () => {
+  it("returns the ten tools in registration order", () => {
     expect(getTools(zh).map((tool) => tool.slug)).toEqual([
       "image-converter",
       "image-cropper",
@@ -108,6 +122,7 @@ describe("getTools", () => {
       "markdown-to-pdf",
       "sitemap-validator",
       "html-to-markdown",
+      "chinese-converter",
     ]);
   });
 

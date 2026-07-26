@@ -1674,4 +1674,144 @@ export const ptMessages: LocaleContent = {
       },
     },
   },
+  chineseConverter: {
+    metadata: {
+      description:
+        "Converta chinês simplificado e tradicional online, com variantes regionais padrão, de Taiwan e de Hong Kong/Macau. A conversão acontece totalmente no seu navegador, sem enviar conteúdo para nenhum servidor.",
+      keywords: [
+        "conversor de chinês",
+        "simplificado para tradicional",
+        "tradicional para simplificado",
+        "converter chinês online",
+        "chinês tradicional de Taiwan",
+        "chinês tradicional de Hong Kong",
+      ],
+      title: "Conversor de chinês simplificado e tradicional online",
+    },
+    hero: {
+      badges: {
+        category: "Ferramenta de texto",
+        localProcessing: "Processamento local no navegador",
+        regionalAware: "Vocabulário de Taiwan e Hong Kong",
+      },
+      description:
+        "Converta entre chinês simplificado e tradicional. Para o tradicional, escolha padrão, Taiwan ou Hong Kong/Macau para aplicar automaticamente o vocabulário regional (por exemplo, 软件 ↔ 軟體). Tudo é processado localmente no seu navegador, sem enviar conteúdo.",
+      title: "Conversor de chinês online",
+    },
+    scenarios: {
+      description:
+        "Ideal para converter textos do dia a dia e localizar conteúdo; não indicado para textos clássicos ou estudos de variantes de caracteres.",
+      localize:
+        "Você está localizando textos para usuários de Taiwan ou Hong Kong e precisa usar o vocabulário local (por exemplo, 軟體 em vez de 軟件).",
+      publish:
+        "Você escreveu um conteúdo em simplificado e precisa de uma versão em tradicional para leitores de Hong Kong, Macau ou Taiwan.",
+      read: "Você tem um documento em chinês tradicional e quer convertê-lo rapidamente para simplificado para ler com mais facilidade.",
+      title: "Ideal para estas situações",
+    },
+    tool: {
+      category: "Ferramenta de texto",
+      description:
+        "Converta chinês simplificado e tradicional online: escolha tradicional padrão, de Taiwan (com vocabulário regional) ou de Hong Kong/Macau (com vocabulário regional), e troque a direção da conversão com um clique. Tudo é processado no seu navegador, sem enviar conteúdo.",
+      faq: [
+        {
+          answer:
+            "Não. Toda a conversão acontece localmente no seu navegador; o conteúdo não é enviado para nenhum servidor.",
+          question: "Meu conteúdo é enviado para um servidor?",
+        },
+        {
+          answer:
+            "O tradicional padrão converte apenas os caracteres (por exemplo, 汉 para 漢). Já o de Taiwan e o de Hong Kong/Macau também convertem vocabulário regional (por exemplo, 软件 para 軟體 ou 軟件), ficando mais próximo de como os leitores locais realmente escrevem.",
+          question:
+            "Qual é a diferença entre tradicional padrão, de Taiwan e de Hong Kong/Macau?",
+        },
+        {
+          answer:
+            "A ferramenta converte com base em regras de dicionário, o que cobre a grande maioria das palavras do dia a dia, mas não consegue cobrir todos os nomes próprios ou termos novos. Recomendamos que um falante nativo revise o resultado antes de publicá-lo oficialmente.",
+          question: "O resultado da conversão é sempre preciso?",
+        },
+        {
+          answer:
+            "Sim. Basta escolher a direção 'Tradicional → Simplificado', e o vocabulário regional de Taiwan ou Hong Kong/Macau também será convertido corretamente para o simplificado correspondente.",
+          question:
+            "Há suporte para converter de tradicional para simplificado?",
+        },
+      ],
+      features: [
+        "Conversão nos dois sentidos: de simplificado para tradicional e de tradicional para simplificado",
+        "O tradicional aceita três variantes regionais: padrão, Taiwan e Hong Kong/Macau",
+        "Converte vocabulário regional (por exemplo, 软件 → 軟體, 网络 → 網路), não apenas caracteres",
+        "Troque a direção da conversão com um clique, ou inverta a entrada e a saída",
+        "Processamento local no navegador, sem enviar conteúdo",
+        "Copie o resultado com um clique",
+      ],
+      keywords: [
+        "conversor de chinês",
+        "simplificado para tradicional",
+        "tradicional para simplificado",
+        "converter chinês online",
+        "chinês tradicional de Taiwan",
+        "chinês tradicional de Hong Kong",
+      ],
+      name: "Conversor de chinês online",
+      steps: [
+        "Cole ou digite o texto em chinês que deseja converter.",
+        "Escolha uma direção (simplificado → tradicional ou tradicional → simplificado) e, se for converter para tradicional, escolha a região de destino.",
+        "O resultado aparece instantaneamente à direita; clique em Copiar para usá-lo.",
+      ],
+      summary:
+        "Converta chinês simplificado e tradicional localmente no seu navegador, com vocabulário regional padrão, de Taiwan e de Hong Kong/Macau.",
+    },
+    content: {
+      faqDescription: "Algumas perguntas frequentes antes de começar.",
+      faqTitle: "Perguntas frequentes",
+      privacyDescription: "Fique atento a estes pontos antes de começar.",
+      privacyItems: [
+        "A conversão acontece totalmente no seu navegador; nenhum conteúdo é enviado para um servidor.",
+        "O vocabulário regional é convertido com base em regras de dicionário, que não conseguem cobrir todos os nomes próprios ou termos novos.",
+        "Recomendamos que um falante nativo revise o resultado antes de usá-lo em uma publicação oficial.",
+      ],
+      privacyTitle: "Antes de começar",
+      stepsDescription: "Siga estes passos para converter seu texto.",
+      stepsTitle: "Como usar",
+      supportDescription:
+        "Cobre os cenários mais comuns de escrita, publicação e localização do dia a dia.",
+      supportTitle: "Conversões suportadas",
+    },
+    client: {
+      direction: {
+        toSimplified: "Tradicional → Simplificado",
+        toTraditional: "Simplificado → Tradicional",
+      },
+      empty: {
+        description:
+          "Digite ou cole um texto em chinês à esquerda; o resultado convertido aparecerá aqui.",
+        title: "Digite um texto para começar a converter",
+      },
+      error: "Falha na conversão. Tente novamente ou atualize a página.",
+      input: {
+        clear: "Limpar",
+        placeholder:
+          "Digite ou cole aqui o texto em chinês que deseja converter…",
+        title: "Entrada",
+      },
+      output: {
+        title: "Resultado",
+      },
+      status: {
+        characters: "{count} caracteres",
+        converting: "Carregando o dicionário para a primeira conversão…",
+      },
+      toolbar: {
+        copied: "Copiado",
+        copy: "Copiar",
+        swap: "Inverter",
+      },
+      variant: {
+        hongkong: "Hong Kong/Macau",
+        label: "Região do tradicional",
+        standard: "Padrão",
+        taiwan: "Taiwan",
+      },
+    },
+  },
 };

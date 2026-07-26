@@ -225,6 +225,26 @@ export function getHtmlToMarkdownTool(content: LocaleContent): ToolDefinition {
   };
 }
 
+export function getChineseConverterTool(
+  content: LocaleContent,
+): ToolDefinition {
+  return {
+    applicationCategory: "UtilitiesApplication",
+    category: content.chineseConverter.tool.category,
+    description: content.chineseConverter.tool.description,
+    faq: content.chineseConverter.tool.faq,
+    features: content.chineseConverter.tool.features,
+    href: "/tools/chinese-converter",
+    keywords: content.chineseConverter.tool.keywords,
+    name: content.chineseConverter.tool.name,
+    slug: "chinese-converter",
+    steps: content.chineseConverter.tool.steps,
+    stepsTitle: content.chineseConverter.content.stepsTitle,
+    summary: content.chineseConverter.tool.summary,
+    totalTime: "PT1M",
+  };
+}
+
 export function getTools(content: LocaleContent): ToolDefinition[] {
   return [
     getImageConverterTool(content),
@@ -236,5 +256,6 @@ export function getTools(content: LocaleContent): ToolDefinition[] {
     getMarkdownToPdfTool(content),
     getSitemapValidatorTool(content),
     getHtmlToMarkdownTool(content),
+    getChineseConverterTool(content),
   ];
 }
