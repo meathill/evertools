@@ -1263,9 +1263,14 @@ export const zhMessages = {
       },
       input: {
         clear: "清空",
+        dragHint: "拖拽 Markdown 文件到这里，或点击选择文件",
+        fileError: "读取文件失败，请选择有效的 Markdown 或文本文件",
+        fileTooLarge: "文件过大，单文件上限为 10MB",
+        loadedFile: "已加载文件：{name}",
         placeholder:
-          "在这里粘贴 AI 输出的 Markdown 内容，或者手写 Markdown…\n\n# 标题\n\n**粗体** 和 *斜体*\n\n- 列表项 1\n- 列表项 2\n\n```\n代码块\n```",
+          "在这里粘贴 AI 输出的 Markdown 内容，手写 Markdown，或直接选择本地 .md / .txt 文件…\n\n# 标题\n\n**粗体** 和 *斜体*\n\n- 列表项 1\n- 列表项 2\n\n```\n代码块\n```",
         title: "输入 Markdown",
+        upload: "选择文件",
       },
       preview: {
         title: "预览",

@@ -1338,9 +1338,16 @@ export const enMessages: LocaleContent = {
       },
       input: {
         clear: "Clear",
+        dragHint:
+          "Drag and drop a Markdown file here, or click to select a file",
+        fileError:
+          "Failed to read file. Please select a valid Markdown or text file.",
+        fileTooLarge: "File is too large. Maximum size is 10MB.",
+        loadedFile: "Loaded file: {name}",
         placeholder:
-          "Paste AI-generated Markdown here, or write your own…\n\n# Heading\n\n**Bold** and *italic*\n\n- List item 1\n- List item 2\n\n```\ncode block\n```",
+          "Paste AI-generated Markdown here, write your own, or select a local .md / .txt file…\n\n# Heading\n\n**Bold** and *italic*\n\n- List item 1\n- List item 2\n\n```\ncode block\n```",
         title: "Markdown Input",
+        upload: "Select File",
       },
       preview: {
         title: "Preview",

@@ -1339,9 +1339,16 @@ export const jaMessages: LocaleContent = {
       },
       input: {
         clear: "クリア",
+        dragHint:
+          "ここに Markdown ファイルをドラッグ＆ドロップ、またはクリックして選択",
+        fileError:
+          "ファイルの読み込みに失敗しました。有効な Markdown またはテキストファイルを選択してください。",
+        fileTooLarge: "ファイルが大きすぎます。上限は 10MB です。",
+        loadedFile: "読み込み済みファイル: {name}",
         placeholder:
-          "AIが生成したMarkdownをここに貼り付けるか、自分で書いてください…\n\n# 見出し\n\n**太字** と *斜体*\n\n- リスト項目1\n- リスト項目2\n\n```\nコードブロック\n```",
+          "AIが生成したMarkdownをここに貼り付けるか、直接入力、またはローカルの .md / .txt ファイルを選択…\n\n# 見出し\n\n**太字** と *斜体*\n\n- リスト項目1\n- リスト項目2\n\n```\nコードブロック\n```",
         title: "Markdown入力",
+        upload: "ファイルを選択",
       },
       preview: {
         title: "プレビュー",

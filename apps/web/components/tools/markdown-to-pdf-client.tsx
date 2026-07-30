@@ -1,7 +1,15 @@
 "use client";
 
-import { FileTextIcon, PrinterIcon, XIcon } from "lucide-react";
-import { useDeferredValue, useMemo, useState } from "react";
+import { FileTextIcon, PrinterIcon, UploadIcon, XIcon } from "lucide-react";
+import {
+  type ChangeEvent,
+  type DragEvent,
+  useDeferredValue,
+  useId,
+  useMemo,
+  useRef,
+  useState,
+} from "react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardHeader, CardPanel, CardTitle } from "@/components/ui/card";
@@ -18,6 +26,7 @@ import {
   estimatePageCount,
   type MarkdownStyle,
   type PageWidth,
+  readMarkdownFile,
   renderMarkdown,
 } from "@/lib/markdown-to-pdf";
 import type { LocaleContent } from "@/messages/types";
@@ -38,6 +47,12 @@ export function MarkdownToPdfClient({ content }: MarkdownToPdfClientProps) {
   const [pageWidth, setPageWidth] = useState<PageWidth>("phone");
   const [style, setStyle] = useState<MarkdownStyle>("shadcn-typeset");
   const [popupBlocked, setPopupBlocked] = useState(false);
+  const [fileName, setFileName] = useState<string | null>(null);
+  const [fileError, setFileError] = useState<string | null>(null);
+  const [isDragging, setIsDragging] = useState(false);
+
+  const fileInputRef = useRef<HTMLInputElement | null>(null);
+  const inputId = useId();
 
   const deferredMarkdown = useDeferredValue(markdown);
 
@@ -61,8 +76,52 @@ export function MarkdownToPdfClient({ content }: MarkdownToPdfClientProps) {
     { label: t.toolbar.styleOptions.classic, value: "classic" },
   ];
 
+  async function processFile(file: File) {
+    setFileError(null);
+    try {
+      const text = await readMarkdownFile(file);
+      setMarkdown(text);
+      setFileName(file.name);
+    } catch (error) {
+      if (error instanceof Error && error.message === "FILE_TOO_LARGE") {
+        setFileError(t.input.fileTooLarge);
+      } else {
+        setFileError(t.input.fileError);
+      }
+    }
+  }
+
+  function handleFileInputChange(event: ChangeEvent<HTMLInputElement>) {
+    const selectedFile = event.target.files?.[0];
+    if (selectedFile) {
+      processFile(selectedFile);
+    }
+    event.target.value = "";
+  }
+
+  function handleDragOver(event: DragEvent<HTMLDivElement>) {
+    event.preventDefault();
+    setIsDragging(true);
+  }
+
+  function handleDragLeave(event: DragEvent<HTMLDivElement>) {
+    event.preventDefault();
+    setIsDragging(false);
+  }
+
+  function handleDrop(event: DragEvent<HTMLDivElement>) {
+    event.preventDefault();
+    setIsDragging(false);
+    const droppedFile = event.dataTransfer.files?.[0];
+    if (droppedFile) {
+      processFile(droppedFile);
+    }
+  }
+
   function handleClear() {
     setMarkdown("");
+    setFileName(null);
+    setFileError(null);
     setPopupBlocked(false);
   }
 
@@ -89,20 +148,76 @@ export function MarkdownToPdfClient({ content }: MarkdownToPdfClientProps) {
       <Card className="border-2 border-ink shadow-press-ink">
         <CardHeader className="flex items-center justify-between border-rule border-b bg-paper-deep/50">
           <CardTitle className="text-base">{t.input.title}</CardTitle>
-          <Button
-            disabled={isEmpty}
-            onClick={handleClear}
-            size="sm"
-            variant="ghost"
-          >
-            <XIcon />
-            {t.input.clear}
-          </Button>
+          <div className="flex items-center gap-2">
+            <input
+              accept=".md,.markdown,.mdown,.mkd,.mkdn,.txt,.text,text/markdown,text/plain"
+              className="sr-only"
+              id={inputId}
+              onChange={handleFileInputChange}
+              ref={fileInputRef}
+              type="file"
+            />
+            <Button
+              onClick={() => fileInputRef.current?.click()}
+              size="sm"
+              variant="outline"
+            >
+              <UploadIcon />
+              {t.input.upload}
+            </Button>
+            <Button
+              disabled={isEmpty && !fileName}
+              onClick={handleClear}
+              size="sm"
+              variant="ghost"
+            >
+              <XIcon />
+              {t.input.clear}
+            </Button>
+          </div>
         </CardHeader>
-        <CardPanel className="flex flex-col gap-3">
+        <CardPanel
+          className={[
+            "flex flex-col gap-3 transition-colors",
+            isDragging
+              ? "bg-fluff/50 outline-2 outline-dashed outline-yellow"
+              : "",
+          ].join(" ")}
+          onDragLeave={handleDragLeave}
+          onDragOver={handleDragOver}
+          onDrop={handleDrop}
+        >
+          {fileName ? (
+            <div className="flex items-center justify-between rounded border border-rule/60 bg-paper-deep/60 px-3 py-1.5 text-ink-soft text-xs">
+              <span className="flex items-center gap-1.5 truncate font-medium">
+                <FileTextIcon className="size-3.5 shrink-0 text-mute" />
+                {t.input.loadedFile.replace("{name}", fileName)}
+              </span>
+              <Button
+                className="h-auto p-0 text-mute hover:text-ink"
+                onClick={() => setFileName(null)}
+                size="sm"
+                variant="ghost"
+              >
+                <XIcon className="size-3" />
+              </Button>
+            </div>
+          ) : null}
+
+          {fileError ? (
+            <div className="rounded-lg border border-danger/40 bg-danger-bg p-2.5 text-danger text-xs">
+              {fileError}
+            </div>
+          ) : null}
+
           <Textarea
             className="font-mono text-xs leading-relaxed [&_textarea]:max-h-[34rem] [&_textarea]:min-h-[26rem]"
-            onChange={(event) => setMarkdown(event.target.value)}
+            onChange={(event) => {
+              setMarkdown(event.target.value);
+              if (fileError) {
+                setFileError(null);
+              }
+            }}
             placeholder={t.input.placeholder}
             spellCheck={false}
             value={markdown}
@@ -171,7 +286,7 @@ export function MarkdownToPdfClient({ content }: MarkdownToPdfClientProps) {
         </CardHeader>
         <CardPanel className="max-h-[34rem] min-h-[26rem] overflow-auto">
           {popupBlocked && (
-            <div className="mb-4 rounded-lg border border-warning/40 bg-warning-bg p-3 text-sm text-ink-soft">
+            <div className="mb-4 rounded-lg border border-warning/40 bg-warning-bg p-3 text-ink-soft text-sm">
               {t.toolbar.popupBlockedWarning}
             </div>
           )}

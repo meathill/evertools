@@ -2,6 +2,8 @@ import { describe, expect, it } from "vitest";
 import {
   buildPrintableHtml,
   estimatePageCount,
+  isSupportedMarkdownFile,
+  readMarkdownFile,
   renderMarkdown,
 } from "./markdown-to-pdf";
 
@@ -99,5 +101,56 @@ describe("estimatePageCount", () => {
   it("estimates proportionally for longer content", () => {
     const longText = "a".repeat(9000);
     expect(estimatePageCount(longText)).toBe(3);
+  });
+});
+
+describe("isSupportedMarkdownFile", () => {
+  it("identifies markdown and text files", () => {
+    expect(isSupportedMarkdownFile(new File(["# title"], "document.md"))).toBe(
+      true,
+    );
+    expect(
+      isSupportedMarkdownFile(
+        new File(["# title"], "readme.markdown", { type: "text/plain" }),
+      ),
+    ).toBe(true);
+    expect(isSupportedMarkdownFile(new File(["hello"], "notes.txt"))).toBe(
+      true,
+    );
+    expect(isSupportedMarkdownFile(new File(["hello"], "doc.text"))).toBe(true);
+  });
+
+  it("rejects unsupported file extensions without text mime type", () => {
+    expect(
+      isSupportedMarkdownFile(
+        new File([new Uint8Array([1, 2, 3])], "image.png", {
+          type: "image/png",
+        }),
+      ),
+    ).toBe(false);
+  });
+});
+
+describe("readMarkdownFile", () => {
+  it("reads markdown content successfully", async () => {
+    const content = "# Hello World\nThis is a test.";
+    const file = new File([content], "test.md", { type: "text/markdown" });
+    const result = await readMarkdownFile(file);
+    expect(result).toBe(content);
+  });
+
+  it("rejects when file is too large", async () => {
+    const file = new File([], "big.md");
+    Object.defineProperty(file, "size", { value: 11 * 1024 * 1024 });
+    await expect(readMarkdownFile(file)).rejects.toThrow("FILE_TOO_LARGE");
+  });
+
+  it("rejects unsupported file type", async () => {
+    const file = new File([new Uint8Array([0, 1, 2])], "data.bin", {
+      type: "application/octet-stream",
+    });
+    await expect(readMarkdownFile(file)).rejects.toThrow(
+      "UNSUPPORTED_FILE_TYPE",
+    );
   });
 });

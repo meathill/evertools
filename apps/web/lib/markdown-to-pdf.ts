@@ -72,3 +72,45 @@ ${css}
 export function estimatePageCount(source: string): number {
   return Math.max(1, Math.ceil(source.length / 3000));
 }
+
+export const MAX_MARKDOWN_FILE_SIZE = 10 * 1024 * 1024; // 10MB
+
+export function isSupportedMarkdownFile(file: File): boolean {
+  const validExtensions = [
+    ".md",
+    ".markdown",
+    ".mdown",
+    ".mkd",
+    ".mkdn",
+    ".txt",
+    ".text",
+  ];
+  const fileName = file.name.toLowerCase();
+  const hasValidExt = validExtensions.some((ext) => fileName.endsWith(ext));
+  if (hasValidExt) {
+    return true;
+  }
+  return file.type.startsWith("text/");
+}
+
+export async function readMarkdownFile(file: File): Promise<string> {
+  if (file.size > MAX_MARKDOWN_FILE_SIZE) {
+    throw new Error("FILE_TOO_LARGE");
+  }
+  if (!isSupportedMarkdownFile(file)) {
+    throw new Error("UNSUPPORTED_FILE_TYPE");
+  }
+  if (typeof file.text === "function") {
+    return await file.text();
+  }
+  return new Promise((resolve, reject) => {
+    const reader = new FileReader();
+    reader.onload = () => {
+      resolve(typeof reader.result === "string" ? reader.result : "");
+    };
+    reader.onerror = () => {
+      reject(new Error("READ_ERROR"));
+    };
+    reader.readAsText(file);
+  });
+}

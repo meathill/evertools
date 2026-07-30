@@ -1352,9 +1352,17 @@ export const esMessages: LocaleContent = {
       },
       input: {
         clear: "Limpiar",
+        dragHint:
+          "Arrastra y suelta un archivo Markdown aquí o haz clic para seleccionar",
+        fileError:
+          "Error al leer el archivo. Selecciona un archivo Markdown o de texto válido.",
+        fileTooLarge:
+          "El archivo es demasiado grande. El tamaño máximo es 10MB.",
+        loadedFile: "Archivo cargado: {name}",
         placeholder:
-          "Pega aqui el Markdown generado por IA, o escribe el tuyo…\n\n# Encabezado\n\n**Negrita** y *cursiva*\n\n- Elemento de lista 1\n- Elemento de lista 2\n\n```\nbloque de codigo\n```",
+          "Pega aquí el Markdown generado por IA, escribe el tuyo o selecciona un archivo .md / .txt local…\n\n# Encabezado\n\n**Negrita** y *cursiva*\n\n- Elemento de lista 1\n- Elemento de lista 2\n\n```\nbloque de codigo\n```",
         title: "Entrada Markdown",
+        upload: "Seleccionar archivo",
       },
       preview: {
         title: "Vista previa",

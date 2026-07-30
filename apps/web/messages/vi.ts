@@ -1327,9 +1327,15 @@ export const viMessages: LocaleContent = {
       },
       input: {
         clear: "Xóa",
+        dragHint: "Kéo thả tệp Markdown vào đây hoặc nhấp để chọn tệp",
+        fileError:
+          "Không thể đọc tệp. Vui lòng chọn tệp Markdown hoặc văn bản hợp lệ.",
+        fileTooLarge: "Tệp quá lớn. Kích thước tối đa là 10MB.",
+        loadedFile: "Đã tải tệp: {name}",
         placeholder:
-          "Dán Markdown do AI tạo ở đây, hoặc tự viết…\n\n# Tiêu đề\n\n**In đậm** và *in nghiêng*\n\n- Mục danh sách 1\n- Mục danh sách 2\n\n```\nkhối code\n```",
+          "Dán Markdown do AI tạo ở đây, tự viết hoặc chọn tệp .md / .txt từ máy…\n\n# Tiêu đề\n\n**In đậm** và *in nghiêng*\n\n- Mục danh sách 1\n- Mục danh sách 2\n\n```\nkhối code\n```",
         title: "Nhập Markdown",
+        upload: "Chọn tệp",
       },
       preview: {
         title: "Xem trước",

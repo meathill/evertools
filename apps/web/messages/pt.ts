@@ -1350,9 +1350,16 @@ export const ptMessages: LocaleContent = {
       },
       input: {
         clear: "Limpar",
+        dragHint:
+          "Arraste e solte um arquivo Markdown aqui ou clique para selecionar",
+        fileError:
+          "Falha ao ler o arquivo. Selecione um arquivo Markdown ou texto válido.",
+        fileTooLarge: "Arquivo muito grande. O tamanho máximo é 10MB.",
+        loadedFile: "Arquivo carregado: {name}",
         placeholder:
-          "Cole aqui o Markdown gerado por IA, ou escreva o seu…\n\n# Título\n\n**Negrito** e *itálico*\n\n- Item de lista 1\n- Item de lista 2\n\n```\nbloco de código\n```",
+          "Cole aqui o Markdown gerado por IA, escreva o seu ou selecione um arquivo .md / .txt local…\n\n# Título\n\n**Negrito** e *itálico*\n\n- Item de lista 1\n- Item de lista 2\n\n```\nbloco de código\n```",
         title: "Entrada Markdown",
+        upload: "Selecionar arquivo",
       },
       preview: {
         title: "Visualização",
