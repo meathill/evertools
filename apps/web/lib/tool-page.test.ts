@@ -5,7 +5,12 @@ import {
   getPdfPasswordRemoverTool,
   getPdfTextEditorTool,
 } from "@/lib/content";
-import { createLocalizedUrl, getLanguageAlternates } from "@/lib/site";
+import {
+  createLocalizedUrl,
+  getLanguageAlternates,
+  localeMetadata,
+  siteConfig,
+} from "@/lib/site";
 import {
   buildToolStructuredData,
   generateToolPageMetadata,
@@ -17,25 +22,21 @@ const homeLabel = zh.header.nav.home;
 
 const cases = [
   {
-    applicationCategory: "MultimediaApplication",
     label: "image-converter",
     tool: getImageConverterTool(zh),
     totalTime: "PT1M",
   },
   {
-    applicationCategory: "BusinessApplication",
     label: "pdf-text-editor",
     tool: getPdfTextEditorTool(zh),
     totalTime: "PT3M",
   },
   {
-    applicationCategory: "BusinessApplication",
     label: "pdf-password-remover",
     tool: getPdfPasswordRemoverTool(zh),
     totalTime: "PT1M",
   },
   {
-    applicationCategory: "DeveloperApplication",
     label: "json-viewer",
     tool: getJsonViewerTool(zh),
     totalTime: "PT1M",
@@ -45,21 +46,22 @@ const cases = [
 describe("buildToolStructuredData", () => {
   it.each(cases)(
     "$label reproduces the four schema.org blocks",
-    ({ applicationCategory, tool, totalTime }) => {
+    ({ tool, totalTime }) => {
       const data = buildToolStructuredData("zh", tool, homeLabel);
       const url = createLocalizedUrl("zh", tool.href);
 
       expect(data).toEqual([
         {
           "@context": "https://schema.org",
-          "@type": "SoftwareApplication",
-          applicationCategory,
+          "@type": "WebPage",
           description: tool.description,
-          featureList: tool.features,
-          isAccessibleForFree: true,
+          inLanguage: localeMetadata.zh.languageTag,
+          isPartOf: {
+            "@type": "WebSite",
+            name: siteConfig.name,
+            url: createLocalizedUrl("zh", "/"),
+          },
           name: tool.name,
-          offers: { "@type": "Offer", price: "0", priceCurrency: "USD" },
-          operatingSystem: "Any",
           url,
         },
         {
@@ -107,7 +109,7 @@ describe("buildToolStructuredData", () => {
       const data = buildToolStructuredData("zh", tool, homeLabel);
 
       expect(data.map((block) => block["@type"])).toEqual([
-        "SoftwareApplication",
+        "WebPage",
         "FAQPage",
         "HowTo",
         "BreadcrumbList",
@@ -115,13 +117,10 @@ describe("buildToolStructuredData", () => {
       expect(Object.keys(data[0])).toEqual([
         "@context",
         "@type",
-        "applicationCategory",
         "description",
-        "featureList",
-        "isAccessibleForFree",
+        "inLanguage",
+        "isPartOf",
         "name",
-        "offers",
-        "operatingSystem",
         "url",
       ]);
       expect(Object.keys(data[1])).toEqual(["@context", "@type", "mainEntity"]);
@@ -140,6 +139,16 @@ describe("buildToolStructuredData", () => {
       ]);
     },
   );
+
+  // 回归：SoftwareApplication 及其子类型会触发 Google Software App 富结果校验，
+  // 而该校验要求 aggregateRating 或 review，我们没有真实评分，标了必然报错。
+  it.each(cases)("$label emits no SoftwareApplication subtype", ({ tool }) => {
+    const types = JSON.stringify(
+      buildToolStructuredData("zh", tool, homeLabel),
+    );
+
+    expect(types).not.toMatch(/"(Software|Mobile|Web)Application"|"VideoGame"/);
+  });
 
   it("prefixes non-default locale URLs", () => {
     const tool = getImageConverterTool(getLocaleContent("en"));

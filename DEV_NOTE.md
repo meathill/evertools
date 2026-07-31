@@ -51,7 +51,7 @@ Tailwind v4 **只为 `@theme` 块里声明的 token 生成 utility**。仅写在
 工具页的样板（metadata、结构化数据、hero/内容卡布局）已抽成共享件，新增工具按约定走即可：
 
 1. **注册工具**：在 `lib/content.ts` 新增 `getXxxTool(content)`，填好
-   `applicationCategory` / `totalTime` / `stepsTitle` 等字段，并加进 `getTools()`。
+   `totalTime` / `stepsTitle` 等字段，并加进 `getTools()`。
 2. **建页面**：`app/[locale]/tools/<slug>/page.tsx` 里，`generateMetadata` 一行委托给
    `generateToolPageMetadata`（`lib/tool-page.ts`），页面体调 `buildToolStructuredData`
    并渲染 `ToolPageLayout`（`components/tool-page/`），把工具的客户端组件作为 children 传入。
@@ -61,6 +61,20 @@ Tailwind v4 **只为 `@theme` 块里声明的 token 生成 utility**。仅写在
    （`LocaleContent = DeepWiden<typeof zhMessages>`），漏翻会直接类型报错。
 5. **锁 SEO 输出**：结构化数据/metadata 统一由 `lib/tool-page.ts` 产出，改动后跑
    `lib/tool-page.test.ts`，它锁定了四个 schema.org 块的键序与字段（即 `JSON.stringify` 的字节序）。
+
+### 工具页结构化数据别用 SoftwareApplication
+
+工具页曾用 `SoftwareApplication` 标注，被 Ahrefs 判 "Google rich results validation error"
+（56 个页面全中）。原因：Google 的 Software App 富结果**强制要求 `aggregateRating` 或 `review`
+至少有其一**，我们没有真实评分，伪造评分违反 Google 政策，所以这个类型注定过不了校验。
+
+- **`WebApplication` / `MobileApplication` / `VideoGame` 是 `SoftwareApplication` 的子类型，
+  同样受这条校验管**，换过去没用——issue #2 里提到的"换成 WebApplication"方案不成立。
+- 现在首块降级为 `WebPage`（Google 不对它做富结果校验），保留 name/description/inLanguage
+  和 `isPartOf` 指向 WebSite 的语义归属；`featureList`/`offers`/`applicationCategory` 一并去掉
+  （只为旧类型服务，留着就是死数据）。
+- `lib/tool-page.test.ts` 有回归用例断言输出里不含这几个类型，别再加回来。
+- FAQPage / HowTo / BreadcrumbList 不受影响，无需改动。
 
 ## pdfjs-dist 锁定 4.10.38
 

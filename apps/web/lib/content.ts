@@ -11,7 +11,6 @@ export type ToolFaq = {
 };
 
 export type ToolDefinition = {
-  applicationCategory: string;
   category: string;
   description: string;
   faq: readonly ToolFaq[];
@@ -28,7 +27,6 @@ export type ToolDefinition = {
 
 export function getImageConverterTool(content: LocaleContent): ToolDefinition {
   return {
-    applicationCategory: "MultimediaApplication",
     category: content.imageConverter.tool.category,
     description: content.imageConverter.tool.description,
     faq: content.imageConverter.tool.faq,
@@ -46,7 +44,6 @@ export function getImageConverterTool(content: LocaleContent): ToolDefinition {
 
 export function getImageCropperTool(content: LocaleContent): ToolDefinition {
   return {
-    applicationCategory: "MultimediaApplication",
     category: content.imageCropper.tool.category,
     description: content.imageCropper.tool.description,
     faq: content.imageCropper.tool.faq,
@@ -77,7 +74,6 @@ export function getConversionTool(
   const slug = conversionSlug(pair);
 
   return {
-    applicationCategory: "MultimediaApplication",
     category: imageConverter.tool.category,
     description: fill(conversions.description),
     faq: imageConverter.tool.faq,
@@ -95,7 +91,6 @@ export function getConversionTool(
 
 export function getPdfTextEditorTool(content: LocaleContent): ToolDefinition {
   return {
-    applicationCategory: "BusinessApplication",
     category: content.pdfTextEditor.tool.category,
     description: content.pdfTextEditor.tool.description,
     faq: content.pdfTextEditor.tool.faq,
@@ -115,7 +110,6 @@ export function getPdfPasswordRemoverTool(
   content: LocaleContent,
 ): ToolDefinition {
   return {
-    applicationCategory: "BusinessApplication",
     category: content.pdfPasswordRemover.tool.category,
     description: content.pdfPasswordRemover.tool.description,
     faq: content.pdfPasswordRemover.tool.faq,
@@ -133,7 +127,6 @@ export function getPdfPasswordRemoverTool(
 
 export function getJsonViewerTool(content: LocaleContent): ToolDefinition {
   return {
-    applicationCategory: "DeveloperApplication",
     category: content.jsonViewer.tool.category,
     description: content.jsonViewer.tool.description,
     faq: content.jsonViewer.tool.faq,
@@ -153,7 +146,6 @@ export function getOgImageValidatorTool(
   content: LocaleContent,
 ): ToolDefinition {
   return {
-    applicationCategory: "DeveloperApplication",
     category: content.ogImageValidator.tool.category,
     description: content.ogImageValidator.tool.description,
     faq: content.ogImageValidator.tool.faq,
@@ -171,7 +163,6 @@ export function getOgImageValidatorTool(
 
 export function getMarkdownToPdfTool(content: LocaleContent): ToolDefinition {
   return {
-    applicationCategory: "UtilitiesApplication",
     category: content.markdownToPdf.tool.category,
     description: content.markdownToPdf.tool.description,
     faq: content.markdownToPdf.tool.faq,
@@ -191,7 +182,6 @@ export function getSitemapValidatorTool(
   content: LocaleContent,
 ): ToolDefinition {
   return {
-    applicationCategory: "DeveloperApplication",
     category: content.sitemapValidator.tool.category,
     description: content.sitemapValidator.tool.description,
     faq: content.sitemapValidator.tool.faq,
@@ -209,7 +199,6 @@ export function getSitemapValidatorTool(
 
 export function getHtmlToMarkdownTool(content: LocaleContent): ToolDefinition {
   return {
-    applicationCategory: "UtilitiesApplication",
     category: content.htmlToMarkdown.tool.category,
     description: content.htmlToMarkdown.tool.description,
     faq: content.htmlToMarkdown.tool.faq,
@@ -229,7 +218,6 @@ export function getChineseConverterTool(
   content: LocaleContent,
 ): ToolDefinition {
   return {
-    applicationCategory: "UtilitiesApplication",
     category: content.chineseConverter.tool.category,
     description: content.chineseConverter.tool.description,
     faq: content.chineseConverter.tool.faq,

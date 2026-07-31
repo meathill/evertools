@@ -1,7 +1,12 @@
 import type { Metadata } from "next";
 import type { AppLocale } from "@/i18n/routing";
 import type { ToolDefinition } from "@/lib/content";
-import { createLocalizedUrl, getLanguageAlternates } from "@/lib/site";
+import {
+  createLocalizedUrl,
+  getLanguageAlternates,
+  localeMetadata,
+  siteConfig,
+} from "@/lib/site";
 
 export function generateToolPageMetadata(
   locale: AppLocale,
@@ -34,20 +39,19 @@ export function buildToolStructuredData(
   homeLabel: string,
 ): Array<Record<string, unknown>> {
   return [
+    // 刻意不用 SoftwareApplication/WebApplication：Google 的 Software App
+    // 富结果要求 aggregateRating 或 review，我们没有真实评分，标了只会被判校验失败。
     {
       "@context": "https://schema.org",
-      "@type": "SoftwareApplication",
-      applicationCategory: tool.applicationCategory,
+      "@type": "WebPage",
       description: tool.description,
-      featureList: tool.features,
-      isAccessibleForFree: true,
-      name: tool.name,
-      offers: {
-        "@type": "Offer",
-        price: "0",
-        priceCurrency: "USD",
+      inLanguage: localeMetadata[locale].languageTag,
+      isPartOf: {
+        "@type": "WebSite",
+        name: siteConfig.name,
+        url: createLocalizedUrl(locale, "/"),
       },
-      operatingSystem: "Any",
+      name: tool.name,
       url: createLocalizedUrl(locale, tool.href),
     },
     {
