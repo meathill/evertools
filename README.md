@@ -4,7 +4,8 @@
 
 ## 已上线工具
 
-- [图片格式与尺寸转换](https://tools.meathill.com/tools/image-converter) —— 在浏览器本地把 HEIC 等照片转成 JPG/PNG/WebP，并完成尺寸缩放与质量调整
+- [图片格式与尺寸转换](https://tools.meathill.com/tools/image-converter) —— 在浏览器本地把 HEIC、AVIF、GIF、BMP 等图片转成 JPG/PNG/WebP，并完成尺寸缩放与质量调整
+  - 另有 18 个「X 转 Y」转换落地页（如 [HEIC 转 JPG](https://tools.meathill.com/tools/heic-to-jpg)、[AVIF 转 JPG](https://tools.meathill.com/tools/avif-to-jpg)），配对与文案组合见 `apps/web/lib/conversions.ts`
 - [在线图片裁切](https://tools.meathill.com/tools/image-cropper) —— 在浏览器本地拖拽选框自由裁切图片，支持常见比例预设
 - [PDF 文字编辑器](https://tools.meathill.com/tools/pdf-text-editor) —— 在浏览器本地完成 PDF 文本替换，并尽量保留原字体外观
 - [在线 PDF 去密码](https://tools.meathill.com/tools/pdf-password-remover) —— 上传带密码的 PDF、输入密码，在浏览器本地生成去除密码、内容完全一致的新文件

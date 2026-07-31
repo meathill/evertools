@@ -91,7 +91,7 @@ export const ptMessages: LocaleContent = {
         singleImage: "Conversão em lote",
       },
       description:
-        "Converta fotos HEIC do iPhone para JPG, PNG ou WebP, converta entre PNG, JPG e WebP e redimensione imagens diretamente no navegador sem enviar arquivos para o servidor.",
+        "Converta fotos HEIC do iPhone para JPG, PNG ou WebP, importe AVIF, GIF e BMP, converta entre PNG, JPG e WebP e redimensione imagens diretamente no navegador sem enviar arquivos para o servidor.",
       title: "Conversor de formato e tamanho de imagens",
     },
     scenarios: {
@@ -108,7 +108,7 @@ export const ptMessages: LocaleContent = {
     tool: {
       category: "Ferramenta de imagem",
       description:
-        "Converta fotos HEIC/HEIF do iPhone para JPG, PNG ou WebP, converta entre PNG, JPG e WebP e redimensione online. Tudo roda no navegador sem upload, ideal para compressão rápida, redimensionamento e troca de formato.",
+        "Converta fotos HEIC/HEIF do iPhone para JPG, PNG ou WebP, importe AVIF, GIF e BMP, converta entre PNG, JPG e WebP e redimensione online. Tudo roda no navegador sem upload, ideal para compressão rápida, redimensionamento e troca de formato.",
       faq: [
         {
           answer:
@@ -117,7 +117,7 @@ export const ptMessages: LocaleContent = {
         },
         {
           answer:
-            "Converte HEIC/HEIF (fotos do iPhone) para JPG, PNG e WebP, além de conversão e redimensionamento de uma única imagem entre PNG, JPG/JPEG e WebP.",
+            "Você pode importar PNG, JPG/JPEG, WebP, AVIF, GIF, BMP e HEIC/HEIF (fotos do iPhone) e exportar PNG, JPG/JPEG ou WebP. De formatos animados como GIF só o primeiro quadro é mantido.",
           question: "Quais formatos de imagem são suportados?",
         },
         {
@@ -133,6 +133,7 @@ export const ptMessages: LocaleContent = {
       ],
       features: [
         "Converta fotos HEIC/HEIF do iPhone para JPG, PNG ou WebP",
+        "Arraste arquivos AVIF, GIF e BMP e converta para um formato que abre em qualquer lugar",
         "Converta entre PNG, JPG e WebP",
         "Defina largura e altura personalizadas com opção de bloquear a proporção",
         "Ajuste a qualidade de JPEG e WebP",
@@ -152,7 +153,7 @@ export const ptMessages: LocaleContent = {
       ],
       name: "Conversor de formato e tamanho de imagens — Compatível com HEIC",
       steps: [
-        "Envie uma imagem PNG, JPG, WebP ou HEIC.",
+        "Envie uma imagem PNG, JPG, WebP, AVIF, GIF, BMP ou HEIC.",
         "Escolha o formato de saída e informe as dimensões desejadas se precisar.",
         "Opcionalmente bloqueie a proporção e ajuste a qualidade de compressão.",
         "Gere o resultado, visualize e baixe a imagem convertida.",
@@ -168,13 +169,13 @@ export const ptMessages: LocaleContent = {
       privacyItems: [
         "As imagens nunca são enviadas. Toda a conversão acontece no seu navegador.",
         "JPEG não suporta transparência, então áreas transparentes serão preenchidas com branco.",
-        "GIF animado e exportação SVG ainda não são suportados.",
+        "De formatos animados como GIF só o primeiro quadro é mantido; não há exportação SVG nem animada.",
       ],
       privacyTitle: "Observações e limitações",
       stepsDescription: "Siga estes passos para converter sua imagem.",
       stepsTitle: "Como usar",
       supportDescription:
-        "PNG, JPG/JPEG, WebP e HEIC/HEIF podem ser importados; para exportar estão disponíveis PNG, JPG/JPEG e WebP (HEIC apenas como entrada).",
+        "PNG, JPG/JPEG, WebP, AVIF, GIF, BMP e HEIC/HEIF podem ser importados; para exportar estão disponíveis PNG, JPG/JPEG e WebP (os demais apenas como entrada).",
       supportTitle: "Formatos suportados",
     },
     client: {
@@ -208,7 +209,7 @@ export const ptMessages: LocaleContent = {
         description:
           "Arraste imagens para a área abaixo ou clique no botão para escolher um ou mais arquivos. Tudo é processado no navegador e nunca é enviado.",
         emptyDescription:
-          "Suporta PNG, JPG/JPEG, WebP e HEIC (fotos do iPhone). Você pode redimensionar a imagem, mudar o formato de saída e ajustar a qualidade.",
+          "Suporta PNG, JPG/JPEG, WebP, AVIF, GIF, BMP e HEIC (fotos do iPhone). Você pode redimensionar a imagem, mudar o formato de saída e ajustar a qualidade.",
         emptyTitle: "Solte uma imagem para começar",
         pendingResult: "Ajuste as configurações e gere o resultado",
         reselect: "Escolher outra",
@@ -322,22 +323,128 @@ export const ptMessages: LocaleContent = {
       },
     },
     conversions: {
+      badge: "{from} → {to}",
       description:
-        "Converta {from} para {to} online, grátis e com privacidade, direto no navegador. Sem upload nem cadastro; seus arquivos nunca saem do dispositivo.",
+        "Converta {from} para {to} online, grátis e sem limite de arquivos, direto no navegador. Sem upload nem cadastro; suas imagens nunca saem do dispositivo.",
+      faq: {
+        base: [
+          {
+            answer:
+              "Não. Seus arquivos {from} nunca saem do dispositivo: leitura, decodificação e exportação acontecem no navegador, e nada fica guardado em servidor.",
+            question: "Minhas imagens {from} são enviadas para algum servidor?",
+          },
+          {
+            answer:
+              "É totalmente grátis e não precisa de conta. Arraste quantos {from} quiser, converta tudo para {to} de uma vez e baixe em um ZIP.",
+            question: "Converter {from} para {to} é grátis? Tem limite?",
+          },
+        ],
+        notes: {
+          alphaLoss: {
+            answer:
+              "{to} não tem canal alfa, então as áreas transparentes são preenchidas de branco. Se precisar manter a transparência, escolha PNG ou WebP como formato de saída.",
+            question:
+              "O que acontece com a transparência ao converter {from} para {to}?",
+          },
+          animationLoss: {
+            answer:
+              "Só o primeiro quadro é mantido. {to} é um formato de imagem estática, então os demais quadros de um {from} animado são descartados; para preservar o movimento, use uma ferramenta de vídeo ou GIF.",
+            question: "Um {from} animado continua animado como {to}?",
+          },
+          heicDecode: {
+            answer:
+              "Não. Suas fotos .heic/.heif são decodificadas por WebAssembly dentro do navegador, então funciona no Windows e no Android também — você não precisa de um Mac para exportá-las antes.",
+            question: "Preciso de plugin ou codec para abrir HEIC?",
+          },
+          losslessOutput: {
+            answer:
+              "Não. {to} é um formato sem perdas, então a imagem não é comprimida de novo — por isso também não há controle de qualidade. Essa etapa só troca o contêiner.",
+            question: "Converter para {to} comprime a imagem outra vez?",
+          },
+          qualityControl: {
+            answer:
+              "Sim. {to} permite ajustar a qualidade da compressão; o padrão 82 equilibra bem tamanho e detalhe. Fotos costumam aguentar 70, e acima de 90 os detalhes finos ficam preservados.",
+            question: "Dá para ajustar a qualidade da compressão do {to}?",
+          },
+          sizeGain: {
+            answer:
+              "Normalmente fica bem menor. {from} não usa compressão com perdas, então a mesma imagem salva como {to} costuma ocupar uma fração do tamanho, bem mais fácil de enviar ou publicar.",
+            question: "O arquivo diminui ao converter {from} para {to}?",
+          },
+          upconvert: {
+            answer:
+              "Não. O detalhe que o {from} já descartou não volta por ser salvo como {to} sem perdas, e o arquivo geralmente cresce. A vantagem é que as próximas edições não vão degradar mais a imagem.",
+            question: "Converter para {to} melhora a qualidade do {from}?",
+          },
+        },
+      },
+      features: [
+        "Arraste um {from} avulso ou selecione vários e converta todos para {to} de uma vez",
+        "Redimensione durante a conversão: trave a proporção, estique livremente ou corte para preencher",
+        "Veja e baixe os resultados um a um, ou leve todos em um ZIP",
+        "Sem upload, sem cadastro e sem marca d'água — converta quantos arquivos quiser",
+      ],
       keywords: [
         "{from} para {to}",
         "converter {from} para {to}",
         "{from} para {to} online",
         "{from} to {to}",
+        "{from} para {to} sem upload",
+      ],
+      notes: {
+        alphaLoss:
+          "As áreas transparentes do {from} ficam brancas: {to} não tem canal alfa",
+        animationLoss:
+          "Um {from} animado mantém só o primeiro quadro; {to} é um formato estático",
+        heicDecode:
+          "HEIC é decodificado localmente via WebAssembly, então funciona também no Windows e no Android",
+        losslessOutput:
+          "{to} é sem perdas: nada é recomprimido e por isso não há ajuste de qualidade",
+        qualityControl:
+          "{to} oferece um controle de qualidade para equilibrar tamanho e detalhe",
+        sizeGain:
+          "{from} não usa compressão com perdas, então a versão {to} costuma ser bem mais leve",
+        upconvert:
+          "{to} não recupera o detalhe que o {from} já perdeu, e o arquivo tende a crescer",
+      },
+      privacyItems: [
+        "Suas imagens {from} nunca são enviadas: toda conversão roda no seu navegador.",
+        "Feche a aba e não sobra nada: não guardamos imagens nem histórico.",
+        "Não há limite de arquivos e nunca colocamos marca d'água nos resultados {to}.",
       ],
       relatedTitle: "Conversões populares",
+      scenariosDescription:
+        "Algumas coisas que vale saber antes de converter {from} para {to}.",
+      scenariosTitle: "Sobre {from} para {to}",
+      sourceNotes: {
+        avif: "AVIF comprime muito bem, mas Photoshop, versões antigas do Windows e vários formulários de upload ainda recusam",
+        bmp: "BMP quase não comprime, então uma única imagem pode chegar a dezenas de megabytes",
+        gif: "GIF só trabalha com 256 cores, o que deixa fotos com faixas de cor bem visíveis",
+        heic: "HEIC é o padrão do iPhone, e Windows, Android e a maioria dos sites simplesmente não abrem",
+        jpg: "JPG perde um pouco de qualidade a cada novo salvamento e não aceita transparência",
+        png: "PNG é sem perdas, mas pesado: usar PNG direto na web deixa as páginas lentas",
+        webp: "WebP é levíssimo, mas ao enviar você esbarra em programas antigos que não abrem",
+      },
+      steps: [
+        "Arraste suas imagens {from} para a área de upload ou clique para escolher arquivos; pode selecionar vários.",
+        "O formato de saída já está em {to}; ajuste largura e altura ou escolha um preset, se quiser.",
+        "Clique em Gerar — a conversão roda no seu próprio dispositivo.",
+        "Confira a prévia e baixe as imagens {to}, ou leve todas em um ZIP.",
+      ],
+      summary:
+        "Converta imagens {from} para {to} localmente no navegador, ajustando tamanho e qualidade no caminho.",
+      targetNotes: {
+        jpg: "JPG é a aposta segura: todo dispositivo, app e formulário aceita, e as fotos ficam leves",
+        png: "PNG é sem perdas e mantém a transparência, ideal para capturas, ícones e material que você vai editar de novo",
+        webp: "WebP entrega o menor arquivo com a mesma qualidade visual, por isso a web roda com ele",
+      },
       title: "Conversor de {from} para {to}",
     },
   },
   imageCropper: {
     metadata: {
       description:
-        "Corte imagens online com total liberdade: arraste a área de seleção para recortar PNG, JPG, WebP e HEIC com precisão, com proporções comuns como 1:1 e 16:9. Todo o processamento acontece no navegador, sem enviar a imagem.",
+        "Corte imagens online com total liberdade: arraste a área de seleção para recortar PNG, JPG, WebP, AVIF, GIF, BMP e HEIC com precisão, com proporções comuns como 1:1 e 16:9. Todo o processamento acontece no navegador, sem enviar a imagem.",
       keywords: [
         "cortar imagem online",
         "recortar foto",
@@ -355,7 +462,7 @@ export const ptMessages: LocaleContent = {
         localProcessing: "Processamento no navegador",
       },
       description:
-        "Envie uma imagem e arraste a área de seleção diretamente sobre ela para cortar qualquer região, ou trave com um clique proporções comuns como 1:1, 4:3 ou 16:9. Suporta PNG, JPG, WebP e fotos HEIC do iPhone; tudo é processado no navegador, sem enviar nada ao servidor.",
+        "Envie uma imagem e arraste a área de seleção diretamente sobre ela para cortar qualquer região, ou trave com um clique proporções comuns como 1:1, 4:3 ou 16:9. Suporta PNG, JPG, WebP, AVIF, GIF, BMP e fotos HEIC do iPhone; tudo é processado no navegador, sem enviar nada ao servidor.",
       title: "Cortar imagens online",
     },
     scenarios: {
@@ -381,7 +488,7 @@ export const ptMessages: LocaleContent = {
         },
         {
           answer:
-            "PNG, JPG/JPEG, WebP e HEIC/HEIF (fotos do iPhone) podem ser importados; para exportar estão disponíveis PNG, JPG e WebP.",
+            "PNG, JPG/JPEG, WebP, AVIF, GIF, BMP e HEIC/HEIF (fotos do iPhone) podem ser importados; para exportar estão disponíveis PNG, JPG e WebP.",
           question: "Quais formatos de imagem são suportados?",
         },
         {
@@ -417,7 +524,7 @@ export const ptMessages: LocaleContent = {
       ],
       name: "Corte de imagens (seleção livre)",
       steps: [
-        "Envie uma imagem PNG, JPG, WebP ou HEIC.",
+        "Envie uma imagem PNG, JPG, WebP, AVIF, GIF, BMP ou HEIC.",
         "Arraste a área de seleção sobre a imagem ou escolha uma proporção predefinida.",
         "Escolha o formato de exportação e ajuste a qualidade se precisar.",
         "Gere o resultado, visualize e baixe a imagem cortada.",
@@ -439,7 +546,7 @@ export const ptMessages: LocaleContent = {
       stepsDescription: "Siga estes passos para concluir o corte.",
       stepsTitle: "Como usar",
       supportDescription:
-        "PNG, JPG/JPEG, WebP e HEIC/HEIF podem ser importados; para exportar estão disponíveis PNG, JPG/JPEG e WebP (HEIC apenas como entrada).",
+        "PNG, JPG/JPEG, WebP, AVIF, GIF, BMP e HEIC/HEIF podem ser importados; para exportar estão disponíveis PNG, JPG/JPEG e WebP (os demais apenas como entrada).",
       supportTitle: "Formatos suportados",
     },
     client: {
@@ -454,7 +561,7 @@ export const ptMessages: LocaleContent = {
         description:
           "Arraste uma imagem para a área abaixo ou clique no botão para escolher. Tudo é processado localmente e nunca é enviado ao servidor.",
         emptyDescription:
-          "Suporta PNG, JPG/JPEG, WebP e HEIC (fotos do iPhone). Depois de enviar, arraste a área de seleção diretamente sobre a imagem para cortar.",
+          "Suporta PNG, JPG/JPEG, WebP, AVIF, GIF, BMP e HEIC (fotos do iPhone). Depois de enviar, arraste a área de seleção diretamente sobre a imagem para cortar.",
         emptyTitle: "Solte uma imagem para começar a cortar",
         reselect: "Escolher outra",
         sourceLabel: "Original",

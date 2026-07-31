@@ -77,7 +77,7 @@ describe("splitAcceptedBatchFiles", () => {
 
   it("routes unsupported formats to rejectedUnsupported while keeping valid files accepted", () => {
     const valid = makeFile("a.png", "image/png");
-    const invalid = makeFile("a.bmp", "image/bmp");
+    const invalid = makeFile("a.tif", "image/tiff");
 
     const result = splitAcceptedBatchFiles({
       existingCount: 0,
@@ -119,7 +119,7 @@ describe("splitAcceptedBatchFiles", () => {
       makeFile(`img-${index}.png`, "image/png"),
     );
     const overflow = makeFile("overflow.png", "image/png");
-    const invalid = makeFile("bad.bmp", "image/bmp");
+    const invalid = makeFile("bad.tif", "image/tiff");
 
     const result = splitAcceptedBatchFiles({
       existingCount: 0,

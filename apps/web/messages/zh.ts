@@ -90,7 +90,7 @@ export const zhMessages = {
         singleImage: "支持批量转换",
       },
       description:
-        "把 iPhone 拍的 HEIC 照片转成 JPG/PNG/WebP，也能在 PNG、JPG、WebP 之间互转并缩放尺寸。图片在浏览器本地处理，不上传服务器，适合临时换格式、改尺寸和快速导出结果图。",
+        "把 iPhone 拍的 HEIC 照片转成 JPG/PNG/WebP，也支持 AVIF、GIF、BMP 以及 PNG、JPG、WebP 之间互转并缩放尺寸。图片在浏览器本地处理，不上传服务器，适合临时换格式、改尺寸和快速导出结果图。",
       title: "图片格式与尺寸转换",
     },
     scenarios: {
@@ -103,7 +103,7 @@ export const zhMessages = {
     tool: {
       category: "图片工具",
       description:
-        "在线把 iPhone 的 HEIC 照片转成 JPG、PNG 或 WebP，也支持 PNG、JPG、WebP 之间互转与尺寸调整。所有处理都在浏览器本地完成，不上传图片，适合快速压缩、改尺寸和换格式。",
+        "在线把 iPhone 的 HEIC 照片转成 JPG、PNG 或 WebP，也支持 AVIF、GIF、BMP 以及 PNG、JPG、WebP 之间互转与尺寸调整。所有处理都在浏览器本地完成，不上传图片，适合快速压缩、改尺寸和换格式。",
       faq: [
         {
           answer: "不会。所有处理都在浏览器本地完成，文件不会发送到服务器。",
@@ -111,7 +111,7 @@ export const zhMessages = {
         },
         {
           answer:
-            "支持把 HEIC/HEIF（iPhone 照片）转成 JPG、PNG、WebP，也支持 PNG、JPG/JPEG、WebP 之间的单图互转与缩放。",
+            "导入支持 PNG、JPG/JPEG、WebP、AVIF、GIF、BMP 和 HEIC/HEIF（iPhone 照片）；导出支持 PNG、JPG/JPEG、WebP。GIF 等动图只会取第一帧。",
           question: "当前支持哪些图片格式？",
         },
         {
@@ -128,6 +128,7 @@ export const zhMessages = {
       features: [
         "把 iPhone 的 HEIC/HEIF 照片转成 JPG、PNG 或 WebP",
         "支持 PNG、JPG、WebP 三种常用格式互转",
+        "AVIF、GIF、BMP 也能直接拖进来转成通用格式",
         "支持自定义宽高，并可锁定原始比例",
         "支持 JPEG / WebP 质量调节",
         "结果图可直接预览与下载",
@@ -146,7 +147,7 @@ export const zhMessages = {
       ],
       name: "图片格式与尺寸转换（支持 HEIC）",
       steps: [
-        "上传一张 PNG、JPG、WebP 或 HEIC 图片。",
+        "上传一张 PNG、JPG、WebP、AVIF、GIF、BMP 或 HEIC 图片。",
         "选择目标格式，并按需填写宽高。",
         "如果需要，开启或关闭锁定比例，并调整压缩质量。",
         "点击生成结果，预览并下载转换后的图片。",
@@ -161,13 +162,13 @@ export const zhMessages = {
       privacyItems: [
         "图片不会上传到服务器，所有转换都在你的浏览器里完成。",
         "JPEG 不支持透明背景，导出时会自动补成白底。",
-        "暂不支持 GIF 动图和 SVG 导出。",
+        "GIF 等动图只会保留第一帧，暂不支持 SVG 与动图导出。",
       ],
       privacyTitle: "使用说明",
       stepsDescription: "按下面的步骤即可完成转换。",
       stepsTitle: "使用方法",
       supportDescription:
-        "导入支持 PNG、JPG/JPEG、WebP 和 HEIC/HEIF；导出支持 PNG、JPG/JPEG、WebP（HEIC 仅作为输入）。",
+        "导入支持 PNG、JPG/JPEG、WebP、AVIF、GIF、BMP 和 HEIC/HEIF；导出支持 PNG、JPG/JPEG、WebP（其余格式仅作为输入）。",
       supportTitle: "支持的格式",
     },
     client: {
@@ -201,7 +202,7 @@ export const zhMessages = {
         description:
           "拖拽图片到下方区域，或点击按钮选择图片，可一次选择多张。全程在本地处理，不会上传到服务器。",
         emptyDescription:
-          "支持 PNG、JPG/JPEG、WebP 和 HEIC（iPhone 照片）。你可以直接改尺寸，也可以切换输出格式并调节质量。",
+          "支持 PNG、JPG/JPEG、WebP、AVIF、GIF、BMP 和 HEIC（iPhone 照片）。你可以直接改尺寸，也可以切换输出格式并调节质量。",
         emptyTitle: "拖入图片开始转换",
         pendingResult: "调整参数后点击生成结果",
         reselect: "重新选择",
@@ -305,22 +306,120 @@ export const zhMessages = {
       },
     },
     conversions: {
+      badge: "{from} → {to}",
       description:
-        "在浏览器里免费把 {from} 转成 {to}，不上传、不注册，图片全程留在本地设备上。",
+        "在浏览器里免费把 {from} 转成 {to}：不上传、不注册、不限张数，图片全程留在你自己的设备上。",
+      faq: {
+        base: [
+          {
+            answer:
+              "不会。{from} 文件不会离开你的设备，读取、解码、导出全部由浏览器完成，服务器上不留任何副本。",
+            question: "{from} 图片会被上传到服务器吗？",
+          },
+          {
+            answer:
+              "完全免费，也不需要注册。可以一次拖进多张 {from} 图片批量转成 {to}，再打包成 ZIP 一起下载。",
+            question: "{from} 转 {to} 收费吗？有张数限制吗？",
+          },
+        ],
+        notes: {
+          alphaLoss: {
+            answer:
+              "{to} 没有透明通道，原本透明的区域会被填成白色。需要保留透明背景，就把输出格式改成 PNG 或 WebP。",
+            question: "{from} 的透明背景转成 {to} 之后会怎样？",
+          },
+          animationLoss: {
+            answer:
+              "只保留第一帧。{to} 是静态图片格式，动态 {from} 的后续帧会被丢弃；想留住动画得用视频或动图工具。",
+            question: "动态 {from} 转成 {to} 还会动吗？",
+          },
+          heicDecode: {
+            answer:
+              "不需要。iPhone 拍的 .heic/.heif 由浏览器里的 WebAssembly 解码，Windows 和安卓上一样能转，不必先找台 Mac 导出。",
+            question: "转 HEIC 要装插件或系统组件吗？",
+          },
+          losslessOutput: {
+            answer:
+              "不会。{to} 是无损格式，画面不会被再压一遍，所以页面上也没有质量滑块——这一步只是换了容器。",
+            question: "转成 {to} 会不会又压一次画质？",
+          },
+          qualityControl: {
+            answer:
+              "可以。{to} 支持调压缩质量，默认 82 在体积和画质之间比较平衡；照片可以往 70 压，要保细节就调到 90 以上。",
+            question: "{to} 的压缩质量能自己调吗？",
+          },
+          sizeGain: {
+            answer:
+              "通常会小很多。{from} 本身不做有损压缩，同一张图存成 {to} 之后往往只剩几分之一大小，更适合传网页或发给别人。",
+            question: "{from} 转 {to} 之后文件会变小吗？",
+          },
+          upconvert: {
+            answer:
+              "不能。{from} 已经丢掉的细节不会因为存成无损的 {to} 就回来，文件反而通常更大。转 {to} 的意义是之后反复编辑不再继续掉画质。",
+            question: "转成 {to} 能让 {from} 的画质变好吗？",
+          },
+        },
+      },
+      features: [
+        "直接拖入 {from} 文件，也可以一次选中多张批量转成 {to}",
+        "转格式的同时改宽高：锁定比例、自由拉伸或裁切填充",
+        "结果可以逐张预览下载，也可以打包成 ZIP 一次拿走",
+        "不上传、不注册、不加水印，转多少张都免费",
+      ],
       keywords: [
         "{from} 转 {to}",
         "{from} to {to}",
         "{from} 转 {to} 在线",
         "免费 {from} 转 {to}",
+        "{from} 转 {to} 不上传",
+      ],
+      notes: {
+        alphaLoss: "{from} 的透明背景会被填成白色，{to} 不支持透明通道",
+        animationLoss: "动态 {from} 只保留第一帧，{to} 是静态格式",
+        heicDecode:
+          "HEIC 在浏览器本地用 WebAssembly 解码，Windows 和安卓上一样能转",
+        losslessOutput: "{to} 无损保存，不会二次压缩，因此没有质量参数",
+        qualityControl: "{to} 可以拖质量滑块，自己权衡体积和画质",
+        sizeGain: "{from} 不做有损压缩，转成 {to} 后体积通常明显变小",
+        upconvert: "{to} 找不回 {from} 已经丢掉的细节，文件通常还会变大",
+      },
+      privacyItems: [
+        "{from} 图片不会上传，转换全部在你的浏览器里完成。",
+        "关掉页面就什么都不剩，我们不保存图片，也不记录转换历史。",
+        "没有张数上限，也不会给 {to} 结果加水印。",
       ],
       relatedTitle: "常见转换",
+      scenariosDescription: "动手之前，先了解 {from} 转 {to} 的这几件事。",
+      scenariosTitle: "关于 {from} 转 {to}",
+      sourceNotes: {
+        avif: "AVIF 压得很小，但 Photoshop、旧版 Windows 和不少上传表单还不认它",
+        bmp: "BMP 几乎不压缩，一张图动辄几十 MB，发送和上传都不方便",
+        gif: "GIF 只有 256 种颜色，照片存成 GIF 会出现明显色带",
+        heic: "HEIC 是 iPhone 的默认拍照格式，Windows、安卓和大多数网站都打不开",
+        jpg: "JPG 每存一次都会再掉一点画质，而且不支持透明背景",
+        png: "PNG 无损但体积大，网页上直接用 PNG 会拖慢加载",
+        webp: "WebP 体积小，但发给别人时常遇到打不开它的老软件",
+      },
+      steps: [
+        "把 {from} 图片拖进上传区，或点按钮选择文件，支持一次选多张。",
+        "输出格式已经预设为 {to}，需要的话可以顺手改宽高或挑个尺寸预设。",
+        "确认参数后点「生成结果」，转换在你自己的设备上完成。",
+        "预览没问题就下载 {to} 图片，多张可以打包成 ZIP。",
+      ],
+      summary:
+        "在浏览器本地把 {from} 图片转成 {to}，并顺手调整尺寸和压缩质量。",
+      targetNotes: {
+        jpg: "JPG 通用性最好，任何设备、软件和上传表单都认，照片体积也小",
+        png: "PNG 无损且支持透明背景，适合截图、图标和还要再编辑的素材",
+        webp: "WebP 在同等画质下体积最小，是网页配图的首选",
+      },
       title: "{from} 转 {to} 在线转换器",
     },
   },
   imageCropper: {
     metadata: {
       description:
-        "在线自由裁切图片：拖拽选框精确裁剪 PNG、JPG、WebP、HEIC，支持 1:1、16:9 等常用比例。所有处理都在浏览器本地完成，不上传图片。",
+        "在线自由裁切图片：拖拽选框精确裁剪 PNG、JPG、WebP、AVIF、GIF、BMP、HEIC，支持 1:1、16:9 等常用比例。所有处理都在浏览器本地完成，不上传图片。",
       keywords: [
         "在线裁剪图片",
         "图片裁切",
@@ -338,7 +437,7 @@ export const zhMessages = {
         localProcessing: "浏览器本地处理",
       },
       description:
-        "上传图片后直接在图上拖拽选框，自由裁切任意区域，也可以一键锁定 1:1、4:3、16:9 等常用比例。支持 PNG、JPG、WebP 和 iPhone 的 HEIC 照片，全程在浏览器本地处理，不上传服务器。",
+        "上传图片后直接在图上拖拽选框，自由裁切任意区域，也可以一键锁定 1:1、4:3、16:9 等常用比例。支持 PNG、JPG、WebP、AVIF、GIF、BMP 和 iPhone 的 HEIC 照片，全程在浏览器本地处理，不上传服务器。",
       title: "在线图片裁切",
     },
     scenarios: {
@@ -359,7 +458,7 @@ export const zhMessages = {
         },
         {
           answer:
-            "导入支持 PNG、JPG/JPEG、WebP 和 HEIC/HEIF（iPhone 照片），导出支持 PNG、JPG、WebP。",
+            "导入支持 PNG、JPG/JPEG、WebP、AVIF、GIF、BMP 和 HEIC/HEIF（iPhone 照片），导出支持 PNG、JPG、WebP。",
           question: "支持哪些图片格式？",
         },
         {
@@ -394,7 +493,7 @@ export const zhMessages = {
       ],
       name: "图片裁切（自由选框）",
       steps: [
-        "上传一张 PNG、JPG、WebP 或 HEIC 图片。",
+        "上传一张 PNG、JPG、WebP、AVIF、GIF、BMP 或 HEIC 图片。",
         "在图上拖拽选框，或选择一个比例预设。",
         "选择导出格式，按需调整质量。",
         "点击生成结果，预览并下载裁切后的图片。",
@@ -415,7 +514,7 @@ export const zhMessages = {
       stepsDescription: "按下面的步骤即可完成裁切。",
       stepsTitle: "使用方法",
       supportDescription:
-        "导入支持 PNG、JPG/JPEG、WebP 和 HEIC/HEIF；导出支持 PNG、JPG/JPEG、WebP（HEIC 仅作为输入）。",
+        "导入支持 PNG、JPG/JPEG、WebP、AVIF、GIF、BMP 和 HEIC/HEIF；导出支持 PNG、JPG/JPEG、WebP（其余格式仅作为输入）。",
       supportTitle: "支持的格式",
     },
     client: {
@@ -430,7 +529,7 @@ export const zhMessages = {
         description:
           "拖拽图片到下方区域，或点击按钮选择图片。全程在本地处理，不会上传到服务器。",
         emptyDescription:
-          "支持 PNG、JPG/JPEG、WebP 和 HEIC（iPhone 照片）。上传后直接在图上拖拽选框即可裁切。",
+          "支持 PNG、JPG/JPEG、WebP、AVIF、GIF、BMP 和 HEIC（iPhone 照片）。上传后直接在图上拖拽选框即可裁切。",
         emptyTitle: "拖入图片开始裁切",
         reselect: "重新选择",
         sourceLabel: "原图",

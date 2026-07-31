@@ -97,14 +97,28 @@ worker 文件由 `pnpm copy:pdf-worker` 拷到 `public/pdf/`，`dev` / `build` �
 
 ## xxx-to-ooo 转换落地页（/tools/[conversion]）
 
-- 为「heic to jpg」等高搜索词建的专属 SEO 落地页，配对配置在 `lib/conversions.ts`（9 个）。
+- 为「heic to jpg」等高搜索词建的专属 SEO 落地页，配对配置在 `lib/conversions.ts`（18 个）。
 - 路由 `app/[locale]/tools/[conversion]/page.tsx` 与静态工具目录**同级共存**：Next 静态段优先，
-  `image-converter` 等不被遮蔽；`dynamicParams = false` + `generateStaticParams` 只放行白名单
-  slug，其余 404。
-- 落地页 =「模板化 SEO 外壳 + 预设输出格式」：`getConversionTool()` 用 `{from}/{to}` 插值生成
-  标题/描述/关键词，正文（features/steps/faq）直接复用 `imageConverter.tool.*`，避免写 9×7 份
-  文案；客户端通过 `ImageConverterClient` 的 `initialOutputFormat` 预设目标格式。
-- 新增配对只需往 `CONVERSION_PAIRS` 加一行，路由 / sitemap / 站内链接（`ConversionLinks`）自动覆盖。
+  `image-converter` 等不被遮蔽；`generateStaticParams` 预渲染白名单，页面内 `parseConversionSlug`
+  守卫让未知 slug `notFound()`。
+- ⚠️ **本路由绝对不能加 `export const dynamicParams = false`**（issue #1 的根因，全站 63 个内链 404）：
+  它会把 prerender-manifest 里本路由的 `fallback` 置为 `false`（`FallbackMode.NOT_FOUND`），而
+  `base-server.getStaticPaths()` 返回的 `staticPaths` 恒为 `undefined`（Next 假定「查磁盘缓存时已命中」）。
+  我们的 `open-next.config.ts` 没有配 `incrementalCache`，Worker 里每次请求都是 `x-nextjs-cache: MISS`，
+  Next 无从确认路径预渲染过 → **连白名单 slug 也一律 404**。
+  静态段路由（`/tools/image-converter` 等）不走这个 fallback 判定，所以只有动态段中招，
+  `next build` 和 `next dev` 都看不出问题，**只有 `pnpm --filter web preview`（workerd）能复现**。
+  回归护栏在 `lib/conversions.test.ts`（源码级断言）。
+- 落地页正文按配对**组合**而非整段复用（整段复用 = 重复内容，白建 18×7 个页面）：
+  `lib/conversions.ts` 的 `FORMAT_TRAITS`（hasAlpha / isAnimated / isLossy）推导出 `conversionNoteKeys()`，
+  `lib/conversion-content.ts` 再把「来源格式痛点 + 目标格式收益 + 推导出的注意事项」拼成每页独有的
+  features / steps / faq / hero 场景卡；只有格式名走 `{from}/{to}` 插值。
+- 新增配对只需往 `CONVERSION_PAIRS` 加一行，路由 / sitemap / 站内链接（`ConversionLinks`）/ 文案组合自动覆盖；
+  新增**格式**还要在 `CONVERSION_FORMAT_LABELS`、`FORMAT_TRAITS`、各 locale 的 `conversions.sourceNotes`
+  里补一行，以及 `ACCEPTED_IMAGE_TYPES` 放开输入。
+- 输入格式放开到 AVIF / GIF / BMP：浏览器 `<img>` 原生能解码，走的还是既有 canvas 管线，零额外依赖；
+  输出仍只有 PNG/JPEG/WebP（`canvas.toBlob` 只保证这三种，AVIF 编码 Safari/Firefox 不支持，不做）。
+  动图（GIF / 动画 WebP / 动画 AVIF）只取第一帧，文案里已明确告知。
 
 ## 服务端抓取 / 后端路由（OG 校验器引入）
 

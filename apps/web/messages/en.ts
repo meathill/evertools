@@ -91,7 +91,7 @@ export const enMessages: LocaleContent = {
         singleImage: "Batch conversion",
       },
       description:
-        "Convert iPhone HEIC photos to JPG, PNG or WebP, switch between PNG, JPG and WebP, and resize images directly in the browser without uploading files to a server.",
+        "Convert iPhone HEIC photos to JPG, PNG or WebP, bring in AVIF, GIF and BMP, switch between PNG, JPG and WebP, and resize images directly in the browser without uploading files to a server.",
       title: "Image Format and Size Converter",
     },
     scenarios: {
@@ -108,7 +108,7 @@ export const enMessages: LocaleContent = {
     tool: {
       category: "Image tool",
       description:
-        "Convert iPhone HEIC/HEIF photos to JPG, PNG or WebP, switch between PNG, JPG and WebP, and resize images online. Everything runs in your browser without uploads, which works well for quick compression, resizing and format changes.",
+        "Convert iPhone HEIC/HEIF photos to JPG, PNG or WebP, bring in AVIF, GIF and BMP, switch between PNG, JPG and WebP, and resize images online. Everything runs in your browser without uploads, which works well for quick compression, resizing and format changes.",
       faq: [
         {
           answer:
@@ -117,7 +117,7 @@ export const enMessages: LocaleContent = {
         },
         {
           answer:
-            "It converts HEIC/HEIF (iPhone photos) to JPG, PNG and WebP, plus single-image conversion and resizing between PNG, JPG/JPEG and WebP.",
+            "You can import PNG, JPG/JPEG, WebP, AVIF, GIF, BMP and HEIC/HEIF (iPhone photos), and export PNG, JPG/JPEG or WebP. Animated sources such as GIF keep only their first frame.",
           question: "Which image formats are supported?",
         },
         {
@@ -133,6 +133,7 @@ export const enMessages: LocaleContent = {
       ],
       features: [
         "Convert iPhone HEIC/HEIF photos to JPG, PNG or WebP",
+        "Drop in AVIF, GIF and BMP files and convert them to a universally supported format",
         "Convert between PNG, JPG and WebP",
         "Set custom width and height with optional aspect ratio lock",
         "Adjust JPEG and WebP quality",
@@ -152,7 +153,7 @@ export const enMessages: LocaleContent = {
       ],
       name: "Image Format & Size Converter — HEIC Supported",
       steps: [
-        "Upload a PNG, JPG, WebP or HEIC image.",
+        "Upload a PNG, JPG, WebP, AVIF, GIF, BMP or HEIC image.",
         "Choose the output format and enter target dimensions if needed.",
         "Optionally lock aspect ratio and adjust compression quality.",
         "Generate the result, preview it and download the converted image.",
@@ -168,13 +169,13 @@ export const enMessages: LocaleContent = {
       privacyItems: [
         "Images are never uploaded. All conversion happens in your browser.",
         "JPEG does not support transparency, so transparent areas will be filled with white.",
-        "Animated GIF and SVG export are not supported yet.",
+        "Animated sources such as GIF keep only their first frame; SVG and animated export are not supported.",
       ],
       privacyTitle: "Notes and limitations",
       stepsDescription: "Follow these steps to convert your image.",
       stepsTitle: "How to use it",
       supportDescription:
-        "PNG, JPG/JPEG, WebP and HEIC/HEIF can be imported; PNG, JPG/JPEG and WebP are available for export (HEIC is input only).",
+        "PNG, JPG/JPEG, WebP, AVIF, GIF, BMP and HEIC/HEIF can be imported; PNG, JPG/JPEG and WebP are available for export (the rest are input only).",
       supportTitle: "Supported formats",
     },
     client: {
@@ -208,7 +209,7 @@ export const enMessages: LocaleContent = {
         description:
           "Drag images into the area below, or click the button to choose one or more files. Everything runs locally and is never uploaded.",
         emptyDescription:
-          "Supports PNG, JPG/JPEG, WebP and HEIC (iPhone photos). You can resize the image, switch output format and adjust quality.",
+          "Supports PNG, JPG/JPEG, WebP, AVIF, GIF, BMP and HEIC (iPhone photos). You can resize the image, switch output format and adjust quality.",
         emptyTitle: "Drop an image to begin",
         pendingResult: "Adjust settings and generate a result",
         reselect: "Choose another",
@@ -318,22 +319,127 @@ export const enMessages: LocaleContent = {
       },
     },
     conversions: {
+      badge: "{from} → {to}",
       description:
-        "Convert {from} to {to} online — free, private and right in your browser. No upload, no signup; your files never leave your device.",
+        "Convert {from} to {to} online — free, unlimited and right in your browser. No upload, no signup; your images never leave your device.",
+      faq: {
+        base: [
+          {
+            answer:
+              "No. Your {from} files never leave your device — reading, decoding and exporting all happen in the browser, and nothing is stored on a server.",
+            question: "Are my {from} images uploaded to a server?",
+          },
+          {
+            answer:
+              "It is completely free and needs no account. Drop in as many {from} files as you like, convert them to {to} in one batch, and download everything as a ZIP.",
+            question: "Is {from} to {to} free? Is there a file limit?",
+          },
+        ],
+        notes: {
+          alphaLoss: {
+            answer:
+              "{to} has no alpha channel, so transparent areas are filled with white. Pick PNG or WebP as the output format if you need to keep transparency.",
+            question: "What happens to transparency when {from} becomes {to}?",
+          },
+          animationLoss: {
+            answer:
+              "Only the first frame survives. {to} is a still image format, so the remaining frames of an animated {from} are dropped — use a video or GIF tool if you need the motion.",
+            question: "Does an animated {from} stay animated as {to}?",
+          },
+          heicDecode: {
+            answer:
+              "No. Your .heic/.heif photos are decoded by WebAssembly inside the browser, so this works on Windows and Android too — you do not need a Mac to export them first.",
+            question: "Do I need a plugin or codec pack to open HEIC?",
+          },
+          losslessOutput: {
+            answer:
+              "No. {to} is lossless, so the picture is not re-compressed — that is also why there is no quality slider here. This step only changes the container.",
+            question: "Does converting to {to} compress the image again?",
+          },
+          qualityControl: {
+            answer:
+              "Yes. {to} lets you set the compression quality; the default of 82 balances size and detail well. Photos usually survive 70, and anything above 90 keeps fine detail.",
+            question: "Can I control the {to} compression quality?",
+          },
+          sizeGain: {
+            answer:
+              "Usually much smaller. {from} does not compress with loss, so the same picture saved as {to} often ends up a fraction of the size — far easier to upload or send.",
+            question: "Will the file get smaller after {from} to {to}?",
+          },
+          upconvert: {
+            answer:
+              "No. Detail that {from} already discarded does not come back by saving it as lossless {to}, and the file usually gets bigger. The point is that further edits will not degrade it any more.",
+            question: "Does converting to {to} improve the {from} quality?",
+          },
+        },
+      },
+      features: [
+        "Drop in a single {from} file, or select many and convert them to {to} in one batch",
+        "Resize while you convert: lock the aspect ratio, stretch freely, or crop to fill",
+        "Preview and download results one by one, or grab them all as a ZIP",
+        "No upload, no signup, no watermark — convert as many files as you want",
+      ],
       keywords: [
         "{from} to {to}",
         "convert {from} to {to}",
         "{from} to {to} converter",
         "{from} to {to} online",
+        "{from} to {to} without upload",
+      ],
+      notes: {
+        alphaLoss:
+          "Transparent areas of your {from} become white — {to} has no alpha channel",
+        animationLoss:
+          "An animated {from} keeps only its first frame; {to} is a still format",
+        heicDecode:
+          "HEIC is decoded locally via WebAssembly, so it works on Windows and Android too",
+        losslessOutput:
+          "{to} is lossless, so nothing is re-compressed and there is no quality setting",
+        qualityControl:
+          "{to} gives you a quality slider to trade file size against detail",
+        sizeGain:
+          "{from} is not lossy-compressed, so the {to} version is usually far smaller",
+        upconvert:
+          "{to} cannot recover detail {from} already threw away, and the file usually grows",
+      },
+      privacyItems: [
+        "Your {from} images are never uploaded — every conversion runs in your browser.",
+        "Close the tab and nothing is left behind: we store no images and keep no history.",
+        "There is no file limit, and we never watermark the {to} results.",
       ],
       relatedTitle: "Popular conversions",
+      scenariosDescription:
+        "A few things worth knowing before you convert {from} to {to}.",
+      scenariosTitle: "About {from} to {to}",
+      sourceNotes: {
+        avif: "AVIF compresses beautifully, but Photoshop, older Windows builds and many upload forms still reject it",
+        bmp: "BMP barely compresses at all, so a single image can run to tens of megabytes",
+        gif: "GIF is limited to 256 colours, which makes photos band and posterise badly",
+        heic: "HEIC is the iPhone default, and Windows, Android and most websites simply cannot open it",
+        jpg: "JPG loses a little more quality every time you re-save it, and it has no transparency",
+        png: "PNG is lossless but heavy, and shipping PNGs straight to the web slows pages down",
+        webp: "WebP files are small, but older software still greets them with 'cannot open this file'",
+      },
+      steps: [
+        "Drop your {from} images into the upload area, or click to pick files — several at once is fine.",
+        "The output format is already set to {to}; adjust the width and height or pick a size preset if you need to.",
+        "Hit Generate — the conversion runs on your own device.",
+        "Check the preview, then download the {to} images, or grab them all as a ZIP.",
+      ],
+      summary:
+        "Convert {from} images to {to} locally in the browser, resizing and tuning quality along the way.",
+      targetNotes: {
+        jpg: "JPG is the safest bet anywhere — every device, app and upload form accepts it, and photos stay small",
+        png: "PNG is lossless and keeps transparency, ideal for screenshots, icons and artwork you will edit again",
+        webp: "WebP gives you the smallest file at the same visual quality, which is why the web runs on it",
+      },
       title: "{from} to {to} Converter",
     },
   },
   imageCropper: {
     metadata: {
       description:
-        "Crop images online with a free-form selection: drag to crop PNG, JPG, WebP and HEIC precisely, with common presets like 1:1 and 16:9. Everything runs locally in your browser — no uploads.",
+        "Crop images online with a free-form selection: drag to crop PNG, JPG, WebP, AVIF, GIF, BMP and HEIC precisely, with common presets like 1:1 and 16:9. Everything runs locally in your browser — no uploads.",
       keywords: [
         "crop image online",
         "image cropper",
@@ -351,7 +457,7 @@ export const enMessages: LocaleContent = {
         localProcessing: "Browser-side processing",
       },
       description:
-        "Upload an image and drag a selection right on top of it to crop any area, or lock a common aspect ratio like 1:1, 4:3 or 16:9 with one click. Supports PNG, JPG, WebP and iPhone HEIC photos, all processed locally in your browser with no server uploads.",
+        "Upload an image and drag a selection right on top of it to crop any area, or lock a common aspect ratio like 1:1, 4:3 or 16:9 with one click. Supports PNG, JPG, WebP, AVIF, GIF, BMP and iPhone HEIC photos, all processed locally in your browser with no server uploads.",
       title: "Online Image Cropper",
     },
     scenarios: {
@@ -377,7 +483,7 @@ export const enMessages: LocaleContent = {
         },
         {
           answer:
-            "PNG, JPG/JPEG, WebP and HEIC/HEIF (iPhone photos) can be imported; PNG, JPG and WebP are available for export.",
+            "PNG, JPG/JPEG, WebP, AVIF, GIF, BMP and HEIC/HEIF (iPhone photos) can be imported; PNG, JPG and WebP are available for export.",
           question: "Which image formats are supported?",
         },
         {
@@ -412,7 +518,7 @@ export const enMessages: LocaleContent = {
       ],
       name: "Image Cropper (Free-Form Selection)",
       steps: [
-        "Upload a PNG, JPG, WebP or HEIC image.",
+        "Upload a PNG, JPG, WebP, AVIF, GIF, BMP or HEIC image.",
         "Drag a selection on the image, or pick an aspect ratio preset.",
         "Choose the export format and adjust quality if needed.",
         "Generate the result, preview it and download the cropped image.",
@@ -433,7 +539,7 @@ export const enMessages: LocaleContent = {
       stepsDescription: "Follow these steps to crop your image.",
       stepsTitle: "How to use it",
       supportDescription:
-        "PNG, JPG/JPEG, WebP and HEIC/HEIF can be imported; PNG, JPG/JPEG and WebP are available for export (HEIC is input only).",
+        "PNG, JPG/JPEG, WebP, AVIF, GIF, BMP and HEIC/HEIF can be imported; PNG, JPG/JPEG and WebP are available for export (the rest are input only).",
       supportTitle: "Supported formats",
     },
     client: {
@@ -448,7 +554,7 @@ export const enMessages: LocaleContent = {
         description:
           "Drag an image into the area below, or click the button to choose one. Everything runs locally and is never uploaded.",
         emptyDescription:
-          "Supports PNG, JPG/JPEG, WebP and HEIC (iPhone photos). After uploading, drag a selection right on the image to crop.",
+          "Supports PNG, JPG/JPEG, WebP, AVIF, GIF, BMP and HEIC (iPhone photos). After uploading, drag a selection right on the image to crop.",
         emptyTitle: "Drop an image to start cropping",
         reselect: "Choose another",
         sourceLabel: "Source",

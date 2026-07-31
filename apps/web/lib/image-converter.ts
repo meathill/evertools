@@ -27,11 +27,20 @@ export const IMAGE_CONVERTER_ERROR_CODES = {
   UNSUPPORTED_OUTPUT: "UNSUPPORTED_OUTPUT",
 } as const;
 
+// 浏览器 <img> 能直接解码、canvas 能直接 drawImage 的输入类型。
+// AVIF/GIF/BMP 只作输入：canvas.toBlob 只保证能编码 PNG/JPEG/WebP。
+// GIF/动画 WebP/动画 AVIF 只取第一帧——落地页文案里已明确告知。
 export const ACCEPTED_IMAGE_TYPES = [
   "image/png",
   "image/jpeg",
   "image/webp",
+  "image/avif",
+  "image/gif",
+  "image/bmp",
 ] as const;
+
+// 少数浏览器/系统给 BMP 报的旧 MIME，不进 ACCEPTED_IMAGE_TYPES（避免污染"支持格式"展示文案）。
+const ALIAS_IMAGE_TYPES = ["image/x-ms-bmp", "image/x-bmp"] as const;
 
 export const OUTPUT_FORMATS = [
   {
@@ -96,10 +105,13 @@ export type ResultImage = {
   width: number;
 };
 
-const acceptedImageTypeSet = new Set<string>(ACCEPTED_IMAGE_TYPES);
+const acceptedImageTypeSet = new Set<string>([
+  ...ACCEPTED_IMAGE_TYPES,
+  ...ALIAS_IMAGE_TYPES,
+]);
 
 export function isAcceptedImageType(type: string): boolean {
-  return acceptedImageTypeSet.has(type);
+  return acceptedImageTypeSet.has(type.toLowerCase());
 }
 
 // HEIC/HEIF 系列 MIME。浏览器原生 <img> 只有 Safari 能解码 HEIC，

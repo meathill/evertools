@@ -288,18 +288,35 @@ describe("HEIC detection and normalization", () => {
     expect(isHeicFile(makeFile("notes.txt", "text/plain"))).toBe(false);
   });
 
-  it("accepts canvas-native and HEIC sources, rejects others", () => {
-    expect(isAcceptedImageFile(makeFile("a.png", "image/png"))).toBe(true);
-    expect(isAcceptedImageFile(makeFile("a.jpg", "image/jpeg"))).toBe(true);
-    expect(isAcceptedImageFile(makeFile("a.webp", "image/webp"))).toBe(true);
+  it("accepts every browser-decodable source, rejects the rest", () => {
+    for (const type of [
+      "image/png",
+      "image/jpeg",
+      "image/webp",
+      "image/avif",
+      "image/gif",
+      "image/bmp",
+    ]) {
+      expect(isAcceptedImageFile(makeFile("a.img", type))).toBe(true);
+    }
+
     expect(isAcceptedImageFile(makeFile("a.heic", ""))).toBe(true);
-    expect(isAcceptedImageFile(makeFile("a.bmp", "image/bmp"))).toBe(false);
+    // 旧 BMP MIME 别名也要放行，否则部分 Windows 浏览器选中 .bmp 会被误拒。
+    expect(isAcceptedImageFile(makeFile("a.bmp", "image/x-ms-bmp"))).toBe(true);
+    expect(isAcceptedImageFile(makeFile("a.tif", "image/tiff"))).toBe(false);
+    expect(isAcceptedImageFile(makeFile("a.svg", "image/svg+xml"))).toBe(false);
+    expect(isAcceptedImageFile(makeFile("notes.txt", "text/plain"))).toBe(
+      false,
+    );
   });
 
-  it("exposes HEIC alongside PNG in the file input accept list", () => {
+  it("exposes HEIC alongside the canvas-native formats in the accept list", () => {
     expect(FILE_INPUT_ACCEPT).toContain("image/heic");
     expect(FILE_INPUT_ACCEPT).toContain(".heic");
     expect(FILE_INPUT_ACCEPT).toContain("image/png");
+    expect(FILE_INPUT_ACCEPT).toContain("image/avif");
+    expect(FILE_INPUT_ACCEPT).toContain("image/gif");
+    expect(FILE_INPUT_ACCEPT).toContain("image/bmp");
   });
 
   it("returns non-HEIC files unchanged without decoding", async () => {

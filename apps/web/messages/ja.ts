@@ -91,7 +91,7 @@ export const jaMessages: LocaleContent = {
         singleImage: "一括変換対応",
       },
       description:
-        "iPhone の HEIC 写真を JPG/PNG/WebP に変換でき、PNG、JPG、WebP の相互変換やリサイズもブラウザ内で行えます。ファイルはサーバーへアップロードされません。",
+        "iPhone の HEIC 写真を JPG/PNG/WebP に変換でき、AVIF、GIF、BMP の取り込みや PNG、JPG、WebP の相互変換、リサイズもブラウザ内で行えます。ファイルはサーバーへアップロードされません。",
       title: "画像形式とサイズの変換",
     },
     scenarios: {
@@ -107,7 +107,7 @@ export const jaMessages: LocaleContent = {
     tool: {
       category: "画像ツール",
       description:
-        "iPhone の HEIC/HEIF 写真を JPG、PNG、WebP に変換し、PNG、JPG、WebP の相互変換やリサイズもオンラインで行えます。処理はすべてブラウザ内で完結し、アップロード不要なので、素早い圧縮、サイズ変更、形式変更に向いています。",
+        "iPhone の HEIC/HEIF 写真を JPG、PNG、WebP に変換し、AVIF、GIF、BMP の取り込みや PNG、JPG、WebP の相互変換、リサイズもオンラインで行えます。処理はすべてブラウザ内で完結し、アップロード不要なので、素早い圧縮、サイズ変更、形式変更に向いています。",
       faq: [
         {
           answer:
@@ -116,7 +116,7 @@ export const jaMessages: LocaleContent = {
         },
         {
           answer:
-            "HEIC/HEIF（iPhone 写真）を JPG、PNG、WebP に変換でき、PNG、JPG/JPEG、WebP の単一画像変換とリサイズにも対応しています。",
+            "入力は PNG、JPG/JPEG、WebP、AVIF、GIF、BMP、HEIC/HEIF（iPhone 写真）に対応し、出力は PNG、JPG/JPEG、WebP です。GIF などのアニメーションは 1 フレーム目のみ取り込みます。",
           question: "対応している画像形式は何ですか？",
         },
         {
@@ -132,6 +132,7 @@ export const jaMessages: LocaleContent = {
       ],
       features: [
         "iPhone の HEIC/HEIF 写真を JPG、PNG、WebP に変換",
+        "AVIF、GIF、BMP もそのまま読み込んで汎用フォーマットに変換",
         "PNG、JPG、WebP の相互変換に対応",
         "幅と高さを自由に指定でき、縦横比の固定にも対応",
         "JPEG / WebP の品質調整に対応",
@@ -150,7 +151,7 @@ export const jaMessages: LocaleContent = {
       ],
       name: "画像形式とサイズの変換 — HEIC 対応",
       steps: [
-        "PNG、JPG、WebP、または HEIC の画像を 1 枚アップロードします。",
+        "PNG、JPG、WebP、AVIF、GIF、BMP、または HEIC の画像を 1 枚アップロードします。",
         "出力形式を選び、必要ならサイズを入力します。",
         "必要に応じて縦横比固定や圧縮品質を調整します。",
         "結果を生成し、プレビューしてダウンロードします。",
@@ -165,13 +166,13 @@ export const jaMessages: LocaleContent = {
       privacyItems: [
         "画像はサーバーにアップロードされず、変換はすべてブラウザ内で行われます。",
         "JPEG は透明背景に対応していないため、透明部分は白で補完されます。",
-        "アニメーション GIF と SVG 書き出しには未対応です。",
+        "GIF などのアニメーションは 1 フレーム目のみ取り込みます。SVG とアニメーション書き出しには未対応です。",
       ],
       privacyTitle: "利用上の注意",
       stepsDescription: "次の手順で変換できます。",
       stepsTitle: "使い方",
       supportDescription:
-        "入力は PNG、JPG/JPEG、WebP、HEIC/HEIF に対応。出力は PNG、JPG/JPEG、WebP です（HEIC は入力のみ）。",
+        "入力は PNG、JPG/JPEG、WebP、AVIF、GIF、BMP、HEIC/HEIF に対応。出力は PNG、JPG/JPEG、WebP です（それ以外は入力のみ）。",
       supportTitle: "対応形式",
     },
     client: {
@@ -205,7 +206,7 @@ export const jaMessages: LocaleContent = {
         description:
           "下のエリアに画像をドラッグするか、ボタンから 1 枚以上の画像を選択してください。すべてブラウザ内で処理され、サーバーへはアップロードしません。",
         emptyDescription:
-          "PNG、JPG/JPEG、WebP、HEIC（iPhone 写真）に対応しています。リサイズ、出力形式の切り替え、品質調整が行えます。",
+          "PNG、JPG/JPEG、WebP、AVIF、GIF、BMP、HEIC（iPhone 写真）に対応しています。リサイズ、出力形式の切り替え、品質調整が行えます。",
         emptyTitle: "画像をドロップして開始",
         pendingResult: "設定を調整して結果を生成してください",
         reselect: "別の画像を選ぶ",
@@ -317,22 +318,126 @@ export const jaMessages: LocaleContent = {
       },
     },
     conversions: {
+      badge: "{from} → {to}",
       description:
-        "{from} を {to} にブラウザ内で無料変換。アップロードや登録は不要で、ファイルは端末から外に出ません。",
+        "{from} を {to} にブラウザ内で無料変換。アップロードも登録も枚数制限もなく、画像は端末から一歩も外に出ません。",
+      faq: {
+        base: [
+          {
+            answer:
+              "送信しません。{from} ファイルは端末から出ることなく、読み込み・デコード・書き出しまですべてブラウザ内で完結し、サーバーには何も残りません。",
+            question: "{from} 画像はサーバーにアップロードされますか？",
+          },
+          {
+            answer:
+              "完全無料で登録も不要です。{from} を何枚でもまとめて {to} に変換し、ZIP でまとめてダウンロードできます。",
+            question: "{from} から {to} への変換は有料ですか？枚数制限は？",
+          },
+        ],
+        notes: {
+          alphaLoss: {
+            answer:
+              "{to} には透過チャンネルがないため、透明部分は白で塗りつぶされます。透過を残したい場合は出力形式を PNG か WebP に変更してください。",
+            question: "{from} の透過部分は {to} にするとどうなりますか？",
+          },
+          animationLoss: {
+            answer:
+              "1 フレーム目だけが残ります。{to} は静止画形式なので、アニメーション {from} の残りのコマは破棄されます。動きを保ちたい場合は動画や GIF 用のツールをお使いください。",
+            question: "アニメーション {from} は {to} にしても動きますか？",
+          },
+          heicDecode: {
+            answer:
+              "不要です。.heic/.heif はブラウザ内の WebAssembly でデコードするため、Windows でも Android でも変換できます。Mac で書き出し直す必要はありません。",
+            question: "HEIC を開くのにプラグインやコーデックは必要ですか？",
+          },
+          losslessOutput: {
+            answer:
+              "されません。{to} は可逆形式なので再圧縮は起きず、そのため品質スライダーもありません。この工程は入れ物を変えるだけです。",
+            question: "{to} に変換すると画質はもう一度圧縮されますか？",
+          },
+          qualityControl: {
+            answer:
+              "できます。{to} は圧縮品質を指定でき、既定値の 82 はサイズと画質のバランスが取れています。写真なら 70 前後まで下げられ、ディテール重視なら 90 以上にしてください。",
+            question: "{to} の圧縮品質は自分で調整できますか？",
+          },
+          sizeGain: {
+            answer:
+              "たいていかなり小さくなります。{from} は非可逆圧縮を行わないため、同じ画像でも {to} にすると数分の一になることが多く、アップロードや送信がぐっと楽になります。",
+            question: "{from} を {to} にするとファイルは小さくなりますか？",
+          },
+          upconvert: {
+            answer:
+              "戻りません。{from} が既に捨てた情報は可逆形式の {to} にしても復元されず、ファイルはむしろ大きくなります。以降の編集で画質が落ちなくなる点にこそ意味があります。",
+            question: "{to} に変換すれば {from} の画質は良くなりますか？",
+          },
+        },
+      },
+      features: [
+        "{from} をドラッグするだけ。複数まとめて {to} に一括変換もできます",
+        "変換と同時にリサイズ：比率固定・自由変形・切り抜きから選べます",
+        "結果は 1 枚ずつプレビューして保存、まとめて ZIP でも取得できます",
+        "アップロード・登録・ウォーターマークなし。何枚変換しても無料です",
+      ],
       keywords: [
         "{from} {to} 変換",
         "{from} to {to}",
         "{from} を {to} に変換",
         "{from} {to} 無料",
+        "{from} {to} 変換 アップロード不要",
+      ],
+      notes: {
+        alphaLoss:
+          "{from} の透過部分は白くなります（{to} に透過チャンネルはありません）",
+        animationLoss:
+          "アニメーション {from} は 1 フレーム目のみ。{to} は静止画形式です",
+        heicDecode:
+          "HEIC は WebAssembly で端末上でデコードするため Windows や Android でも変換できます",
+        losslessOutput:
+          "{to} は可逆形式。再圧縮されないので品質設定もありません",
+        qualityControl:
+          "{to} は品質スライダーでファイルサイズと画質のバランスを取れます",
+        sizeGain:
+          "{from} は非可逆圧縮ではないため、{to} にすると通常かなり小さくなります",
+        upconvert:
+          "{to} にしても {from} が失った情報は戻らず、ファイルは大きくなりがちです",
+      },
+      privacyItems: [
+        "{from} 画像はアップロードされません。変換はすべてブラウザ内で行われます。",
+        "タブを閉じれば何も残りません。画像も変換履歴も保存しません。",
+        "枚数制限はなく、{to} の結果にウォーターマークも入りません。",
       ],
       relatedTitle: "よく使う変換",
+      scenariosDescription: "{from} を {to} に変換する前に知っておきたいこと。",
+      scenariosTitle: "{from} から {to} への変換について",
+      sourceNotes: {
+        avif: "AVIF は圧縮率が高い一方、Photoshop や古い Windows、多くの投稿フォームがまだ対応していません",
+        bmp: "BMP はほとんど圧縮されず、1 枚で数十 MB になることも珍しくありません",
+        gif: "GIF は 256 色までしか扱えないため、写真では色の段差が目立ちます",
+        heic: "HEIC は iPhone の標準形式ですが、Windows・Android・多くのサイトでは開けません",
+        jpg: "JPG は保存し直すたびに少しずつ劣化し、透過も扱えません",
+        png: "PNG は可逆ですがサイズが大きく、そのまま Web に載せると表示が重くなります",
+        webp: "WebP は軽い反面、送り先の古いソフトで「開けない」と言われがちです",
+      },
+      steps: [
+        "{from} 画像をアップロード領域にドラッグするか、ボタンから選択します（複数選択可）。",
+        "出力形式は {to} に設定済みです。必要なら幅・高さやサイズプリセットを調整します。",
+        "「変換」を押すと、処理はあなたの端末上で実行されます。",
+        "プレビューを確認して {to} をダウンロード。複数枚は ZIP でまとめられます。",
+      ],
+      summary:
+        "{from} 画像をブラウザ内で {to} に変換し、あわせてサイズと圧縮品質も調整します。",
+      targetNotes: {
+        jpg: "JPG はどの端末・アプリ・投稿フォームでも通る万能形式で、写真も軽く収まります",
+        png: "PNG は可逆で透過も保持でき、スクリーンショットやアイコン、再編集する素材に最適です",
+        webp: "WebP は同じ画質でもっとも軽く、Web 用画像の第一候補です",
+      },
       title: "{from} を {to} に変換",
     },
   },
   imageCropper: {
     metadata: {
       description:
-        "画像をオンラインで自由に切り抜き：選択範囲をドラッグして PNG、JPG、WebP、HEIC を正確にトリミングできます。1:1 や 16:9 などの比率プリセットにも対応。処理はすべてブラウザ内で完結し、画像はアップロードされません。",
+        "画像をオンラインで自由に切り抜き：選択範囲をドラッグして PNG、JPG、WebP、AVIF、GIF、BMP、HEIC を正確にトリミングできます。1:1 や 16:9 などの比率プリセットにも対応。処理はすべてブラウザ内で完結し、画像はアップロードされません。",
       keywords: [
         "画像 切り抜き",
         "画像 トリミング オンライン",
@@ -350,7 +455,7 @@ export const jaMessages: LocaleContent = {
         localProcessing: "ブラウザ内処理",
       },
       description:
-        "画像をアップロードしたら、画像の上で選択範囲をドラッグして好きな部分を切り抜けます。1:1、4:3、16:9 などのよく使う比率もワンクリックで固定できます。PNG、JPG、WebP、iPhone の HEIC 写真に対応し、すべてブラウザ内で処理され、サーバーへはアップロードされません。",
+        "画像をアップロードしたら、画像の上で選択範囲をドラッグして好きな部分を切り抜けます。1:1、4:3、16:9 などのよく使う比率もワンクリックで固定できます。PNG、JPG、WebP、AVIF、GIF、BMP、iPhone の HEIC 写真に対応し、すべてブラウザ内で処理され、サーバーへはアップロードされません。",
       title: "オンライン画像切り抜き",
     },
     scenarios: {
@@ -376,7 +481,7 @@ export const jaMessages: LocaleContent = {
         },
         {
           answer:
-            "入力は PNG、JPG/JPEG、WebP、HEIC/HEIF（iPhone 写真）に対応し、出力は PNG、JPG、WebP に対応しています。",
+            "入力は PNG、JPG/JPEG、WebP、AVIF、GIF、BMP、HEIC/HEIF（iPhone 写真）に対応し、出力は PNG、JPG、WebP に対応しています。",
           question: "対応している画像形式は何ですか？",
         },
         {
@@ -411,7 +516,7 @@ export const jaMessages: LocaleContent = {
       ],
       name: "画像切り抜き（自由選択）",
       steps: [
-        "PNG、JPG、WebP、または HEIC の画像を 1 枚アップロードします。",
+        "PNG、JPG、WebP、AVIF、GIF、BMP、または HEIC の画像を 1 枚アップロードします。",
         "画像の上で選択範囲をドラッグするか、比率プリセットを選びます。",
         "書き出し形式を選び、必要に応じて品質を調整します。",
         "結果を生成し、プレビューして切り抜いた画像をダウンロードします。",
@@ -432,7 +537,7 @@ export const jaMessages: LocaleContent = {
       stepsDescription: "次の手順で切り抜きできます。",
       stepsTitle: "使い方",
       supportDescription:
-        "入力は PNG、JPG/JPEG、WebP、HEIC/HEIF に対応。出力は PNG、JPG/JPEG、WebP です（HEIC は入力のみ）。",
+        "入力は PNG、JPG/JPEG、WebP、AVIF、GIF、BMP、HEIC/HEIF に対応。出力は PNG、JPG/JPEG、WebP です（それ以外は入力のみ）。",
       supportTitle: "対応形式",
     },
     client: {
@@ -447,7 +552,7 @@ export const jaMessages: LocaleContent = {
         description:
           "下のエリアに画像をドラッグするか、ボタンから画像を選択してください。すべてブラウザ内で処理され、サーバーへはアップロードしません。",
         emptyDescription:
-          "PNG、JPG/JPEG、WebP、HEIC（iPhone 写真）に対応しています。アップロード後、画像の上でドラッグするだけで切り抜けます。",
+          "PNG、JPG/JPEG、WebP、AVIF、GIF、BMP、HEIC（iPhone 写真）に対応しています。アップロード後、画像の上でドラッグするだけで切り抜けます。",
         emptyTitle: "画像をドロップして切り抜き開始",
         reselect: "別の画像を選ぶ",
         sourceLabel: "元画像",

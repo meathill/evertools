@@ -91,7 +91,7 @@ export const viMessages: LocaleContent = {
         singleImage: "Chuyển đổi hàng loạt",
       },
       description:
-        "Chuyển ảnh HEIC từ iPhone sang JPG, PNG hoặc WebP, chuyển đổi giữa PNG, JPG và WebP và thay đổi kích thước ảnh trực tiếp trong trình duyệt mà không cần tải tệp lên máy chủ.",
+        "Chuyển ảnh HEIC từ iPhone sang JPG, PNG hoặc WebP, nhập thêm AVIF, GIF và BMP, chuyển đổi giữa PNG, JPG và WebP và thay đổi kích thước ảnh trực tiếp trong trình duyệt mà không cần tải tệp lên máy chủ.",
       title: "Chuyển đổi định dạng và kích thước ảnh",
     },
     scenarios: {
@@ -108,7 +108,7 @@ export const viMessages: LocaleContent = {
     tool: {
       category: "Công cụ ảnh",
       description:
-        "Chuyển ảnh HEIC/HEIF từ iPhone sang JPG, PNG hoặc WebP, chuyển đổi giữa PNG, JPG và WebP và thay đổi kích thước trực tuyến. Mọi thứ chạy trong trình duyệt, không cần tải lên, rất phù hợp cho việc nén nhanh, đổi kích thước và đổi định dạng.",
+        "Chuyển ảnh HEIC/HEIF từ iPhone sang JPG, PNG hoặc WebP, nhập thêm AVIF, GIF và BMP, chuyển đổi giữa PNG, JPG và WebP và thay đổi kích thước trực tuyến. Mọi thứ chạy trong trình duyệt, không cần tải lên, rất phù hợp cho việc nén nhanh, đổi kích thước và đổi định dạng.",
       faq: [
         {
           answer:
@@ -117,7 +117,7 @@ export const viMessages: LocaleContent = {
         },
         {
           answer:
-            "Hỗ trợ chuyển HEIC/HEIF (ảnh iPhone) sang JPG, PNG và WebP, cũng như chuyển đổi và đổi kích thước một ảnh giữa PNG, JPG/JPEG và WebP.",
+            "Bạn có thể nhập PNG, JPG/JPEG, WebP, AVIF, GIF, BMP và HEIC/HEIF (ảnh iPhone), rồi xuất ra PNG, JPG/JPEG hoặc WebP. Với ảnh động như GIF, chỉ khung hình đầu tiên được giữ lại.",
           question: "Công cụ hỗ trợ những định dạng nào?",
         },
         {
@@ -133,6 +133,7 @@ export const viMessages: LocaleContent = {
       ],
       features: [
         "Chuyển ảnh HEIC/HEIF từ iPhone sang JPG, PNG hoặc WebP",
+        "Kéo thẳng tệp AVIF, GIF, BMP vào và chuyển sang định dạng mở được ở mọi nơi",
         "Chuyển đổi giữa PNG, JPG và WebP",
         "Đặt chiều rộng và chiều cao tùy chỉnh kèm tùy chọn khóa tỉ lệ",
         "Điều chỉnh chất lượng JPEG và WebP",
@@ -151,7 +152,7 @@ export const viMessages: LocaleContent = {
       ],
       name: "Chuyển đổi định dạng và kích thước ảnh — Hỗ trợ HEIC",
       steps: [
-        "Tải lên một ảnh PNG, JPG, WebP hoặc HEIC.",
+        "Tải lên một ảnh PNG, JPG, WebP, AVIF, GIF, BMP hoặc HEIC.",
         "Chọn định dạng đầu ra và nhập kích thước nếu cần.",
         "Tùy chọn khóa tỉ lệ và điều chỉnh chất lượng nén.",
         "Tạo kết quả, xem trước và tải xuống ảnh đã chuyển đổi.",
@@ -167,13 +168,13 @@ export const viMessages: LocaleContent = {
       privacyItems: [
         "Ảnh không bao giờ được tải lên. Mọi quá trình chuyển đổi diễn ra trong trình duyệt của bạn.",
         "JPEG không hỗ trợ trong suốt, vì vậy các vùng trong suốt sẽ được điền bằng màu trắng.",
-        "GIF động và xuất SVG hiện chưa được hỗ trợ.",
+        "Với ảnh động như GIF, chỉ khung hình đầu tiên được giữ lại; chưa hỗ trợ xuất SVG hay ảnh động.",
       ],
       privacyTitle: "Ghi chú và giới hạn",
       stepsDescription: "Làm theo các bước sau để chuyển đổi ảnh.",
       stepsTitle: "Cách sử dụng",
       supportDescription:
-        "Có thể nhập PNG, JPG/JPEG, WebP và HEIC/HEIF; xuất hỗ trợ PNG, JPG/JPEG và WebP (HEIC chỉ dùng làm đầu vào).",
+        "Có thể nhập PNG, JPG/JPEG, WebP, AVIF, GIF, BMP và HEIC/HEIF; xuất hỗ trợ PNG, JPG/JPEG và WebP (các định dạng còn lại chỉ dùng làm đầu vào).",
       supportTitle: "Định dạng được hỗ trợ",
     },
     client: {
@@ -207,7 +208,7 @@ export const viMessages: LocaleContent = {
         description:
           "Kéo thả ảnh vào vùng bên dưới hoặc bấm nút để chọn một hoặc nhiều ảnh. Mọi thứ xử lý trong trình duyệt và không bao giờ tải lên.",
         emptyDescription:
-          "Hỗ trợ PNG, JPG/JPEG, WebP và HEIC (ảnh iPhone). Bạn có thể đổi kích thước, đổi định dạng đầu ra và điều chỉnh chất lượng.",
+          "Hỗ trợ PNG, JPG/JPEG, WebP, AVIF, GIF, BMP và HEIC (ảnh iPhone). Bạn có thể đổi kích thước, đổi định dạng đầu ra và điều chỉnh chất lượng.",
         emptyTitle: "Thả ảnh vào để bắt đầu",
         pendingResult: "Điều chỉnh thiết lập và tạo kết quả",
         reselect: "Chọn ảnh khác",
@@ -318,22 +319,128 @@ export const viMessages: LocaleContent = {
       },
     },
     conversions: {
+      badge: "{from} → {to}",
       description:
-        "Chuyển {from} sang {to} trực tuyến, miễn phí và riêng tư, ngay trong trình duyệt. Không tải lên, không đăng ký; tệp của bạn không bao giờ rời khỏi thiết bị.",
+        "Chuyển {from} sang {to} trực tuyến, miễn phí và không giới hạn số tệp, ngay trong trình duyệt. Không tải lên, không đăng ký; ảnh của bạn không bao giờ rời khỏi thiết bị.",
+      faq: {
+        base: [
+          {
+            answer:
+              "Không. Tệp {from} không hề rời khỏi thiết bị của bạn: việc đọc, giải mã và xuất ảnh đều diễn ra trong trình duyệt, và không có bản sao nào nằm lại trên máy chủ.",
+            question: "Ảnh {from} của tôi có bị tải lên máy chủ không?",
+          },
+          {
+            answer:
+              "Hoàn toàn miễn phí và không cần tài khoản. Kéo vào bao nhiêu tệp {from} tuỳ ý, chuyển hết sang {to} trong một lượt rồi tải về dưới dạng ZIP.",
+            question:
+              "Chuyển {from} sang {to} có mất phí không? Có giới hạn không?",
+          },
+        ],
+        notes: {
+          alphaLoss: {
+            answer:
+              "{to} không có kênh alpha nên vùng trong suốt sẽ bị tô trắng. Nếu cần giữ nền trong suốt, hãy chọn PNG hoặc WebP làm định dạng đầu ra.",
+            question: "Nền trong suốt của {from} sẽ ra sao khi sang {to}?",
+          },
+          animationLoss: {
+            answer:
+              "Chỉ khung hình đầu tiên được giữ lại. {to} là định dạng ảnh tĩnh nên các khung còn lại của {from} động sẽ bị bỏ đi; muốn giữ chuyển động hãy dùng công cụ video hoặc GIF.",
+            question: "{from} động có còn chuyển động khi thành {to} không?",
+          },
+          heicDecode: {
+            answer:
+              "Không cần. Ảnh .heic/.heif được giải mã bằng WebAssembly ngay trong trình duyệt nên chạy được cả trên Windows lẫn Android — bạn không cần mượn máy Mac để xuất trước.",
+            question: "Có cần cài plugin hay codec để mở HEIC không?",
+          },
+          losslessOutput: {
+            answer:
+              "Không. {to} là định dạng không mất dữ liệu nên ảnh không bị nén lại lần nữa — đó cũng là lý do không có thanh chỉnh chất lượng. Bước này chỉ đổi vỏ chứa.",
+            question: "Chuyển sang {to} có nén ảnh thêm lần nữa không?",
+          },
+          qualityControl: {
+            answer:
+              "Có. {to} cho phép chỉnh chất lượng nén; mức mặc định 82 cân bằng tốt giữa dung lượng và chi tiết. Ảnh chụp thường vẫn ổn ở mức 70, còn trên 90 sẽ giữ được chi tiết nhỏ.",
+            question: "Tôi có tự chỉnh được chất lượng nén của {to} không?",
+          },
+          sizeGain: {
+            answer:
+              "Thường nhỏ hơn hẳn. {from} không nén mất dữ liệu, nên cùng một ảnh khi lưu thành {to} thường chỉ còn một phần nhỏ dung lượng, tiện hơn nhiều khi tải lên hay gửi đi.",
+            question: "Tệp có nhỏ đi sau khi chuyển {from} sang {to} không?",
+          },
+          upconvert: {
+            answer:
+              "Không. Chi tiết mà {from} đã bỏ đi sẽ không quay lại chỉ vì được lưu thành {to} không mất dữ liệu, mà tệp còn thường phình to hơn. Cái được là những lần chỉnh sửa sau sẽ không làm ảnh xấu thêm.",
+            question: "Chuyển sang {to} có làm ảnh {from} nét hơn không?",
+          },
+        },
+      },
+      features: [
+        "Kéo một tệp {from} vào, hoặc chọn nhiều tệp và chuyển hết sang {to} một lượt",
+        "Đổi kích thước ngay khi chuyển: khoá tỉ lệ, kéo giãn tự do hoặc cắt cho đầy khung",
+        "Xem trước và tải từng ảnh, hoặc lấy tất cả trong một tệp ZIP",
+        "Không tải lên, không đăng ký, không đóng dấu — chuyển bao nhiêu tệp cũng miễn phí",
+      ],
       keywords: [
         "{from} sang {to}",
         "chuyển {from} sang {to}",
         "{from} sang {to} trực tuyến",
         "{from} to {to}",
+        "chuyển {from} sang {to} không cần tải lên",
+      ],
+      notes: {
+        alphaLoss:
+          "Vùng trong suốt của {from} sẽ thành màu trắng vì {to} không có kênh alpha",
+        animationLoss:
+          "{from} động chỉ giữ lại khung hình đầu tiên; {to} là định dạng tĩnh",
+        heicDecode:
+          "HEIC được giải mã ngay trên máy bằng WebAssembly nên chạy được cả trên Windows và Android",
+        losslessOutput:
+          "{to} không mất dữ liệu, không nén lại, nên cũng không có tuỳ chọn chất lượng",
+        qualityControl:
+          "{to} có thanh chỉnh chất lượng để bạn cân đối dung lượng và chi tiết",
+        sizeGain:
+          "{from} không nén mất dữ liệu, nên bản {to} thường nhẹ hơn rõ rệt",
+        upconvert:
+          "{to} không lấy lại được chi tiết mà {from} đã mất, và tệp thường phình to hơn",
+      },
+      privacyItems: [
+        "Ảnh {from} không bao giờ được tải lên: mọi lượt chuyển đổi chạy trong trình duyệt của bạn.",
+        "Đóng tab là không còn gì sót lại: chúng tôi không lưu ảnh và không ghi lịch sử.",
+        "Không giới hạn số tệp, và không bao giờ đóng dấu lên kết quả {to}.",
       ],
       relatedTitle: "Chuyển đổi phổ biến",
+      scenariosDescription:
+        "Vài điều nên biết trước khi chuyển {from} sang {to}.",
+      scenariosTitle: "Về việc chuyển {from} sang {to}",
+      sourceNotes: {
+        avif: "AVIF nén rất gọn, nhưng Photoshop, Windows đời cũ và nhiều biểu mẫu tải lên vẫn chưa chấp nhận",
+        bmp: "BMP gần như không nén, nên một tấm ảnh có thể nặng tới vài chục megabyte",
+        gif: "GIF chỉ dùng được 256 màu, khiến ảnh chụp bị phân dải màu rất rõ",
+        heic: "HEIC là định dạng mặc định của iPhone, còn Windows, Android và phần lớn website thì không mở nổi",
+        jpg: "JPG mất thêm một chút chất lượng sau mỗi lần lưu lại, và không hỗ trợ nền trong suốt",
+        png: "PNG không mất dữ liệu nhưng rất nặng, dùng thẳng PNG trên web sẽ làm trang tải chậm",
+        webp: "WebP nhẹ thật, nhưng khi gửi đi lại hay gặp phần mềm cũ báo không mở được",
+      },
+      steps: [
+        "Kéo ảnh {from} vào vùng tải lên, hoặc bấm nút để chọn tệp — chọn nhiều tệp cùng lúc cũng được.",
+        "Định dạng đầu ra đã đặt sẵn là {to}; nếu cần, chỉnh chiều rộng, chiều cao hoặc chọn một kích thước dựng sẵn.",
+        "Bấm tạo kết quả — quá trình chuyển đổi chạy trên chính thiết bị của bạn.",
+        "Xem trước rồi tải ảnh {to} về, nhiều tệp có thể gói chung thành ZIP.",
+      ],
+      summary:
+        "Chuyển ảnh {from} sang {to} ngay trong trình duyệt, đồng thời chỉnh kích thước và chất lượng nén.",
+      targetNotes: {
+        jpg: "JPG là lựa chọn an toàn nhất: mọi thiết bị, ứng dụng và biểu mẫu tải lên đều nhận, ảnh lại nhẹ",
+        png: "PNG không mất dữ liệu và giữ được nền trong suốt, hợp với ảnh chụp màn hình, biểu tượng và tư liệu còn phải chỉnh sửa",
+        webp: "WebP cho tệp nhỏ nhất ở cùng mức chất lượng hiển thị, nên web hiện nay chạy bằng nó",
+      },
       title: "Công cụ chuyển {from} sang {to}",
     },
   },
   imageCropper: {
     metadata: {
       description:
-        "Cắt ảnh trực tuyến tự do: kéo khung chọn ngay trên ảnh để cắt PNG, JPG, WebP và HEIC chính xác, hỗ trợ các tỉ lệ phổ biến như 1:1 và 16:9. Mọi xử lý diễn ra trong trình duyệt, không tải ảnh lên.",
+        "Cắt ảnh trực tuyến tự do: kéo khung chọn ngay trên ảnh để cắt PNG, JPG, WebP, AVIF, GIF, BMP và HEIC chính xác, hỗ trợ các tỉ lệ phổ biến như 1:1 và 16:9. Mọi xử lý diễn ra trong trình duyệt, không tải ảnh lên.",
       keywords: [
         "cắt ảnh online",
         "crop ảnh",
@@ -351,7 +458,7 @@ export const viMessages: LocaleContent = {
         localProcessing: "Xử lý trong trình duyệt",
       },
       description:
-        "Tải ảnh lên rồi kéo khung chọn ngay trên ảnh, cắt tự do bất kỳ vùng nào, hoặc khóa nhanh các tỉ lệ phổ biến như 1:1, 4:3, 16:9 chỉ với một cú bấm. Hỗ trợ PNG, JPG, WebP và ảnh HEIC từ iPhone. Mọi thứ xử lý trong trình duyệt, không tải lên máy chủ.",
+        "Tải ảnh lên rồi kéo khung chọn ngay trên ảnh, cắt tự do bất kỳ vùng nào, hoặc khóa nhanh các tỉ lệ phổ biến như 1:1, 4:3, 16:9 chỉ với một cú bấm. Hỗ trợ PNG, JPG, WebP, AVIF, GIF, BMP và ảnh HEIC từ iPhone. Mọi thứ xử lý trong trình duyệt, không tải lên máy chủ.",
       title: "Cắt ảnh trực tuyến",
     },
     scenarios: {
@@ -377,7 +484,7 @@ export const viMessages: LocaleContent = {
         },
         {
           answer:
-            "Nhập hỗ trợ PNG, JPG/JPEG, WebP và HEIC/HEIF (ảnh iPhone); xuất hỗ trợ PNG, JPG và WebP.",
+            "Nhập hỗ trợ PNG, JPG/JPEG, WebP, AVIF, GIF, BMP và HEIC/HEIF (ảnh iPhone); xuất hỗ trợ PNG, JPG và WebP.",
           question: "Công cụ hỗ trợ những định dạng nào?",
         },
         {
@@ -412,7 +519,7 @@ export const viMessages: LocaleContent = {
       ],
       name: "Cắt ảnh (khung chọn tự do)",
       steps: [
-        "Tải lên một ảnh PNG, JPG, WebP hoặc HEIC.",
+        "Tải lên một ảnh PNG, JPG, WebP, AVIF, GIF, BMP hoặc HEIC.",
         "Kéo khung chọn trên ảnh hoặc chọn một tỉ lệ có sẵn.",
         "Chọn định dạng xuất và điều chỉnh chất lượng nếu cần.",
         "Bấm tạo kết quả, xem trước và tải xuống ảnh đã cắt.",
@@ -433,7 +540,7 @@ export const viMessages: LocaleContent = {
       stepsDescription: "Làm theo các bước sau để hoàn tất việc cắt ảnh.",
       stepsTitle: "Cách sử dụng",
       supportDescription:
-        "Có thể nhập PNG, JPG/JPEG, WebP và HEIC/HEIF; xuất hỗ trợ PNG, JPG/JPEG và WebP (HEIC chỉ dùng làm đầu vào).",
+        "Có thể nhập PNG, JPG/JPEG, WebP, AVIF, GIF, BMP và HEIC/HEIF; xuất hỗ trợ PNG, JPG/JPEG và WebP (các định dạng còn lại chỉ dùng làm đầu vào).",
       supportTitle: "Định dạng được hỗ trợ",
     },
     client: {
@@ -448,7 +555,7 @@ export const viMessages: LocaleContent = {
         description:
           "Kéo thả ảnh vào vùng bên dưới hoặc bấm nút để chọn ảnh. Mọi thứ xử lý cục bộ và không bao giờ tải lên máy chủ.",
         emptyDescription:
-          "Hỗ trợ PNG, JPG/JPEG, WebP và HEIC (ảnh iPhone). Sau khi tải lên, kéo khung chọn ngay trên ảnh để cắt.",
+          "Hỗ trợ PNG, JPG/JPEG, WebP, AVIF, GIF, BMP và HEIC (ảnh iPhone). Sau khi tải lên, kéo khung chọn ngay trên ảnh để cắt.",
         emptyTitle: "Thả ảnh vào để bắt đầu cắt",
         reselect: "Chọn ảnh khác",
         sourceLabel: "Ảnh gốc",

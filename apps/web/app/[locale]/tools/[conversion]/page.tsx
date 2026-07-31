@@ -1,16 +1,19 @@
-import { LockIcon, ShieldCheckIcon, SparklesIcon } from "lucide-react";
+import { ImageIcon, ShieldCheckIcon, SparklesIcon } from "lucide-react";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { ConversionLinks } from "@/components/tool-page/conversion-links";
 import { ToolPageLayout } from "@/components/tool-page/tool-page-layout";
 import { ImageConverterClient } from "@/components/tools/image-converter-client";
 import {
+  getConversionPageCopy,
+  getConversionTool,
+} from "@/lib/conversion-content";
+import {
   CONVERSION_PAIRS,
   conversionOutputFormat,
   conversionSlug,
   parseConversionSlug,
 } from "@/lib/conversions";
-import { getConversionTool } from "@/lib/content";
 import { getLocaleFromParams } from "@/lib/locale";
 import {
   buildToolStructuredData,
@@ -18,9 +21,11 @@ import {
 } from "@/lib/tool-page";
 import { getLocaleContent } from "@/messages";
 
-// 仅白名单 slug 静态生成，其余一律 404（不渲染任意 {x}-to-{y}）。
-export const dynamicParams = false;
-
+// 白名单 slug 全部预渲染；未命中的 slug 由下面的 parseConversionSlug 守卫 404。
+// 注意：这里**不能**加 `dynamicParams = false`。它会让 prerender-manifest 里本路由的
+// fallback 变成 false（FallbackMode.NOT_FOUND），而 OpenNext/Cloudflare 没有磁盘缓存，
+// 每次请求都是 cache MISS，Next 无从确认路径是否预渲染过，于是白名单 slug 也一律 404。
+// 详见 DEV_NOTE.md。
 export function generateStaticParams() {
   return CONVERSION_PAIRS.map((pair) => ({ conversion: conversionSlug(pair) }));
 }
@@ -42,6 +47,8 @@ export async function generateMetadata({
   return generateToolPageMetadata(locale, tool);
 }
 
+const SCENARIO_ICONS = [ImageIcon, SparklesIcon, ShieldCheckIcon] as const;
+
 export default async function ConversionPage({
   params,
 }: {
@@ -58,13 +65,14 @@ export default async function ConversionPage({
   const content = getLocaleContent(locale);
   const page = content.imageConverter;
   const tool = getConversionTool(content, pair);
+  const copy = getConversionPageCopy(content, pair);
 
   return (
     <ToolPageLayout
       badges={[
         page.hero.badges.category,
         page.hero.badges.localProcessing,
-        page.hero.badges.singleImage,
+        copy.badge,
       ]}
       contentSection={page.content}
       description={tool.description}
@@ -72,17 +80,16 @@ export default async function ConversionPage({
       features={tool.features}
       infoCard={{
         description: page.content.privacyDescription,
-        items: page.content.privacyItems,
+        items: copy.privacyItems,
         title: page.content.privacyTitle,
       }}
       scenarios={{
-        description: page.scenarios.description,
-        rows: [
-          { icon: ShieldCheckIcon, text: page.scenarios.privacy },
-          { icon: SparklesIcon, text: page.scenarios.transform },
-          { icon: LockIcon, text: page.scenarios.ratio },
-        ],
-        title: page.scenarios.title,
+        description: copy.scenarios.description,
+        rows: copy.scenarios.rows.map((text, index) => ({
+          icon: SCENARIO_ICONS[index],
+          text,
+        })),
+        title: copy.scenarios.title,
       }}
       steps={tool.steps}
       structuredData={buildToolStructuredData(
