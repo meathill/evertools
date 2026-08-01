@@ -48,7 +48,6 @@ export function PdfPageCanvas({
       style={wrapperStyle}
     >
       <div className="relative" style={innerStyle}>
-        {/* biome-ignore lint/performance/noImgElement: page raster is a runtime blob/data URL */}
         <img
           alt=""
           aria-hidden="true"

@@ -1,7 +1,7 @@
 import type { MetadataRoute } from "next";
 import { routing } from "@/i18n/routing";
-import { CONVERSION_PAIRS, conversionSlug } from "@/lib/conversions";
 import { getTools } from "@/lib/content";
+import { CONVERSION_PAIRS, conversionSlug } from "@/lib/conversions";
 import { createLocalizedUrl } from "@/lib/site";
 import { getLocaleContent } from "@/messages";
 

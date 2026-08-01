@@ -35,6 +35,7 @@ export function Group({
   children: React.ReactNode;
 } & React.ComponentProps<"div">): React.ReactElement {
   return (
+    // biome-ignore lint/a11y/useSemanticElements: 通用布局容器，不是表单字段分组；<fieldset> 会带来多余的表单语义与默认样式
     <div
       className={cn(groupVariants({ orientation }), className)}
       data-orientation={orientation}

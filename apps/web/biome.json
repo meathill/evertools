@@ -11,9 +11,9 @@
       "**",
       "!node_modules",
       "!.next",
-      "!**/.next/**",
+      "!**/.next",
       "!.open-next",
-      "!**/.open-next/**",
+      "!**/.open-next",
       "!dist",
       "!build"
     ]
@@ -27,6 +27,9 @@
     "enabled": true,
     "rules": {
       "recommended": true,
+      "performance": {
+        "noImgElement": "off"
+      },
       "suspicious": {
         "noUnknownAtRules": "off"
       }

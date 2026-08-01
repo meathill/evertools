@@ -1,4 +1,4 @@
-import { routing, type AppLocale } from "@/i18n/routing";
+import { type AppLocale, routing } from "@/i18n/routing";
 
 export const siteConfig = {
   host: "tools.meathill.com",

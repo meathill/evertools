@@ -9,16 +9,10 @@ type PdfViewerCardProps = {
   activePage: PdfPageMeta | undefined;
   containerScale: number;
   content: LocaleContent["pdfTextEditor"];
-  currentPageIndex: number;
   editedBlocks: ReadonlyMap<string, EditedBlock>;
-  editedCount: number;
   onActivateBlock: (blockKey: string) => void;
   onDeactivateBlock: () => void;
-  onPageChange: (pageIndex: number) => void;
   onTextChange: (blockKey: string, text: string) => void;
-  onZoomIn: () => void;
-  onZoomOut: () => void;
-  pagesCount: number;
 };
 
 export function PdfViewerCard({
@@ -26,16 +20,10 @@ export function PdfViewerCard({
   activePage,
   containerScale,
   content,
-  currentPageIndex,
   editedBlocks,
-  editedCount,
   onActivateBlock,
   onDeactivateBlock,
-  onPageChange,
   onTextChange,
-  onZoomIn,
-  onZoomOut,
-  pagesCount,
 }: PdfViewerCardProps) {
   return (
     <div className="flex flex-col items-center">

@@ -2,6 +2,29 @@
 
 开发过程中积累、需要长期关注的基建/框架知识，避免重复踩坑。
 
+## HTML 外壳在 `app/[locale]/layout.tsx`，不在根布局
+
+`<html>` / `<body>`（含字体变量、AdSense、GA）由 **`app/[locale]/layout.tsx`** 渲染，
+`app/layout.tsx` 只 `return children`。原因：`<html lang>` 必须按 locale 取值（本站 7 语言），
+而根布局在 `[locale]` 之上、渲染顺序也在它之前，拿不到 locale——之前就是这样漏掉 lang 的，
+7 个语言的页面全都没有 `lang` 属性。
+
+- 改根布局时记得：新增的全局 `<head>`/`<body>` 内容要加到 `[locale]/layout.tsx`，加到根布局不会生效。
+- `app/` 下除 `[locale]` 外只有 route handler（`api/`）和 metadata 文件（`sitemap.ts`/`robots.ts`），
+  都不需要 HTML 外壳，所以这样拆是安全的。
+
+## Biome 抑制注释的位置规则
+
+`// biome-ignore <rule>: <理由>` 必须是**紧邻诊断行的上一行**，中间隔一条 `// TODO` 都会失效
+（失效时 biome 反过来报 `suppressions/unused`）。另外诊断锚点不统一：
+`useAnchorContent`、`noDangerouslySetInnerHtml` 锚在**属性**上（注释放属性上方），
+`useSemanticElements`、`noStaticElementInteractions` 锚在**元素**上（注释要放 `<div` 上方）。
+写完跑一次 `npx biome check .` 确认没有 `suppressions/unused`。
+
+`lint/performance/noImgElement` 在 `biome.json` 里全局关掉了：本站的 `<img>` 要么是
+blob:/data: 预览与任意远端 URL（`next/image` 优化不了），要么是带固定宽高的小图标，
+而且 OpenNext/Cloudflare 默认没接 Next 图片优化器。
+
 ## Tailwind v4 + 设计系统接线（重要）
 
 设计系统定义在 `apps/web/app/globals.css`。有几个 v4 的坑直接决定"代码写了到底有没有生效"：

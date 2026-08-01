@@ -10,15 +10,12 @@ import {
   ZoomOutIcon,
 } from "lucide-react";
 import { type RefObject, useId } from "react";
-import type { CjkFallbackStatus } from "@/stores/pdf-editor-store";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
 import type { LocaleContent } from "@/messages/types";
 
 type PdfEditorToolbarProps = {
-  cjkLoadProgress: number;
-  cjkStatus: CjkFallbackStatus;
   containerScale: number;
   content: LocaleContent["pdfTextEditor"];
   currentPageIndex: number;
@@ -26,7 +23,6 @@ type PdfEditorToolbarProps = {
   editedCount: number;
   errorMessage: string | null;
   exportErrorMessage: string | null;
-  exportProgress: number;
   fileName: string;
   fileSize: number;
   fontInputRef: RefObject<HTMLInputElement | null>;
@@ -48,8 +44,6 @@ type PdfEditorToolbarProps = {
 };
 
 export function PdfEditorToolbar({
-  cjkLoadProgress,
-  cjkStatus,
   containerScale,
   content,
   currentPageIndex,
@@ -57,7 +51,6 @@ export function PdfEditorToolbar({
   editedCount,
   errorMessage,
   exportErrorMessage,
-  exportProgress,
   fileName,
   fileSize,
   fontInputRef,
@@ -237,5 +230,5 @@ function formatFileSize(bytes: number): string {
   const k = 1024;
   const sizes = ["B", "KB", "MB", "GB"];
   const i = Math.floor(Math.log(bytes) / Math.log(k));
-  return parseFloat((bytes / Math.pow(k, i)).toFixed(1)) + " " + sizes[i];
+  return `${parseFloat((bytes / k ** i).toFixed(1))} ${sizes[i]}`;
 }

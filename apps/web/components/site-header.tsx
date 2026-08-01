@@ -12,15 +12,14 @@ import { useEffect, useState } from "react";
 import { Badge } from "@/components/ui/badge";
 import {
   Select,
-  SelectButton,
   SelectItem,
   SelectPopup,
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
 import type { AppLocale } from "@/i18n/routing";
-import type { LocaleContent } from "@/messages/types";
 import { getLocalizedPathname, localeMetadata } from "@/lib/site";
+import type { LocaleContent } from "@/messages/types";
 
 type ThemeMode = "light" | "dark" | "system";
 

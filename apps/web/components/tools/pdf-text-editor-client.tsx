@@ -1,17 +1,15 @@
 "use client";
 
-import { ArrowRightIcon, RefreshCcwIcon } from "lucide-react";
+import { ArrowRightIcon } from "lucide-react";
 import Link from "next/link";
 import { useEffect, useMemo, useRef, useState } from "react";
 import { PdfEditorToolbar } from "@/components/tools/pdf-editor-toolbar";
 import { PdfUploadCard } from "@/components/tools/pdf-upload-card";
 import { PdfViewerCard } from "@/components/tools/pdf-viewer-card";
-import { Button } from "@/components/ui/button";
 import {
   Card,
   CardDescription,
   CardHeader,
-  CardPanel,
   CardTitle,
 } from "@/components/ui/card";
 import type { AppLocale } from "@/i18n/routing";
@@ -30,7 +28,6 @@ import {
   takeOriginalBytes,
 } from "@/lib/pdf-editor/pdf-fonts";
 import { parsePdfFile } from "@/lib/pdf-editor/pdf-parser";
-import { getLocalizedPathname } from "@/lib/site";
 import {
   buildOutputFilename,
   containsCjk,
@@ -38,6 +35,7 @@ import {
   isAcceptedPdfType,
   MAX_PDF_FILE_SIZE,
 } from "@/lib/pdf-editor/pdf-types";
+import { getLocalizedPathname } from "@/lib/site";
 import type { LocaleContent } from "@/messages/types";
 import { usePdfEditorStore } from "@/stores/pdf-editor-store";
 
@@ -61,7 +59,6 @@ export function PdfTextEditorClient({
 
   const {
     activeBlockKey,
-    cjkLoadProgress,
     cjkStatus,
     currentPageIndex,
     documentKey,
@@ -70,7 +67,6 @@ export function PdfTextEditorClient({
     errorDetail,
     exportError,
     exportMissingGlyphs,
-    exportProgress,
     fileName,
     fileSize,
     isExporting,
@@ -81,7 +77,6 @@ export function PdfTextEditorClient({
     userFontName,
     clearError,
     clearUserFont,
-    discardBlockEdit,
     finishExport,
     finishImport,
     reset,
@@ -319,8 +314,6 @@ export function PdfTextEditorClient({
     <div className="flex flex-col">
       {pages.length > 0 ? (
         <PdfEditorToolbar
-          cjkLoadProgress={cjkLoadProgress}
-          cjkStatus={cjkStatus}
           containerScale={containerScale}
           content={content}
           currentPageIndex={currentPageIndex}
@@ -328,7 +321,6 @@ export function PdfTextEditorClient({
           editedCount={editedBlocks.size}
           errorMessage={errorMessage}
           exportErrorMessage={exportErrorMessage}
-          exportProgress={exportProgress}
           fileName={fileName ?? ""}
           fileSize={fileSize}
           fontInputRef={fontInputRef}
@@ -406,20 +398,10 @@ export function PdfTextEditorClient({
               activePage={activePage}
               containerScale={containerScale}
               content={content}
-              currentPageIndex={currentPageIndex}
               editedBlocks={editedBlocks}
-              editedCount={editedBlocks.size}
               onActivateBlock={(key) => setActiveBlock(key)}
               onDeactivateBlock={() => setActiveBlock(null)}
-              onPageChange={setCurrentPageIndex}
               onTextChange={updateBlockText}
-              onZoomIn={() =>
-                setContainerScale((value) => Math.min(2, value + 0.1))
-              }
-              onZoomOut={() =>
-                setContainerScale((value) => Math.max(0.3, value - 0.1))
-              }
-              pagesCount={pages.length}
             />
           </div>
         )}

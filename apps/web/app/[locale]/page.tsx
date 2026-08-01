@@ -1,5 +1,5 @@
-import type { Metadata } from "next";
 import { ArrowRightIcon, CloudUploadIcon, ShieldCheckIcon } from "lucide-react";
+import type { Metadata } from "next";
 import { StructuredData } from "@/components/structured-data";
 import { ToolCard } from "@/components/tool-card";
 import { Badge } from "@/components/ui/badge";
@@ -97,6 +97,7 @@ export default async function HomePage({
             <div className="flex flex-wrap gap-3">
               <Button
                 className="glow-yellow"
+                // biome-ignore lint/a11y/useAnchorContent: base-ui 的 render 属性——文案由下面的 children 注入到这个 <a> 里
                 render={<a href="#tools" />}
                 size="lg"
                 variant="press"

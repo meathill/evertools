@@ -442,6 +442,7 @@
 
     /* Forced colors strips the code background, so give it a border. */
     @media (forced-colors: active) {
+      /* biome-ignore lint/style/noDescendingSpecificity: 处在 forced-colors 媒体查询里，与上面那条不在同一层叠上下文竞争 */
       &:where(:not(pre) > code) {
         border: 1px solid;
       }

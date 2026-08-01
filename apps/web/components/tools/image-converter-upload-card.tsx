@@ -15,6 +15,7 @@ import {
   CardPanel,
   CardTitle,
 } from "@/components/ui/card";
+import { DropZone } from "@/components/ui/drop-zone";
 import type { ImageConverterController } from "@/hooks/use-image-converter";
 import { formatBytes } from "@/lib/format";
 import { FILE_INPUT_ACCEPT } from "@/lib/image-converter";
@@ -73,13 +74,8 @@ export function ImageConverterUploadCard({
         </CardHeader>
 
         <CardPanel>
-          <div
-            className={[
-              "rounded-lg border-2 border-dashed p-5 transition-colors sm:p-6",
-              isDragging
-                ? "border-yellow bg-fluff/60"
-                : "border-rule-strong bg-paper-deep/25",
-            ].join(" ")}
+          <DropZone
+            isDragging={isDragging}
             onDragLeave={handleDragLeave}
             onDragOver={handleDragOver}
             onDrop={handleDrop}
@@ -222,7 +218,7 @@ export function ImageConverterUploadCard({
                 </Button>
               </div>
             )}
-          </div>
+          </DropZone>
         </CardPanel>
       </Card>
     </div>

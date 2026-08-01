@@ -82,6 +82,7 @@ export function PdfTextBlockView({
   }
 
   return (
+    // biome-ignore lint/a11y/useSemanticElements: 叠在 PDF 画布上的 contenteditable 定位层，换成 <input>/<textarea> 就无法按原坐标与字形渲染
     <span
       className={[
         "pointer-events-auto absolute origin-top-left cursor-text whitespace-pre rounded-sm px-[1px] outline-none",

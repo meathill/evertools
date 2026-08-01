@@ -21,6 +21,7 @@ import {
   CardPanel,
   CardTitle,
 } from "@/components/ui/card";
+import { DropZone } from "@/components/ui/drop-zone";
 import { Field, FieldLabel } from "@/components/ui/field";
 import { Input } from "@/components/ui/input";
 import { useFileDropInput } from "@/hooks/use-file-drop-input";
@@ -299,13 +300,8 @@ export function PdfPasswordRemoverClient({
           </div>
         </CardHeader>
         <CardPanel>
-          <div
-            className={[
-              "rounded-lg border-2 border-dashed p-5 transition-colors sm:p-6",
-              drop.isDragging
-                ? "border-yellow bg-fluff/60"
-                : "border-rule-strong bg-paper-deep/25",
-            ].join(" ")}
+          <DropZone
+            isDragging={drop.isDragging}
             onDragLeave={drop.handleDragLeave}
             onDragOver={drop.handleDragOver}
             onDrop={drop.handleDrop}
@@ -371,7 +367,7 @@ export function PdfPasswordRemoverClient({
                 </p>
               </div>
             )}
-          </div>
+          </DropZone>
         </CardPanel>
       </Card>
 

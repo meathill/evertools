@@ -1,4 +1,7 @@
+import { GoogleAnalytics } from "@next/third-parties/google";
 import type { Metadata } from "next";
+import { Fraunces, JetBrains_Mono, Nunito } from "next/font/google";
+import Script from "next/script";
 import { setRequestLocale } from "next-intl/server";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
@@ -10,7 +13,29 @@ import {
   localeMetadata,
   siteConfig,
 } from "@/lib/site";
+import { cn } from "@/lib/utils";
 import { getLocaleContent } from "@/messages";
+
+const ADSENSE_CLIENT_ID = "ca-pub-9946806099979342";
+const GOOGLE_ANALYTICS_ID = "G-1S0T1HF97B";
+
+const fontDisplay = Fraunces({
+  subsets: ["latin"],
+  variable: "--font-display",
+  weight: ["500", "600", "700", "800"],
+});
+
+const fontSans = Nunito({
+  subsets: ["latin"],
+  variable: "--font-sans",
+  weight: ["400", "500", "600", "700", "800"],
+});
+
+const fontMono = JetBrains_Mono({
+  subsets: ["latin"],
+  variable: "--font-mono",
+  weight: ["400", "500", "600"],
+});
 
 export function generateStaticParams() {
   return routing.locales.map((locale) => ({ locale }));
@@ -87,10 +112,34 @@ export default async function LocaleLayout({
   setRequestLocale(locale);
 
   return (
-    <div className="isolate relative flex min-h-svh flex-col">
-      <SiteHeader content={content.header} locale={locale} />
-      <main className="flex-1">{children}</main>
-      <SiteFooter content={content.footer} locale={locale} />
-    </div>
+    <html
+      className="h-full antialiased"
+      lang={localeMetadata[locale].languageTag}
+      suppressHydrationWarning
+    >
+      <head>
+        <Script
+          async
+          crossOrigin="anonymous"
+          src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${ADSENSE_CLIENT_ID}`}
+          strategy="lazyOnload"
+        />
+      </head>
+      <body
+        className={cn(
+          "relative min-h-full bg-background text-foreground",
+          fontDisplay.variable,
+          fontSans.variable,
+          fontMono.variable,
+        )}
+      >
+        <div className="isolate relative flex min-h-svh flex-col">
+          <SiteHeader content={content.header} locale={locale} />
+          <main className="flex-1">{children}</main>
+          <SiteFooter content={content.footer} locale={locale} />
+        </div>
+        <GoogleAnalytics gaId={GOOGLE_ANALYTICS_ID} />
+      </body>
+    </html>
   );
 }

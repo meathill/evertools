@@ -2,7 +2,6 @@
 
 import { DownloadIcon, UploadIcon } from "lucide-react";
 import { type RefObject, useId } from "react";
-import type { CjkFallbackStatus } from "@/stores/pdf-editor-store";
 import { Button } from "@/components/ui/button";
 import {
   Card,
@@ -13,6 +12,7 @@ import {
 } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
 import type { LocaleContent } from "@/messages/types";
+import type { CjkFallbackStatus } from "@/stores/pdf-editor-store";
 
 const USER_FONT_CSS_FAMILY = "PDF-Editor-User-Font";
 

@@ -1,5 +1,5 @@
-import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import * as pdfLib from "pdf-lib";
+import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 
 vi.mock("pdf-lib", () => ({
   PDFDocument: { load: vi.fn() },

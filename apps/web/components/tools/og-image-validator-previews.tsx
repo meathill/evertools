@@ -1,8 +1,8 @@
 import { ImageOffIcon } from "lucide-react";
 import { Card, CardHeader, CardPanel, CardTitle } from "@/components/ui/card";
+import type { ValidatorResult } from "@/hooks/use-og-image-validator";
 import { OG_PLATFORMS } from "@/lib/og/validator";
 import type { LocaleContent } from "@/messages/types";
-import type { ValidatorResult } from "@/hooks/use-og-image-validator";
 
 type ClientContent = LocaleContent["ogImageValidator"]["client"];
 

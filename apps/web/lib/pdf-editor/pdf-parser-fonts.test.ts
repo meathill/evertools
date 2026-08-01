@@ -1,6 +1,7 @@
 // @vitest-environment jsdom
-import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
+
 import * as pdfjsDist from "pdfjs-dist";
+import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 
 vi.mock("pdfjs-dist", () => ({
   GlobalWorkerOptions: { workerSrc: "" },

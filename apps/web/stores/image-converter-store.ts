@@ -1,11 +1,11 @@
 import { create } from "zustand";
 import {
+  type CropAnchor,
+  clampQuality,
   DEFAULT_QUALITY,
   getDefaultOutputFormat,
-  type CropAnchor,
   type OutputFormat,
   type ResizeMode,
-  clampQuality,
 } from "@/lib/image-converter";
 
 type ImageConverterState = {

@@ -7,6 +7,7 @@ import {
   CardPanel,
   CardTitle,
 } from "@/components/ui/card";
+import { DropZone } from "@/components/ui/drop-zone";
 import type { OgImageValidatorController } from "@/hooks/use-og-image-validator";
 import { formatBytes } from "@/lib/format";
 import type { LocaleContent } from "@/messages/types";
@@ -43,13 +44,8 @@ export function OgImageValidatorUploadCard({
         <CardDescription>{client.upload.description}</CardDescription>
       </CardHeader>
       <CardPanel>
-        <div
-          className={[
-            "rounded-lg border-2 border-dashed p-5 transition-colors sm:p-6",
-            isDragging
-              ? "border-yellow bg-fluff/60"
-              : "border-rule-strong bg-paper-deep/25",
-          ].join(" ")}
+        <DropZone
+          isDragging={isDragging}
           onDragLeave={handleDragLeave}
           onDragOver={handleDragOver}
           onDrop={handleDrop}
@@ -121,7 +117,7 @@ export function OgImageValidatorUploadCard({
               </Button>
             </div>
           )}
-        </div>
+        </DropZone>
       </CardPanel>
     </Card>
   );

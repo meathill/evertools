@@ -150,7 +150,7 @@ function rollup(checks: readonly CheckResult[]): CheckStatus {
 }
 
 function hasText(value: string | undefined): boolean {
-  return Boolean(value && value.trim());
+  return Boolean(value?.trim());
 }
 
 // 必需标签缺失判 fail，推荐标签缺失判 warn。

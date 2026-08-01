@@ -17,6 +17,7 @@ import {
   CardPanel,
   CardTitle,
 } from "@/components/ui/card";
+import { DropZone } from "@/components/ui/drop-zone";
 import { formatBytes } from "@/lib/format";
 import { MAX_PDF_FILE_SIZE } from "@/lib/pdf-editor/pdf-types";
 import type { LocaleContent } from "@/messages/types";
@@ -82,13 +83,8 @@ export function PdfUploadCard({
         </div>
       </CardHeader>
       <CardPanel>
-        <div
-          className={[
-            "rounded-lg border-2 border-dashed p-5 transition-colors sm:p-6",
-            isDragging
-              ? "border-yellow bg-fluff/60"
-              : "border-rule-strong bg-paper-deep/25",
-          ].join(" ")}
+        <DropZone
+          isDragging={isDragging}
           onDragLeave={onDragLeave}
           onDragOver={onDragOver}
           onDrop={onDrop}
@@ -156,7 +152,7 @@ export function PdfUploadCard({
               </p>
             </div>
           )}
-        </div>
+        </DropZone>
         {errorMessage ? (
           <div className="mt-3 space-y-2 rounded-lg border border-danger/30 bg-danger-bg px-3 py-2 text-danger text-xs">
             <p>{errorMessage}</p>

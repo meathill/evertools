@@ -1,11 +1,11 @@
 import { describe, expect, it } from "vitest";
+import { formatBytes } from "@/lib/format";
+import { getPdfEditorErrorMessage } from "@/lib/pdf-editor/pdf-error-messages";
 import {
   PDF_EDITOR_ERROR_CODES,
   type PdfEditorErrorCode,
 } from "@/lib/pdf-editor/pdf-errors";
-import { getPdfEditorErrorMessage } from "@/lib/pdf-editor/pdf-error-messages";
 import { MAX_PDF_FILE_SIZE } from "@/lib/pdf-editor/pdf-types";
-import { formatBytes } from "@/lib/format";
 import { getLocaleContent } from "@/messages";
 
 const content = getLocaleContent("zh").pdfTextEditor;
