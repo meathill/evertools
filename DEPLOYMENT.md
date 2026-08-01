@@ -2,41 +2,37 @@
 
 本项目通过 [`@opennextjs/cloudflare`](https://opennext.js.org/cloudflare) 把 Next.js 应用构建成
 Cloudflare Workers 可运行的产物。部署目标是 Cloudflare Workers（`wrangler.jsonc` 里的
-`tools-meathill-com`），线上地址 https://tools.meathill.com。没有 CI/CD，部署靠手动执行。
+`tools-meathill-com`），线上地址 https://tools.meathill.com。
 
-## 部署
+## 部署：推 master 即可，Cloudflare 自动构建
+
+**不需要在本地跑部署命令。** Cloudflare Workers Builds 已经接了这个 GitHub 仓库，
+push 到 `master` 就会自动构建并发布，几分钟后线上生效。
+
+验证是否已经上线（别只看构建日志，直接打线上）：
+
+```bash
+curl -s -o /dev/null -w "%{http_code}\n" https://tools.meathill.com/tools/heic-to-jpg
+```
+
+### 手动部署（几乎用不到）
 
 ```bash
 pnpm run deploy   # 等价于 pnpm --filter web run deploy
 ```
 
-实际执行链路（见 `apps/web/package.json`）：
+链路见 `apps/web/package.json`：`copy:pdf-worker`（拷 pdfjs worker 到 `public/pdf/`）→
+`opennextjs-cloudflare build` → `opennextjs-cloudflare deploy`。
 
-1. `copy:pdf-worker` —— 把 `pdfjs-dist` 的 worker 文件拷到 `public/pdf/`（PDF 文字编辑器依赖，必须先执行）
-2. `opennextjs-cloudflare build` —— 构建出 `.open-next/` 产物
-3. `opennextjs-cloudflare deploy` —— 通过 wrangler 发布到 Cloudflare Workers
+两个已知的坑：
 
-> ⚠️ 根 `package.json` 里必须写 `pnpm --filter web run deploy`，**不能省掉 `run`**。
-> `deploy` 是 pnpm 的内置命令（把 workspace 包导出到目录），省掉 `run` 会被它劫持，
-> 报 `ERR_PNPM_INVALID_DEPLOY_TARGET: This command requires one parameter`，根本跑不到脚本。
-
-### 部署前先确认这两件事
-
-wrangler 的登录态经常不满足条件，构建能过、最后一步才失败，很浪费时间：
-
-1. **token 得有写权限**。`npx wrangler whoami` 看 Token Permissions，只有
-   `account (read)` / `user (read)` 是不够的，必须包含 Workers 脚本的写权限。
-   不够就重新 `npx wrangler login`（交互式，会开浏览器），或配 `CLOUDFLARE_API_TOKEN`
-   （权限选 `Workers Scripts:Edit`）。
-2. **账号得能唯一确定**。这个登录态下挂了 7 个 Cloudflare 账号，wrangler 在非交互模式下
-   无法自选，会直接报 *More than one account available*。用 `CLOUDFLARE_ACCOUNT_ID=<id>`
-   指定，或把 `account_id` 写进 `apps/web/wrangler.jsonc`。
-
-确认 Worker 归属哪个账号（不会有副作用，找不到会报 `code: 10007`）：
-
-```bash
-CLOUDFLARE_ACCOUNT_ID=<id> npx wrangler deployments list --name tools-meathill-com
-```
+- 根 `package.json` 里必须写 `pnpm --filter web run deploy`，**不能省掉 `run`**。
+  `deploy` 是 pnpm 的内置命令（把 workspace 包导出到目录），省掉会被它劫持，
+  报 `ERR_PNPM_INVALID_DEPLOY_TARGET: This command requires one parameter`，跑不到脚本。
+- 本地 wrangler 登录态未必够用：`npx wrangler whoami` 如果 Token Permissions 只有
+  `account (read)` / `user (read)`，就没有 Workers 写权限；而且该登录态挂了多个账号，
+  非交互模式下会报 *More than one account available*，需要 `CLOUDFLARE_ACCOUNT_ID=<id>`。
+  正因如此，正常流程走自动部署，别在本地手发。
 
 ## 本地预览生产构建
 
