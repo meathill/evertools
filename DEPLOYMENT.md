@@ -7,7 +7,7 @@ Cloudflare Workers 可运行的产物。部署目标是 Cloudflare Workers（`wr
 ## 部署
 
 ```bash
-pnpm run deploy   # 等价于 pnpm --filter web deploy
+pnpm run deploy   # 等价于 pnpm --filter web run deploy
 ```
 
 实际执行链路（见 `apps/web/package.json`）：
@@ -16,7 +16,27 @@ pnpm run deploy   # 等价于 pnpm --filter web deploy
 2. `opennextjs-cloudflare build` —— 构建出 `.open-next/` 产物
 3. `opennextjs-cloudflare deploy` —— 通过 wrangler 发布到 Cloudflare Workers
 
-需要有对应 Cloudflare 账号的 wrangler 登录态（`wrangler login`），或配置好 `CLOUDFLARE_API_TOKEN`。
+> ⚠️ 根 `package.json` 里必须写 `pnpm --filter web run deploy`，**不能省掉 `run`**。
+> `deploy` 是 pnpm 的内置命令（把 workspace 包导出到目录），省掉 `run` 会被它劫持，
+> 报 `ERR_PNPM_INVALID_DEPLOY_TARGET: This command requires one parameter`，根本跑不到脚本。
+
+### 部署前先确认这两件事
+
+wrangler 的登录态经常不满足条件，构建能过、最后一步才失败，很浪费时间：
+
+1. **token 得有写权限**。`npx wrangler whoami` 看 Token Permissions，只有
+   `account (read)` / `user (read)` 是不够的，必须包含 Workers 脚本的写权限。
+   不够就重新 `npx wrangler login`（交互式，会开浏览器），或配 `CLOUDFLARE_API_TOKEN`
+   （权限选 `Workers Scripts:Edit`）。
+2. **账号得能唯一确定**。这个登录态下挂了 7 个 Cloudflare 账号，wrangler 在非交互模式下
+   无法自选，会直接报 *More than one account available*。用 `CLOUDFLARE_ACCOUNT_ID=<id>`
+   指定，或把 `account_id` 写进 `apps/web/wrangler.jsonc`。
+
+确认 Worker 归属哪个账号（不会有副作用，找不到会报 `code: 10007`）：
+
+```bash
+CLOUDFLARE_ACCOUNT_ID=<id> npx wrangler deployments list --name tools-meathill-com
+```
 
 ## 本地预览生产构建
 
