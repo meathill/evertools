@@ -1,3 +1,5 @@
+// @vitest-environment jsdom
+// renderMarkdown 依赖 DOMPurify，必须有 DOM 才能净化
 import { describe, expect, it } from "vitest";
 import {
   buildPrintableHtml,
@@ -48,6 +50,82 @@ describe("renderMarkdown", () => {
   });
 });
 
+describe("renderMarkdown 净化", () => {
+  it("移除 script 标签", () => {
+    const result = renderMarkdown("# 标题\n\n<script>alert('xss')</script>");
+    expect(result).not.toContain("<script");
+    expect(result).not.toContain("alert('xss')");
+    expect(result).toContain("<h1>标题</h1>");
+  });
+
+  it("移除内联事件处理器", () => {
+    const result = renderMarkdown('<img src="x" onerror="alert(1)">');
+    expect(result).not.toContain("onerror");
+    expect(result).not.toContain("alert(1)");
+    expect(result).toContain("<img");
+  });
+
+  it("移除 body/svg 等其他标签上的事件处理器", () => {
+    const result = renderMarkdown(
+      '<div onmouseover="alert(1)">hover</div>\n\n<svg><animate onbegin="alert(2)" /></svg>',
+    );
+    expect(result).not.toContain("onmouseover");
+    expect(result).not.toContain("onbegin");
+    expect(result).toContain("hover");
+  });
+
+  it("移除 Markdown 链接语法里的 javascript: 协议", () => {
+    const result = renderMarkdown("[点我](javascript:alert(1))");
+    expect(result).not.toContain("javascript:");
+    expect(result).toContain("点我");
+  });
+
+  it("移除原始 HTML 里的 javascript: 与 data: 协议", () => {
+    const result = renderMarkdown(
+      '<a href="javascript:alert(1)">a</a>\n\n<iframe src="data:text/html,<script>alert(2)</script>"></iframe>',
+    );
+    expect(result).not.toContain("javascript:");
+    expect(result).not.toContain("<iframe");
+    expect(result).not.toContain("<script");
+  });
+
+  it("保留 details/summary 等合法内联 HTML", () => {
+    const result = renderMarkdown(
+      "<details><summary>更多</summary>\n\n正文\n\n</details>",
+    );
+    expect(result).toContain("<details>");
+    expect(result).toContain("<summary>更多</summary>");
+    expect(result).toContain("正文");
+  });
+
+  it("保留 br、strong 等内联标签", () => {
+    const result = renderMarkdown("第一行<br>第二行 <strong>粗体</strong>");
+    expect(result).toContain("<br>");
+    expect(result).toContain("<strong>粗体</strong>");
+  });
+
+  it("保留表格结构与 GFM 表格", () => {
+    const raw = renderMarkdown(
+      "<table><thead><tr><th>头</th></tr></thead><tbody><tr><td>格</td></tr></tbody></table>",
+    );
+    expect(raw).toContain("<table>");
+    expect(raw).toContain("<th>头</th>");
+    expect(raw).toContain("<td>格</td>");
+
+    const gfm = renderMarkdown("| a | b |\n|---|---|\n| 1 | 2 |");
+    expect(gfm).toContain("<table>");
+    expect(gfm).toContain("<td>1</td>");
+  });
+
+  it("保留普通链接与图片", () => {
+    const result = renderMarkdown(
+      "[站点](https://example.com)\n\n![图](https://example.com/a.png)",
+    );
+    expect(result).toContain('href="https://example.com"');
+    expect(result).toContain('src="https://example.com/a.png"');
+  });
+});
+
 describe("buildPrintableHtml", () => {
   it("includes @page size 105mm for phone", () => {
     const html = buildPrintableHtml("# test", "phone", "classic");
@@ -79,6 +157,16 @@ describe("buildPrintableHtml", () => {
     expect(html).toContain('<body><div class="typeset typeset-md-pdf">');
     expect(html).toContain("<h1>Hello</h1>");
     expect(html).toContain(".typeset-md-pdf");
+  });
+
+  it("打印用 HTML 同样经过净化", () => {
+    const html = buildPrintableHtml(
+      '<script>alert(1)</script><img src="x" onerror="alert(2)">',
+      "a4",
+      "classic",
+    );
+    expect(html).not.toContain("<script>alert(1)</script>");
+    expect(html).not.toContain("onerror");
   });
 
   it("tailwind-typography style wraps content and includes prose-scale CSS", () => {

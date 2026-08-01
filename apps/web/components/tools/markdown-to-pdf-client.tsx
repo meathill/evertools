@@ -297,10 +297,9 @@ export function MarkdownToPdfClient({ content }: MarkdownToPdfClientProps) {
               <p className="max-w-xs text-sm">{t.empty.description}</p>
             </div>
           ) : (
-            // TODO: marked 默认放行原始 HTML 且不做净化，粘贴来路不明的 Markdown 会形成 self-XSS，待接入净化层
             <div
               className={PREVIEW_CLASS_NAME[style]}
-              // biome-ignore lint/security/noDangerouslySetInnerHtml: Markdown 预览必须注入 marked 产出的 HTML，内容仅停留在本地浏览器
+              // biome-ignore lint/security/noDangerouslySetInnerHtml: Markdown 预览必须注入 HTML，renderMarkdown 已用 DOMPurify 净化
               dangerouslySetInnerHTML={{ __html: previewHtml ?? "" }}
             />
           )}

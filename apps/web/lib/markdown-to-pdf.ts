@@ -1,3 +1,4 @@
+import DOMPurify from "dompurify";
 import { marked } from "marked";
 import {
   CLASSIC_PRINT_BODY_CLASS_NAME,
@@ -44,8 +45,13 @@ const PRINT_STYLES: Record<
 
 marked.use({ gfm: true, breaks: false });
 
+/**
+ * marked 自 v5 起不再净化输出，原始 HTML 会原样透传。
+ * 这里统一用 DOMPurify 兜住 XSS，同时保留 <details>、<br>、表格等合法内联 HTML。
+ * 依赖 DOM，因此只能在浏览器（或 jsdom 测试环境）中调用。
+ */
 export function renderMarkdown(source: string): string {
-  return marked(source) as string;
+  return DOMPurify.sanitize(marked(source) as string);
 }
 
 export function buildPrintableHtml(

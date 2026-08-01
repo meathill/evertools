@@ -234,3 +234,23 @@ worker 文件由 `pnpm copy:pdf-worker` 拷到 `public/pdf/`，`dev` / `build` �
 - **繁体→简体也要传对应的地区 locale（而非统一用 `t`）**：`twp→cn`/`hkp→cn` 会把台湾/港澳惯用词
   （如"軟體"）正确转换回对应简体词（"软件"），而不是走字符级直译；UI 上的"繁体地区"选择器对两个
   方向都生效，不只是"简→繁"时才有意义。
+
+## Markdown 渲染必须过 DOMPurify（`lib/markdown-to-pdf.ts`）
+
+- **marked 自 v5 起不再净化输出**，`marked(source)` 会把原始 HTML 原样透传。实测
+  `<script>`、`<img onerror>`、`<div onmouseover>`、甚至 Markdown 链接语法
+  `[x](javascript:…)` 生成的 `href="javascript:…"` 全部照单全收。工具页把结果喂给
+  `dangerouslySetInnerHTML`，用户从陌生仓库下个 README 丢进来就是 XSS。
+- **选 DOMPurify 而不是覆写 marked 的 `html` renderer**：后者把原始 HTML 一律转义，会连
+  `<details>`/`<br>`/内联表格一起废掉——而这些对「Markdown 转 PDF」是真实需求（折叠块、
+  强制换行、手写表格）。DOMPurify 只摘掉危险标签和属性，合法内联 HTML 全留。
+- **用默认配置，不要加 `USE_PROFILES: { html: true }`**：那会顺手禁掉 SVG/MathML，而
+  用户手写内联 SVG 画图是合理用法，DOMPurify 默认配置本来就能安全处理 SVG。
+- **`renderMarkdown()` 因此是「仅浏览器」函数**：DOMPurify 在没有 DOM 的环境下
+  `isSupported === false`，且**根本不挂载 `sanitize` 方法**（`typeof sanitize === 'undefined'`），
+  调用会直接抛 TypeError——是硬失败，不会静默放行未净化的 HTML，这点可以放心。
+  但也因此别在 server component / Route Handler 里调它。不用 `isomorphic-dompurify`：
+  它会把 jsdom 拖进 bundle，Cloudflare Workers 跑不了。
+  模块顶层 `import DOMPurify` 本身在无 DOM 环境是安全的（不抛错），所以 SSR/SSG 预渲染正常。
+- **`lib/markdown-to-pdf.test.ts` 必须声明 `// @vitest-environment jsdom`**：全局 vitest
+  environment 是 `node`，不加这行净化相关用例会全部 TypeError。
