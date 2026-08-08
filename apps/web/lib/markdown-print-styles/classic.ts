@@ -45,6 +45,35 @@ img { max-width: 100%; }
 a { color: #1a1a1a; }
 ul, ol { padding-left: 1.5em; }
 li { margin: 0.2em 0; }
+ul.contains-task-list { list-style-type: none; padding-inline-start: 0.25em; }
+li.task-list-item { list-style-type: none; }
+li.task-list-item > input.task-list-item-checkbox {
+  appearance: none;
+  -webkit-appearance: none;
+  box-sizing: border-box;
+  display: inline-block;
+  position: relative;
+  width: 0.9em;
+  height: 0.9em;
+  margin: 0 0.4em 0 0;
+  vertical-align: -0.1em;
+  border: 1.5px solid #333;
+  border-radius: 2px;
+}
+li.task-list-item > input.task-list-item-checkbox:checked {
+  background: #333;
+}
+li.task-list-item > input.task-list-item-checkbox:checked::after {
+  content: "";
+  position: absolute;
+  left: 0.13em;
+  top: 0.01em;
+  width: 0.32em;
+  height: 0.16em;
+  border-left: 1.5px solid #fff;
+  border-bottom: 1.5px solid #fff;
+  transform: rotate(-45deg);
+}
 hr { border: none; border-top: 1px solid #ddd; margin: 1em 0; }
 `;
 

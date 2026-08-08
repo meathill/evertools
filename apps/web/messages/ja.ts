@@ -1475,6 +1475,11 @@ export const jaMessages: LocaleContent = {
           shadcnTypeset: "Typeset",
           tailwindTypography: "Tailwind Typography",
         },
+        dialect: "方言",
+        dialectOptions: {
+          commonmark: "CommonMark",
+          github: "GitHub (GFM)",
+        },
         wordCount: "{count}文字",
       },
     },

@@ -18,6 +18,7 @@ export type MarkdownStyle =
   | "classic"
   | "tailwind-typography"
   | "shadcn-typeset";
+export type MarkdownDialect = "commonmark" | "github";
 
 const PAGE_WIDTH_MM: Record<PageWidth, number> = {
   phone: 105,
@@ -43,23 +44,54 @@ const PRINT_STYLES: Record<
   },
 };
 
-marked.use({ gfm: true, breaks: false });
+marked.use({ breaks: false });
 
 /**
  * marked 自 v5 起不再净化输出，原始 HTML 会原样透传。
  * 这里统一用 DOMPurify 兜住 XSS，同时保留 <details>、<br>、表格等合法内联 HTML。
  * 依赖 DOM，因此只能在浏览器（或 jsdom 测试环境）中调用。
  */
-export function renderMarkdown(source: string): string {
-  return DOMPurify.sanitize(marked(source) as string);
+export function renderMarkdown(
+  source: string,
+  dialect: MarkdownDialect = "github",
+): string {
+  const html = DOMPurify.sanitize(
+    marked(source, { gfm: dialect === "github" }) as string,
+  );
+  return normalizeTaskList(html);
+}
+
+/**
+ * marked 18 的 GFM 任务列表只输出 `<li><input type="checkbox">`，
+ * 不携带 GitHub 规范结构。这里用 DOM 补全规范 class：
+ * ul.contains-task-list / li.task-list-item / input.task-list-item-checkbox，
+ * 让打印与预览样式统一按 GitHub 规范选择器书写。
+ */
+function normalizeTaskList(html: string): string {
+  const doc = new DOMParser().parseFromString(html, "text/html");
+  for (const input of doc.querySelectorAll<HTMLInputElement>(
+    'li > input[type="checkbox"]',
+  )) {
+    input.classList.add("task-list-item-checkbox");
+    const li = input.parentElement;
+    if (li) {
+      li.classList.add("task-list-item");
+      const list = li.parentElement;
+      if (list && list.tagName === "UL") {
+        list.classList.add("contains-task-list");
+      }
+    }
+  }
+  return doc.body.innerHTML;
 }
 
 export function buildPrintableHtml(
   source: string,
   width: PageWidth,
   style: MarkdownStyle,
+  dialect: MarkdownDialect = "github",
 ): string {
-  const html = renderMarkdown(source);
+  const html = renderMarkdown(source, dialect);
   const mm = PAGE_WIDTH_MM[width];
   const { css, bodyClassName } = PRINT_STYLES[style];
   const body = bodyClassName

@@ -1491,6 +1491,11 @@ export const esMessages: LocaleContent = {
           shadcnTypeset: "Typeset",
           tailwindTypography: "Tailwind Typography",
         },
+        dialect: "Dialecto",
+        dialectOptions: {
+          commonmark: "CommonMark",
+          github: "GitHub (GFM)",
+        },
         wordCount: "{count} caracteres",
       },
     },

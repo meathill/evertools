@@ -759,6 +759,42 @@ a:hover {
   & li {
     margin: 0.2em 0;
   }
+  & ul.contains-task-list {
+    list-style-type: none;
+    padding-inline-start: 0.25em;
+  }
+  & li.task-list-item {
+    list-style-type: none;
+  }
+  & li.task-list-item > input.task-list-item-checkbox {
+    appearance: none;
+    -webkit-appearance: none;
+    box-sizing: border-box;
+    display: inline-block;
+    position: relative;
+    width: 0.95em;
+    height: 0.95em;
+    margin: 0 0.5em 0 0;
+    vertical-align: -0.1em;
+    border: 1.5px solid var(--color-rule-strong);
+    border-radius: 2px;
+    background: transparent;
+  }
+  & li.task-list-item > input.task-list-item-checkbox:checked {
+    border-color: var(--color-success);
+    background: var(--color-success);
+  }
+  & li.task-list-item > input.task-list-item-checkbox:checked::after {
+    content: "";
+    position: absolute;
+    left: 0.14em;
+    top: 0.01em;
+    width: 0.34em;
+    height: 0.17em;
+    border-left: 1.5px solid #fff;
+    border-bottom: 1.5px solid #fff;
+    transform: rotate(-45deg);
+  }
   & a {
     color: var(--color-info);
     text-decoration: underline;

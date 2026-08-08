@@ -24,6 +24,7 @@ import { Textarea } from "@/components/ui/textarea";
 import {
   buildPrintableHtml,
   estimatePageCount,
+  type MarkdownDialect,
   type MarkdownStyle,
   type PageWidth,
   readMarkdownFile,
@@ -46,6 +47,7 @@ export function MarkdownToPdfClient({ content }: MarkdownToPdfClientProps) {
   const [markdown, setMarkdown] = useState("");
   const [pageWidth, setPageWidth] = useState<PageWidth>("phone");
   const [style, setStyle] = useState<MarkdownStyle>("shadcn-typeset");
+  const [dialect, setDialect] = useState<MarkdownDialect>("github");
   const [popupBlocked, setPopupBlocked] = useState(false);
   const [fileName, setFileName] = useState<string | null>(null);
   const [fileError, setFileError] = useState<string | null>(null);
@@ -57,8 +59,11 @@ export function MarkdownToPdfClient({ content }: MarkdownToPdfClientProps) {
   const deferredMarkdown = useDeferredValue(markdown);
 
   const previewHtml = useMemo(
-    () => (deferredMarkdown.trim() ? renderMarkdown(deferredMarkdown) : null),
-    [deferredMarkdown],
+    () =>
+      deferredMarkdown.trim()
+        ? renderMarkdown(deferredMarkdown, dialect)
+        : null,
+    [deferredMarkdown, dialect],
   );
 
   const pageWidthOptions: { label: string; value: PageWidth }[] = [
@@ -74,6 +79,11 @@ export function MarkdownToPdfClient({ content }: MarkdownToPdfClientProps) {
       value: "tailwind-typography",
     },
     { label: t.toolbar.styleOptions.classic, value: "classic" },
+  ];
+
+  const dialectOptions: { label: string; value: MarkdownDialect }[] = [
+    { label: t.toolbar.dialectOptions.github, value: "github" },
+    { label: t.toolbar.dialectOptions.commonmark, value: "commonmark" },
   ];
 
   async function processFile(file: File) {
@@ -127,7 +137,7 @@ export function MarkdownToPdfClient({ content }: MarkdownToPdfClientProps) {
 
   function handlePrint() {
     setPopupBlocked(false);
-    const html = buildPrintableHtml(markdown, pageWidth, style);
+    const html = buildPrintableHtml(markdown, pageWidth, style, dialect);
     const win = window.open("", "_blank");
     if (!win) {
       setPopupBlocked(true);
@@ -239,6 +249,23 @@ export function MarkdownToPdfClient({ content }: MarkdownToPdfClientProps) {
         <CardHeader className="flex flex-wrap items-center justify-between gap-2 border-rule border-b bg-paper-deep/50">
           <CardTitle className="text-base">{t.preview.title}</CardTitle>
           <div className="ml-auto flex flex-wrap items-center gap-2">
+            <Select
+              onValueChange={(value) => setDialect(value as MarkdownDialect)}
+              value={dialect}
+            >
+              <SelectTrigger aria-label={t.toolbar.dialect} size="sm">
+                <SelectValue>
+                  {dialectOptions.find((o) => o.value === dialect)?.label}
+                </SelectValue>
+              </SelectTrigger>
+              <SelectPopup>
+                {dialectOptions.map((option) => (
+                  <SelectItem key={option.value} value={option.value}>
+                    {option.label}
+                  </SelectItem>
+                ))}
+              </SelectPopup>
+            </Select>
             <Select
               onValueChange={(value) => setStyle(value as MarkdownStyle)}
               value={style}

@@ -1414,6 +1414,11 @@ export const thMessages: LocaleContent = {
           shadcnTypeset: "Typeset",
           tailwindTypography: "Tailwind Typography",
         },
+        dialect: "สำเนียง",
+        dialectOptions: {
+          commonmark: "CommonMark",
+          github: "GitHub (GFM)",
+        },
         wordCount: "{count} ตัวอักษร",
       },
     },

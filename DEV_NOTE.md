@@ -254,3 +254,20 @@ worker 文件由 `pnpm copy:pdf-worker` 拷到 `public/pdf/`，`dev` / `build` �
   模块顶层 `import DOMPurify` 本身在无 DOM 环境是安全的（不抛错），所以 SSR/SSG 预渲染正常。
 - **`lib/markdown-to-pdf.test.ts` 必须声明 `// @vitest-environment jsdom`**：全局 vitest
   environment 是 `node`，不加这行净化相关用例会全部 TypeError。
+
+## marked 18 任务列表与「方言」（`lib/markdown-to-pdf.ts`）
+
+- **marked 18 的 GFM 任务列表只输出 `<li><input disabled type="checkbox">`，不带 GitHub 规范 class**：
+  GitHub 规范结构是 `ul.contains-task-list` / `li.task-list-item` / `input.task-list-item-checkbox`。
+  不要在打印 CSS 里写 `ul.contains-task-list` 选择器——marked 永远不输出它（此前 shadcn-typeset
+  的 checkbox 样式一直没生效就是这个原因）。用 DOM post-process 补全：
+  `DOMParser` 解析净化后的 HTML → 找 `li > input[type="checkbox"]` → 逐级加 class → 序列化
+  `doc.body.innerHTML` 返回。注意 jsdom/浏览器序列化属性顺序是**插入顺序**，
+  `classList.add()` 的结果会出现在 `disabled="" type="checkbox"` 之后，测试断言别写死属性顺序。
+- **checkbox 打印样式用自绘方框**（`appearance: none` + `border` + `:checked::after` 画 45° 勾）：
+  原生 input 在打印时跨浏览器表现不可控。勾的尺寸要跟着方框走（`width: 0.3em` 量级），
+  四套样式（classic / tailwind-typography / shadcn-typeset / md-preview + typeset.css）同一套写法。
+- **「方言」= marked 的 per-call options**：全局 `marked.use({ gfm: true })` 改成
+  `marked(source, { gfm: dialect === "github" })`。marked 18 原生只支持 CommonMark / GFM 两档
+  （gfm on/off 控制表格、删除线、任务列表、autolink），footnote **不内置**（`[^1]` 会被当普通
+  链接）。方言选项在 UI 上是独立于「样式」的 Select，两者正交：方言管解析，样式管排版。

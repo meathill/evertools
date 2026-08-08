@@ -1391,6 +1391,11 @@ export const zhMessages = {
           shadcnTypeset: "Typeset",
           tailwindTypography: "Tailwind Typography",
         },
+        dialect: "方言",
+        dialectOptions: {
+          commonmark: "CommonMark",
+          github: "GitHub (GFM)",
+        },
         wordCount: "{count} 字符",
       },
     },

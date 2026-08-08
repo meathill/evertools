@@ -1464,6 +1464,11 @@ export const viMessages: LocaleContent = {
           shadcnTypeset: "Typeset",
           tailwindTypography: "Tailwind Typography",
         },
+        dialect: "Phương ngữ",
+        dialectOptions: {
+          commonmark: "CommonMark",
+          github: "GitHub (GFM)",
+        },
         wordCount: "{count} ký tự",
       },
     },

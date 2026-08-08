@@ -50,6 +50,70 @@ describe("renderMarkdown", () => {
   });
 });
 
+describe("renderMarkdown 任务列表（GitHub 规范）", () => {
+  it("将 - [ ] 渲染为未选中 checkbox，并带 GitHub 规范结构", () => {
+    const result = renderMarkdown("- [ ] 未完成");
+    expect(result).toContain('<ul class="contains-task-list">');
+    expect(result).toContain('<li class="task-list-item">');
+    expect(result).toContain(
+      '<input disabled="" type="checkbox" class="task-list-item-checkbox">',
+    );
+    expect(result).toContain("未完成");
+  });
+
+  it("将 - [x] 渲染为选中 checkbox", () => {
+    const result = renderMarkdown("- [x] 已完成");
+    expect(result).toContain(
+      '<input checked="" disabled="" type="checkbox" class="task-list-item-checkbox">',
+    );
+  });
+
+  it("支持嵌套任务列表", () => {
+    const result = renderMarkdown("- [ ] 外层\n  - [x] 内层");
+    expect(result).toContain('<ul class="contains-task-list">');
+    expect(result).toContain(
+      '<input checked="" disabled="" type="checkbox" class="task-list-item-checkbox">',
+    );
+  });
+
+  it("普通列表不带 contains-task-list class", () => {
+    const result = renderMarkdown("- item");
+    expect(result).not.toContain("contains-task-list");
+    expect(result).not.toContain("task-list-item");
+  });
+});
+
+describe("renderMarkdown 方言", () => {
+  it("commonmark 方言下 - [ ] 保持纯文本", () => {
+    const result = renderMarkdown("- [ ] 未完成", "commonmark");
+    expect(result).not.toContain("checkbox");
+    expect(result).toContain("[ ] 未完成");
+  });
+
+  it("commonmark 方言下不渲染 GFM 表格", () => {
+    const result = renderMarkdown(
+      "| a | b |\n|---|---|\n| 1 | 2 |",
+      "commonmark",
+    );
+    expect(result).not.toContain("<table>");
+  });
+
+  it("commonmark 方言下不渲染删除线", () => {
+    const result = renderMarkdown("~~删除~~", "commonmark");
+    expect(result).not.toContain("<del>");
+    expect(result).toContain("~~删除~~");
+  });
+
+  it("github 方言默认开启，渲染任务列表与表格", () => {
+    const result = renderMarkdown(
+      "- [ ] 未完成\n\n| a | b |\n|---|---|\n| 1 | 2 |",
+      "github",
+    );
+    expect(result).toContain("task-list-item-checkbox");
+    expect(result).toContain("<table>");
+  });
+});
+
 describe("renderMarkdown 净化", () => {
   it("移除 script 标签", () => {
     const result = renderMarkdown("# 标题\n\n<script>alert('xss')</script>");
@@ -174,6 +238,31 @@ describe("buildPrintableHtml", () => {
     expect(html).toContain('<body><div class="tw-typography-print">');
     expect(html).toContain("<h1>Hello</h1>");
     expect(html).toContain(".tw-typography-print");
+  });
+
+  it("classic 样式包含自绘 checkbox CSS", () => {
+    const html = buildPrintableHtml("- [ ] 待办", "phone", "classic");
+    expect(html).toContain("contains-task-list");
+    expect(html).toContain("task-list-item-checkbox");
+    expect(html).toContain("appearance: none");
+  });
+
+  it("buildPrintableHtml 透传方言参数", () => {
+    const commonmark = buildPrintableHtml(
+      "- [ ] 待办",
+      "phone",
+      "classic",
+      "commonmark",
+    );
+    expect(commonmark).not.toContain("<input");
+
+    const github = buildPrintableHtml(
+      "- [ ] 待办",
+      "phone",
+      "classic",
+      "github",
+    );
+    expect(github).toContain("task-list-item-checkbox");
   });
 });
 

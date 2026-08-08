@@ -1488,6 +1488,11 @@ export const ptMessages: LocaleContent = {
           shadcnTypeset: "Typeset",
           tailwindTypography: "Tailwind Typography",
         },
+        dialect: "Dialeto",
+        dialectOptions: {
+          commonmark: "CommonMark",
+          github: "GitHub (GFM)",
+        },
         wordCount: "{count} caracteres",
       },
     },

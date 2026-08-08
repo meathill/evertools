@@ -63,6 +63,37 @@ export const TAILWIND_TYPOGRAPHY_PRINT_CSS = `
 .tw-typography-print ul, .tw-typography-print ol { padding-left: 1.625em; margin: 1.143em 0; }
 .tw-typography-print li { margin: 0.286em 0; }
 .tw-typography-print li::marker { color: #9ca3af; }
+.tw-typography-print ul.contains-task-list { list-style-type: none; padding-inline-start: 0.25em; }
+.tw-typography-print li.task-list-item { list-style-type: none; }
+.tw-typography-print li.task-list-item > input.task-list-item-checkbox {
+  appearance: none;
+  -webkit-appearance: none;
+  box-sizing: border-box;
+  display: inline-block;
+  position: relative;
+  width: 1.1em;
+  height: 1.1em;
+  margin: 0 0.5em 0 0;
+  vertical-align: -0.15em;
+  border: 1.5px solid #9ca3af;
+  border-radius: 2px;
+  background: #fff;
+}
+.tw-typography-print li.task-list-item > input.task-list-item-checkbox:checked {
+  border-color: #111827;
+  background: #111827;
+}
+.tw-typography-print li.task-list-item > input.task-list-item-checkbox:checked::after {
+  content: "";
+  position: absolute;
+  left: 0.17em;
+  top: 0.02em;
+  width: 0.38em;
+  height: 0.2em;
+  border-left: 1.5px solid #fff;
+  border-bottom: 1.5px solid #fff;
+  transform: rotate(-45deg);
+}
 .tw-typography-print img { max-width: 100%; border-radius: 0.25rem; }
 .tw-typography-print hr { border: none; border-top: 1px solid #e5e7eb; margin: 2.857em 0; }
 `;
