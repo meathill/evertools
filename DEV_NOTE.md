@@ -271,3 +271,23 @@ worker 文件由 `pnpm copy:pdf-worker` 拷到 `public/pdf/`，`dev` / `build` �
   `marked(source, { gfm: dialect === "github" })`。marked 18 原生只支持 CommonMark / GFM 两档
   （gfm on/off 控制表格、删除线、任务列表、autolink），footnote **不内置**（`[^1]` 会被当普通
   链接）。方言选项在 UI 上是独立于「样式」的 Select，两者正交：方言管解析，样式管排版。
+
+## 缓存策略（issue #3）
+
+OpenNext 部署在 Workers，静态资源与运行时响应的缓存策略分三档（实测确认）：
+
+- **`/_next/static/*` 走 `public/_headers` 设 `public,max-age=31536000,immutable`**：Workers
+  Assets 的默认头是 `public, max-age=0, must-revalidate`（浏览器每次重验证），`_headers` 文件
+  由 OpenNext 原样拷进 `.open-next/assets`，规则对 asset 响应生效。静态产物 URL 带内容 hash，
+  可安全 immutable。这是 `opennextjs-cloudflare migrate` 的官方推荐写法。
+- **OG 图片全部是运行时渲染**（`opengraph-image.tsx` 不预渲染，走 worker 的 route handler），
+  响应默认 `max-age=0`。URL 带源文件内容 hash（`next-metadata-image-loader` 的
+  `[contenthash]`），**但渲染内容依赖 messages 文案**——文案更新时 URL 不变，所以不能
+  immutable。在 `next.config.ts` `headers()` 里给 `/:path*/opengraph-image` 设
+  `public, max-age=86400, s-maxage=86400, stale-while-revalidate=604800`（1 天 + 7 天 SWR，
+  与文案低频更新节奏匹配）。配置抽在 `lib/cache-headers.ts`，纯逻辑可单测。
+- **运行时动态结果保持短缓存不碰**：`/api/og`、`/api/sitemap`、`/api/fetch` 继续
+  `s-maxage=60 + stale-while-revalidate=300`；页面 HTML 继续 `s-maxage=31536000`；
+  `public/pdf/*`（pdfjs worker）保持 `max-age=0`（URL 无 hash，升级即换内容，不宜长缓存）。
+
+用户上传/转换结果全部在浏览器本地（WASM），服务端响应不含用户内容，无 no-store 需求。

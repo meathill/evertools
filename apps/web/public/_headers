@@ -1,0 +1,5 @@
+# https://developers.cloudflare.com/workers/static-assets/headers
+# https://opennext.js.org/cloudflare/caching#static-assets-caching
+# Next.js 静态产物带内容 hash，URL 不变即内容不变，可安全 immutable。
+/_next/static/*
+  Cache-Control: public,max-age=31536000,immutable
