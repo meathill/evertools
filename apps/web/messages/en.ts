@@ -570,8 +570,15 @@ export const enMessages: LocaleContent = {
           threeTwo: "3:2",
         },
         aspectTitle: "Aspect ratio",
+        height: "Height",
+        keyboardHint: "Arrow keys 1px · Ctrl + Arrow keys 10px",
         originalLabel: "Original {width} x {height} px",
         selectionLabel: "Selection {width} x {height} px",
+        selectionTitle: "Selection Size",
+        width: "Width",
+        zoomIn: "Zoom in",
+        zoomOut: "Zoom out",
+        zoomReset: "Fit",
       },
       settings: {
         description:

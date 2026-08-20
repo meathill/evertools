@@ -64,6 +64,118 @@ export function computeCropPixelRect(input: {
   return { sHeight, sWidth, sx, sy };
 }
 
+// 像素矩形 → 百分比选区。
+export function pixelRectToPercentCrop(
+  rect: CropSourceRect,
+  naturalWidth: number,
+  naturalHeight: number,
+): PercentCropRect {
+  return {
+    height: (rect.sHeight / naturalHeight) * 100,
+    width: (rect.sWidth / naturalWidth) * 100,
+    x: (rect.sx / naturalWidth) * 100,
+    y: (rect.sy / naturalHeight) * 100,
+  };
+}
+
+// 将百分比选框强制吸附到源图像素网格，确保整像素裁切与移动。
+export function snapCropToPixels(
+  crop: PercentCropRect,
+  naturalWidth: number,
+  naturalHeight: number,
+): PercentCropRect {
+  const rect = computeCropPixelRect({
+    crop,
+    naturalHeight,
+    naturalWidth,
+  });
+  return pixelRectToPercentCrop(rect, naturalWidth, naturalHeight);
+}
+
+// 按像素平移选区（支持 1px、10px），并在源图内做边界保护。
+export function moveCropByPixels(input: {
+  dx: number;
+  dy: number;
+  naturalHeight: number;
+  naturalWidth: number;
+  rect: CropSourceRect;
+}): CropSourceRect {
+  const { dx, dy, naturalHeight, naturalWidth, rect } = input;
+  const maxSx = Math.max(0, naturalWidth - rect.sWidth);
+  const maxSy = Math.max(0, naturalHeight - rect.sHeight);
+
+  const nextSx = Math.min(Math.max(0, Math.round(rect.sx + dx)), maxSx);
+  const nextSy = Math.min(Math.max(0, Math.round(rect.sy + dy)), maxSy);
+
+  return {
+    sHeight: rect.sHeight,
+    sWidth: rect.sWidth,
+    sx: nextSx,
+    sy: nextSy,
+  };
+}
+
+// 按输入的指定宽/高调整选区尺寸。支持自由模式与比例锁定联动，越界时自动推回图内。
+export function resizeCropToDimensions(input: {
+  aspect: number | null;
+  height?: number;
+  naturalHeight: number;
+  naturalWidth: number;
+  rect: CropSourceRect;
+  width?: number;
+}): CropSourceRect {
+  const { aspect, height, naturalHeight, naturalWidth, rect, width } = input;
+
+  let targetWidth = rect.sWidth;
+  let targetHeight = rect.sHeight;
+
+  if (aspect !== null && aspect > 0) {
+    if (typeof width === "number") {
+      targetWidth = Math.max(1, Math.min(naturalWidth, Math.round(width)));
+      targetHeight = Math.max(1, Math.round(targetWidth / aspect));
+
+      if (targetHeight > naturalHeight) {
+        targetHeight = naturalHeight;
+        targetWidth = Math.max(
+          1,
+          Math.min(naturalWidth, Math.round(targetHeight * aspect)),
+        );
+      }
+    } else if (typeof height === "number") {
+      targetHeight = Math.max(1, Math.min(naturalHeight, Math.round(height)));
+      targetWidth = Math.max(1, Math.round(targetHeight * aspect));
+
+      if (targetWidth > naturalWidth) {
+        targetWidth = naturalWidth;
+        targetHeight = Math.max(
+          1,
+          Math.min(naturalHeight, Math.round(targetWidth / aspect)),
+        );
+      }
+    }
+  } else {
+    if (typeof width === "number") {
+      targetWidth = Math.max(1, Math.min(naturalWidth, Math.round(width)));
+    }
+    if (typeof height === "number") {
+      targetHeight = Math.max(1, Math.min(naturalHeight, Math.round(height)));
+    }
+  }
+
+  const maxSx = Math.max(0, naturalWidth - targetWidth);
+  const maxSy = Math.max(0, naturalHeight - targetHeight);
+
+  const nextSx = Math.min(Math.max(0, rect.sx), maxSx);
+  const nextSy = Math.min(Math.max(0, rect.sy), maxSy);
+
+  return {
+    sHeight: targetHeight,
+    sWidth: targetWidth,
+    sx: nextSx,
+    sy: nextSy,
+  };
+}
+
 // 初始/切换比例时的居中选框。自由模式取居中 80%；
 // 带比例时先在图内 fit 出该比例的最大矩形，再取其 90% 居中。
 export function getCenteredCrop(input: {

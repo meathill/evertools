@@ -3,8 +3,11 @@ import {
   Loader2Icon,
   RefreshCcwIcon,
   ShieldCheckIcon,
+  ZoomInIcon,
+  ZoomOutIcon,
 } from "lucide-react";
-import ReactCrop, { type PercentCrop } from "react-image-crop";
+import { useEffect, useState } from "react";
+import ReactCrop from "react-image-crop";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import {
@@ -15,6 +18,7 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { DropZone } from "@/components/ui/drop-zone";
+import { Kbd } from "@/components/ui/kbd";
 import type { ImageCropperController } from "@/hooks/use-image-cropper";
 import { formatBytes } from "@/lib/format";
 import { FILE_INPUT_ACCEPT } from "@/lib/image-converter";
@@ -35,28 +39,82 @@ export function ImageCropperCropCard({
     aspect,
     crop,
     handleBrowseClick,
+    handleCropChange,
     handleDragLeave,
     handleDragOver,
     handleDrop,
     handleFileInputChange,
     handleResetClick,
+    handleSetCropHeight,
+    handleSetCropWidth,
+    handleZoomIn,
+    handleZoomOut,
+    handleZoomReset,
     inputId,
     inputRef,
     isDragging,
     isPreparing,
     selectionRect,
-    setCrop,
     source,
+    zoom,
   } = controller;
 
-  function handleCropChange(_: unknown, percentCrop: PercentCrop) {
-    setCrop({
-      height: percentCrop.height,
-      width: percentCrop.width,
-      x: percentCrop.x,
-      y: percentCrop.y,
-    });
+  const [widthInput, setWidthInput] = useState<string>("");
+  const [heightInput, setHeightInput] = useState<string>("");
+
+  useEffect(() => {
+    if (selectionRect) {
+      setWidthInput(String(selectionRect.sWidth));
+      setHeightInput(String(selectionRect.sHeight));
+    }
+  }, [selectionRect]);
+
+  function handleWidthInputChange(e: React.ChangeEvent<HTMLInputElement>) {
+    setWidthInput(e.target.value);
+    const parsed = Number.parseInt(e.target.value, 10);
+    if (!Number.isNaN(parsed) && parsed > 0) {
+      handleSetCropWidth(parsed);
+    }
   }
+
+  function handleWidthInputBlur() {
+    if (!selectionRect) {
+      return;
+    }
+    const parsed = Number.parseInt(widthInput, 10);
+    if (Number.isNaN(parsed) || parsed <= 0) {
+      setWidthInput(String(selectionRect.sWidth));
+    } else {
+      handleSetCropWidth(parsed);
+    }
+  }
+
+  function handleHeightInputChange(e: React.ChangeEvent<HTMLInputElement>) {
+    setHeightInput(e.target.value);
+    const parsed = Number.parseInt(e.target.value, 10);
+    if (!Number.isNaN(parsed) && parsed > 0) {
+      handleSetCropHeight(parsed);
+    }
+  }
+
+  function handleHeightInputBlur() {
+    if (!selectionRect) {
+      return;
+    }
+    const parsed = Number.parseInt(heightInput, 10);
+    if (Number.isNaN(parsed) || parsed <= 0) {
+      setHeightInput(String(selectionRect.sHeight));
+    } else {
+      handleSetCropHeight(parsed);
+    }
+  }
+
+  const fitScale = source
+    ? Math.min(1, 480 / source.height, 680 / source.width)
+    : 1;
+  const displayWidth = source
+    ? Math.max(120, Math.round(source.width * fitScale * zoom))
+    : undefined;
 
   return (
     <Card className="h-fit overflow-hidden border-2 border-ink shadow-press-ink">
@@ -109,7 +167,37 @@ export function ImageCropperCropCard({
                     · {formatBytes(source.size)}
                   </div>
                 </div>
-                <div className="flex flex-wrap gap-2">
+                <div className="flex flex-wrap items-center gap-2">
+                  <div className="flex items-center gap-1 rounded-md border border-rule bg-paper px-1.5 py-0.5">
+                    <Button
+                      aria-label={content.client.crop.zoomOut}
+                      disabled={zoom <= 0.25}
+                      onClick={handleZoomOut}
+                      size="sm"
+                      variant="ghost"
+                    >
+                      <ZoomOutIcon className="size-4" />
+                    </Button>
+                    <Button
+                      className="h-7 px-2 font-medium text-xs text-ink"
+                      onClick={handleZoomReset}
+                      size="sm"
+                      title={content.client.crop.zoomReset}
+                      variant="ghost"
+                    >
+                      {Math.round(zoom * 100)}%
+                    </Button>
+                    <Button
+                      aria-label={content.client.crop.zoomIn}
+                      disabled={zoom >= 4}
+                      onClick={handleZoomIn}
+                      size="sm"
+                      variant="ghost"
+                    >
+                      <ZoomInIcon className="size-4" />
+                    </Button>
+                  </div>
+
                   <Button
                     onClick={handleBrowseClick}
                     size="sm"
@@ -124,31 +212,84 @@ export function ImageCropperCropCard({
                 </div>
               </div>
 
-              <div className="flex justify-center rounded-md bg-paper-deep/40 p-3">
-                <ReactCrop
-                  aspect={aspect ?? undefined}
-                  crop={crop ? { ...crop, unit: "%" } : undefined}
-                  keepSelection
-                  minWidth={16}
-                  onChange={handleCropChange}
-                  ruleOfThirds
-                >
-                  <img
-                    alt={content.client.preview.alt.replace(
-                      "{label}",
-                      content.client.upload.sourceLabel,
-                    )}
-                    className="max-h-[520px] w-auto"
-                    src={source.previewUrl}
-                  />
-                </ReactCrop>
+              <div className="max-h-[540px] w-full overflow-auto rounded-md bg-paper-deep/40 p-4">
+                <div className="flex min-h-full min-w-full items-center justify-center">
+                  <ReactCrop
+                    aspect={aspect ?? undefined}
+                    crop={crop ? { ...crop, unit: "%" } : undefined}
+                    keepSelection
+                    minWidth={16}
+                    onChange={(_, percentCrop) => handleCropChange(percentCrop)}
+                    ruleOfThirds
+                  >
+                    <img
+                      alt={content.client.preview.alt.replace(
+                        "{label}",
+                        content.client.upload.sourceLabel,
+                      )}
+                      className="select-none"
+                      src={source.previewUrl}
+                      style={{
+                        height: "auto",
+                        maxWidth: "none",
+                        width: displayWidth ? `${displayWidth}px` : "auto",
+                      }}
+                    />
+                  </ReactCrop>
+                </div>
               </div>
 
               {selectionRect ? (
-                <div className="text-center font-medium text-ink text-sm">
-                  {content.client.crop.selectionLabel
-                    .replace("{width}", String(selectionRect.sWidth))
-                    .replace("{height}", String(selectionRect.sHeight))}
+                <div className="flex flex-wrap items-center justify-between gap-3 rounded-md border border-rule bg-paper-deep/30 px-3 py-2">
+                  <div className="flex flex-wrap items-center gap-2">
+                    <span className="font-medium text-ink text-sm">
+                      {content.client.crop.selectionTitle}
+                    </span>
+                    <div className="flex items-center gap-1.5">
+                      <label className="flex items-center gap-1 rounded-md border border-rule bg-paper px-2 py-1 text-xs shadow-xs focus-within:border-ring focus-within:ring-1 focus-within:ring-ring">
+                        <span className="font-medium text-mute">
+                          {content.client.crop.width}
+                        </span>
+                        <input
+                          aria-label={content.client.crop.width}
+                          className="w-16 bg-transparent text-center font-medium text-ink tabular-nums outline-none"
+                          max={source.width}
+                          min={1}
+                          onBlur={handleWidthInputBlur}
+                          onChange={handleWidthInputChange}
+                          type="number"
+                          value={widthInput}
+                        />
+                        <span className="text-mute">px</span>
+                      </label>
+                      <span className="text-mute text-xs">×</span>
+                      <label className="flex items-center gap-1 rounded-md border border-rule bg-paper px-2 py-1 text-xs shadow-xs focus-within:border-ring focus-within:ring-1 focus-within:ring-ring">
+                        <span className="font-medium text-mute">
+                          {content.client.crop.height}
+                        </span>
+                        <input
+                          aria-label={content.client.crop.height}
+                          className="w-16 bg-transparent text-center font-medium text-ink tabular-nums outline-none"
+                          max={source.height}
+                          min={1}
+                          onBlur={handleHeightInputBlur}
+                          onChange={handleHeightInputChange}
+                          type="number"
+                          value={heightInput}
+                        />
+                        <span className="text-mute">px</span>
+                      </label>
+                    </div>
+                  </div>
+                  <div className="flex items-center gap-1.5 text-mute text-xs">
+                    <Kbd>↑↓←→</Kbd>
+                    <span>1px</span>
+                    <span className="text-rule">·</span>
+                    <Kbd>Ctrl</Kbd>
+                    <span>+</span>
+                    <Kbd>↑↓←→</Kbd>
+                    <span>10px</span>
+                  </div>
                 </div>
               ) : null}
             </div>

@@ -545,8 +545,15 @@ export const zhMessages = {
           threeTwo: "3:2",
         },
         aspectTitle: "裁切比例",
+        height: "高",
+        keyboardHint: "方向键 1px · Ctrl + 方向键 10px",
         originalLabel: "原图 {width} x {height} px",
         selectionLabel: "选区 {width} x {height} px",
+        selectionTitle: "选区尺寸",
+        width: "宽",
+        zoomIn: "放大",
+        zoomOut: "缩小",
+        zoomReset: "适应",
       },
       settings: {
         description:

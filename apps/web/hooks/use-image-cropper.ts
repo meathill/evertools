@@ -20,7 +20,11 @@ import {
   cropImageFile,
   getAspectPresetValue,
   getCenteredCrop,
+  moveCropByPixels,
   type PercentCropRect,
+  pixelRectToPercentCrop,
+  resizeCropToDimensions,
+  snapCropToPixels,
 } from "@/lib/image-cropper";
 import type { LocaleContent } from "@/messages/types";
 
@@ -57,6 +61,7 @@ export function useImageCropper(content: LocaleContent["imageCropper"]) {
   const [outputFormat, setOutputFormat] = useState<OutputFormat>("image/png");
   const [quality, setQuality] = useState(DEFAULT_QUALITY);
   const [result, setResult] = useState<CropperResult | null>(null);
+  const [zoom, setZoom] = useState(1);
   const [isPreparing, setIsPreparing] = useState(false);
   const [isCropping, setIsCropping] = useState(false);
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
@@ -177,12 +182,130 @@ export function useImageCropper(content: LocaleContent["imageCropper"]) {
           naturalWidth: image.width,
         }),
       );
+      setZoom(1);
       setOutputFormat(getDefaultOutputFormat(image.type));
     } catch (error) {
       setErrorMessage(getErrorMessage(error, content.client.errors.readFailed));
     } finally {
       setIsPreparing(false);
     }
+  }
+
+  // 键盘方向键微调选区（1px / Ctrl/Cmd + 方向键 10px）
+  useEffect(() => {
+    function handleKeyDown(event: KeyboardEvent) {
+      if (!source || !selectionRect) {
+        return;
+      }
+
+      const activeElement = document.activeElement;
+      if (
+        activeElement instanceof HTMLInputElement ||
+        activeElement instanceof HTMLTextAreaElement ||
+        activeElement instanceof HTMLSelectElement ||
+        activeElement?.getAttribute("contenteditable") === "true"
+      ) {
+        return;
+      }
+
+      const isModifier = event.ctrlKey || event.metaKey;
+      const step = isModifier ? 10 : 1;
+      let dx = 0;
+      let dy = 0;
+
+      if (event.key === "ArrowUp") {
+        dy = -step;
+      } else if (event.key === "ArrowDown") {
+        dy = step;
+      } else if (event.key === "ArrowLeft") {
+        dx = -step;
+      } else if (event.key === "ArrowRight") {
+        dx = step;
+      } else {
+        return;
+      }
+
+      event.preventDefault();
+      const moved = moveCropByPixels({
+        dx,
+        dy,
+        naturalHeight: source.height,
+        naturalWidth: source.width,
+        rect: selectionRect,
+      });
+      setCrop(pixelRectToPercentCrop(moved, source.width, source.height));
+    }
+
+    window.addEventListener("keydown", handleKeyDown);
+    return () => {
+      window.removeEventListener("keydown", handleKeyDown);
+    };
+  }, [selectionRect, source]);
+
+  function handleCropChange(nextCrop: PercentCropRect) {
+    if (!source) {
+      setCrop(nextCrop);
+      return;
+    }
+
+    setCrop(snapCropToPixels(nextCrop, source.width, source.height));
+  }
+
+  function handleMoveCrop(dx: number, dy: number) {
+    if (!source || !selectionRect) {
+      return;
+    }
+
+    const moved = moveCropByPixels({
+      dx,
+      dy,
+      naturalHeight: source.height,
+      naturalWidth: source.width,
+      rect: selectionRect,
+    });
+    setCrop(pixelRectToPercentCrop(moved, source.width, source.height));
+  }
+
+  function handleSetCropWidth(width: number) {
+    if (!source || !selectionRect) {
+      return;
+    }
+
+    const resized = resizeCropToDimensions({
+      aspect,
+      naturalHeight: source.height,
+      naturalWidth: source.width,
+      rect: selectionRect,
+      width,
+    });
+    setCrop(pixelRectToPercentCrop(resized, source.width, source.height));
+  }
+
+  function handleSetCropHeight(height: number) {
+    if (!source || !selectionRect) {
+      return;
+    }
+
+    const resized = resizeCropToDimensions({
+      aspect,
+      height,
+      naturalHeight: source.height,
+      naturalWidth: source.width,
+      rect: selectionRect,
+    });
+    setCrop(pixelRectToPercentCrop(resized, source.width, source.height));
+  }
+
+  function handleZoomIn() {
+    setZoom((prev) => Math.min(4, Math.round((prev + 0.25) * 100) / 100));
+  }
+
+  function handleZoomOut() {
+    setZoom((prev) => Math.max(0.25, Math.round((prev - 0.25) * 100) / 100));
+  }
+
+  function handleZoomReset() {
+    setZoom(1);
   }
 
   function handleAspectChange(key: AspectPresetKey) {
@@ -288,6 +411,7 @@ export function useImageCropper(content: LocaleContent["imageCropper"]) {
     setSource(null);
     setCrop(null);
     setAspectKey("free");
+    setZoom(1);
     setErrorMessage(null);
     fileDrop.stopDragging();
   }
@@ -300,6 +424,7 @@ export function useImageCropper(content: LocaleContent["imageCropper"]) {
     errorMessage,
     handleAspectChange,
     handleBrowseClick: fileDrop.handleBrowseClick,
+    handleCropChange,
     handleDownloadClick,
     handleDragLeave: fileDrop.handleDragLeave,
     handleDragOver: fileDrop.handleDragOver,
@@ -307,8 +432,14 @@ export function useImageCropper(content: LocaleContent["imageCropper"]) {
     handleFileInputChange: fileDrop.handleFileInputChange,
     handleFormatChange,
     handleGenerateClick,
+    handleMoveCrop,
     handleQualityChange,
     handleResetClick,
+    handleSetCropHeight,
+    handleSetCropWidth,
+    handleZoomIn,
+    handleZoomOut,
+    handleZoomReset,
     inputId: fileDrop.inputId,
     inputRef: fileDrop.inputRef,
     isCropping,
@@ -321,7 +452,9 @@ export function useImageCropper(content: LocaleContent["imageCropper"]) {
     result,
     selectionRect,
     setCrop,
+    setZoom,
     source,
+    zoom,
   };
 }
 

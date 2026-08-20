@@ -571,8 +571,15 @@ export const viMessages: LocaleContent = {
           threeTwo: "3:2",
         },
         aspectTitle: "Tỉ lệ cắt",
+        height: "Cao",
+        keyboardHint: "Phím mũi tên 1px · Ctrl + Phím mũi tên 10px",
         originalLabel: "Ảnh gốc {width} x {height} px",
         selectionLabel: "Vùng chọn {width} x {height} px",
+        selectionTitle: "Kích thước vùng chọn",
+        width: "Rộng",
+        zoomIn: "Phóng to",
+        zoomOut: "Thu nhỏ",
+        zoomReset: "Vừa khung",
       },
       settings: {
         description:

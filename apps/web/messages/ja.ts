@@ -568,8 +568,15 @@ export const jaMessages: LocaleContent = {
           threeTwo: "3:2",
         },
         aspectTitle: "切り抜き比率",
+        height: "高さ",
+        keyboardHint: "矢印キー 1px · Ctrl + 矢印キー 10px",
         originalLabel: "元画像 {width} x {height} px",
         selectionLabel: "選択範囲 {width} x {height} px",
+        selectionTitle: "選択範囲サイズ",
+        width: "幅",
+        zoomIn: "拡大",
+        zoomOut: "縮小",
+        zoomReset: "全体表示",
       },
       settings: {
         description:

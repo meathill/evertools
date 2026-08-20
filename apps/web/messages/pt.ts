@@ -577,8 +577,15 @@ export const ptMessages: LocaleContent = {
           threeTwo: "3:2",
         },
         aspectTitle: "Proporção do corte",
+        height: "Altura",
+        keyboardHint: "Setas 1px · Ctrl + Setas 10px",
         originalLabel: "Original {width} x {height} px",
         selectionLabel: "Seleção {width} x {height} px",
+        selectionTitle: "Tamanho da seleção",
+        width: "Largura",
+        zoomIn: "Mais zoom",
+        zoomOut: "Menos zoom",
+        zoomReset: "Ajustar",
       },
       settings: {
         description:

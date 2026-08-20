@@ -576,8 +576,15 @@ export const esMessages: LocaleContent = {
           threeTwo: "3:2",
         },
         aspectTitle: "Proporción de recorte",
+        height: "Alto",
+        keyboardHint: "Flechas 1px · Ctrl + Flechas 10px",
         originalLabel: "Original {width} x {height} px",
         selectionLabel: "Selección {width} x {height} px",
+        selectionTitle: "Tamaño de selección",
+        width: "Ancho",
+        zoomIn: "Acercar",
+        zoomOut: "Alejar",
+        zoomReset: "Ajustar",
       },
       settings: {
         description:

@@ -550,8 +550,15 @@ export const thMessages: LocaleContent = {
           threeTwo: "3:2",
         },
         aspectTitle: "อัตราส่วนการครอป",
+        height: "ความสูง",
+        keyboardHint: "ปุ่มลูกศร 1px · Ctrl + ปุ่มลูกศร 10px",
         originalLabel: "ต้นฉบับ {width} x {height} px",
         selectionLabel: "พื้นที่เลือก {width} x {height} px",
+        selectionTitle: "ขนาดพื้นที่เลือก",
+        width: "ความกว้าง",
+        zoomIn: "ขยาย",
+        zoomOut: "ย่อ",
+        zoomReset: "พอดีหน้าจอ",
       },
       settings: {
         description:
