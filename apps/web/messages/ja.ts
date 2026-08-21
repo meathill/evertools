@@ -80,6 +80,9 @@ export const jaMessages: LocaleContent = {
         "画像リサイズ",
         "png jpg 変換",
         "webp png 変換",
+        "webp jpg 変換",
+        "bmp jpg 変換",
+        "avif webp 変換",
         "ブラウザ画像圧縮",
       ],
       title: "画像形式とサイズの変換",
@@ -635,8 +638,13 @@ export const jaMessages: LocaleContent = {
   pdfTextEditor: {
     metadata: {
       description:
-        "PDF 内の既存テキストをオンラインで編集できます。すべての処理はブラウザ内で行われ、ファイルはアップロードされず、編集後すぐにダウンロードできます。",
+        "無料オンライン PDF テキストエディタ。PDF 内の既存テキストをブラウザ上で直接編集・修正できます。ファイルはアップロードされず、安全・高速に編集後ダウンロード可能。",
       keywords: [
+        "pdf テキスト エディタ オンライン",
+        "無料オンラインpdfテキストエディタ",
+        "pdf テキストエディタ 無料",
+        "pdf エディタ ウェブサイト",
+        "pdf文書エディタ",
         "PDF 編集",
         "PDF テキスト編集",
         "オンライン PDF",
@@ -644,7 +652,7 @@ export const jaMessages: LocaleContent = {
         "pdf text editor",
         "ローカル PDF 編集",
       ],
-      title: "オンライン PDF テキストエディタ",
+      title: "無料オンライン PDF テキストエディタ",
     },
     hero: {
       badges: {

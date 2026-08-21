@@ -80,7 +80,10 @@ export const enMessages: LocaleContent = {
         "resize image online",
         "png to jpg",
         "webp to png",
-        "compress image browser",
+        "webp to jpg",
+        "bmp to jpg",
+        "avif to webp",
+        "browser image compression",
       ],
       title: "Image Format and Size Converter",
     },
@@ -637,6 +640,7 @@ export const enMessages: LocaleContent = {
       description:
         "Edit existing text in a PDF online. Everything runs locally in your browser, your file is never uploaded, and you can download the result immediately.",
       keywords: [
+        "free online pdf text editor",
         "edit pdf online",
         "pdf text editor",
         "modify pdf text",
