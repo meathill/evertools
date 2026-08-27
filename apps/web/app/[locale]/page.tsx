@@ -78,9 +78,13 @@ export default async function HomePage({
         <div className="relative mx-auto grid max-w-6xl gap-8 px-4 py-10 sm:px-6 lg:grid-cols-[minmax(0,1.1fr)_minmax(320px,0.9fr)] lg:py-14">
           <div className="space-y-5">
             <div className="flex flex-wrap gap-2">
-              <Badge variant="yellow">{content.home.hero.badges.stack}</Badge>
-              <Badge variant="info">{content.home.hero.badges.seo}</Badge>
-              <Badge variant="success">
+              <Badge size="lg" variant="yellow">
+                {content.home.hero.badges.stack}
+              </Badge>
+              <Badge size="lg" variant="info">
+                {content.home.hero.badges.seo}
+              </Badge>
+              <Badge size="lg" variant="success">
                 {content.home.hero.badges.scalable}
               </Badge>
             </div>
@@ -176,7 +180,7 @@ type FeatureStatProps = {
 function FeatureStat({ description, icon, title }: FeatureStatProps) {
   return (
     <div className="flex gap-3">
-      <div className="flex size-10 shrink-0 items-center justify-center rounded-md bg-yellow text-ink shadow-press-yellow">
+      <div className="flex size-10 shrink-0 items-center justify-center rounded-md bg-yellow text-[#3a2e23] shadow-press-yellow">
         {icon}
       </div>
       <div className="space-y-1.5">

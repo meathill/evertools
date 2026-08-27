@@ -445,7 +445,8 @@
   --popover: var(--color-paper);
   --popover-foreground: var(--color-ink);
   --primary: var(--color-yellow);
-  --primary-foreground: var(--color-ink);
+  /* 黄底按钮的文字在暗色下仍需保持深棕以保证对比度（yellow #ecc94a 上 ink-light #f3e9d5 对比度不足 1.5） */
+  --primary-foreground: #3a2e23;
   --ring: var(--color-yellow);
   --secondary: var(--color-fluff);
   --secondary-foreground: var(--color-ink);
@@ -463,7 +464,7 @@
   --sidebar-border: var(--color-rule);
   --sidebar-foreground: var(--color-ink-soft);
   --sidebar-primary: var(--color-yellow);
-  --sidebar-primary-foreground: var(--color-ink);
+  --sidebar-primary-foreground: #3a2e23;
   --sidebar-ring: var(--color-yellow);
 }
 

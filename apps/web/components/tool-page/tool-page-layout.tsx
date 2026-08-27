@@ -192,7 +192,7 @@ function ContentCard({
         <ListTag className="space-y-3 text-ink-soft text-sm leading-relaxed">
           {items.map((item, index) => (
             <li className="flex gap-3" key={item}>
-              <span className="mt-0.5 flex size-5 shrink-0 items-center justify-center rounded-md bg-yellow text-ink font-mono text-xs font-bold shadow-press-yellow">
+              <span className="mt-0.5 flex size-5 shrink-0 items-center justify-center rounded-md bg-yellow text-[#3a2e23] font-mono text-xs font-bold shadow-press-yellow">
                 {ordered ? index + 1 : "•"}
               </span>
               <span>{item}</span>
