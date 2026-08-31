@@ -1,3 +1,4 @@
+import { BrandBreadcrumb } from "meathill-brand-react";
 import type { LucideIcon } from "lucide-react";
 import type { ReactNode } from "react";
 import { StructuredData } from "@/components/structured-data";
@@ -71,6 +72,10 @@ export function ToolPageLayout({
         <div className="absolute inset-0 bg-grid opacity-50" />
         <div className="relative mx-auto grid max-w-6xl gap-8 px-4 py-14 sm:px-6 lg:grid-cols-[minmax(0,1.2fr)_minmax(280px,0.8fr)] lg:py-18">
           <div className="space-y-5">
+            <BrandBreadcrumb
+              currentSiteId="evertools"
+              items={[{ label: title }]}
+            />
             <div className="flex flex-wrap gap-2">
               <Badge variant="yellow">{badges[0]}</Badge>
               <Badge variant="info">{badges[1]}</Badge>

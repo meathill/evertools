@@ -1,3 +1,4 @@
+import { brandCatalog } from "meathill-brand";
 import type { Metadata } from "next";
 import type { AppLocale } from "@/i18n/routing";
 import type { ToolDefinition } from "@/lib/content";
@@ -36,7 +37,7 @@ export function generateToolPageMetadata(
 export function buildToolStructuredData(
   locale: AppLocale,
   tool: ToolDefinition,
-  homeLabel: string,
+  _homeLabel: string,
 ): Array<Record<string, unknown>> {
   return [
     // 刻意不用 SoftwareApplication/WebApplication：Google 的 Software App
@@ -85,15 +86,21 @@ export function buildToolStructuredData(
       itemListElement: [
         {
           "@type": "ListItem",
-          item: createLocalizedUrl(locale, "/"),
-          name: homeLabel,
+          item: brandCatalog.organization.url,
+          name: brandCatalog.organization.name,
           position: 1,
+        },
+        {
+          "@type": "ListItem",
+          item: siteConfig.url,
+          name: siteConfig.name,
+          position: 2,
         },
         {
           "@type": "ListItem",
           item: createLocalizedUrl(locale, tool.href),
           name: tool.name,
-          position: 2,
+          position: 3,
         },
       ],
     },

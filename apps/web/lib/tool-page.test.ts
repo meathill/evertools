@@ -92,11 +92,17 @@ describe("buildToolStructuredData", () => {
           itemListElement: [
             {
               "@type": "ListItem",
-              item: createLocalizedUrl("zh", "/"),
-              name: homeLabel,
+              item: "https://meathill.com",
+              name: "Meathill Studio",
               position: 1,
             },
-            { "@type": "ListItem", item: url, name: tool.name, position: 2 },
+            {
+              "@type": "ListItem",
+              item: siteConfig.url,
+              name: siteConfig.name,
+              position: 2,
+            },
+            { "@type": "ListItem", item: url, name: tool.name, position: 3 },
           ],
         },
       ]);
@@ -160,15 +166,21 @@ describe("buildToolStructuredData", () => {
     expect(data[3].itemListElement).toEqual([
       {
         "@type": "ListItem",
-        item: "https://tools.meathill.com/en",
-        name: "Home",
+        item: "https://meathill.com",
+        name: "Meathill Studio",
         position: 1,
+      },
+      {
+        "@type": "ListItem",
+        item: siteConfig.url,
+        name: siteConfig.name,
+        position: 2,
       },
       {
         "@type": "ListItem",
         item: "https://tools.meathill.com/en/tools/image-converter",
         name: tool.name,
-        position: 2,
+        position: 3,
       },
     ]);
   });

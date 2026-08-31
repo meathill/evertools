@@ -1,3 +1,4 @@
+import { brandCatalog, getOrganizationJsonLd } from "meathill-brand";
 import { ArrowRightIcon, CloudUploadIcon, ShieldCheckIcon } from "lucide-react";
 import type { Metadata } from "next";
 import { StructuredData } from "@/components/structured-data";
@@ -49,11 +50,13 @@ export default async function HomePage({
   const tools = getTools(content);
 
   const homeStructuredData = [
+    getOrganizationJsonLd(),
     {
       "@context": "https://schema.org",
       "@type": "WebSite",
       description: content.home.metadata.description,
       name: siteConfig.name,
+      publisher: { "@id": brandCatalog.organization.id },
       url: createLocalizedUrl(locale, "/"),
     },
     {

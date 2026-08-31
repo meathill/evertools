@@ -2,7 +2,7 @@ import { type AppLocale, routing } from "@/i18n/routing";
 
 export const siteConfig = {
   host: "tools.meathill.com",
-  name: "Meathill Tools",
+  name: "EverTools",
   url: "https://tools.meathill.com",
 } as const;
 

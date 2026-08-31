@@ -1,12 +1,7 @@
 "use client";
 
-import {
-  ExternalLinkIcon,
-  GlobeIcon,
-  MonitorIcon,
-  MoonIcon,
-  SunIcon,
-} from "lucide-react";
+import { BrandSiteSwitcher } from "meathill-brand-react";
+import { GlobeIcon, MonitorIcon, MoonIcon, SunIcon } from "lucide-react";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { Badge } from "@/components/ui/badge";
@@ -81,11 +76,13 @@ export function SiteHeader({ content, locale }: SiteHeaderProps) {
             width={40}
           />
           <div className="min-w-0">
-            <div className="truncate font-display font-bold text-base text-ink">
-              Meathill Tools
+            <div className="truncate font-mono text-mute text-xs">
+              Meathill Studio
             </div>
-            <div className="flex items-center gap-2 text-mute text-xs">
-              <span className="truncate">{content.tagline}</span>
+            <div className="truncate font-display font-bold text-base text-ink">
+              EverTools
+            </div>
+            <div className="flex items-center gap-2 text-mute text-xs sm:hidden">
               <Badge size="sm" variant="yellow">
                 {content.localProcessing}
               </Badge>
@@ -94,17 +91,7 @@ export function SiteHeader({ content, locale }: SiteHeaderProps) {
         </Link>
 
         <div className="flex flex-wrap items-center justify-end gap-3">
-          <nav className="flex items-center gap-1 overflow-x-auto">
-            <a
-              className="flex items-center gap-1 whitespace-nowrap rounded-sm px-2 py-1 text-ink-soft transition-colors hover:bg-fluff hover:text-ink"
-              href="https://meathill.com"
-              rel="noopener noreferrer"
-              target="_blank"
-            >
-              meathill.com
-              <ExternalLinkIcon className="size-3" />
-            </a>
-          </nav>
+          <BrandSiteSwitcher currentSiteId="evertools" locale={locale} />
 
           <div className="flex items-center gap-2">
             <Select onValueChange={handleLocaleChange} value={locale}>
