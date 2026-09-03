@@ -80,7 +80,7 @@ export function SiteHeader({ content, locale }: SiteHeaderProps) {
               Meathill Studio
             </div>
             <div className="truncate font-display font-bold text-base text-ink">
-              EverTools
+              Meathill Tools
             </div>
             <div className="flex items-center gap-2 text-mute text-xs sm:hidden">
               <Badge size="sm" variant="yellow">

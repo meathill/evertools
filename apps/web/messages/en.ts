@@ -2,7 +2,7 @@ import type { LocaleContent } from "./types";
 
 export const enMessages: LocaleContent = {
   metadata: {
-    defaultTitle: "Online Tools",
+    defaultTitle: "Free Online Image, PDF & Developer Tools",
     siteDescription:
       "Meathill Tools offers online tools that run directly in your browser. Local processing, no uploads, free to use.",
     siteTitle: "Meathill Tools",
@@ -28,15 +28,15 @@ export const enMessages: LocaleContent = {
   home: {
     metadata: {
       description:
-        "Meathill Tools offers online tools you can use right away in the browser. Start with image format conversion, resizing, and PDF text editing.",
+        "Meathill Tools offers free online tools right in the browser: image conversion and resizing, PDF text editing, plus JSON, Markdown and other developer tools with local processing.",
       keywords: [
         "online tools",
-        "browser tools",
         "image converter",
         "resize image",
         "pdf text editor",
+        "developer tools",
       ],
-      title: "Online Tools",
+      title: "Meathill Tools | Free Online Image, PDF & Developer Tools",
     },
     structuredData: {
       toolListName: "Meathill Tools list",

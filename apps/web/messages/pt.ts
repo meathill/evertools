@@ -2,7 +2,7 @@ import type { LocaleContent } from "./types";
 
 export const ptMessages: LocaleContent = {
   metadata: {
-    defaultTitle: "Ferramentas online",
+    defaultTitle: "Ferramentas online grátis de imagem, PDF e desenvolvimento",
     siteDescription:
       "Meathill Tools oferece ferramentas online que funcionam diretamente no navegador. Processamento local, sem upload, gratuito.",
     siteTitle: "Meathill Tools",
@@ -28,15 +28,16 @@ export const ptMessages: LocaleContent = {
   home: {
     metadata: {
       description:
-        "Meathill Tools oferece ferramentas online para usar imediatamente no navegador. Conversão de imagens, redimensionamento e edição de texto PDF.",
+        "Meathill Tools oferece ferramentas online gratuitas no navegador: conversão e redimensionamento de imagens, edição de texto PDF e ferramentas para desenvolvimento com processamento local.",
       keywords: [
         "ferramentas online",
-        "ferramentas de navegador",
         "conversor de imagens",
         "redimensionar imagem",
         "editor de texto pdf",
+        "ferramentas desenvolvimento",
       ],
-      title: "Ferramentas online",
+      title:
+        "Meathill Tools | Ferramentas online grátis de imagem, PDF e desenvolvimento",
     },
     structuredData: {
       toolListName: "Lista de ferramentas do Meathill Tools",

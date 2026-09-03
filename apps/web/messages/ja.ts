@@ -2,7 +2,7 @@ import type { LocaleContent } from "./types";
 
 export const jaMessages: LocaleContent = {
   metadata: {
-    defaultTitle: "オンラインツール",
+    defaultTitle: "無料の画像・PDF・開発者向けオンラインツール",
     siteDescription:
       "Meathill Tools はブラウザでそのまま使えるオンラインツールを提供します。ローカル処理、アップロード不要、無料で利用可能。",
     siteTitle: "Meathill Tools",
@@ -28,15 +28,15 @@ export const jaMessages: LocaleContent = {
   home: {
     metadata: {
       description:
-        "Meathill Tools はブラウザでそのまま使えるオンラインツールを提供します。画像形式変換、リサイズ、PDF テキスト編集。",
+        "Meathill Tools はブラウザでそのまま使える無料オンラインツールです。画像形式変換・リサイズ、PDF テキスト編集、JSON・Markdown などの開発者向けツールをローカル処理で提供。",
       keywords: [
         "オンラインツール",
-        "ブラウザツール",
         "画像変換",
         "画像リサイズ",
         "PDF テキスト編集",
+        "開発者ツール",
       ],
-      title: "オンラインツール",
+      title: "Meathill Tools｜無料の画像・PDF・開発者向けオンラインツール",
     },
     structuredData: {
       toolListName: "Meathill Tools 一覧",

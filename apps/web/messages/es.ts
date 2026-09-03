@@ -2,7 +2,7 @@ import type { LocaleContent } from "./types";
 
 export const esMessages: LocaleContent = {
   metadata: {
-    defaultTitle: "Herramientas en línea",
+    defaultTitle: "Herramientas gratis de imagen, PDF y desarrollo online",
     siteDescription:
       "Meathill Tools ofrece herramientas en línea que funcionan directamente en tu navegador. Procesamiento local, sin subidas, gratis.",
     siteTitle: "Meathill Tools",
@@ -28,15 +28,16 @@ export const esMessages: LocaleContent = {
   home: {
     metadata: {
       description:
-        "Meathill Tools ofrece herramientas en línea que puedes usar de inmediato en el navegador. Conversión de imágenes, cambio de tamaño y edición de texto PDF.",
+        "Meathill Tools ofrece herramientas en línea gratuitas en el navegador: conversión y cambio de tamaño de imágenes, edición de texto PDF y herramientas para desarrollo con procesamiento local.",
       keywords: [
         "herramientas en línea",
-        "herramientas del navegador",
         "convertidor de imágenes",
         "redimensionar imagen",
         "editor de texto pdf",
+        "herramientas desarrollo",
       ],
-      title: "Herramientas en línea",
+      title:
+        "Meathill Tools | Herramientas gratis de imagen, PDF y desarrollo online",
     },
     structuredData: {
       toolListName: "Lista de herramientas de Meathill Tools",

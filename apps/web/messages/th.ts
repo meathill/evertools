@@ -2,7 +2,7 @@ import type { LocaleContent } from "./types";
 
 export const thMessages: LocaleContent = {
   metadata: {
-    defaultTitle: "เครื่องมือออนไลน์",
+    defaultTitle: "เครื่องมือรูปภาพ PDF และนักพัฒนาออนไลน์ฟรี",
     siteDescription:
       "Meathill Tools ให้บริการเครื่องมือออนไลน์ที่ใช้งานได้ทันทีในเบราว์เซอร์ ประมวลผลในเครื่อง ไม่ต้องอัปโหลด ใช้ฟรี",
     siteTitle: "Meathill Tools",
@@ -27,15 +27,15 @@ export const thMessages: LocaleContent = {
   home: {
     metadata: {
       description:
-        "Meathill Tools ให้บริการเครื่องมือออนไลน์ที่ทำงานในเบราว์เซอร์ แปลงรูปภาพ ปรับขนาด และแก้ไขข้อความ PDF",
+        "Meathill Tools ให้บริการเครื่องมือออนไลน์ฟรีในเบราว์เซอร์ แปลงรูปภาพ ปรับขนาด แก้ไขข้อความ PDF และเครื่องมือสำหรับนักพัฒนา โดยประมวลผลในเครื่อง",
       keywords: [
         "เครื่องมือออนไลน์",
-        "เครื่องมือบนเบราว์เซอร์",
         "แปลงรูปภาพ",
         "ปรับขนาดรูปภาพ",
         "แก้ไขข้อความ PDF",
+        "เครื่องมือสำหรับนักพัฒนา",
       ],
-      title: "เครื่องมือออนไลน์",
+      title: "Meathill Tools｜เครื่องมือรูปภาพ PDF และนักพัฒนาออนไลน์ฟรี",
     },
     structuredData: {
       toolListName: "รายการเครื่องมือ Meathill Tools",

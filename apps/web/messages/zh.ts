@@ -1,6 +1,6 @@
 export const zhMessages = {
   metadata: {
-    defaultTitle: "常用在线工具",
+    defaultTitle: "免费在线图片、PDF 与开发者工具",
     siteDescription:
       "Meathill Tools 提供可直接在浏览器中使用的在线工具，支持本地处理、无需上传、免费使用。",
     siteTitle: "Meathill Tools",
@@ -25,16 +25,15 @@ export const zhMessages = {
   home: {
     metadata: {
       description:
-        "Meathill Tools 提供打开即可使用的在线工具。当前可直接完成图片格式转换、尺寸调整、PDF 文本编辑，整个过程都在浏览器中进行。",
+        "Meathill Tools 提供打开即可用的免费在线工具：图片格式转换与尺寸调整、PDF 文本编辑，以及 JSON、Markdown 等开发者工具，全程在浏览器本地处理。",
       keywords: [
         "在线工具",
-        "常用工具网站",
         "图片格式转换",
         "图片尺寸调整",
         "PDF 文本编辑",
-        "browser tools",
+        "开发者工具",
       ],
-      title: "常用在线工具",
+      title: "Meathill Tools｜免费在线图片、PDF 与开发者工具",
     },
     structuredData: {
       toolListName: "Meathill Tools 工具列表",

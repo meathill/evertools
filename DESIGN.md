@@ -1,4 +1,4 @@
-# EverTools Design System
+# Meathill Tools Design System
 
 ## Theme
 
@@ -42,7 +42,7 @@
 
 - Brand Header：Meathill Studio、当前产品、站点切换和产品自己的操作区。
 - Brand Footer：产品说明、Meathill LLC 法律声明、最多 6 个同组入口和全部产品。
-- Breadcrumb：`Meathill Studio > EverTools > 当前页面`，视觉结构与 JSON-LD 一致。
+- Breadcrumb：`Meathill Studio > Meathill Tools > 当前页面`，视觉结构与 JSON-LD 一致。
 - 工作区组件继续复用现有 Base UI 体系，不因品牌统一重新发明控件。
 
 ## Motion and Accessibility

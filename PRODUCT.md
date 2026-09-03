@@ -1,4 +1,4 @@
-# EverTools 产品上下文
+# Meathill Tools 产品上下文
 
 ## Register
 
@@ -14,7 +14,7 @@ product
 
 ## Brand Personality
 
-可靠、温暖、直接。EverTools 属于 Meathill Studio，但产品界面首先服务任务，不把吉祥物或品牌装饰放在工作流前面。
+可靠、温暖、直接。Meathill Tools 属于 Meathill Studio，但产品界面首先服务任务，不把吉祥物或品牌装饰放在工作流前面。
 
 ## Anti-references
 
@@ -29,7 +29,7 @@ product
 2. 数据边界清楚：明确区分浏览器本地处理与必要的服务器抓取。
 3. 母品牌可见但克制：统一归属、站点切换和 Footer，不覆盖产品导航。
 4. 约定胜于新奇：使用熟悉的 Header、Breadcrumb、表单和下载模式。
-5. 独立可用：母站或其他产品不可用时，EverTools 核心能力不受影响。
+5. 独立可用：母站或其他产品不可用时，Meathill Tools 核心能力不受影响。
 
 ## Accessibility & Inclusion
 

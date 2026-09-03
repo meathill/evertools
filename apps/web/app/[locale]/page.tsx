@@ -17,6 +17,7 @@ import { getLocaleFromParams } from "@/lib/locale";
 import {
   createLocalizedUrl,
   getLanguageAlternates,
+  localeMetadata,
   siteConfig,
 } from "@/lib/site";
 import { getLocaleContent } from "@/messages";
@@ -28,15 +29,33 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const locale = await getLocaleFromParams(params);
   const content = getLocaleContent(locale);
+  const title = content.home.metadata.title;
+  const description = content.home.metadata.description;
 
   return {
     alternates: {
       canonical: createLocalizedUrl(locale, "/"),
       languages: getLanguageAlternates("/"),
     },
-    description: content.home.metadata.description,
+    description,
     keywords: [...content.home.metadata.keywords],
-    title: content.home.metadata.title,
+    // 首页标题自带品牌，用 absolute 避免被 layout 的 `%s | Meathill Tools` 模板重复追加后缀。
+    title: {
+      absolute: title,
+    },
+    openGraph: {
+      type: "website",
+      url: createLocalizedUrl(locale, "/"),
+      siteName: siteConfig.name,
+      locale: localeMetadata[locale].openGraphLocale,
+      title,
+      description,
+    },
+    twitter: {
+      card: "summary_large_image",
+      title,
+      description,
+    },
   };
 }
 

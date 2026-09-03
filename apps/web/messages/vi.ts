@@ -2,7 +2,7 @@ import type { LocaleContent } from "./types";
 
 export const viMessages: LocaleContent = {
   metadata: {
-    defaultTitle: "Công cụ trực tuyến",
+    defaultTitle: "Công cụ ảnh, PDF & lập trình trực tuyến miễn phí",
     siteDescription:
       "Meathill Tools cung cấp công cụ trực tuyến chạy ngay trong trình duyệt. Xử lý cục bộ, không cần tải lên, miễn phí.",
     siteTitle: "Meathill Tools",
@@ -28,15 +28,16 @@ export const viMessages: LocaleContent = {
   home: {
     metadata: {
       description:
-        "Meathill Tools cung cấp công cụ trực tuyến có thể dùng ngay trong trình duyệt. Chuyển đổi ảnh, đổi kích thước và sửa văn bản PDF.",
+        "Meathill Tools cung cấp công cụ trực tuyến miễn phí ngay trong trình duyệt: chuyển đổi ảnh, đổi kích thước, sửa văn bản PDF và công cụ cho lập trình viên với xử lý cục bộ.",
       keywords: [
         "công cụ trực tuyến",
-        "công cụ trình duyệt",
         "chuyển đổi ảnh",
         "đổi kích thước ảnh",
         "sửa văn bản pdf",
+        "công cụ lập trình",
       ],
-      title: "Công cụ trực tuyến",
+      title:
+        "Meathill Tools | Công cụ ảnh, PDF & lập trình trực tuyến miễn phí",
     },
     structuredData: {
       toolListName: "Danh sách công cụ Meathill Tools",
