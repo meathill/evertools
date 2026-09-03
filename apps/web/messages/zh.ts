@@ -68,6 +68,9 @@ export const zhMessages = {
       title: "可用工具",
     },
   },
+  relatedTools: {
+    title: "相关工具",
+  },
   imageConverter: {
     metadata: {
       description:
@@ -186,6 +189,7 @@ export const zhMessages = {
           "已添加 {accepted} 张；{rejected} 张因格式不支持被跳过。",
         progressLabel: "正在转换第 {done} / {total} 张",
         removeAria: "移除 {name}",
+        animatedNote: "GIF 仅取第一帧",
         statusConverting: "转换中",
         statusDone: "已完成",
         statusError: "失败",
@@ -265,6 +269,10 @@ export const zhMessages = {
         qualityAria: "输出质量",
         qualityDescription:
           "质量越高，文件通常越大。建议先从 82 左右开始尝试。",
+        backgroundColor: "透明底色",
+        backgroundColorAria: "透明底色",
+        backgroundColorDescription:
+          "JPEG 不支持透明，透明区域会用这个颜色填充，默认白色。",
         regenerate: "重新生成结果",
         resizeModeDescription:
           "锁定比例保持原图不变形；自由拉伸可独立改宽高；裁切填充按较大比例缩放后裁掉多余部分。",

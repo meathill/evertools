@@ -228,6 +228,50 @@ describe("getConversionPageCopy", () => {
   });
 });
 
+// 转换器 ↔ 裁切器互链：裁切器页之前是孤岛，没有任何站内入口。
+describe("related tools wiring", () => {
+  const toolsDir = path.join(
+    import.meta.dirname,
+    "..",
+    "app",
+    "[locale]",
+    "tools",
+  );
+
+  function readPage(...segments: string[]): string {
+    return readFileSync(path.join(toolsDir, ...segments), "utf8");
+  }
+
+  it("exposes a non-empty related-tools title in every locale", () => {
+    for (const locale of LOCALES) {
+      expect(
+        getLocaleContent(locale).relatedTools.title.length,
+      ).toBeGreaterThan(0);
+    }
+  });
+
+  it("links the converter hub, the cropper and every conversion page together", () => {
+    expect(readPage("image-converter", "page.tsx")).toContain("RelatedTools");
+    expect(readPage("image-cropper", "page.tsx")).toContain("RelatedTools");
+    expect(readPage("[conversion]", "page.tsx")).toContain("RelatedTools");
+  });
+
+  it("keeps the free-of-charge cue in es/pt/vi landing titles", () => {
+    expect(
+      getConversionTool(getLocaleContent("es"), { from: "bmp", to: "jpg" })
+        .name,
+    ).toContain("gratis");
+    expect(
+      getConversionTool(getLocaleContent("pt"), { from: "bmp", to: "jpg" })
+        .name,
+    ).toContain("grátis");
+    expect(
+      getConversionTool(getLocaleContent("vi"), { from: "webp", to: "png" })
+        .name,
+    ).toContain("miễn phí");
+  });
+});
+
 // issue #1 的回归护栏。`dynamicParams = false` 会让 prerender-manifest 中本路由的
 // fallback 变成 false（FallbackMode.NOT_FOUND）；OpenNext/Cloudflare 没有磁盘缓存，
 // 每次请求都是 cache MISS，Next 无从确认路径预渲染过，于是白名单 slug 也一律 404。

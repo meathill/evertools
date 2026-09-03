@@ -72,6 +72,9 @@ export const viMessages: LocaleContent = {
       title: "Công cụ sẵn có",
     },
   },
+  relatedTools: {
+    title: "Công cụ liên quan",
+  },
   imageConverter: {
     metadata: {
       description:
@@ -194,6 +197,7 @@ export const viMessages: LocaleContent = {
           "Đã thêm {accepted} ảnh; đã bỏ qua {rejected} ảnh do định dạng không hỗ trợ.",
         progressLabel: "Đang chuyển đổi ảnh {done}/{total}",
         removeAria: "Xóa {name}",
+        animatedNote: "GIF: chỉ lấy khung hình đầu",
         statusConverting: "Đang chuyển đổi",
         statusDone: "Xong",
         statusError: "Thất bại",
@@ -274,6 +278,10 @@ export const viMessages: LocaleContent = {
         qualityAria: "Chất lượng đầu ra",
         qualityDescription:
           "Chất lượng cao hơn thường đồng nghĩa tệp lớn hơn. Bắt đầu quanh 82 là một lựa chọn hợp lý.",
+        backgroundColor: "Màu nền",
+        backgroundColorAria: "Màu nền",
+        backgroundColorDescription:
+          "JPEG không hỗ trợ trong suốt; vùng trong suốt sẽ được lấp bằng màu này. Mặc định là trắng.",
         regenerate: "Tạo lại kết quả",
         resizeModeDescription:
           "Khóa tỉ lệ giữ ảnh không bị méo; kéo giãn tự do đổi chiều rộng và chiều cao độc lập; cắt để lấp đầy phóng theo tỉ lệ lớn hơn rồi cắt phần thừa.",
@@ -435,7 +443,7 @@ export const viMessages: LocaleContent = {
         png: "PNG không mất dữ liệu và giữ được nền trong suốt, hợp với ảnh chụp màn hình, biểu tượng và tư liệu còn phải chỉnh sửa",
         webp: "WebP cho tệp nhỏ nhất ở cùng mức chất lượng hiển thị, nên web hiện nay chạy bằng nó",
       },
-      title: "Công cụ chuyển {from} sang {to}",
+      title: "Chuyển {from} sang {to} miễn phí",
     },
   },
   imageCropper: {

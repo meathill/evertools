@@ -72,6 +72,9 @@ export const ptMessages: LocaleContent = {
       title: "Ferramentas disponíveis",
     },
   },
+  relatedTools: {
+    title: "Ferramentas relacionadas",
+  },
   imageConverter: {
     metadata: {
       description:
@@ -195,6 +198,7 @@ export const ptMessages: LocaleContent = {
           "{accepted} imagens adicionadas; {rejected} foram ignoradas (formato não suportado).",
         progressLabel: "Convertendo {done} de {total}",
         removeAria: "Remover {name}",
+        animatedNote: "GIF: apenas o primeiro quadro",
         statusConverting: "Convertendo",
         statusDone: "Concluída",
         statusError: "Falhou",
@@ -275,6 +279,10 @@ export const ptMessages: LocaleContent = {
         qualityAria: "Qualidade de saída",
         qualityDescription:
           "Maior qualidade normalmente significa arquivo maior. Começar perto de 82 costuma ser uma boa escolha.",
+        backgroundColor: "Cor de fundo",
+        backgroundColorAria: "Cor de fundo",
+        backgroundColorDescription:
+          "JPEG não tem transparência; áreas transparentes são preenchidas com esta cor. Branco por padrão.",
         regenerate: "Gerar novamente",
         resizeModeDescription:
           "Bloquear proporção mantém a imagem sem distorção; esticar livremente muda largura e altura de forma independente; cortar para preencher escala pela proporção maior e corta o excedente.",
@@ -439,7 +447,7 @@ export const ptMessages: LocaleContent = {
         png: "PNG é sem perdas e mantém a transparência, ideal para capturas, ícones e material que você vai editar de novo",
         webp: "WebP entrega o menor arquivo com a mesma qualidade visual, por isso a web roda com ele",
       },
-      title: "Conversor de {from} para {to}",
+      title: "Conversor de {from} para {to} grátis",
     },
   },
   imageCropper: {

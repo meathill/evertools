@@ -2,12 +2,14 @@ import { ImageIcon, ShieldCheckIcon, SparklesIcon } from "lucide-react";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { ConversionLinks } from "@/components/tool-page/conversion-links";
+import { RelatedTools } from "@/components/tool-page/related-tools";
 import { ToolPageLayout } from "@/components/tool-page/tool-page-layout";
 import { ImageConverterClient } from "@/components/tools/image-converter-client";
 import {
   getConversionPageCopy,
   getConversionTool,
 } from "@/lib/conversion-content";
+import { getImageCropperTool } from "@/lib/content";
 import {
   CONVERSION_PAIRS,
   conversionOutputFormat,
@@ -107,6 +109,11 @@ export default async function ConversionPage({
         currentSlug={conversionSlug(pair)}
         locale={locale}
         title={page.conversions.relatedTitle}
+      />
+      <RelatedTools
+        items={[getImageCropperTool(content)]}
+        locale={locale}
+        title={content.relatedTools.title}
       />
     </ToolPageLayout>
   );

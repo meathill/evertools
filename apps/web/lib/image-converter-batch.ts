@@ -91,6 +91,7 @@ export async function prepareBatchItem(input: {
 }
 
 export type BatchConversionSettings = {
+  backgroundColor: string;
   cropAnchor: CropAnchor;
   heightInput: string;
   isAspectLocked: boolean;
@@ -188,6 +189,7 @@ function isBatchItemStale(
 
   const { result } = item;
   const qualityMatters = supportsQuality(settings.outputFormat);
+  const backgroundMatters = settings.outputFormat === "image/jpeg";
 
   return (
     result.format !== settings.outputFormat ||
@@ -197,7 +199,8 @@ function isBatchItemStale(
     (settings.resizeMode === "crop" &&
       (result.cropAnchor?.horizontal !== settings.cropAnchor.horizontal ||
         result.cropAnchor?.vertical !== settings.cropAnchor.vertical)) ||
-    (qualityMatters && result.quality !== settings.quality)
+    (qualityMatters && result.quality !== settings.quality) ||
+    (backgroundMatters && result.backgroundColor !== settings.backgroundColor)
   );
 }
 
@@ -225,6 +228,7 @@ export async function convertBatchItem(input: {
   });
 
   const blob = await convertImageFile({
+    backgroundColor: settings.backgroundColor,
     crop:
       settings.resizeMode === "crop"
         ? { anchor: settings.cropAnchor }
@@ -237,6 +241,8 @@ export async function convertBatchItem(input: {
   });
 
   return {
+    backgroundColor:
+      settings.outputFormat === "image/jpeg" ? settings.backgroundColor : null,
     blob,
     cropAnchor: settings.resizeMode === "crop" ? settings.cropAnchor : null,
     fileName: buildOutputFilename(item.originalName, settings.outputFormat),

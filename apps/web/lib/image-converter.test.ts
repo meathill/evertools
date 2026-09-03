@@ -3,6 +3,7 @@ import {
   buildOutputFilename,
   clampQuality,
   computeCropSourceRect,
+  DEFAULT_BACKGROUND_COLOR,
   FILE_INPUT_ACCEPT,
   getCurrentTargetDimensions,
   getDefaultOutputFormat,
@@ -10,7 +11,9 @@ import {
   getSyncedDimensionValue,
   IMAGE_CONVERTER_ERROR_CODES,
   isAcceptedImageFile,
+  isFirstFrameOnlySource,
   isHeicFile,
+  normalizeBackgroundColor,
   normalizeSourceFile,
   resolveTargetDimensions,
 } from "@/lib/image-converter";
@@ -88,6 +91,22 @@ describe("image converter helpers", () => {
     expect(clampQuality(-1)).toBe(1);
     expect(getDefaultOutputFormat("image/jpeg")).toBe("image/jpeg");
     expect(getDefaultOutputFormat("image/gif")).toBe("image/png");
+  });
+
+  it("normalizes background colors and falls back to white", () => {
+    expect(normalizeBackgroundColor("#FF0000")).toBe("#ff0000");
+    expect(normalizeBackgroundColor("  #00ff00  ")).toBe("#00ff00");
+    expect(normalizeBackgroundColor("red")).toBe(DEFAULT_BACKGROUND_COLOR);
+    expect(normalizeBackgroundColor("#fff")).toBe(DEFAULT_BACKGROUND_COLOR);
+    expect(normalizeBackgroundColor("")).toBe(DEFAULT_BACKGROUND_COLOR);
+  });
+
+  it("flags only GIF as first-frame-only", () => {
+    expect(isFirstFrameOnlySource("image/gif")).toBe(true);
+    expect(isFirstFrameOnlySource("IMAGE/GIF")).toBe(true);
+    expect(isFirstFrameOnlySource("image/webp")).toBe(false);
+    expect(isFirstFrameOnlySource("image/avif")).toBe(false);
+    expect(isFirstFrameOnlySource("image/png")).toBe(false);
   });
 });
 

@@ -1,9 +1,10 @@
 import { LockIcon, ShieldCheckIcon, SparklesIcon } from "lucide-react";
 import type { Metadata } from "next";
 import { ConversionLinks } from "@/components/tool-page/conversion-links";
+import { RelatedTools } from "@/components/tool-page/related-tools";
 import { ToolPageLayout } from "@/components/tool-page/tool-page-layout";
 import { ImageConverterClient } from "@/components/tools/image-converter-client";
-import { getImageConverterTool } from "@/lib/content";
+import { getImageConverterTool, getImageCropperTool } from "@/lib/content";
 import { getLocaleFromParams } from "@/lib/locale";
 import {
   buildToolStructuredData,
@@ -66,6 +67,11 @@ export default async function ImageConverterPage({
     >
       <ImageConverterClient content={page} />
       <ConversionLinks locale={locale} title={page.conversions.relatedTitle} />
+      <RelatedTools
+        items={[getImageCropperTool(content)]}
+        locale={locale}
+        title={content.relatedTools.title}
+      />
     </ToolPageLayout>
   );
 }

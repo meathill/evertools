@@ -18,7 +18,10 @@ import {
 import { DropZone } from "@/components/ui/drop-zone";
 import type { ImageConverterController } from "@/hooks/use-image-converter";
 import { formatBytes } from "@/lib/format";
-import { FILE_INPUT_ACCEPT } from "@/lib/image-converter";
+import {
+  FILE_INPUT_ACCEPT,
+  isFirstFrameOnlySource,
+} from "@/lib/image-converter";
 import type { LocaleContent } from "@/messages/types";
 
 type ImageConverterUploadCardProps = {
@@ -103,6 +106,13 @@ export function ImageConverterUploadCard({
                           {firstItem.width} x {firstItem.height} px ·{" "}
                           {formatBytes(firstItem.size)}
                         </div>
+                        {isFirstFrameOnlySource(firstItem.type) ? (
+                          <div className="mt-1">
+                            <Badge variant="warning">
+                              {content.client.batch.animatedNote}
+                            </Badge>
+                          </div>
+                        ) : null}
                       </div>
                       <div className="flex flex-wrap gap-2">
                         <Button

@@ -68,6 +68,9 @@ export const thMessages: LocaleContent = {
       title: "เครื่องมือที่เปิดใช้แล้ว",
     },
   },
+  relatedTools: {
+    title: "เครื่องมือที่เกี่ยวข้อง",
+  },
   imageConverter: {
     metadata: {
       description:
@@ -186,6 +189,7 @@ export const thMessages: LocaleContent = {
           "เพิ่มแล้ว {accepted} รูป ข้าม {rejected} รูปเพราะฟอร์แมตไม่รองรับ",
         progressLabel: "กำลังแปลงรูปที่ {done} จาก {total}",
         removeAria: "ลบ {name}",
+        animatedNote: "GIF: ใช้เฉพาะเฟรมแรก",
         statusConverting: "กำลังแปลง",
         statusDone: "เสร็จแล้ว",
         statusError: "ล้มเหลว",
@@ -265,6 +269,10 @@ export const thMessages: LocaleContent = {
         qualityAria: "คุณภาพผลลัพธ์",
         qualityDescription:
           "คุณภาพสูงขึ้นมักทำให้ไฟล์ใหญ่ขึ้น เริ่มที่ประมาณ 82 มักเป็นค่าที่เหมาะสม",
+        backgroundColor: "สีพื้นหลัง",
+        backgroundColorAria: "สีพื้นหลัง",
+        backgroundColorDescription:
+          "JPEG ไม่รองรับความโปร่งใส พื้นที่โปร่งใสจะถูกเติมด้วยสีนี้ ค่าเริ่มต้นคือสีขาว",
         regenerate: "สร้างผลลัพธ์ใหม่",
         resizeModeDescription:
           "ล็อกอัตราส่วนทำให้ภาพไม่ผิดสัดส่วน ยืดอิสระเปลี่ยนความกว้างและความสูงแยกกัน ครอปให้เต็มจะย่อขยายตามอัตราส่วนที่ใหญ่กว่าแล้วตัดส่วนเกินออก",

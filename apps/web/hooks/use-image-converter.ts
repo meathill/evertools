@@ -48,12 +48,14 @@ export function useImageConverter(
   itemsRef.current = items;
 
   const {
+    backgroundColor,
     cropAnchor,
     hydrateFromSource,
     outputFormat,
     quality,
     reset,
     resizeMode,
+    setBackgroundColor,
     setCropAnchor,
     setOutputFormat,
     setQuality,
@@ -112,6 +114,7 @@ export function useImageConverter(
   const qualityEnabled = supportsQuality(outputFormat);
 
   const currentSettings: BatchConversionSettings = {
+    backgroundColor,
     cropAnchor,
     heightInput: targetHeight,
     isAspectLocked,
@@ -281,6 +284,10 @@ export function useImageConverter(
 
     setOutputFormat(value);
     setErrorMessage(null);
+  }
+
+  function handleBackgroundChange(event: ChangeEvent<HTMLInputElement>) {
+    setBackgroundColor(event.target.value);
   }
 
   function handleQualityChange(value: number | readonly number[]) {
@@ -534,10 +541,12 @@ export function useImageConverter(
 
   return {
     acceptedFormatsText,
+    backgroundColor,
     batchProgress,
     cropAnchor,
     errorMessage,
     firstItem,
+    handleBackgroundChange,
     handleBrowseClick,
     handleDownloadAllClick,
     handleDownloadItem,

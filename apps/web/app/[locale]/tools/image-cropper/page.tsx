@@ -1,8 +1,9 @@
 import { CropIcon, RatioIcon, ShieldCheckIcon } from "lucide-react";
 import type { Metadata } from "next";
+import { RelatedTools } from "@/components/tool-page/related-tools";
 import { ToolPageLayout } from "@/components/tool-page/tool-page-layout";
 import { ImageCropperClient } from "@/components/tools/image-cropper-client";
-import { getImageCropperTool } from "@/lib/content";
+import { getImageConverterTool, getImageCropperTool } from "@/lib/content";
 import { getLocaleFromParams } from "@/lib/locale";
 import {
   buildToolStructuredData,
@@ -64,6 +65,11 @@ export default async function ImageCropperPage({
       title={page.hero.title}
     >
       <ImageCropperClient content={page} />
+      <RelatedTools
+        items={[getImageConverterTool(content)]}
+        locale={locale}
+        title={content.relatedTools.title}
+      />
     </ToolPageLayout>
   );
 }

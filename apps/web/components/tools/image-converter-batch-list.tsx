@@ -11,6 +11,7 @@ import { Spinner } from "@/components/ui/spinner";
 import { Table, TableBody, TableCell, TableRow } from "@/components/ui/table";
 import type { ImageConverterController } from "@/hooks/use-image-converter";
 import { formatBytes } from "@/lib/format";
+import { isFirstFrameOnlySource } from "@/lib/image-converter";
 import type { BatchItemStatus } from "@/lib/image-converter-batch";
 import type { LocaleContent } from "@/messages/types";
 
@@ -90,6 +91,13 @@ export function ImageConverterBatchList({
                   {item.status === "error" && item.errorMessage ? (
                     <div className="text-danger text-xs">
                       {item.errorMessage}
+                    </div>
+                  ) : null}
+                  {isFirstFrameOnlySource(item.type) ? (
+                    <div className="mt-1">
+                      <Badge variant="warning">
+                        {content.client.batch.animatedNote}
+                      </Badge>
                     </div>
                   ) : null}
                 </TableCell>

@@ -2,13 +2,16 @@ import { create } from "zustand";
 import {
   type CropAnchor,
   clampQuality,
+  DEFAULT_BACKGROUND_COLOR,
   DEFAULT_QUALITY,
   getDefaultOutputFormat,
+  normalizeBackgroundColor,
   type OutputFormat,
   type ResizeMode,
 } from "@/lib/image-converter";
 
 type ImageConverterState = {
+  backgroundColor: string;
   cropAnchor: CropAnchor;
   hydrateFromSource: (input: {
     height: number;
@@ -20,6 +23,7 @@ type ImageConverterState = {
   quality: number;
   reset: () => void;
   resizeMode: ResizeMode;
+  setBackgroundColor: (color: string) => void;
   setCropAnchor: (anchor: CropAnchor) => void;
   setOutputFormat: (format: OutputFormat) => void;
   setQuality: (quality: number) => void;
@@ -37,6 +41,7 @@ const DEFAULT_CROP_ANCHOR: CropAnchor = {
 };
 
 const initialState = {
+  backgroundColor: DEFAULT_BACKGROUND_COLOR,
   cropAnchor: DEFAULT_CROP_ANCHOR,
   outputFormat: "image/png" as OutputFormat,
   quality: DEFAULT_QUALITY,
@@ -49,6 +54,7 @@ export const useImageConverterStore = create<ImageConverterState>((set) => ({
   ...initialState,
   hydrateFromSource: ({ height, preferredFormat, type, width }) => {
     set({
+      backgroundColor: DEFAULT_BACKGROUND_COLOR,
       cropAnchor: DEFAULT_CROP_ANCHOR,
       outputFormat: preferredFormat ?? getDefaultOutputFormat(type),
       quality: DEFAULT_QUALITY,
@@ -59,6 +65,9 @@ export const useImageConverterStore = create<ImageConverterState>((set) => ({
   },
   reset: () => {
     set(initialState);
+  },
+  setBackgroundColor: (color) => {
+    set({ backgroundColor: normalizeBackgroundColor(color) });
   },
   setCropAnchor: (anchor) => {
     set({ cropAnchor: anchor });

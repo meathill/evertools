@@ -15,6 +15,7 @@ function makeFile(name: string, type: string): File {
 
 function makeResult(overrides: Partial<ResultImage> = {}): ResultImage {
   return {
+    backgroundColor: null,
     blob: new Blob([new Uint8Array([1])], { type: "image/png" }),
     cropAnchor: null,
     fileName: "source-converted.png",
@@ -50,6 +51,7 @@ function makeSettings(
   overrides: Partial<BatchConversionSettings> = {},
 ): BatchConversionSettings {
   return {
+    backgroundColor: "#ffffff",
     cropAnchor: { horizontal: "center", vertical: "middle" },
     heightInput: "",
     isAspectLocked: true,
@@ -404,6 +406,64 @@ describe("selectItemsNeedingConversion", () => {
     expect(selectItemsNeedingConversion({ items: [done], settings })).toEqual(
       [],
     );
+  });
+
+  it("only treats background changes as stale for JPEG output", () => {
+    const pngDone = makeBatchItem({
+      height: 800,
+      result: makeResult({
+        backgroundColor: "#ffffff",
+        format: "image/png",
+        height: 800,
+        width: 1600,
+      }),
+      status: "done",
+      width: 1600,
+    });
+    const pngSettings = makeSettings({
+      backgroundColor: "#000000",
+      outputFormat: "image/png",
+    });
+
+    // PNG 无透明填充，底色差异不应影响判定。
+    expect(
+      selectItemsNeedingConversion({ items: [pngDone], settings: pngSettings }),
+    ).toEqual([]);
+
+    const jpgDone = makeBatchItem({
+      height: 800,
+      result: makeResult({
+        backgroundColor: "#ffffff",
+        format: "image/jpeg",
+        height: 800,
+        width: 1600,
+      }),
+      status: "done",
+      width: 1600,
+    });
+    const jpgSameSettings = makeSettings({
+      backgroundColor: "#ffffff",
+      outputFormat: "image/jpeg",
+    });
+
+    expect(
+      selectItemsNeedingConversion({
+        items: [jpgDone],
+        settings: jpgSameSettings,
+      }),
+    ).toEqual([]);
+
+    const jpgStaleSettings = makeSettings({
+      backgroundColor: "#000000",
+      outputFormat: "image/jpeg",
+    });
+
+    expect(
+      selectItemsNeedingConversion({
+        items: [jpgDone],
+        settings: jpgStaleSettings,
+      }),
+    ).toEqual([jpgDone]);
   });
 
   it("returns exactly the pending, error, and stale-done subset from a mixed batch", () => {

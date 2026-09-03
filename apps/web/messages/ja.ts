@@ -71,6 +71,9 @@ export const jaMessages: LocaleContent = {
       title: "公開中のツール",
     },
   },
+  relatedTools: {
+    title: "関連ツール",
+  },
   imageConverter: {
     metadata: {
       description:
@@ -194,6 +197,7 @@ export const jaMessages: LocaleContent = {
           "{accepted} 枚を追加しました。{rejected} 枚は非対応形式のためスキップしました。",
         progressLabel: "{total} 枚中 {done} 枚を変換中",
         removeAria: "{name} を削除",
+        animatedNote: "GIF は最初のフレームのみ",
         statusConverting: "変換中",
         statusDone: "完了",
         statusError: "失敗",
@@ -274,6 +278,10 @@ export const jaMessages: LocaleContent = {
         qualityAria: "出力品質",
         qualityDescription:
           "品質を上げるほど通常はファイルサイズも大きくなります。まずは 82 前後から試すのがおすすめです。",
+        backgroundColor: "背景色",
+        backgroundColorAria: "背景色",
+        backgroundColorDescription:
+          "JPEG は透明に対応していません。透明部分はこの色で塗りつぶされます。既定は白です。",
         regenerate: "結果を再生成",
         resizeModeDescription:
           "比率を固定すると画像が歪みません。自由に伸縮では幅と高さを個別に変更できます。切り抜いて合わせるでは大きい方の比率で拡大し、はみ出しを切り取ります。",

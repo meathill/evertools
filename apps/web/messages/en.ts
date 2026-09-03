@@ -71,6 +71,9 @@ export const enMessages: LocaleContent = {
       title: "Available tools",
     },
   },
+  relatedTools: {
+    title: "Related tools",
+  },
   imageConverter: {
     metadata: {
       description:
@@ -197,6 +200,7 @@ export const enMessages: LocaleContent = {
           "Added {accepted} images; {rejected} were skipped (unsupported format).",
         progressLabel: "Converting {done} of {total}",
         removeAria: "Remove {name}",
+        animatedNote: "GIF: first frame only",
         statusConverting: "Converting",
         statusDone: "Done",
         statusError: "Failed",
@@ -277,6 +281,10 @@ export const enMessages: LocaleContent = {
         qualityAria: "Output quality",
         qualityDescription:
           "Higher quality usually means a larger file. Starting around 82 is a practical default.",
+        backgroundColor: "Background color",
+        backgroundColorAria: "Background color",
+        backgroundColorDescription:
+          "JPEG has no transparency; transparent areas are filled with this color. Defaults to white.",
         regenerate: "Regenerate result",
         resizeModeDescription:
           "Lock ratio keeps the image undistorted; free stretch changes width and height independently; crop to fill scales by the larger ratio and crops the excess.",

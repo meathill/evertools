@@ -19,6 +19,26 @@ export {
 
 export const DEFAULT_QUALITY = 82;
 
+export const DEFAULT_BACKGROUND_COLOR = "#ffffff";
+
+const BACKGROUND_COLOR_PATTERN = /^#[0-9a-f]{6}$/i;
+
+export function normalizeBackgroundColor(value: string): string {
+  const normalized = value.trim().toLowerCase();
+
+  if (BACKGROUND_COLOR_PATTERN.test(normalized)) {
+    return normalized;
+  }
+
+  return DEFAULT_BACKGROUND_COLOR;
+}
+
+// 转换管线经 canvas 只保留第一帧；GIF 一定是这个语义，
+// AVIF/WebP 可能是静态也可能是动态，浏览器侧无法低成本判定，不做误报。
+export function isFirstFrameOnlySource(type: string): boolean {
+  return type.toLowerCase() === "image/gif";
+}
+
 export const IMAGE_CONVERTER_ERROR_CODES = {
   BLOB_FAILED: "BLOB_FAILED",
   CANVAS_UNSUPPORTED: "CANVAS_UNSUPPORTED",
@@ -84,6 +104,7 @@ export type ReadImageResult = {
 };
 
 export type ConvertImageInput = {
+  backgroundColor?: string;
   crop?: { anchor: CropAnchor };
   file: File;
   format: OutputFormat;
@@ -93,6 +114,7 @@ export type ConvertImageInput = {
 };
 
 export type ResultImage = {
+  backgroundColor: string | null;
   blob: Blob;
   cropAnchor: CropAnchor | null;
   fileName: string;
@@ -372,7 +394,9 @@ export async function convertImageFile(
     }
 
     if (input.format === "image/jpeg") {
-      context.fillStyle = "#ffffff";
+      context.fillStyle = normalizeBackgroundColor(
+        input.backgroundColor ?? DEFAULT_BACKGROUND_COLOR,
+      );
       context.fillRect(0, 0, input.width, input.height);
     }
 
