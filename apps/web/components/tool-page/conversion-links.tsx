@@ -40,6 +40,7 @@ export function ConversionLinks({
                 <Link
                   className="inline-flex items-center gap-1.5 rounded-md border border-rule-strong bg-paper-deep/40 px-3 py-1.5 font-medium text-ink-soft text-sm transition-colors hover:border-ink hover:bg-yellow hover:text-[#3a2e23]"
                   href={getLocalizedPathname(locale, `/tools/${slug}`)}
+                  prefetch={false}
                 >
                   {conversionFormatLabel(pair.from)}
                   <ArrowRightIcon className="size-3.5" />

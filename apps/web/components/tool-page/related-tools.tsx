@@ -30,6 +30,7 @@ export function RelatedTools({ items, locale, title }: RelatedToolsProps) {
               <Link
                 className="group flex items-center justify-between gap-3 rounded-md border border-rule-strong bg-paper-deep/40 px-3 py-2.5 transition-colors hover:border-ink hover:bg-yellow"
                 href={getLocalizedPathname(locale, item.href)}
+                prefetch={false}
               >
                 <span>
                   <span className="block font-medium text-ink text-sm group-hover:text-[#3a2e23]">

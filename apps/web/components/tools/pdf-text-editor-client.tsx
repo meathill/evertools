@@ -359,6 +359,7 @@ export function PdfTextEditorClient({
                       locale,
                       "/tools/pdf-password-remover",
                     )}
+                    prefetch={false}
                   >
                     {content.client.errors.encryptedNotSupportedCta}
                     <ArrowRightIcon className="size-3" />

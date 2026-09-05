@@ -29,6 +29,7 @@ export function SiteFooter({ content, locale }: SiteFooterProps) {
             className="transition-colors hover:text-ink"
             href={getLocalizedPathname(locale, tool.href)}
             key={tool.slug}
+            prefetch={false}
           >
             {tool.name}
           </Link>

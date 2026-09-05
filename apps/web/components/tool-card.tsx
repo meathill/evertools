@@ -20,7 +20,9 @@ export function ToolCard({ locale, tool }: ToolCardProps) {
   return (
     <Card
       className="group h-full overflow-hidden text-ink! no-underline! transition-transform hover:-translate-y-1 hover:shadow-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
-      render={<Link href={getLocalizedPathname(locale, tool.href)} />}
+      render={
+        <Link href={getLocalizedPathname(locale, tool.href)} prefetch={false} />
+      }
     >
       <CardHeader className="gap-3">
         <div className="flex items-center justify-between gap-3">

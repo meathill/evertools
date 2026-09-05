@@ -67,6 +67,7 @@ export function SiteHeader({ content, locale }: SiteHeaderProps) {
         <Link
           className="flex min-w-0 items-center gap-3"
           href={getLocalizedPathname(locale, "/")}
+          prefetch={false}
         >
           <img
             alt="Meathill Tools"
