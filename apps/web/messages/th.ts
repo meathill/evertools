@@ -578,6 +578,10 @@ export const thMessages: LocaleContent = {
         qualityAria: "คุณภาพผลลัพธ์",
         qualityDescription:
           "คุณภาพสูงขึ้นมักทำให้ไฟล์ใหญ่ขึ้น เริ่มที่ประมาณ 82 มักเป็นค่าที่เหมาะสม",
+        backgroundColor: "สีพื้นหลัง",
+        backgroundColorAria: "สีพื้นหลัง",
+        backgroundColorDescription:
+          "JPEG ไม่รองรับความโปร่งใส พื้นที่โปร่งใสจะถูกเติมด้วยสีนี้ ค่าเริ่มต้นคือสีขาว",
         regenerate: "สร้างผลลัพธ์ใหม่",
         resultLabel: "รูปผลลัพธ์",
         targetFormat: "ฟอร์แมตส่งออก",

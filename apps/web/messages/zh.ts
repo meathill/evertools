@@ -572,6 +572,10 @@ export const zhMessages = {
         qualityAria: "输出质量",
         qualityDescription:
           "质量越高，文件通常越大。建议先从 82 左右开始尝试。",
+        backgroundColor: "透明底色",
+        backgroundColorAria: "透明底色",
+        backgroundColorDescription:
+          "JPEG 不支持透明，透明区域会用这个颜色填充，默认白色。",
         regenerate: "重新生成结果",
         resultLabel: "结果图",
         targetFormat: "导出格式",

@@ -600,6 +600,10 @@ export const viMessages: LocaleContent = {
         qualityAria: "Chất lượng đầu ra",
         qualityDescription:
           "Chất lượng cao hơn thường đồng nghĩa tệp lớn hơn. Bắt đầu quanh 82 là một lựa chọn hợp lý.",
+        backgroundColor: "Màu nền",
+        backgroundColorAria: "Màu nền",
+        backgroundColorDescription:
+          "JPEG không hỗ trợ trong suốt; vùng trong suốt sẽ được lấp bằng màu này. Mặc định là trắng.",
         regenerate: "Tạo lại kết quả",
         resultLabel: "Ảnh kết quả",
         targetFormat: "Định dạng xuất",

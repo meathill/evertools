@@ -599,6 +599,10 @@ export const jaMessages: LocaleContent = {
         qualityAria: "出力品質",
         qualityDescription:
           "品質を上げるほど通常はファイルサイズも大きくなります。まずは 82 前後から試すのがおすすめです。",
+        backgroundColor: "背景色",
+        backgroundColorAria: "背景色",
+        backgroundColorDescription:
+          "JPEG は透明に対応していません。透明部分はこの色で塗りつぶされます。既定は白です。",
         regenerate: "結果を再生成",
         resultLabel: "結果画像",
         targetFormat: "書き出し形式",

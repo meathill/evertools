@@ -608,6 +608,10 @@ export const esMessages: LocaleContent = {
         qualityAria: "Calidad de salida",
         qualityDescription:
           "Una mayor calidad normalmente significa un archivo más grande. Empezar cerca de 82 suele funcionar bien.",
+        backgroundColor: "Color de fondo",
+        backgroundColorAria: "Color de fondo",
+        backgroundColorDescription:
+          "JPEG no admite transparencia; las zonas transparentes se rellenan con este color. Blanco por defecto.",
         regenerate: "Regenerar resultado",
         resultLabel: "Resultado",
         targetFormat: "Formato de exportación",

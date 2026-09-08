@@ -9,6 +9,7 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { Field, FieldDescription, FieldLabel } from "@/components/ui/field";
+import { Input } from "@/components/ui/input";
 import {
   Select,
   SelectItem,
@@ -35,8 +36,10 @@ export function ImageCropperSettingsCard({
 }: ImageCropperSettingsCardProps) {
   const {
     aspectKey,
+    backgroundColor,
     errorMessage,
     handleAspectChange,
+    handleBackgroundChange,
     handleDownloadClick,
     handleFormatChange,
     handleGenerateClick,
@@ -123,6 +126,30 @@ export function ImageCropperSettingsCard({
               {content.client.settings.qualityDescription}
             </FieldDescription>
           </Field>
+        ) : null}
+
+        {outputFormat === "image/jpeg" ? (
+          <>
+            <Separator />
+            <Field>
+              <FieldLabel>{content.client.settings.backgroundColor}</FieldLabel>
+              <div className="flex items-center gap-3">
+                <Input
+                  aria-label={content.client.settings.backgroundColorAria}
+                  className="h-10 w-16 cursor-pointer p-1"
+                  onChange={handleBackgroundChange}
+                  type="color"
+                  value={backgroundColor}
+                />
+                <span className="font-mono text-sm text-ink">
+                  {backgroundColor}
+                </span>
+              </div>
+              <FieldDescription>
+                {content.client.settings.backgroundColorDescription}
+              </FieldDescription>
+            </Field>
+          </>
         ) : null}
 
         <Separator />

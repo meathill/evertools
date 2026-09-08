@@ -1,8 +1,10 @@
-import { describe, expect, it } from "vitest";
+// @vitest-environment jsdom
+import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import {
   ASPECT_PRESETS,
   buildCropOutputFilename,
   computeCropPixelRect,
+  cropImageFile,
   getAspectPresetValue,
   getCenteredCrop,
   moveCropByPixels,
@@ -366,5 +368,120 @@ describe("resizeCropToDimensions", () => {
     expect(next.sHeight).toBe(1000);
     expect(next.sx).toBe(0);
     expect(next.sy).toBe(0);
+  });
+});
+
+describe("cropImageFile background", () => {
+  class MockImage {
+    naturalHeight = 600;
+    naturalWidth = 800;
+    onerror: (() => void) | null = null;
+    onload: (() => void) | null = null;
+    #src = "";
+
+    get src() {
+      return this.#src;
+    }
+
+    set src(value: string) {
+      this.#src = value;
+      queueMicrotask(() => this.onload?.());
+    }
+  }
+
+  const rect = { sHeight: 480, sWidth: 640, sx: 80, sy: 60 };
+  let context: {
+    drawImage: ReturnType<typeof vi.fn>;
+    fillRect: ReturnType<typeof vi.fn>;
+    fillStyle: string;
+  };
+
+  function makeFile(): File {
+    return new File([new Uint8Array([1, 2, 3])], "photo.png", {
+      type: "image/png",
+    });
+  }
+
+  beforeEach(() => {
+    vi.stubGlobal("Image", MockImage);
+    URL.createObjectURL = vi.fn(() => "blob:mock");
+    URL.revokeObjectURL = vi.fn();
+    context = {
+      drawImage: vi.fn(),
+      fillRect: vi.fn(),
+      fillStyle: "",
+    };
+    vi.spyOn(HTMLCanvasElement.prototype, "getContext").mockImplementation(
+      () => context as unknown as CanvasRenderingContext2D,
+    );
+  });
+
+  afterEach(() => {
+    vi.restoreAllMocks();
+    vi.unstubAllGlobals();
+  });
+
+  function mockToBlob(type: string) {
+    vi.spyOn(HTMLCanvasElement.prototype, "toBlob").mockImplementation(
+      (callback) => {
+        callback(new Blob([new Uint8Array([1])], { type }));
+      },
+    );
+  }
+
+  it("JPEG 使用传入的底色填充透明区域", async () => {
+    mockToBlob("image/jpeg");
+
+    await cropImageFile({
+      backgroundColor: "#ff0000",
+      file: makeFile(),
+      format: "image/jpeg",
+      quality: 82,
+      rect,
+    });
+
+    expect(context.fillStyle).toBe("#ff0000");
+    expect(context.fillRect).toHaveBeenCalledWith(0, 0, 640, 480);
+  });
+
+  it("JPEG 缺省底色时回退到白色", async () => {
+    mockToBlob("image/jpeg");
+
+    await cropImageFile({
+      file: makeFile(),
+      format: "image/jpeg",
+      quality: 82,
+      rect,
+    });
+
+    expect(context.fillStyle).toBe("#ffffff");
+  });
+
+  it("JPEG 非法底色时回退到白色", async () => {
+    mockToBlob("image/jpeg");
+
+    await cropImageFile({
+      backgroundColor: "not-a-color",
+      file: makeFile(),
+      format: "image/jpeg",
+      quality: 82,
+      rect,
+    });
+
+    expect(context.fillStyle).toBe("#ffffff");
+  });
+
+  it("PNG 不做底色填充", async () => {
+    mockToBlob("image/png");
+
+    await cropImageFile({
+      backgroundColor: "#ff0000",
+      file: makeFile(),
+      format: "image/png",
+      quality: 82,
+      rect,
+    });
+
+    expect(context.fillRect).not.toHaveBeenCalled();
   });
 });

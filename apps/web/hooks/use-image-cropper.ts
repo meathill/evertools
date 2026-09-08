@@ -1,7 +1,8 @@
-import { useEffect, useRef, useState } from "react";
+import { type ChangeEvent, useEffect, useRef, useState } from "react";
 import { useFileDropInput } from "@/hooks/use-file-drop-input";
 import {
   ACCEPTED_IMAGE_TYPES,
+  DEFAULT_BACKGROUND_COLOR,
   DEFAULT_QUALITY,
   getDefaultOutputFormat,
   IMAGE_CONVERTER_ERROR_CODES,
@@ -38,6 +39,7 @@ type CropperSource = {
 };
 
 type CropperResult = {
+  backgroundColor: string | null;
   blob: Blob;
   fileName: string;
   format: OutputFormat;
@@ -59,6 +61,9 @@ export function useImageCropper(content: LocaleContent["imageCropper"]) {
   const [crop, setCrop] = useState<PercentCropRect | null>(null);
   const [aspectKey, setAspectKey] = useState<AspectPresetKey>("free");
   const [outputFormat, setOutputFormat] = useState<OutputFormat>("image/png");
+  const [backgroundColor, setBackgroundColor] = useState(
+    DEFAULT_BACKGROUND_COLOR,
+  );
   const [quality, setQuality] = useState(DEFAULT_QUALITY);
   const [result, setResult] = useState<CropperResult | null>(null);
   const [zoom, setZoom] = useState(1);
@@ -333,6 +338,10 @@ export function useImageCropper(content: LocaleContent["imageCropper"]) {
     setErrorMessage(null);
   }
 
+  function handleBackgroundChange(event: ChangeEvent<HTMLInputElement>) {
+    setBackgroundColor(event.target.value);
+  }
+
   function handleQualityChange(value: number | readonly number[]) {
     if (typeof value === "number") {
       setQuality(value);
@@ -358,12 +367,14 @@ export function useImageCropper(content: LocaleContent["imageCropper"]) {
 
     try {
       const blob = await cropImageFile({
+        backgroundColor,
         file: source.file,
         format: outputFormat,
         quality,
         rect: selectionRect,
       });
       const next: CropperResult = {
+        backgroundColor: outputFormat === "image/jpeg" ? backgroundColor : null,
         blob,
         fileName: buildCropOutputFilename(source.originalName, outputFormat),
         format: outputFormat,
@@ -420,9 +431,11 @@ export function useImageCropper(content: LocaleContent["imageCropper"]) {
     acceptedFormatsText,
     aspect,
     aspectKey,
+    backgroundColor,
     crop,
     errorMessage,
     handleAspectChange,
+    handleBackgroundChange,
     handleBrowseClick: fileDrop.handleBrowseClick,
     handleCropChange,
     handleDownloadClick,

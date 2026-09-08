@@ -199,7 +199,34 @@ describe("useImageCropper", () => {
     expect(result.current.result?.fileName).toBe("photo-cropped.png");
     expect(result.current.result?.width).toBe(640);
     expect(result.current.result?.height).toBe(480);
+    expect(result.current.result?.backgroundColor).toBeNull();
     expect(result.current.isCropping).toBe(false);
+  });
+
+  it("fills transparent areas with the chosen color for jpeg output", async () => {
+    const result = await uploadPng();
+    vi.spyOn(HTMLCanvasElement.prototype, "toBlob").mockImplementation(
+      (callback) => {
+        callback(new Blob([new Uint8Array([1, 2, 3])], { type: "image/jpeg" }));
+      },
+    );
+
+    act(() => {
+      result.current.handleFormatChange("image/jpeg");
+    });
+    act(() => {
+      result.current.handleBackgroundChange({
+        target: { value: "#ff0000" },
+      } as ChangeEvent<HTMLInputElement>);
+    });
+    expect(result.current.backgroundColor).toBe("#ff0000");
+
+    await act(async () => {
+      await result.current.handleGenerateClick();
+    });
+
+    expect(result.current.result?.fileName).toBe("photo-cropped.jpg");
+    expect(result.current.result?.backgroundColor).toBe("#ff0000");
   });
 
   it("auto-generates before download when there is no result yet", async () => {

@@ -2,9 +2,11 @@ import {
   canvasToBlob,
   clampQuality,
   createImageConverterError,
+  DEFAULT_BACKGROUND_COLOR,
   getOutputExtension,
   IMAGE_CONVERTER_ERROR_CODES,
   loadImage,
+  normalizeBackgroundColor,
   type OutputFormat,
   supportsQuality,
 } from "@/lib/image-converter";
@@ -223,6 +225,7 @@ export function buildCropOutputFilename(
 }
 
 export type CropImageInput = {
+  backgroundColor?: string;
   file: File;
   format: OutputFormat;
   quality: number;
@@ -249,7 +252,9 @@ export async function cropImageFile(input: CropImageInput): Promise<Blob> {
     }
 
     if (input.format === "image/jpeg") {
-      context.fillStyle = "#ffffff";
+      context.fillStyle = normalizeBackgroundColor(
+        input.backgroundColor ?? DEFAULT_BACKGROUND_COLOR,
+      );
       context.fillRect(0, 0, input.rect.sWidth, input.rect.sHeight);
     }
 

@@ -606,6 +606,10 @@ export const ptMessages: LocaleContent = {
         qualityAria: "Qualidade de saída",
         qualityDescription:
           "Maior qualidade normalmente significa arquivo maior. Começar perto de 82 costuma ser uma boa escolha.",
+        backgroundColor: "Cor de fundo",
+        backgroundColorAria: "Cor de fundo",
+        backgroundColorDescription:
+          "JPEG não tem transparência; áreas transparentes são preenchidas com esta cor. Branco por padrão.",
         regenerate: "Gerar novamente",
         resultLabel: "Resultado",
         targetFormat: "Formato de exportação",

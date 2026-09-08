@@ -601,6 +601,10 @@ export const enMessages: LocaleContent = {
         qualityAria: "Output quality",
         qualityDescription:
           "Higher quality usually means a larger file. Starting around 82 is a practical default.",
+        backgroundColor: "Background color",
+        backgroundColorAria: "Background color",
+        backgroundColorDescription:
+          "JPEG has no transparency; transparent areas are filled with this color. Defaults to white.",
         regenerate: "Regenerate result",
         resultLabel: "Result",
         targetFormat: "Export format",
