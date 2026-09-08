@@ -291,3 +291,49 @@ OpenNext 部署在 Workers，静态资源与运行时响应的缓存策略分三
   `public/pdf/*`（pdfjs worker）保持 `max-age=0`（URL 无 hash，升级即换内容，不宜长缓存）。
 
 用户上传/转换结果全部在浏览器本地（WASM），服务端响应不含用户内容，无 no-store 需求。
+
+## 图片裁切器（`lib/image-cropper.ts` + `hooks/use-image-cropper.ts`）
+
+- **分层沿用转换器约定**：百分比↔像素矩形、比例预设、导出等纯函数放 `lib/image-cropper.ts`；
+  hook 只做选框/缩放/键盘微调的状态编排。`PercentCropRect` 自持类型（单位 0-100），
+  不直接依赖 `react-image-crop` 的类型，避免纯函数层被组件库污染。
+- `computeCropPixelRect` 先 round 再钳制：`sx/sy >= 0`、`sWidth/sHeight >= 1` 且不越界，
+  结果可直接喂 `drawImage`，调用方不用二次校验。
+- 复用 `image-converter` 的 `loadImage` / `canvasToBlob` / 错误码体系，不另起管线；
+  新增管线需求先看转换器里有没有现成的。
+
+## 网页内容转 Markdown（`lib/html-to-markdown*.ts`）
+
+- **解析复用 `node-html-parser`**（与 OG 解析同库，不新增依赖）。
+  `SKIPPED_TAGS` 丢脚本/样式/嵌入内容与完整文档粘贴时的 head 噪音；
+  `BLOCK_TAGS` 白名单决定哪些标签独立成块，未列出的标签一律按内联透传处理。
+- **转义分两层**：`escapeMarkdownText` 管位置无关字符，`escapeLineStartMarkers` 只管行首
+  （标题/列表/引用）。调用方必须先转义原始文本、再拼接自己生成的语法前缀，
+  否则会把自己生成的符号也转义掉。
+- `parse` 配置**故意不写 `pre` key**：这个 key 只要存在（不论值），`<pre>` 内部就被整段当字符串，
+  `<code class="language-x">` 解析不出子元素，代码语言检测直接失效。
+
+## 图片转换器 JPEG 底色与首帧提示
+
+- JPEG 不支持透明，canvas 导出前按底色 `fillRect`，默认白。
+  `normalizeBackgroundColor` 只认 `#rrggbb`，其余回默认；`ResultImage.backgroundColor`
+  参与批量管线的过期判定（换底色即视为需重新生成）。
+- **动图只取第一帧是 canvas 管线的固有语义**，不是 bug。徽标只打给 GIF
+ （`isFirstFrameOnlySource`）：AVIF/WebP 动静在浏览器侧无法低成本判定，不做误报。
+- 转换 hub、裁切器、18 个转换落地页经 `RelatedTools` 互链；es/pt/vi 落地页标题带
+  `gratis`/`grátis`/`miễn phí` 承接本地查询词。
+
+## 首页 SEO title 品牌规则（issue #4）
+
+- 品牌统一为 **Meathill Tools**，`EverTools` 不再出现在用户可见文案中。
+- title 以品牌开头、≤75 字符（SERP 截断线）、与 H1 分工：title 承担品牌 + 主要工具意图，
+  H1 承担价值主张；layout 的 `defaultTitle` 不含品牌，避免 `name | defaultTitle` 重复拼接。
+- 回归护栏在 `lib/home-metadata.test.ts`（7 locale 全覆盖 + 无残留 EverTools 断言）。
+
+## Next/OpenNext prefetch 与 observability（issue #5）
+
+- Next 16.3 + OpenNext cache interception 会触发无限 `_rsc`/segment 预取跑量：
+  `open-next.config.ts` 显式 `enableCacheInterception: false`
+ （上游 `opennextjs-cloudflare#1348` 未合并前保持关闭），全站 `Link` 加 `prefetch={false}`。
+- `wrangler.jsonc` 里 `observability.enabled = false`，停止日志额度消耗。
+  这两处都是成本开关，改动前先确认 Worker 请求量/日志账单的影响。
