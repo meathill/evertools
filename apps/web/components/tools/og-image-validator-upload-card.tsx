@@ -45,7 +45,10 @@ export function OgImageValidatorUploadCard({
       </CardHeader>
       <CardPanel>
         <DropZone
+          clickable={!image}
+          disabled={isPreparing}
           isDragging={isDragging}
+          onBrowseClick={handleBrowseClick}
           onDragLeave={handleDragLeave}
           onDragOver={handleDragOver}
           onDrop={handleDrop}

@@ -74,7 +74,10 @@ export function PdfPasswordRemoverClient({
         </CardHeader>
         <CardPanel>
           <DropZone
+            clickable={!fileMeta}
+            disabled={isBusy}
             isDragging={drop.isDragging}
+            onBrowseClick={drop.handleBrowseClick}
             onDragLeave={drop.handleDragLeave}
             onDragOver={drop.handleDragOver}
             onDrop={drop.handleDrop}

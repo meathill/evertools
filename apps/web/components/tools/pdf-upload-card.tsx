@@ -84,7 +84,10 @@ export function PdfUploadCard({
       </CardHeader>
       <CardPanel>
         <DropZone
+          clickable={!fileName}
+          disabled={isLoading}
           isDragging={isDragging}
+          onBrowseClick={() => inputRef.current?.click()}
           onDragLeave={onDragLeave}
           onDragOver={onDragOver}
           onDrop={onDrop}

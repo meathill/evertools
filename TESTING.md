@@ -18,6 +18,10 @@ pnpm typecheck                                # 类型检查，跟测试一起�
   不影响其余测试的默认环境（目前只有 `hooks/use-image-converter.test.ts` 这样用）。
 - jsdom 不实现 `URL.createObjectURL`、canvas 2D 渲染、图片解码，这类测试需要手动 mock——
   参考 `hooks/use-image-converter.test.ts` 里的 `MockImage`/`getContext`/`toBlob` mock 写法。
+- 当前环境的 jsdom 没有可用的 `localStorage`（Node 24 原生桩要求 `--localstorage-file`），
+  `apps/web/vitest.setup.ts` 在测试进程启动时注入内存版兜底——只有全局缺失时才装，
+  真实浏览器不受影响。zustand `persist` 的 `createJSONStorage` 在模块加载时求值一次，
+  所以必须走 setup 文件提前注入，在用例里 `stubGlobal` 已经太晚。
 
 ## 现状与覆盖范围
 

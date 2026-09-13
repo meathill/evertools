@@ -322,6 +322,13 @@ OpenNext 部署在 Workers，静态资源与运行时响应的缓存策略分三
  （`isFirstFrameOnlySource`）：AVIF/WebP 动静在浏览器侧无法低成本判定，不做误报。
 - 转换 hub、裁切器、18 个转换落地页经 `RelatedTools` 互链；es/pt/vi 落地页标题带
   `gratis`/`grátis`/`miễn phí` 承接本地查询词。
+- **上传大框空状态整框可点**：`components/ui/drop-zone.tsx` 的 `clickable + onBrowseClick`，
+  点空白处直达文件选择框，点内部按钮不重复触发；有内容后保持不可点防误触。
+  5 个上传卡（转换器/裁切器/PDF 编辑器/PDF 去密码/OG 校验）统一走这个约定。
+- **转换设置持久化**：`stores/image-converter-store.ts` 经 zustand `persist` 存
+  `evertools:image-converter-settings:v1`（格式/缩放/质量/底色/裁切锚点/宽高全记，读回时逐项
+  校验）。上传首图不再重置设置（只在宽高为空时回填原图尺寸），「清空」按钮只清图片不洗设置；
+  落地页 `preferredOutputFormat` 仍优先覆盖。
 
 ## 首页 SEO title 品牌规则（issue #4）
 

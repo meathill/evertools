@@ -139,7 +139,10 @@ export function ImageCropperCropCard({
 
       <CardPanel>
         <DropZone
+          clickable={!source}
+          disabled={isPreparing}
           isDragging={isDragging}
+          onBrowseClick={handleBrowseClick}
           onDragLeave={handleDragLeave}
           onDragOver={handleDragOver}
           onDrop={handleDrop}

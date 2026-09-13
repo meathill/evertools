@@ -53,7 +53,6 @@ export function useImageConverter(
     hydrateFromSource,
     outputFormat,
     quality,
-    reset,
     resizeMode,
     setBackgroundColor,
     setCropAnchor,
@@ -532,11 +531,12 @@ export function useImageConverter(
       }
     }
 
+    // 只清空图片列表，不碰转换设置：设置已持久化到 localStorage，
+    // 清空图片不应把用户记住的格式/尺寸/质量洗掉。
     setItems([]);
     setBatchProgress(null);
     setErrorMessage(null);
     stopDragging();
-    reset();
   }
 
   return {

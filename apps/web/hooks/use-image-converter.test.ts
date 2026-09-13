@@ -56,6 +56,10 @@ let objectUrlCounter = 0;
 
 beforeEach(() => {
   objectUrlCounter = 0;
+  localStorage.clear();
+  // persist 中间件会把设置写进 localStorage；每个用例开始时回到首访状态，
+  // 避免记住的格式/尺寸污染“上传后回填原生尺寸”等断言。
+  useImageConverterStore.setState({ hasRestoredSettings: false });
   vi.stubGlobal("Image", MockImage);
   // jsdom 未实现 createObjectURL/revokeObjectURL，vi.spyOn 要求方法已存在，
   // 这里直接赋值 mock 而非 spyOn。
@@ -81,8 +85,10 @@ beforeEach(() => {
 afterEach(() => {
   vi.restoreAllMocks();
   vi.unstubAllGlobals();
+  localStorage.clear();
   act(() => {
     useImageConverterStore.getState().reset();
+    useImageConverterStore.setState({ hasRestoredSettings: false });
   });
 });
 

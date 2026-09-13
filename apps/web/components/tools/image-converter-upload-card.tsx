@@ -78,7 +78,10 @@ export function ImageConverterUploadCard({
 
         <CardPanel>
           <DropZone
+            clickable={items.length === 0}
+            disabled={isPreparing}
             isDragging={isDragging}
+            onBrowseClick={handleBrowseClick}
             onDragLeave={handleDragLeave}
             onDragOver={handleDragOver}
             onDrop={handleDrop}
