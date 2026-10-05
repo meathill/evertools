@@ -97,7 +97,8 @@ Tailwind v4 **只为 `@theme` 块里声明的 token 生成 utility**。仅写在
   和 `isPartOf` 指向 WebSite 的语义归属；`featureList`/`offers`/`applicationCategory` 一并去掉
   （只为旧类型服务，留着就是死数据）。
 - `lib/tool-page.test.ts` 有回归用例断言输出里不含这几个类型，别再加回来。
-- FAQPage / HowTo / BreadcrumbList 不受影响，无需改动。
+- FAQPage / BreadcrumbList 保留；**HowTo 已在 issue #6 删除**（Google 2023 年起不再展示 HowTo 富结果，留着只增加无效结构化数据）。
+- 首页 Organization JSON-LD 需带 `logo`（`/mui-mark.png` 绝对 URL）；`meathill-brand` 的 `getOrganizationJsonLd()` 暂不带 logo，由 `lib/home-structured-data.ts` 补上。
 
 ## pdfjs-dist 锁定 4.10.38
 

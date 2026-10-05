@@ -24,29 +24,25 @@ const cases = [
   {
     label: "image-converter",
     tool: getImageConverterTool(zh),
-    totalTime: "PT1M",
   },
   {
     label: "pdf-text-editor",
     tool: getPdfTextEditorTool(zh),
-    totalTime: "PT3M",
   },
   {
     label: "pdf-password-remover",
     tool: getPdfPasswordRemoverTool(zh),
-    totalTime: "PT1M",
   },
   {
     label: "json-viewer",
     tool: getJsonViewerTool(zh),
-    totalTime: "PT1M",
   },
 ];
 
 describe("buildToolStructuredData", () => {
   it.each(cases)(
-    "$label reproduces the four schema.org blocks",
-    ({ tool, totalTime }) => {
+    "$label reproduces the three schema.org blocks",
+    ({ tool }) => {
       const data = buildToolStructuredData("zh", tool, homeLabel);
       const url = createLocalizedUrl("zh", tool.href);
 
@@ -72,19 +68,6 @@ describe("buildToolStructuredData", () => {
             acceptedAnswer: { "@type": "Answer", text: item.answer },
             name: item.question,
           })),
-        },
-        {
-          "@context": "https://schema.org",
-          "@type": "HowTo",
-          description: tool.summary,
-          name: tool.stepsTitle,
-          step: tool.steps.map((step, index) => ({
-            "@type": "HowToStep",
-            name: `${tool.stepsTitle} ${index + 1}`,
-            text: step,
-            url,
-          })),
-          totalTime,
         },
         {
           "@context": "https://schema.org",
@@ -117,7 +100,6 @@ describe("buildToolStructuredData", () => {
       expect(data.map((block) => block["@type"])).toEqual([
         "WebPage",
         "FAQPage",
-        "HowTo",
         "BreadcrumbList",
       ]);
       expect(Object.keys(data[0])).toEqual([
@@ -133,14 +115,6 @@ describe("buildToolStructuredData", () => {
       expect(Object.keys(data[2])).toEqual([
         "@context",
         "@type",
-        "description",
-        "name",
-        "step",
-        "totalTime",
-      ]);
-      expect(Object.keys(data[3])).toEqual([
-        "@context",
-        "@type",
         "itemListElement",
       ]);
     },
@@ -148,6 +122,14 @@ describe("buildToolStructuredData", () => {
 
   // 回归：SoftwareApplication 及其子类型会触发 Google Software App 富结果校验，
   // 而该校验要求 aggregateRating 或 review，我们没有真实评分，标了必然报错。
+  it.each(cases)("$label emits no HowTo schema", ({ tool }) => {
+    const types = JSON.stringify(
+      buildToolStructuredData("zh", tool, homeLabel),
+    );
+
+    expect(types).not.toMatch(/"HowTo(Step)?"/);
+  });
+
   it.each(cases)("$label emits no SoftwareApplication subtype", ({ tool }) => {
     const types = JSON.stringify(
       buildToolStructuredData("zh", tool, homeLabel),
@@ -163,7 +145,7 @@ describe("buildToolStructuredData", () => {
     expect(data[0].url).toBe(
       "https://tools.meathill.com/en/tools/image-converter",
     );
-    expect(data[3].itemListElement).toEqual([
+    expect(data[2].itemListElement).toEqual([
       {
         "@type": "ListItem",
         item: "https://meathill.com",

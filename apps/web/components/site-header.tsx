@@ -1,7 +1,7 @@
 "use client";
 
-import { BrandSiteSwitcher } from "meathill-brand-react";
 import { GlobeIcon, MonitorIcon, MoonIcon, SunIcon } from "lucide-react";
+import { BrandSiteSwitcher } from "meathill-brand-react";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { Badge } from "@/components/ui/badge";
@@ -63,7 +63,7 @@ export function SiteHeader({ content, locale }: SiteHeaderProps) {
 
   return (
     <header className="sticky top-0 z-40 border-b border-rule bg-cream/88 backdrop-blur">
-      <div className="mx-auto flex max-w-6xl flex-wrap items-center justify-between gap-x-4 gap-y-2 px-4 py-3 sm:px-6">
+      <div className="mx-auto flex min-h-14 max-w-6xl flex-wrap items-center justify-between gap-x-4 gap-y-2 px-4 py-3 sm:px-6">
         <Link
           className="flex min-w-0 items-center gap-3"
           href={getLocalizedPathname(locale, "/")}

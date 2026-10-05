@@ -67,19 +67,7 @@ export function buildToolStructuredData(
         name: item.question,
       })),
     },
-    {
-      "@context": "https://schema.org",
-      "@type": "HowTo",
-      description: tool.summary,
-      name: tool.stepsTitle,
-      step: tool.steps.map((step, index) => ({
-        "@type": "HowToStep",
-        name: `${tool.stepsTitle} ${index + 1}`,
-        text: step,
-        url: createLocalizedUrl(locale, tool.href),
-      })),
-      totalTime: tool.totalTime,
-    },
+    // HowTo 已移除：Google 自 2023 年起不再展示 HowTo 富结果（issue #6）。
     {
       "@context": "https://schema.org",
       "@type": "BreadcrumbList",

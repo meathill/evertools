@@ -19,21 +19,29 @@ import { getLocaleContent } from "@/messages";
 const ADSENSE_CLIENT_ID = "ca-pub-9946806099979342";
 const GOOGLE_ANALYTICS_ID = "G-1S0T1HF97B";
 
+// 用独立 CSS 变量挂 next/font，globals.css 的字族栈再引用它们，
+// 这样 size-adjust fallback 才会生效，减轻 webfont 交换时的 CLS。
 const fontDisplay = Fraunces({
+  adjustFontFallback: true,
+  display: "swap",
   subsets: ["latin"],
-  variable: "--font-display",
-  weight: ["500", "600", "700", "800"],
+  variable: "--font-fraunces",
+  weight: ["700", "800"],
 });
 
 const fontSans = Nunito({
+  adjustFontFallback: true,
+  display: "swap",
   subsets: ["latin"],
-  variable: "--font-sans",
+  variable: "--font-nunito",
   weight: ["400", "500", "600", "700", "800"],
 });
 
 const fontMono = JetBrains_Mono({
+  adjustFontFallback: true,
+  display: "swap",
   subsets: ["latin"],
-  variable: "--font-mono",
+  variable: "--font-jetbrains",
   weight: ["400", "500", "600"],
 });
 

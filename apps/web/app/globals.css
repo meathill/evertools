@@ -265,14 +265,17 @@
   --focus-ring: 0 0 0 3px rgb(230 195 74 / 0.4);
 
   /* ---------- Typography — families ----------------------- */
+  /* --font-fraunces / --font-nunito / --font-jetbrains 由 next/font 注入（含 size-adjust fallback） */
   --font-display:
-    "Fraunces", "Iowan Old Style", "Hoefler Text", "Source Serif Pro", Cambria,
-    "Times New Roman", serif;
+    var(--font-fraunces), "Fraunces", "Iowan Old Style", "Hoefler Text",
+    "Source Serif Pro", Cambria, "Times New Roman", serif;
   --font-sans:
-    "Nunito", -apple-system, BlinkMacSystemFont, "PingFang SC",
-    "Hiragino Sans GB", "Microsoft YaHei", "Segoe UI", system-ui, sans-serif;
+    var(--font-nunito), "Nunito", -apple-system, BlinkMacSystemFont,
+    "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Segoe UI", system-ui,
+    sans-serif;
   --font-mono:
-    "JetBrains Mono", "SF Mono", Menlo, Consolas, "Liberation Mono", monospace;
+    var(--font-jetbrains), "JetBrains Mono", "SF Mono", Menlo, Consolas,
+    "Liberation Mono", monospace;
 
   /* ---------- Typography — size scale (no decimals, no odd numbers) -------- */
   --text-xs: 12px;

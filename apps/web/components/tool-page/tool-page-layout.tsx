@@ -1,5 +1,5 @@
-import { BrandBreadcrumb } from "meathill-brand-react";
 import type { LucideIcon } from "lucide-react";
+import { BrandBreadcrumb } from "meathill-brand-react";
 import type { ReactNode } from "react";
 import { StructuredData } from "@/components/structured-data";
 import { Badge } from "@/components/ui/badge";

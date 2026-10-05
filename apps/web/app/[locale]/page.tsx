@@ -1,4 +1,3 @@
-import { brandCatalog, getOrganizationJsonLd } from "meathill-brand";
 import { ArrowRightIcon, CloudUploadIcon, ShieldCheckIcon } from "lucide-react";
 import type { Metadata } from "next";
 import { StructuredData } from "@/components/structured-data";
@@ -13,6 +12,7 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { getTools } from "@/lib/content";
+import { buildHomeStructuredData } from "@/lib/home-structured-data";
 import { getLocaleFromParams } from "@/lib/locale";
 import {
   createLocalizedUrl,
@@ -68,27 +68,12 @@ export default async function HomePage({
   const content = getLocaleContent(locale);
   const tools = getTools(content);
 
-  const homeStructuredData = [
-    getOrganizationJsonLd(),
-    {
-      "@context": "https://schema.org",
-      "@type": "WebSite",
-      description: content.home.metadata.description,
-      name: siteConfig.name,
-      publisher: { "@id": brandCatalog.organization.id },
-      url: createLocalizedUrl(locale, "/"),
-    },
-    {
-      "@context": "https://schema.org",
-      "@type": "ItemList",
-      itemListElement: tools.map((tool, index) => ({
-        "@type": "ListItem",
-        position: index + 1,
-        url: createLocalizedUrl(locale, tool.href),
-      })),
-      name: content.home.structuredData.toolListName,
-    },
-  ];
+  const homeStructuredData = buildHomeStructuredData({
+    locale,
+    toolListName: content.home.structuredData.toolListName,
+    tools,
+    websiteDescription: content.home.metadata.description,
+  });
 
   return (
     <>
@@ -153,19 +138,40 @@ export default async function HomePage({
             <CardPanel className="grid gap-4 sm:grid-cols-3 lg:grid-cols-1">
               <FeatureStat
                 description={content.home.strategy.indexedPagesDescription}
-                icon={<ArrowRightIcon className="size-4.5" />}
+                icon={
+                  <ArrowRightIcon
+                    aria-hidden
+                    className="size-4.5"
+                    height={18}
+                    width={18}
+                  />
+                }
                 title={content.home.strategy.indexedPagesTitle}
               />
               <FeatureStat
                 description={content.home.strategy.localProcessingDescription}
-                icon={<ShieldCheckIcon className="size-4.5" />}
+                icon={
+                  <ShieldCheckIcon
+                    aria-hidden
+                    className="size-4.5"
+                    height={18}
+                    width={18}
+                  />
+                }
                 title={content.home.strategy.localProcessingTitle}
               />
               <FeatureStat
                 description={
                   content.home.strategy.lightweightExpansionDescription
                 }
-                icon={<CloudUploadIcon className="size-4.5" />}
+                icon={
+                  <CloudUploadIcon
+                    aria-hidden
+                    className="size-4.5"
+                    height={18}
+                    width={18}
+                  />
+                }
                 title={content.home.strategy.lightweightExpansionTitle}
               />
             </CardPanel>
@@ -183,7 +189,7 @@ export default async function HomePage({
           </p>
         </div>
 
-        <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
+        <div className="grid auto-rows-fr gap-6 md:grid-cols-2 xl:grid-cols-3">
           {tools.map((tool) => (
             <ToolCard key={tool.slug} locale={locale} tool={tool} />
           ))}
