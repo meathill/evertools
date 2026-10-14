@@ -18,6 +18,10 @@ describe("public/_headers", () => {
     expect(content).toMatch(
       /^\/_next\/static\/\*\s*\n\s*Cache-Control:\s*public,max-age=31536000,immutable\s*$/m,
     );
+    expect(content).toMatch(
+      /^\/sitemap\.xml\s*\n\s*Cache-Control:\s*public, max-age=3600\s*$/m,
+    );
+    expect(content).not.toMatch(/sitemap\.xml[\s\S]*immutable/);
   });
 });
 

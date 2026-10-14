@@ -3,3 +3,7 @@
 # Next.js 静态产物带内容 hash，URL 不变即内容不变，可安全 immutable。
 /_next/static/*
   Cache-Control: public,max-age=31536000,immutable
+
+# URL 不带内容 hash，工具增减后下一次部署就会换文件，不要 immutable。
+/sitemap.xml
+  Cache-Control: public, max-age=3600

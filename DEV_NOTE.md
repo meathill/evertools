@@ -10,8 +10,24 @@
 7 个语言的页面全都没有 `lang` 属性。
 
 - 改根布局时记得：新增的全局 `<head>`/`<body>` 内容要加到 `[locale]/layout.tsx`，加到根布局不会生效。
-- `app/` 下除 `[locale]` 外只有 route handler（`api/`）和 metadata 文件（`sitemap.ts`/`robots.ts`），
-  都不需要 HTML 外壳，所以这样拆是安全的。
+- `app/` 下除 `[locale]` 外只有 route handler（`api/`）和 `robots.ts`，
+  都不需要 HTML 外壳，所以这样拆是安全的。sitemap 不走这条路由，见下文。
+
+## 抓取入口：静态 sitemap、favicon、IndexNow（issue #6）
+
+- **sitemap 是 `public/sitemap.xml`，不是 `app/sitemap.ts`**。以前的路由在 Worker 里每次 `new Date()`，
+  响应带 `vary: rsc`，带 `RSC: 1` 时还会 307 到 `?_rsc`。Yandex 要的是稳定的 200 XML。
+  静态文件跟 favicon 一样走 Assets，不进 Worker。不写 `lastmod`：页面没有独立更新时间，
+  写了只会让每条 URL 每次构建都像刚改过。改工具或转换配对后跑 `generate:sitemap`。
+- **favicon 必须是 Yandex 认的尺寸**：`public/icon.png` 120×120（`image/png`），
+  `public/favicon.ico` 32×32。不要再把 256px PNG 改名成 `.ico` 并标 `image/x-icon`，
+  爬虫按 ICO 解就会判「找不到 favicon」。链接写在 `siteIcons`，不要用 `app/icon` 那套带 hash 的 URL。
+- **IndexNow**：密钥 `lib/indexnow.ts` 的 `INDEXNOW_KEY`，文件 `public/<key>.txt` 内容就是密钥本身，
+  不能多一个换行。部署之后跑 `pnpm --filter web indexnow`（`--dry-run` 只打印条数）。
+  密钥还没上线时脚本会失败，这是预期。
+- **GA 用 `next/script` 的 `lazyOnload`**，不要用 `@next/third-parties` 的 `GoogleAnalytics`
+  （它固定 `afterInteractive`，算进 TBT）。AdSense 自动广告的 CLS 没法在代码里预留高度，
+  只能在 AdSense 后台关掉插入正文的 in-page 广告；锚点/叠层可以留。
 
 ## Biome 抑制注释的位置规则
 
@@ -137,7 +153,9 @@ worker 文件由 `pnpm copy:pdf-worker` 拷到 `public/pdf/`，`dev` / `build` �
   `lib/conversions.ts` 的 `FORMAT_TRAITS`（hasAlpha / isAnimated / isLossy）推导出 `conversionNoteKeys()`，
   `lib/conversion-content.ts` 再把「来源格式痛点 + 目标格式收益 + 推导出的注意事项」拼成每页独有的
   features / steps / faq / hero 场景卡；只有格式名走 `{from}/{to}` 插值。
-- 新增配对只需往 `CONVERSION_PAIRS` 加一行，路由 / sitemap / 站内链接（`ConversionLinks`）/ 文案组合自动覆盖；
+- 新增配对只需往 `CONVERSION_PAIRS` 加一行，路由 / sitemap / 站内链接（`ConversionLinks`）/ 文案组合自动覆盖。
+  sitemap 本体是 `public/sitemap.xml`（`pnpm --filter web generate:sitemap`，`build` 会先跑它）；
+  `lib/sitemap-document.test.ts` 锁着提交的文件和生成结果一致，漏跑会在测试里失败。
   新增**格式**还要在 `CONVERSION_FORMAT_LABELS`、`FORMAT_TRAITS`、各 locale 的 `conversions.sourceNotes`
   里补一行，以及 `ACCEPTED_IMAGE_TYPES` 放开输入。
 - 输入格式放开到 AVIF / GIF / BMP：浏览器 `<img>` 原生能解码，走的还是既有 canvas 管线，零额外依赖；

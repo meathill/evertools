@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import { type AppLocale, routing } from "@/i18n/routing";
 
 export const siteConfig = {
@@ -5,6 +6,15 @@ export const siteConfig = {
   name: "Meathill Tools",
   url: "https://tools.meathill.com",
 } as const;
+
+// Yandex 只可靠地收 120 / 32 / 16。文件放 public/，链接不带内容 hash，
+// 避免把 256px PNG 标成 image/x-icon 之后爬虫解不开。
+export const siteIcons: Metadata["icons"] = {
+  icon: [
+    { sizes: "120x120", type: "image/png", url: "/icon.png" },
+    { sizes: "32x32", type: "image/x-icon", url: "/favicon.ico" },
+  ],
+};
 
 export const localeMetadata: Record<
   AppLocale,

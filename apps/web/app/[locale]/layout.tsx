@@ -1,4 +1,3 @@
-import { GoogleAnalytics } from "@next/third-parties/google";
 import type { Metadata } from "next";
 import { Fraunces, JetBrains_Mono, Nunito } from "next/font/google";
 import Script from "next/script";
@@ -12,6 +11,7 @@ import {
   getLanguageAlternates,
   localeMetadata,
   siteConfig,
+  siteIcons,
 } from "@/lib/site";
 import { cn } from "@/lib/utils";
 import { getLocaleContent } from "@/messages";
@@ -93,6 +93,7 @@ export async function generateMetadata({
       description: content.metadata.siteDescription,
       images: [createLocalizedUrl(locale, "/opengraph-image")],
     },
+    icons: siteIcons,
     robots: {
       follow: true,
       index: true,
@@ -146,7 +147,15 @@ export default async function LocaleLayout({
           <main className="flex-1">{children}</main>
           <SiteFooter content={content.footer} locale={locale} />
         </div>
-        <GoogleAnalytics gaId={GOOGLE_ANALYTICS_ID} />
+        {/* @next/third-parties 的 GoogleAnalytics 固定 afterInteractive，会挤进 TBT 窗口。
+            统计不参与首屏交互，跟 AdSense 一样放到 load 之后。 */}
+        <Script id="google-analytics" strategy="lazyOnload">
+          {`window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','${GOOGLE_ANALYTICS_ID}');`}
+        </Script>
+        <Script
+          src={`https://www.googletagmanager.com/gtag/js?id=${GOOGLE_ANALYTICS_ID}`}
+          strategy="lazyOnload"
+        />
       </body>
     </html>
   );
