@@ -272,6 +272,23 @@ describe("related tools wiring", () => {
   });
 });
 
+// issue #7 回归护栏：Bing 认为描述 <120 字符算"过短"，中文/日语落地页曾被点到。
+// 这两套模板填充格式名后必须至少 80 字，并且不超过 Bing 的可接受上限。
+describe("conversion description length", () => {
+  it("keeps zh/ja conversion descriptions inside the Bing-safe range", () => {
+    for (const locale of ["zh", "ja"] as const) {
+      const content = getLocaleContent(locale);
+
+      for (const pair of CONVERSION_PAIRS) {
+        const length = getConversionTool(content, pair).description.length;
+
+        expect(length).toBeGreaterThanOrEqual(80);
+        expect(length).toBeLessThanOrEqual(120);
+      }
+    }
+  });
+});
+
 // issue #1 的回归护栏。`dynamicParams = false` 会让 prerender-manifest 中本路由的
 // fallback 变成 false（FallbackMode.NOT_FOUND）；OpenNext/Cloudflare 没有磁盘缓存，
 // 每次请求都是 cache MISS，Next 无从确认路径预渲染过，于是白名单 slug 也一律 404。

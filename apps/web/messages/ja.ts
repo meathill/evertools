@@ -331,7 +331,7 @@ export const jaMessages: LocaleContent = {
     conversions: {
       badge: "{from} → {to}",
       description:
-        "{from} を {to} にブラウザ内で無料変換。アップロードも登録も枚数制限もなく、画像は端末から一歩も外に出ません。",
+        "{from} を {to} にブラウザ内で無料変換。一括変換・サイズ/品質調整・iPhone の HEIC 写真にも対応。アップロードも登録も枚数制限もなく、画像は端末から一歩も外に出ません。",
       faq: {
         base: [
           {

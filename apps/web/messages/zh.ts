@@ -315,7 +315,7 @@ export const zhMessages = {
     conversions: {
       badge: "{from} → {to}",
       description:
-        "在浏览器里免费把 {from} 转成 {to}：不上传、不注册、不限张数，图片全程留在你自己的设备上。",
+        "在浏览器里免费把 {from} 转成 {to}：支持批量转换、可调尺寸与质量，iPhone HEIC 照片也能处理；不上传、不注册、不限张数，图片全程留在你自己的设备上。",
       faq: {
         base: [
           {
@@ -1709,7 +1709,7 @@ export const zhMessages = {
         "台湾正体",
         "港澳繁体",
       ],
-      title: "简繁转换 - 在线简体繁体互转",
+      title: "简繁体转换器（在线免费）｜台湾正体 / 港澳繁体",
     },
     hero: {
       badges: {
@@ -1772,7 +1772,7 @@ export const zhMessages = {
         "台湾正体",
         "港澳繁体",
       ],
-      name: "在线简繁体转换",
+      name: "简繁体转换器（在线免费）｜台湾正体 / 港澳繁体",
       steps: [
         "粘贴或输入需要转换的中文内容。",
         "选择转换方向（简→繁 或 繁→简），如为繁体再选择目标地区。",
