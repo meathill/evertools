@@ -18,6 +18,8 @@ import { getLocaleContent } from "@/messages";
 
 const ADSENSE_CLIENT_ID = "ca-pub-9946806099979342";
 const GOOGLE_ANALYTICS_ID = "G-1S0T1HF97B";
+// Microsoft Clarity，tools.meathill.com 独立项目（与博客 meathill.com 分开）。
+const CLARITY_PROJECT_ID = "zhpojb3g0o";
 
 // 用独立 CSS 变量挂 next/font，globals.css 的字族栈再引用它们，
 // 这样 size-adjust fallback 才会生效，减轻 webfont 交换时的 CLS。
@@ -156,6 +158,10 @@ export default async function LocaleLayout({
           src={`https://www.googletagmanager.com/gtag/js?id=${GOOGLE_ANALYTICS_ID}`}
           strategy="lazyOnload"
         />
+        {/* Clarity 官方片段，同 GA 放到 load 之后。 */}
+        <Script id="microsoft-clarity" strategy="lazyOnload">
+          {`(function(c,l,a,r,i,t,y){c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y)})(window,document,"clarity","script","${CLARITY_PROJECT_ID}");`}
+        </Script>
       </body>
     </html>
   );
