@@ -67,7 +67,10 @@ export function ToolPageLayout({
     <>
       <StructuredData data={structuredData} />
 
-      <section className="border-b border-rule">
+      {/* 与首页 hero 一致：relative 让 bg-sun/bg-grid 只覆盖 hero；
+        缺了它装饰层会越级挂到全站 relative 容器上铺满整页，
+        页面任何晚到的高度变化（如 AdSense 注入）都会被计成全视口 CLS。 */}
+      <section className="relative overflow-hidden border-b border-rule">
         <div className="absolute inset-0 bg-sun" />
         <div className="absolute inset-0 bg-grid opacity-50" />
         <div className="relative mx-auto grid max-w-6xl gap-8 px-4 py-14 sm:px-6 lg:grid-cols-[minmax(0,1.2fr)_minmax(280px,0.8fr)] lg:py-18">
