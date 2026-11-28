@@ -6,6 +6,7 @@ import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
 import { routing } from "@/i18n/routing";
 import { getLocaleFromParams } from "@/lib/locale";
+import { ADSENSE_CLIENT_ID } from "@/lib/ads";
 import {
   createLocalizedUrl,
   getLanguageAlternates,
@@ -16,7 +17,6 @@ import {
 import { cn } from "@/lib/utils";
 import { getLocaleContent } from "@/messages";
 
-const ADSENSE_CLIENT_ID = "ca-pub-9946806099979342";
 const GOOGLE_ANALYTICS_ID = "G-1S0T1HF97B";
 // Microsoft Clarity，tools.meathill.com 独立项目（与博客 meathill.com 分开）。
 const CLARITY_PROJECT_ID = "zhpojb3g0o";

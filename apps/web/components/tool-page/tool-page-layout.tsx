@@ -1,6 +1,7 @@
 import type { LucideIcon } from "lucide-react";
 import { BrandBreadcrumb } from "meathill-brand-react";
 import type { ReactNode } from "react";
+import { AdSenseUnit } from "@/components/ads/adsense-unit";
 import { StructuredData } from "@/components/structured-data";
 import { Badge } from "@/components/ui/badge";
 import {
@@ -10,6 +11,7 @@ import {
   CardPanel,
   CardTitle,
 } from "@/components/ui/card";
+import { ADSENSE_SLOTS } from "@/lib/ads";
 import type { ToolFaq } from "@/lib/content";
 
 type ScenarioRow = {
@@ -117,6 +119,7 @@ export function ToolPageLayout({
 
       <section className="mx-auto max-w-6xl px-4 py-10 sm:px-6 lg:py-14">
         {children}
+        <AdSenseUnit slotId={ADSENSE_SLOTS.toolBelow} />
       </section>
 
       <section className="border-t border-rule bg-fluff/30">
