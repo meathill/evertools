@@ -3,6 +3,10 @@ import { act, renderHook, waitFor } from "@testing-library/react";
 import type { ChangeEvent, DragEvent } from "react";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import { getLocaleContent } from "@/messages";
+import {
+  IMAGE_CROPPER_SETTINGS_STORAGE_KEY,
+  useImageCropperStore,
+} from "@/stores/image-cropper-store";
 import { useImageCropper } from "./use-image-cropper";
 
 vi.mock("heic-to", () => ({
@@ -55,6 +59,13 @@ let objectUrlCounter = 0;
 
 beforeEach(() => {
   objectUrlCounter = 0;
+  // 格式/质量已持久化到模块级 store，用例间必须重置，避免跨用例串味。
+  localStorage.clear();
+  useImageCropperStore.setState({
+    hasRestoredSettings: false,
+    outputFormat: "image/png",
+    quality: 82,
+  });
   vi.stubGlobal("Image", MockImage);
   URL.createObjectURL = vi.fn(() => `blob:mock-${objectUrlCounter++}`);
   URL.revokeObjectURL = vi.fn();
@@ -114,6 +125,22 @@ describe("useImageCropper", () => {
     });
     expect(result.current.outputFormat).toBe("image/png");
     expect(result.current.isPreparing).toBe(false);
+  });
+
+  it("restores persisted format and quality on mount", async () => {
+    localStorage.setItem(
+      IMAGE_CROPPER_SETTINGS_STORAGE_KEY,
+      JSON.stringify({
+        state: { outputFormat: "image/webp", quality: 90 },
+        version: 1,
+      }),
+    );
+
+    const { result } = renderHook(() => useImageCropper(content));
+
+    // store 是 skipHydration，由 hook 挂载 effect 手动 rehydrate。
+    await waitFor(() => expect(result.current.outputFormat).toBe("image/webp"));
+    expect(result.current.quality).toBe(90);
   });
 
   it("rejects unsupported files with a message", async () => {

@@ -53,6 +53,38 @@ describe("image converter settings persistence", () => {
     });
   });
 
+  it("skips auto rehydration and restores only when rehydrate is called", async () => {
+    localStorage.setItem(
+      IMAGE_CONVERTER_SETTINGS_STORAGE_KEY,
+      JSON.stringify({
+        state: {
+          backgroundColor: "#000000",
+          outputFormat: "image/webp",
+          quality: 90,
+          resizeMode: "crop",
+          targetHeight: "800",
+          targetWidth: "1200",
+        },
+        version: 1,
+      }),
+    );
+
+    // skipHydration：store 创建时不读 localStorage，挂载前的首帧
+    // 保持默认值、与 SSR HTML 一致，由 hook 挂载后手动恢复。
+    expect(useImageConverterStore.persist.hasHydrated()).toBe(false);
+    expect(useImageConverterStore.getState().outputFormat).toBe("image/png");
+    expect(useImageConverterStore.getState().resizeMode).toBe("lock");
+
+    await useImageConverterStore.persist.rehydrate();
+
+    expect(useImageConverterStore.persist.hasHydrated()).toBe(true);
+    expect(useImageConverterStore.getState().outputFormat).toBe("image/webp");
+    expect(useImageConverterStore.getState().quality).toBe(90);
+    expect(useImageConverterStore.getState().resizeMode).toBe("crop");
+    expect(useImageConverterStore.getState().targetWidth).toBe("1200");
+    expect(useImageConverterStore.getState().hasRestoredSettings).toBe(true);
+  });
+
   it("restores valid settings and sanitizes invalid ones on rehydrate", async () => {
     localStorage.setItem(
       IMAGE_CONVERTER_SETTINGS_STORAGE_KEY,

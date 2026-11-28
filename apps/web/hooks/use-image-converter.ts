@@ -97,6 +97,14 @@ export function useImageConverter(
   const firstItem = items[0];
   const isBatchMode = items.length > 1;
 
+  // store 配了 skipHydration：挂载后再恢复 localStorage 里的设置，
+  // 保证客户端首帧与 SSR HTML 一致，回访用户不会触发水合不匹配。
+  // 必须声明在下面的落地页预设 effect 之前：同轮 effect 按声明顺序执行，
+  // 先水合用户偏好，预设才有机会覆盖它。
+  useEffect(() => {
+    void useImageConverterStore.persist.rehydrate();
+  }, []);
+
   // 转换落地页（如 /tools/heic-to-jpg）预设目标输出格式；通用页不传则行为不变。
   useEffect(() => {
     if (preferredOutputFormat) {

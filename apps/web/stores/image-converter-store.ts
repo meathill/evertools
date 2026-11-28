@@ -9,6 +9,8 @@ import {
   normalizeBackgroundColor,
   type OutputFormat,
   type ResizeMode,
+  sanitizeOutputFormat,
+  sanitizeQuality,
 } from "@/lib/image-converter";
 
 export const IMAGE_CONVERTER_SETTINGS_STORAGE_KEY =
@@ -67,32 +69,12 @@ const initialState = {
   targetWidth: "",
 };
 
-function sanitizeOutputFormat(value: unknown): OutputFormat {
-  if (
-    value === "image/png" ||
-    value === "image/jpeg" ||
-    value === "image/webp"
-  ) {
-    return value;
-  }
-
-  return "image/png";
-}
-
 function sanitizeResizeMode(value: unknown): ResizeMode {
   if (value === "lock" || value === "stretch" || value === "crop") {
     return value;
   }
 
   return "lock";
-}
-
-function sanitizeQuality(value: unknown): number {
-  if (typeof value === "number" && Number.isFinite(value)) {
-    return clampQuality(value);
-  }
-
-  return DEFAULT_QUALITY;
 }
 
 function sanitizeCropAnchor(value: unknown): CropAnchor {
@@ -228,6 +210,9 @@ export const useImageConverterStore = create<ImageConverterState>()(
         targetHeight: state.targetHeight,
         targetWidth: state.targetWidth,
       }),
+      // SSR 下避免“SSR 渲染默认值、客户端首帧就是持久化值”的水合不匹配：
+      // 创建时不读 localStorage，由 hook 挂载后调用 persist.rehydrate()。
+      skipHydration: true,
       storage: createJSONStorage(() => localStorage),
       version: 1,
     },

@@ -209,6 +209,27 @@ export function getDefaultOutputFormat(type?: string): OutputFormat {
   return "image/png";
 }
 
+// 恢复 localStorage 里的持久化设置时使用：非法值一律回退默认值，避免脏数据进入状态。
+export function sanitizeOutputFormat(value: unknown): OutputFormat {
+  if (
+    value === "image/png" ||
+    value === "image/jpeg" ||
+    value === "image/webp"
+  ) {
+    return value;
+  }
+
+  return "image/png";
+}
+
+export function sanitizeQuality(value: unknown): number {
+  if (typeof value === "number" && Number.isFinite(value)) {
+    return clampQuality(value);
+  }
+
+  return DEFAULT_QUALITY;
+}
+
 export function getOutputExtension(format: OutputFormat): string {
   const match = OUTPUT_FORMATS.find((item) => item.value === format);
 

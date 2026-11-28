@@ -3,7 +3,10 @@ import { act, renderHook, waitFor } from "@testing-library/react";
 import type { ChangeEvent, DragEvent } from "react";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import { getLocaleContent } from "@/messages";
-import { useImageConverterStore } from "@/stores/image-converter-store";
+import {
+  IMAGE_CONVERTER_SETTINGS_STORAGE_KEY,
+  useImageConverterStore,
+} from "@/stores/image-converter-store";
 import { useImageConverter } from "./use-image-converter";
 
 vi.mock("heic-to", () => ({
@@ -93,6 +96,25 @@ afterEach(() => {
 });
 
 describe("useImageConverter", () => {
+  it("rehydrates persisted settings on mount but lets the landing preset win", async () => {
+    localStorage.setItem(
+      IMAGE_CONVERTER_SETTINGS_STORAGE_KEY,
+      JSON.stringify({
+        state: { outputFormat: "image/webp", quality: 90 },
+        version: 1,
+      }),
+    );
+
+    const { result } = renderHook(() =>
+      useImageConverter(content, "image/jpeg"),
+    );
+
+    // 水合 effect 先跑（质量恢复 90），落地页预设后跑（格式覆盖为 jpeg）。
+    // 两个断言一起钉死 effect 声明顺序：预设若先于水合，格式会变回 webp。
+    await waitFor(() => expect(result.current.outputFormat).toBe("image/jpeg"));
+    expect(result.current.quality).toBe(90);
+  });
+
   it("adds a single image via file input and hydrates target dimensions", async () => {
     const { result } = renderHook(() => useImageConverter(content));
 

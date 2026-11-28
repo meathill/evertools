@@ -3,8 +3,6 @@ import { useFileDropInput } from "@/hooks/use-file-drop-input";
 import {
   ACCEPTED_IMAGE_TYPES,
   DEFAULT_BACKGROUND_COLOR,
-  DEFAULT_QUALITY,
-  getDefaultOutputFormat,
   IMAGE_CONVERTER_ERROR_CODES,
   isAcceptedImageFile,
   normalizeSourceFile,
@@ -28,6 +26,7 @@ import {
   snapCropToPixels,
 } from "@/lib/image-cropper";
 import type { LocaleContent } from "@/messages/types";
+import { useImageCropperStore } from "@/stores/image-cropper-store";
 
 type CropperSource = {
   file: File;
@@ -57,14 +56,21 @@ export function useImageCropper(content: LocaleContent["imageCropper"]) {
     "HEIC",
   ].join(" / ");
 
+  // 格式与质量持久化到 localStorage（与 image-converter 对齐）：
+  // 回访保留用户偏好，首访在选图时按原图类型给默认格式。
+  const {
+    hydrateFromSource,
+    outputFormat,
+    quality,
+    setOutputFormat,
+    setQuality,
+  } = useImageCropperStore();
   const [source, setSource] = useState<CropperSource | null>(null);
   const [crop, setCrop] = useState<PercentCropRect | null>(null);
   const [aspectKey, setAspectKey] = useState<AspectPresetKey>("free");
-  const [outputFormat, setOutputFormat] = useState<OutputFormat>("image/png");
   const [backgroundColor, setBackgroundColor] = useState(
     DEFAULT_BACKGROUND_COLOR,
   );
-  const [quality, setQuality] = useState(DEFAULT_QUALITY);
   const [result, setResult] = useState<CropperResult | null>(null);
   const [zoom, setZoom] = useState(1);
   const [isPreparing, setIsPreparing] = useState(false);
@@ -90,6 +96,12 @@ export function useImageCropper(content: LocaleContent["imageCropper"]) {
         URL.revokeObjectURL(urlsRef.current.result);
       }
     };
+  }, []);
+
+  // store 配了 skipHydration：挂载后再恢复 localStorage 里的格式/质量，
+  // 保证客户端首帧与 SSR HTML 一致，回访用户不会触发水合不匹配。
+  useEffect(() => {
+    void useImageCropperStore.persist.rehydrate();
   }, []);
 
   const fileDrop = useFileDropInput(handleAddFiles);
@@ -188,7 +200,7 @@ export function useImageCropper(content: LocaleContent["imageCropper"]) {
         }),
       );
       setZoom(1);
-      setOutputFormat(getDefaultOutputFormat(image.type));
+      hydrateFromSource({ type: image.type });
     } catch (error) {
       setErrorMessage(getErrorMessage(error, content.client.errors.readFailed));
     } finally {
